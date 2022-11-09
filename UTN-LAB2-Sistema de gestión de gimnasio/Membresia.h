@@ -1,16 +1,13 @@
-#ifndef MEMBRESIA_H_INCLUDED
-#define MEMBRESIA_H_INCLUDED
-
+#pragma once
 #include <iostream>
 #include <string.h>
+#include <cstring>
 /* MEMBRESÍA:
     -Nombre
     -Cantidad de clases
     -Valor
     -ID
  */
-
-using namespace std;
 
 class Membresia {
 private:
@@ -19,7 +16,7 @@ private:
     float valor;
     int id;
 public:
-    Membresia(char n[20], int cc = 0, float v = 0, int i = 0);
+    Membresia(const char* n="", int cc = 0, float v = 0, int i = 0);
     const char *getNombre() { return nombre; }
     int getCantidadClases() { return cantidadClases; }
     float getValor() { return valor; }
@@ -30,6 +27,4 @@ public:
     void setId(int i) { id = i; }
     void MostrarMembresia();
 };
-
-#endif // MEMBRESIA_H_INCLUDED
 

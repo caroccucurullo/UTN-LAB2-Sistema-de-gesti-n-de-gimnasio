@@ -1,9 +1,8 @@
-#include <cstring>
-#include <iostream>
+
 #include "Rol.h"
 
 
-Rol::Rol(int i = 0, char c[20], float s = 0, char fi[20]) {
+Rol::Rol(int i, const char* c, float s, const char* fi) {
     id = i;
     strcpy(cargo, c);
     sueldo = s;
@@ -11,9 +10,9 @@ Rol::Rol(int i = 0, char c[20], float s = 0, char fi[20]) {
 }
 
 void Rol::MostrarRol() {
-    cout << "ID: " << id << endl;
-    cout << "Cargo: " << cargo << endl;
-    cout << "Sueldo: " << sueldo << endl;
-    cout << "Fecha de ingreso: " << fechaIngreso << endl;
+    std::cout << "ID: " << id << std::endl;
+    std::cout << "Cargo: " << cargo << std::endl;
+    std::cout << "Sueldo: " << sueldo << std::endl;
+    std::cout << "Fecha de ingreso: " << fechaIngreso << std::endl;
 }
 

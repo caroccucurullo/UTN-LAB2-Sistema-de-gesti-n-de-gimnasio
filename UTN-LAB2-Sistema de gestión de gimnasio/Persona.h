@@ -1,20 +1,17 @@
-/* Persona:
+ï»¿/* Persona:
 Nombre
 Apellido
 F. nac.
 Edad
-Género
-Teléfono
+Genero
+Telefono
 DNI
-Dirección
+Direccion
  */
-#ifndef PERSONA_H_INCLUDED
-#define PERSONA_H_INCLUDED
-
+#pragma once
 #include <iostream>
 #include <string.h>
-
-using namespace std;
+#include <cstring>
 
 class Persona {
 protected:
@@ -28,25 +25,23 @@ protected:
     char direccion[20];
 public:
 
-    Persona(char n[20], char a[20], char fn[20], int e, char g[20], char t[20], char d[20]);
-    const char *getNombre() { return nombre; }
-    const char *getApellido() { return apellido; }
-    const char *getFechaNacimiento() { return fechaNacimiento; }
+    Persona(const char* n = "", const char* a = "", const char* fn = "", int e = 0, const char* g = "", const char* t = "", const char* d = "");
+    const char* getNombre() { return nombre; }
+    const char* getApellido() { return apellido; }
+    const char* getFechaNacimiento() { return fechaNacimiento; }
     int getEdad() { return edad; }
-    const char *getGenero() { return genero; }
-    const char *getTelefono() { return telefono; }
-    const char *getDni() { return dni; }
-    const char *getDireccion() { return direccion; }
-    void setNombre(const char *n) { strcpy(nombre, n); }
-    void setApellido(const char *a) { strcpy(apellido, a); }
-    void setFechaNacimiento(const char *fn) { strcpy(fechaNacimiento, fn); }
+    const char* getGenero() { return genero; }
+    const char* getTelefono() { return telefono; }
+    const char* getDni() { return dni; }
+    const char* getDireccion() { return direccion; }
+    void setNombre(const char* n) { strcpy(nombre, n); }
+    void setApellido(const char* a) { strcpy(apellido, a); }
+    void setFechaNacimiento(const char* fn) { strcpy(fechaNacimiento, fn); }
     void setEdad(int e) { edad = e; }
-    void setGenero(const char *g) { strcpy(genero, g); }
-    void setTelefono(const char *t) { strcpy(telefono, t); }
-    void setDni(const char *d) { strcpy(dni, d); }
-    void setDireccion(const char *dir) { strcpy(direccion, dir); }
+    void setGenero(const char* g) { strcpy(genero, g); }
+    void setTelefono(const char* t) { strcpy(telefono, t); }
+    void setDni(const char* d) { strcpy(dni, d); }
+    void setDireccion(const char* dir) { strcpy(direccion, dir); }
     void MostrarPersona();
     void personaCargar();
 };
-
-#endif // PERSONA_H_INCLUDED

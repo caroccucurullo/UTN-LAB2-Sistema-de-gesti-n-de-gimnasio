@@ -1,10 +1,7 @@
-#ifndef SALON_H_INCLUDED
-#define SALON_H_INCLUDED
+#pragma once
 #include <iostream>
 #include <string.h>
-
-using namespace std;
-
+#include <cstring>
 /* SALON:
     -ID
 -Cupo
@@ -15,7 +12,7 @@ private:
     int cupo;
     char nombre[20];
 public:
-    Salon(int i = 0, int c = 0, char n[20]);
+    Salon(int i = 0, int c = 0, const char* n="");
     int getId() { return id; }
     int getCupo() { return cupo; }
     const char *getNombre() { return nombre; }
@@ -25,4 +22,3 @@ public:
     void MostrarSalon();
 };
 
-#endif // SALON_H_INCLUDED

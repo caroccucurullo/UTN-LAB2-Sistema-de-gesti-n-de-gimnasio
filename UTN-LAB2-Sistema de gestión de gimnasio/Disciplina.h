@@ -1,10 +1,7 @@
-#ifndef DISCIPLINA_H_INCLUDED
-#define DISCIPLINA_H_INCLUDED
-
+#pragma once
 #include <iostream>
 #include <string.h>
-
-using namespace std;
+#include <cstring>
 
 class Disciplina {
 
@@ -17,7 +14,7 @@ private:
     int salon;
 
 public:
-    Disciplina(int c = 0, int hi = 0, int hf = 0, char n[20], int id = 0, int s = 0);
+    Disciplina(int c = 0, int hi = 0, int hf = 0, const char* n="", int id = 0, int s = 0);
     int getCodigo() { return codigo; }
     int getHorarioInicio() { return horarioInicio; }
     int getHorarioFin() { return horarioFin; }
@@ -31,8 +28,6 @@ public:
     void setIdProfesor(int id) { idProfesor = id; }
     void setSalon(int s) { salon = s; }
     void MostrarDisciplina();
-
 };
 
-#endif // DISCIPLINA_H_INCLUDED
 

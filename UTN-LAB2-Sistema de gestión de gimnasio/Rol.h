@@ -1,9 +1,7 @@
-#ifndef ROL_H_INCLUDED
-#define ROL_H_INCLUDED
+#pragma once
 #include <iostream>
 #include <string.h>
-
-using namespace std;
+#include <cstring>
 
 /* 	-ID
     -cargo(rol)
@@ -17,7 +15,7 @@ private:
     float sueldo;
     char fechaIngreso[20];
 public:
-    Rol(int i = 0, char c[20], float s = 0, char fi[20]);
+    Rol(int i = 0, const char* c="", float s = 0, const char* fi="");
     int getId() { return id; }
     const char *getCargo() { return cargo; }
     float getSueldo() { return sueldo; }
@@ -28,5 +26,3 @@ public:
     void setFechaIngreso(const char *fi) { strcpy(fechaIngreso, fi); }
     void MostrarRol();
 };
-
-#endif // ROL_H_INCLUDED
