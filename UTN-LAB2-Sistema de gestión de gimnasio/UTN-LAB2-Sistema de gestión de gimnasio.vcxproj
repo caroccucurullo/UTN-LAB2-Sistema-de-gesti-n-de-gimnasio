@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\C++\Theme\GYM\GYM\Fecha.cpp" />
+    <ClCompile Include="Direccion.cpp" />
     <ClCompile Include="Disciplina.cpp" />
     <ClCompile Include="Membresia.cpp" />
     <ClCompile Include="Persona.cpp" />
@@ -149,6 +151,8 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\C++\Theme\GYM\GYM\Fecha.h" />
+    <ClInclude Include="Direccion.h" />
     <ClInclude Include="Disciplina.h" />
     <ClInclude Include="Membresia.h" />
     <ClInclude Include="Persona.h" />

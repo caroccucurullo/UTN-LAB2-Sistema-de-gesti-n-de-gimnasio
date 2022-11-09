@@ -8,7 +8,11 @@ using namespace std;
 #include "Salon.h"
 #include "Rol.h"
 
+
 int main() {
-  
+	Socio socio;
+	socio.CargarSocio();
+	std::cout << std::endl;
+	socio.MostrarSocio();
   return 0;
 }
