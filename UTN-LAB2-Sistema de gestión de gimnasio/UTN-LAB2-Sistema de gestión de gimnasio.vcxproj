@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\C++\Theme\GYM\GYM\Fecha.cpp" />
+    <ClCompile Include="ArchivoSocios.cpp" />
     <ClCompile Include="Direccion.cpp" />
     <ClCompile Include="Disciplina.cpp" />
     <ClCompile Include="Membresia.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\C++\Theme\GYM\GYM\Fecha.h" />
+    <ClInclude Include="ArchivoSocios.h" />
     <ClInclude Include="Direccion.h" />
     <ClInclude Include="Disciplina.h" />
     <ClInclude Include="Membresia.h" />
