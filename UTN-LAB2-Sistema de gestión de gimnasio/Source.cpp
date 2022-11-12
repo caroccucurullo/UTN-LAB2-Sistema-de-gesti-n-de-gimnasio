@@ -34,7 +34,6 @@ int main() {
 	delete[] p;*/
 	/*socio.CargarSocio();
 	arSocios.modificarSocio(socio,arSocios.buscarRegPorDni("38392431"));*/
-	
 
   return 0;
 }
