@@ -8,32 +8,42 @@ using namespace std;
 #include "Membresia.h"
 #include "Salon.h"
 #include "Rol.h"
+#include "menu.h"
 
 
 int main() {
-	Socio socio, socio2;
-	ArchivoSocios arSocios;
-	/*socio.CargarSocio();
-	std::cout << std::endl;
-	cout<<socio.MostrarSociosDatos();
-	arSocios.guardarSocio(socio);
-	socio2 = arSocios.leerSocio(0);
-	std::cout << std::endl;
-	cout<<socio2.MostrarSociosDatos();*/
-	/*int cant = arSocios.getCantidad();
-	cout << cant << endl;
-	Socio* p = new Socio[cant];
-	if (p == nullptr) exit(150);
-	for (int x = 0;x < cant;x++) {
-		 p[x]=socio = arSocios.leerSocio(x);
-		 
-	}
-	for (int x = 0;x < cant;x++) {
-		cout << p[x].MostrarSociosDatos() << endl;
-	}
-	delete[] p;*/
-	/*socio.CargarSocio();
-	arSocios.modificarSocio(socio,arSocios.buscarRegPorDni("38392431"));*/
+    /*char opcion;
+    do {
+        menu();
+        std::cin >> opcion;
+        system("cls");
+        switch (opcion)
+        {
+        case '1':
+            submenuAlumno();
+            break;
+        case '2':
+            submenuProfesor();
+            break;
 
+        case '3':
+            submenuAdministracion();
+            break;
+
+        case '4':
+            submenuDisciplinas();
+            break;
+
+        case '5':
+            submenuSalon();
+            break;
+        case '6':
+            std::cout << "\n\nSALIR" << std::endl;
+            break;
+        default:
+            std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+            break;
+        }
+    } while (opcion != '6');*/
   return 0;
 }
