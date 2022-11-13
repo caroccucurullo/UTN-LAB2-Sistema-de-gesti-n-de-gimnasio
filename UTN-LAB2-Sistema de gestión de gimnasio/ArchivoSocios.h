@@ -9,5 +9,7 @@ public:
 	bool modificarSocio(Socio& socio, int nRegistro);
 	int getCantidad();
 	int buscarRegPorDni(std::string dni);
+	bool bajaLogica(int nRegistro);
+	bool altaLogica(int nRegistro);
 };
 

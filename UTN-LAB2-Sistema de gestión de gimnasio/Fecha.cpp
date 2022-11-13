@@ -55,3 +55,16 @@ void Fecha::Cargar()
     std::cin >> num;
     setAnio(num);
 }
+
+void Fecha::establecerFechaHoy()
+{
+    time_t rawtime;
+    struct tm timeinfo;
+
+    time(&rawtime);
+    timeinfo = *(localtime(&rawtime));
+
+    _dia = timeinfo.tm_mday;
+    _mes = timeinfo.tm_mon + 1;
+    _anio = timeinfo.tm_year + 1900;
+}

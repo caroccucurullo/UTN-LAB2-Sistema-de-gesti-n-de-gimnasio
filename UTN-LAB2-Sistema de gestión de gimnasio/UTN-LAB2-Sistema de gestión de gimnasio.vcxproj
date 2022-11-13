@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\C++\Theme\GYM\GYM\Fecha.cpp" />
     <ClCompile Include="ArchivoSocios.cpp" />
+    <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="Direccion.cpp" />
     <ClCompile Include="Disciplina.cpp" />
+    <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Membresia.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Profesor.cpp" />
     <ClCompile Include="Rol.cpp" />
@@ -152,16 +154,22 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\C++\Theme\GYM\GYM\Fecha.h" />
     <ClInclude Include="ArchivoSocios.h" />
+    <ClInclude Include="Contacto.h" />
     <ClInclude Include="Direccion.h" />
     <ClInclude Include="Disciplina.h" />
+    <ClInclude Include="Fecha.h" />
     <ClInclude Include="Membresia.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Profesor.h" />
     <ClInclude Include="Rol.h" />
     <ClInclude Include="Salon.h" />
     <ClInclude Include="Socio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram21.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

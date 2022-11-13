@@ -1,37 +1,35 @@
 #include "Profesor.h"
 
-Profesor::Profesor(int i, const char* d, int he, int hs, const char* fi, float s) {
-	id = i;
-	strcpy(disciplina, d);
-	horarioEntrada = he;
-	horarioSalida = hs;
-	strcpy(fechaIngreso, fi);
-	sueldo = s;
+Profesor::Profesor(int id, int idDis, std::string turno, Fecha fIn, float s) {
+	_id = id;
+	_idDisciplina = idDis;
+	strcpy(_turno, turno.c_str());
+	_fIngreso = fIn;
+	_sueldo = s;
 }
 
 void Profesor::MostrarProfesor() {
+	std::cout << "ID: " << _id << std::endl;
 	Persona::MostrarPersona();
-	std::cout << "ID: " << id << std::endl;
-	std::cout << "Disciplina: " << disciplina << std::endl;
-	std::cout << "Horario de entrada: " << horarioEntrada << std::endl;
-	std::cout << "Horario de salida: " << horarioSalida << std::endl;
-	std::cout << "Fecha de ingreso: " << fechaIngreso << std::endl;
-	std::cout << "Sueldo: " << sueldo << std::endl;
+	std::cout << "ID Disciplina: " << _idDisciplina << std::endl;
+	std::cout << "Turno: " << _turno << std::endl;
+	std::cout << "Fecha de ingreso: " << getFechaIngreso().toString() << std::endl;
+	if (!_estado) std::cout << "Fecha de Egreso: " << getFechaEgreso().toString() << std::endl;
+	std::cout << "Sueldo: " << _sueldo << std::endl;
 }
 
 void Profesor::cargarProfesor() {
-	Persona::personaCargar();
-	
-	std::cout << "Ingrese el ID: ";
-	std::cin >> id;
-	std::cout << "Ingrese la disciplina: ";
-	std::cin >> disciplina;
-	std::cout << "Ingrese el horario de entrada: ";
-	std::cin >> horarioEntrada;
-	std::cout << "Ingrese el horario de salida: ";
-	std::cin >> horarioSalida;
-	std::cout << "Ingrese la fecha de ingreso: ";
-	std::cin >> fechaIngreso;
+	std::string cadena;
+	std::cout << "ID: ";
+	std::cin >> _id;
+	std::cin.ignore();
+	Persona::CargarPersona();
+	std::cout << "Id Disciplina: ";
+	std::cin >> _idDisciplina;
+	std::cin.ignore();
+	std::cout << "Turno: ";
+	std::getline(std::cin, cadena);
+	setTurno(cadena);
 	std::cout << "Ingrese el sueldo: ";
-	std::cin >> sueldo;
+	std::cin >> _sueldo;
 }

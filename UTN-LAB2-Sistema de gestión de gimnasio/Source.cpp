@@ -12,6 +12,28 @@ using namespace std;
 
 
 int main() {
+    /*ArchivoSocios arSocio;
+    Socio s,s2;*/
+    /*s.CargarSocio();
+    cout << s.MostrarSociosDatos() << endl;*/
+    /*if (arSocio.guardarSocio(s)) cout << "Guardado correctamente." << endl;
+    else cout << "No guardado." << endl;*/
+	
+	/*s2 = arSocio.leerSocio(arSocio.buscarRegPorDni("30398741"));
+    cout << s2.MostrarSociosDatos() << endl;*/
+    /*arSocio.bajaLogica(arSocio.buscarRegPorDni("30398741"));
+    s2 = arSocio.leerSocio(arSocio.buscarRegPorDni("30398741"));
+    cout << s2.MostrarSociosDatos() << endl;*/
+    /*arSocio.altaLogica(arSocio.buscarRegPorDni("30398741"));
+    s2 = arSocio.leerSocio(arSocio.buscarRegPorDni("30398741"));
+    cout << s2.MostrarSociosDatos() << endl;*/
+	
+    Profesor profe;
+    profe.cargarProfesor();
+    cout << endl;
+	profe.MostrarProfesor();
+	
+
     /*char opcion;
     do {
         menu();

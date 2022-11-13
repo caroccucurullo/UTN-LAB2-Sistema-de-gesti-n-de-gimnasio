@@ -14,8 +14,8 @@ class Fecha{
              Fecha();
         std::string toString();
         void Cargar();
+        void establecerFechaHoy();
     private:
         int _dia, _mes, _anio;
-
 };
 
