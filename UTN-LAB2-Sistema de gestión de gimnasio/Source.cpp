@@ -3,8 +3,9 @@ using namespace std;
 #include "Persona.h"
 #include "Socio.h"
 #include "ArchivoSocios.h"
-#include "Disciplina.h"
 #include "Profesor.h"
+#include "ArchivoProfesor.h"
+#include "Disciplina.h"
 #include "Membresia.h"
 #include "Salon.h"
 #include "Rol.h"
@@ -28,10 +29,17 @@ int main() {
     s2 = arSocio.leerSocio(arSocio.buscarRegPorDni("30398741"));
     cout << s2.MostrarSociosDatos() << endl;*/
 	
-    Profesor profe;
-    profe.cargarProfesor();
+    /*Profesor profe, profe2;
+    ArchivoProfesor arProfe;*/
+    /*profe.cargarProfesor();
     cout << endl;
 	profe.MostrarProfesor();
+	if(arProfe.guardarProfesor(profe))  cout<<"Guardado correctamente."<<endl;
+	else cout << "No guardado . "<<endl;*/
+    /*if (arProfe.bajaLogica(arProfe.buscarRegPorDni("12345678"))) cout << "Dado de baja" << endl;*/
+    /*if (arProfe.altaLogica(arProfe.buscarRegPorDni("12345678"))) cout<<"Dado de alta"<<endl;*/
+    /*profe2 = arProfe.leerProfesor(arProfe.buscarRegPorDni("12345678"));
+    profe2.MostrarProfesor();*/
 	
 
     /*char opcion;
