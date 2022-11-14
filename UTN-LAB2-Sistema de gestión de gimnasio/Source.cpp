@@ -40,6 +40,10 @@ int main() {
     /*if (arProfe.altaLogica(arProfe.buscarRegPorDni("12345678"))) cout<<"Dado de alta"<<endl;*/
     /*profe2 = arProfe.leerProfesor(arProfe.buscarRegPorDni("12345678"));
     profe2.MostrarProfesor();*/
+
+    /*Rol rol;
+	rol.CargarRol();
+	rol.MostrarRol();*/
 	
 
     /*char opcion;

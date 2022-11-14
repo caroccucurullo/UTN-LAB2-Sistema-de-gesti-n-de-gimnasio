@@ -24,7 +24,7 @@ bool ArchivoProfesor::leerTodos(Profesor* profesor, int cantidad)
 {
 	FILE* p = fopen("profesores.dat", "rb");
 	if (p == nullptr) return false;
-	bool leyo = fread(&profesor, sizeof(Profesor), cantidad, p);
+	bool leyo = fread(profesor, sizeof(Profesor), cantidad, p);
 	fclose(p);
 	return leyo;
 }

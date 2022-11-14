@@ -1,33 +1,37 @@
 #pragma once
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <cstring>
 
 class Disciplina {
 
 private:
-    int codigo;
-    int horarioInicio;
-    int horarioFin;
-    char nombre[20];
-    int idProfesor;
-    int salon;
+    int _codigo;
+    int _horarioInicio;
+    int _horarioFin;
+    char _nombre[20];
+    int _idProfesor;
+    int _idSalon;
 
 public:
-    Disciplina(int c = 0, int hi = 0, int hf = 0, const char* n="", int id = 0, int s = 0);
-    int getCodigo() { return codigo; }
-    int getHorarioInicio() { return horarioInicio; }
-    int getHorarioFin() { return horarioFin; }
-    const char *getNombre() { return nombre; }
-    int getIdProfesor() { return idProfesor; }
-    int getSalon() { return salon; }
-    void setCodigo(int c) { codigo = c; }
-    void setHorarioInicio(int hi) { horarioInicio = hi; }
-    void setHorarioFin(int hf) { horarioFin = hf; }
-    void setNombre(const char *n) { strcpy(nombre, n); }
-    void setIdProfesor(int id) { idProfesor = id; }
-    void setSalon(int s) { salon = s; }
+    Disciplina(int cod = 0, int hIni = 0, int hFin = 0, std::string nombre="", int idProf = 0, int idSalon = 0);
+	
+    int getCodigo() { return _codigo; }
+    int getHorarioInicio() { return _horarioInicio; }
+    int getHorarioFin() { return _horarioFin; }
+    std::string getNombre() { std::string nombre(_nombre); return nombre; }
+    int getIdProfesor() { return _idProfesor; }
+    int getSalon() { return _idSalon; }
+	
+    void setCodigo(int cod) { _codigo = cod; }
+    void setHorarioInicio(int hIni) { _horarioInicio = hIni; }
+    void setHorarioFin(int hFin) { _horarioFin = hFin; }
+    void setNombre(std::string nombre) { strcpy(_nombre, nombre.c_str()); }
+    void setIdProfesor(int idProf) { _idProfesor = idProf; }
+    void setIdSalon(int idSalon) { _idSalon = idSalon; }
+	
     void MostrarDisciplina();
+    void CargarDisciplina();
 };
 
 

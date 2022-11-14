@@ -39,9 +39,6 @@
     <ClCompile Include="Disciplina.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Direccion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ArchivoSocios.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +52,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArchivoProfesor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoRol.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,9 +80,6 @@
     <ClInclude Include="Disciplina.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Direccion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArchivoSocios.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoProfesor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoRol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
