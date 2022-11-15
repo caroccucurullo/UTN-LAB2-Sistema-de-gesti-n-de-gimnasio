@@ -12,7 +12,8 @@ using namespace std;
 
 
 int main() {
-    /*char opcion;
+    char opcion;
+    
     do {
         menu();
         std::cin >> opcion;
@@ -44,6 +45,8 @@ int main() {
             std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
             break;
         }
-    } while (opcion != '6');*/
+    } while (opcion != '6');
+	system("cls");
+	
   return 0;
 }

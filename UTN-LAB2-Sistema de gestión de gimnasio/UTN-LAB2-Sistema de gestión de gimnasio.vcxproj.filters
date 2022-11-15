@@ -39,10 +39,16 @@
     <ClCompile Include="Disciplina.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\C++\Theme\GYM\GYM\Fecha.cpp">
+    <ClCompile Include="Direccion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Direccion.cpp">
+    <ClCompile Include="ArchivoSocios.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,11 +74,20 @@
     <ClInclude Include="Disciplina.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\C++\Theme\GYM\GYM\Fecha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Direccion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ArchivoSocios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fecha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
 </Project>
