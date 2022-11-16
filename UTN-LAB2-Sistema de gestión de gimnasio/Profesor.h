@@ -40,4 +40,7 @@ public:
 	
     void MostrarProfesor();
 	void cargarProfesor();
+
+    void ordenarPorApellido();
+    void ordenarPorDisciplina();
 };
