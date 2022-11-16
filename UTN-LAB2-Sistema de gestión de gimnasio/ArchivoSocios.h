@@ -1,5 +1,8 @@
 #pragma once
 #include "Socio.h"
+#include "ArchivoClaseAsignada.h"
+#include "ArchivoDisciplina.h"
+#include "ArchivoMembresia.h"
 class ArchivoSocios
 {
 public:
@@ -19,11 +22,13 @@ public:
 	void copiarSocio(Socio* vSocio, int edad);
 	void mostrarSocio(Socio* vSocio, int cant);
 	///Por Disciplina
-	int getCantidadDis(std::string nombre);
-	//void sociosPorDis();
-	//void copiarSocioDis(Socio* vSocio, std::string nombre);
-	//void mostrarSocioDis(Socio* vSocio, int cant);
+	int getCantidadSocioPorDis(std::string nombre);
+	void sociosPorDis();
+	void copiarSocioDis(Socio* vSocio, std::string nombre);
 	///Por Membresia
+	int getCantidadSocioPorMembresia(int idMem);
+	void sociosPorMembresia();
+	void copiarSocioMembresia(Socio* vSocio, int idMem);
 	
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);

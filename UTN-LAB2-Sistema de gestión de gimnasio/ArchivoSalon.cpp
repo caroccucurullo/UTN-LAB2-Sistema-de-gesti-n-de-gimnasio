@@ -60,6 +60,39 @@ int ArchivoSalon::buscarRegPorNombre(std::string nombre)
     return -1;
 }
 
+//CONSULTA POR CUPO
+int ArchivoSalon::calcularCupoPorIDyHorario(int idSalon, int horario)
+{
+    Salon salon = leerSalon(idSalon);
+    int cupo = salon.getCupo();
+
+    ArchivoDisciplina arDis;
+    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorSalonyHorario(idSalon, horario));
+
+    ArchivoClaseAsignada arClA;
+    ClaseAsignada clA;
+    int cantClA = arClA.getCantidad();
+    for (int x = 0;x < cantClA;x++) {
+        clA = arClA.leerClaseAsignada(x);
+        if (clA.getIdSalon() == salon.getId() && clA.getCodDisciplina() == disciplina.getIdSalon()) cupo--;
+    }
+    return cupo;
+}
+
+void ArchivoSalon::SalonPorCupoHorario()
+{
+    std::string cadena;
+    std::cout << "Ingrese nombre Salon: ";
+    std::getline(std::cin, cadena);
+    int horario;
+    std::cout << "Ingrese horario: ";
+    std::cin >> horario;
+    ArchivoSalon arSalon;
+    Salon salon = arSalon.leerSalon(arSalon.buscarRegPorNombre(cadena));
+    int idSalon = salon.getId();
+    std::cout << "El cupo del salon " << salon.getNombre() << " en el horario de " << horario << "hs es " << calcularCupoPorIDyHorario(idSalon, horario) << "." << std::endl;
+}
+
 bool ArchivoSalon::bajaLogica(int nRegistro)
 {
     Salon salon;

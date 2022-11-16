@@ -1,5 +1,7 @@
 #pragma once
 #include "Salon.h"
+#include "ArchivoDisciplina.h"
+#include "ArchivoClaseAsignada.h"
 class ArchivoSalon
 {
 public:
@@ -9,6 +11,13 @@ public:
 	bool modificarSalon(Salon& salon, int nRegistro);
 	int getCantidad();
 	int buscarRegPorNombre(std::string nombre);
+
+	//CONSULTA POR CUPO
+	int calcularCupoPorIDyHorario(int idSalon, int horario);
+	void SalonPorCupoHorario();
+	
+	
+	
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
 };

@@ -39,8 +39,6 @@ bool ArchivoProfesor::modificarProfesor(Profesor& profesor, int nRegistro)
 	return ok;
 }
 
-
-
 int ArchivoProfesor::getCantidad()
 {
 	int cant = 0;
@@ -50,7 +48,7 @@ int ArchivoProfesor::getCantidad()
 	fclose(p);
 	return cant;
 }
-
+//CONSULTA POR DNI
 int ArchivoProfesor::buscarRegPorDni(std::string dni)
 {
 	int cant = getCantidad();
@@ -60,6 +58,91 @@ int ArchivoProfesor::buscarRegPorDni(std::string dni)
 		if (profesor.getDni() == dni) return x;
 	}
 	return -1;
+}
+//CONSULTA POR DISCIPLINA
+int ArchivoProfesor::getCantidadProfePorDis(std::string nombre)
+{
+	ArchivoDisciplina arDis;
+	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
+	int cantProfe = getCantidad(), cantDis=0;
+	Profesor profesor;
+	for (int x = 0;x < cantProfe;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getIdDisciplina() == disciplina.getCodigo()) cantDis++;
+	}
+	return cantDis;
+}
+
+void ArchivoProfesor::ProfePorDis()
+{
+	std::string cadena;
+	std::cout << "Ingrese Disciplina: ";
+	std::getline(std::cin, cadena);
+	int cantProfePorDis = getCantidadProfePorDis(cadena);
+	Profesor* vProfe = new Profesor[cantProfePorDis];
+	if (vProfe == nullptr) return;
+	copiarProfeDis(vProfe, cadena);
+	mostrarProfe(vProfe, cantProfePorDis);
+	delete[] vProfe;
+}
+
+void ArchivoProfesor::copiarProfeDis(Profesor* vProfe, std::string nombre)
+{
+	ArchivoDisciplina arDis;
+	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
+	Profesor profesor;
+	int cantProfe = getCantidad();
+	for (int x = 0;x < cantProfe;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getIdDisciplina() == disciplina.getCodigo()) {
+			vProfe[x] = profesor;
+		}
+	}
+}
+
+void ArchivoProfesor::mostrarProfe(Profesor* vProfe, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		vProfe[x].MostrarProfesor();
+		std::cout << std::endl;
+	}
+}
+//CONSULTA POR Turno
+int ArchivoProfesor::getCantidadProfePorTurno(std::string turno)
+{
+	int cantProfe = getCantidad(), cantHorario = 0;
+	Profesor profesor;
+	for (int x = 0;x < cantProfe;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getTurno() == turno) cantHorario++;
+	}
+	return cantHorario;
+
+}
+
+void ArchivoProfesor::ProfePorTurno()
+{
+	std::string cadena;
+	std::cout << "Ingrese Turno: ";
+	std::getline(std::cin, cadena);
+	int cantProfePorTurno = getCantidadProfePorTurno(cadena);
+	Profesor* vProfe = new Profesor[cantProfePorTurno];
+	if (vProfe == nullptr) return;
+	copiarProfeTurno(vProfe, cadena);
+	mostrarProfe(vProfe, cantProfePorTurno);
+	delete[] vProfe;
+}
+
+void ArchivoProfesor::copiarProfeTurno(Profesor* vProfe, std::string turno)
+{
+	Profesor profesor;
+	int cantProfe = getCantidad();
+	for (int x = 0;x < cantProfe;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getTurno() == turno) {
+			vProfe[x] = profesor;
+		}
+	}
 }
 
 bool ArchivoProfesor::bajaLogica(int nRegistro)

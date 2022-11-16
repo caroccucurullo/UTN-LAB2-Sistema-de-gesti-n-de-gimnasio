@@ -22,7 +22,7 @@ public:
     int getHorarioFin() { return _horarioFin; }
     std::string getNombre() { std::string nombre(_nombre); return nombre; }
     int getIdProfesor() { return _idProfesor; }
-    int getSalon() { return _idSalon; }
+    int getIdSalon() { return _idSalon; }
     bool getEstado() { return estado; }
 	
     void setCodigo(int cod) { _codigo = cod; }

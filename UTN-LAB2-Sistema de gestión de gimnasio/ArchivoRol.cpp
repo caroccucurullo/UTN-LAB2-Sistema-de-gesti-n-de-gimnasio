@@ -59,6 +59,80 @@ int ArchivoRol::buscarRegPorDni(std::string dni)
 	}
 	return -1;
 }
+//CONSULTA POR CARGO
+int ArchivoRol::getCantidadPorCargo(std::string cargo)
+{
+	int cant = getCantidad(), cantCargo = 0;
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getCargo() == cargo) cantCargo++;
+	}
+	return cantCargo;
+}
+
+void ArchivoRol::rolPorCargo()
+{
+	std::string cadena;
+	std::cout << "Ingrese Cargo: ";
+	std::getline(std::cin, cadena);
+	int cantCargo = getCantidadPorCargo(cadena);
+	Rol* vRol = new Rol[cantCargo];
+	if (vRol == nullptr) return;
+	copiarRolCargo(vRol, cadena);
+	mostrarRol(vRol, cantCargo);
+}
+
+void ArchivoRol::copiarRolCargo(Rol* vRol, std::string cargo)
+{
+	int cant = getCantidad();
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getCargo() == cargo) vRol[x] = rol;
+	}
+}
+
+void ArchivoRol::mostrarRol(Rol* vRol, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		vRol[x].MostrarRol();
+		std::cout << std::endl;
+	}
+
+}
+//CONSULTA POR FECHA DE INGRESO
+int ArchivoRol::getCantidadPorFechaIngreso(Fecha fechaIngreso)
+{
+	int cant = getCantidad(), cantFechaIngreso = 0;
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getFechaIngreso() == fechaIngreso) cantFechaIngreso++;
+	}
+	return cantFechaIngreso;
+}
+
+void ArchivoRol::rolPorFechaIngreso()
+{
+	Fecha fechaIngreso;
+	fechaIngreso.Cargar();
+	int cantFechaIngreso = getCantidadPorFechaIngreso(fechaIngreso);
+	Rol* vRol = new Rol[cantFechaIngreso];
+	if (vRol == nullptr) return;
+	copiarRolFechaIngreso(vRol, fechaIngreso);
+	mostrarRol(vRol, cantFechaIngreso);
+	delete[] vRol;
+}
+
+void ArchivoRol::copiarRolFechaIngreso(Rol* vRol, Fecha fechaIngreso)
+{
+	int cant = getCantidad();
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		if (rol.getFechaIngreso() == fechaIngreso) vRol[x] = rol;
+	}
+}
 
 bool ArchivoRol::bajaLogica(int nRegistro)
 {
