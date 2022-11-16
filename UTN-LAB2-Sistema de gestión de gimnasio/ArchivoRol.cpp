@@ -13,7 +13,7 @@ Rol ArchivoRol::leerRol(int nRegistro)
 {
 	Rol rol;
 	FILE* p = fopen("roles.dat", "rb");
-	if (p == nullptr) return false;
+	if (p == nullptr) return rol;
 	fseek(p, nRegistro * sizeof(Rol), 0);
 	bool leyo = fread(&rol, sizeof(Rol), 1, p);
 	fclose(p);

@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <iomanip>
 /* SALON:
     -ID
 -Cupo
@@ -13,7 +12,6 @@ private:
     int cupo;
     char nombre[20];
     bool estado;
-	
 public:
     Salon(int i = 0, int c = 0, std::string n = "");
     int getId() { return id; }

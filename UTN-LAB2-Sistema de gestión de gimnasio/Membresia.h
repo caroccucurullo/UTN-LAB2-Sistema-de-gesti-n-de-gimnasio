@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <iomanip>
 
 /* MEMBRESÍA:
     -Nombre
@@ -18,7 +17,6 @@ private:
     float valor;
     int id;
     bool estado;
-	
 public:
     Membresia(std::string n = "", int cc = 0, float v = 0, int i = 0);
     std::string getNombre() { std::string n(nombre); return n; }
@@ -36,6 +34,5 @@ public:
     void MostrarMembresia();
     std::string MostrarMembresiasDatos();
     void CargarMembresia();
-	
 };
 

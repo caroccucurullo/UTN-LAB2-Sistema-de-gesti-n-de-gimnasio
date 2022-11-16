@@ -39,13 +39,7 @@
     <ClCompile Include="Disciplina.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArchivoDisciplinas.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ArchivoSocios.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Contacto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fecha.cpp">
@@ -54,10 +48,28 @@
     <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArchivoMembresias.cpp">
+    <ClCompile Include="Contacto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArchivoSalones.cpp">
+    <ClCompile Include="ArchivoProfesor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoRol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoDisciplina.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClaseAsignada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoClaseAsignada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoMembresia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoSalon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,13 +95,7 @@
     <ClInclude Include="Disciplina.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArchivoDisciplinas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArchivoSocios.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Contacto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fecha.h">
@@ -98,10 +104,28 @@
     <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArchivoMembresias.h">
+    <ClInclude Include="Contacto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArchivoSalones.h">
+    <ClInclude Include="ArchivoProfesor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoRol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoDisciplina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClaseAsignada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoClaseAsignada.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoMembresia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoSalon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

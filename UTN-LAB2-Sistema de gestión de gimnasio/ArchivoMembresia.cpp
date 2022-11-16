@@ -1,6 +1,6 @@
-#include "ArchivoMembresias.h"
+#include "ArchivoMembresia.h"
 
-bool ArchivoMembresias::guardarMembresia(Membresia& membresia)
+bool ArchivoMembresia::guardarMembresia(Membresia& membresia)
 {
     FILE* p = fopen("membresias.dat", "ab");
     if (p == nullptr) return false;
@@ -9,19 +9,18 @@ bool ArchivoMembresias::guardarMembresia(Membresia& membresia)
     return ok;
 }
 
-Membresia ArchivoMembresias::leerMembresia(int nRegistro)
+Membresia ArchivoMembresia::leerMembresia(int nRegistro)
 {
     Membresia membresia;
     FILE* p = fopen("membresias.dat", "rb");
-	if (p == nullptr) return false;
+    if (p == nullptr) return membresia;
     fseek(p, nRegistro * sizeof(Membresia), 0);
     bool leyo = fread(&membresia, sizeof(Membresia), 1, p);
     fclose(p);
     return membresia;
-	
 }
 
-bool ArchivoMembresias::leerTodas(Membresia* membresia, int cantidad)
+bool ArchivoMembresia::leerTodas(Membresia* membresia, int cantidad)
 {
     FILE* p = fopen("membresias.dat", "rb");
     if (p == nullptr) return false;
@@ -30,7 +29,7 @@ bool ArchivoMembresias::leerTodas(Membresia* membresia, int cantidad)
     return leyo;
 }
 
-bool ArchivoMembresias::modificarMembresia(Membresia& membresia, int nRegistro)
+bool ArchivoMembresia::modificarMembresia(Membresia& membresia, int nRegistro)
 {
     FILE* p = fopen("membresias.dat", "rb+");
     if (p == nullptr) return false;
@@ -40,7 +39,7 @@ bool ArchivoMembresias::modificarMembresia(Membresia& membresia, int nRegistro)
     return ok;
 }
 
-int ArchivoMembresias::getCantidad()
+int ArchivoMembresia::getCantidad()
 {
     int cant = 0;
     FILE* p = fopen("membresias.dat", "rb");
@@ -50,7 +49,7 @@ int ArchivoMembresias::getCantidad()
     return cant;
 }
 
-int ArchivoMembresias::buscarRegPorNombre(std::string nombre)
+int ArchivoMembresia::buscarRegPorNombre(std::string nombre)
 {
     int cant = getCantidad();
     Membresia membresia;
@@ -61,7 +60,7 @@ int ArchivoMembresias::buscarRegPorNombre(std::string nombre)
     return -1;
 }
 
-bool ArchivoMembresias::bajaLogica(int nRegistro)
+bool ArchivoMembresia::bajaLogica(int nRegistro)
 {
     Membresia membresia;
     membresia = leerMembresia(nRegistro);
@@ -75,7 +74,7 @@ bool ArchivoMembresias::bajaLogica(int nRegistro)
     return flag;
 }
 
-bool ArchivoMembresias::altaLogica(int nRegistro)
+bool ArchivoMembresia::altaLogica(int nRegistro)
 {
     Membresia membresia;
     membresia = leerMembresia(nRegistro);
