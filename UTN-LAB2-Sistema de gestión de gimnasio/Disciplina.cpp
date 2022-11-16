@@ -7,6 +7,7 @@ Disciplina::Disciplina(int cod, int hIni, int hFin, std::string nombre, int idPr
     strcpy(_nombre, nombre.c_str());
     _idProfesor = idProf;
     _idSalon = idSalon;
+	estado = true;
 }
 
 void Disciplina::MostrarDisciplina() {
@@ -16,6 +17,15 @@ void Disciplina::MostrarDisciplina() {
     std::cout << "Nombre: " << _nombre << std::endl;
     std::cout << "Id profesor: " << _idProfesor << std::endl;
     std::cout << "Salon: " << _idSalon << std::endl;
+}
+
+std::string Disciplina::MostrarDisciplinasDatos()
+{
+	std::string cadena;
+	cadena = std::to_string(getCodigo()) + "," + std::to_string(getHorarioInicio()) + ","
+		+ std::to_string(getHorarioFin()) + "," + (getNombre()) + ","
+		+ std::to_string(getIdProfesor()) + "," + std::to_string(getSalon());
+	return cadena;
 }
 
 void Disciplina::CargarDisciplina()

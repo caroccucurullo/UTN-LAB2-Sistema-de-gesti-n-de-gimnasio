@@ -66,6 +66,12 @@
     <ClCompile Include="ArchivoClaseAsignada.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArchivoMembresia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoSalon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Socio.h">
@@ -116,9 +122,11 @@
     <ClInclude Include="ArchivoClaseAsignada.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram21.cd" />
+    <ClInclude Include="ArchivoMembresia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoSalon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -61,6 +61,7 @@ void submenuAlumno()
 		}
 
 	} while (opcion != '5');
+	system("cls");
 }
 
 void submenuProfesor()
@@ -109,6 +110,9 @@ void submenuProfesor()
 		}
 
 	} while (opcion != '5');
+	system("cls");
+
+
 }
 
 void submenuAdministracion()
@@ -157,6 +161,7 @@ void submenuAdministracion()
 		}
 
 	} while (opcion != '5');
+	system("cls");
 }
 
 void submenuDisciplinas()
@@ -205,6 +210,7 @@ void submenuDisciplinas()
 		}
 
 	} while (opcion != '5');
+	system("cls");
 }
 
 void submenuSalon()
@@ -253,4 +259,5 @@ void submenuSalon()
 		}
 
 	} while (opcion != '5');
+	system("cls");
 }

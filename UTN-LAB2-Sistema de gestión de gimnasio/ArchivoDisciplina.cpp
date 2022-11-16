@@ -1,26 +1,92 @@
 #include "ArchivoDisciplina.h"
 
-bool ArchivoDisciplina::guardarSocio(Disciplina& disciplina)
+bool ArchivoDisciplina::guardarDisciplina(Disciplina& disciplina)
 {
-	return false;
+    FILE* p = fopen("disciplinas.dat", "ab");
+    if (p == nullptr) return false;
+    bool ok = fwrite(&disciplina, sizeof(Disciplina), 1, p);
+    fclose(p);
+    return ok;
 }
-
-Disciplina ArchivoDisciplina::leerSocio(int nRegistro)
+Disciplina ArchivoDisciplina::leerDisciplina(int nRegistro)
 {
-	return Disciplina();
+    Disciplina disciplina;
+    FILE* p = fopen("disciplinas.dat", "rb");
+    if (p == nullptr) return disciplina;
+    fseek(p, nRegistro * sizeof(Disciplina), 0);
+    bool leyo = fread(&disciplina, sizeof(Disciplina), 1, p);
+    fclose(p);
+    return disciplina;
 }
-
-bool ArchivoDisciplina::modificarSocio(Disciplina& disciplina, int nRegistro)
+bool ArchivoDisciplina::leerTodas(Disciplina* disciplina, int cantidad)
 {
-	return false;
+    FILE* p = fopen("disciplinas.dat", "rb");
+    if (p == nullptr) return false;
+    bool leyo = fread(disciplina, sizeof(Disciplina), cantidad, p);
+    fclose(p);
+    return leyo;
 }
-
+bool ArchivoDisciplina::modificarDisciplina(Disciplina& disciplina, int nRegistro)
+{
+    FILE* p = fopen("disciplinas.dat", "rb+");
+    if (p == nullptr) return false;
+    fseek(p, nRegistro * sizeof(Disciplina), SEEK_SET);
+    bool ok = fwrite(&disciplina, sizeof(Disciplina), 1, p);
+    fclose(p);
+    return ok;
+}
 int ArchivoDisciplina::getCantidad()
 {
-	return 0;
+    int cant = 0;
+    FILE* p = fopen("disciplinas.dat", "rb");
+    fseek(p, 0, 2);
+    cant = ftell(p) / sizeof(Disciplina);
+    fclose(p);
+    return cant;
 }
-
-int ArchivoDisciplina::buscarRegPorCod(std::string cod)
+int ArchivoDisciplina::buscarRegPorCod(int cod)
 {
-	return 0;
+    int cant = getCantidad();
+    Disciplina disciplina;
+    for (int x = 0;x < cant;x++) {
+        disciplina = leerDisciplina(x);
+        if (disciplina.getCodigo() == cod) return x;
+    }
+    return -1;
+}
+int ArchivoDisciplina::buscarRegPorNombre(std::string nombre)
+{
+    int cant = getCantidad();
+    Disciplina disciplina;
+    for (int x = 0;x < cant;x++) {
+        disciplina = leerDisciplina(x);
+        if (disciplina.getNombre() == nombre) return x;
+    }
+    return -1;
+}
+bool ArchivoDisciplina::bajaLogica(int nRegistro)
+{
+    Disciplina disciplina;
+    disciplina = leerDisciplina(nRegistro);
+    bool flag;
+    FILE* p = fopen("disciplinas.dat", "rb+");
+    if (p == nullptr) return false;
+    fseek(p, nRegistro * sizeof(Disciplina), 0);
+    disciplina.setEstado(false);
+    flag = fwrite(&disciplina, sizeof(Disciplina), 1, p);
+    fclose(p);
+    return flag;
+}
+bool ArchivoDisciplina::altaLogica(int nRegistro)
+{
+    Disciplina disciplina;
+    disciplina = leerDisciplina(nRegistro);
+    bool flag;
+    FILE* p = fopen("disciplinas.dat", "rb+");
+    if (p == nullptr) return false;
+    fseek(p, nRegistro * sizeof(Disciplina), 0);
+    disciplina.setEstado(true);
+    flag = fwrite(&disciplina, sizeof(Disciplina), 1, p);
+    fclose(p);
+    return flag;
 }

@@ -3,10 +3,14 @@
 class ArchivoDisciplina
 {
 public:
-	bool guardarSocio(Disciplina& disciplina);
-	Disciplina leerSocio(int nRegistro);
-	bool modificarSocio(Disciplina& disciplina, int nRegistro);
+	bool guardarDisciplina(Disciplina& disciplina);
+	Disciplina leerDisciplina(int nRegistro);
+	bool leerTodas(Disciplina* disciplina, int cantidad);
+	bool modificarDisciplina(Disciplina& disciplina, int nRegistro);
 	int getCantidad();
-	int buscarRegPorCod(std::string cod);
+	int buscarRegPorCod(int cod);
+	int buscarRegPorNombre(std::string nombre);
+	bool bajaLogica(int nRegistro);
+	bool altaLogica(int nRegistro);
 };
 

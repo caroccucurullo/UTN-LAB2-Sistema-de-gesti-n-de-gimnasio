@@ -141,8 +141,10 @@
   <ItemGroup>
     <ClCompile Include="ArchivoClaseAsignada.cpp" />
     <ClCompile Include="ArchivoDisciplina.cpp" />
+    <ClCompile Include="ArchivoMembresia.cpp" />
     <ClCompile Include="ArchivoProfesor.cpp" />
     <ClCompile Include="ArchivoRol.cpp" />
+    <ClCompile Include="ArchivoSalon.cpp" />
     <ClCompile Include="ArchivoSocios.cpp" />
     <ClCompile Include="ClaseAsignada.cpp" />
     <ClCompile Include="Contacto.cpp" />
@@ -160,8 +162,10 @@
   <ItemGroup>
     <ClInclude Include="ArchivoClaseAsignada.h" />
     <ClInclude Include="ArchivoDisciplina.h" />
+    <ClInclude Include="ArchivoMembresia.h" />
     <ClInclude Include="ArchivoProfesor.h" />
     <ClInclude Include="ArchivoRol.h" />
+    <ClInclude Include="ArchivoSalon.h" />
     <ClInclude Include="ArchivoSocios.h" />
     <ClInclude Include="ClaseAsignada.h" />
     <ClInclude Include="Contacto.h" />
@@ -174,10 +178,6 @@
     <ClInclude Include="Rol.h" />
     <ClInclude Include="Salon.h" />
     <ClInclude Include="Socio.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram21.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
