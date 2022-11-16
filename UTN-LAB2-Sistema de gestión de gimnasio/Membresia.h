@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <cstring>
+#include <iomanip>
+
 /* MEMBRESÍA:
     -Nombre
     -Cantidad de clases
@@ -15,16 +17,25 @@ private:
     int cantidadClases;
     float valor;
     int id;
+    bool estado;
+	
 public:
-    Membresia(const char* n="", int cc = 0, float v = 0, int i = 0);
-    const char *getNombre() { return nombre; }
+    Membresia(std::string n = "", int cc = 0, float v = 0, int i = 0);
+    std::string getNombre() { std::string n(nombre); return n; }
     int getCantidadClases() { return cantidadClases; }
     float getValor() { return valor; }
     int getId() { return id; }
-    void setNombre(const char *n) { strcpy(nombre, n); }
+    bool getEstado() { return estado; }
+	
+    void setNombre(std::string n) { strcpy(nombre, n.c_str()); }
     void setCantidadClases(int cc) { cantidadClases = cc; }
     void setValor(float v) { valor = v; }
     void setId(int i) { id = i; }
+    void setEstado(bool e) { estado = e; }
+	
     void MostrarMembresia();
+    std::string MostrarMembresiasDatos();
+    void CargarMembresia();
+	
 };
 

@@ -3,6 +3,8 @@ using namespace std;
 #include "Persona.h"
 #include "Socio.h"
 #include "ArchivoSocios.h"
+#include "ArchivoMembresias.h"
+#include "ArchivoDisciplinas.h"
 #include "Disciplina.h"
 #include "Profesor.h"
 #include "Membresia.h"
@@ -12,8 +14,7 @@ using namespace std;
 
 
 int main() {
-    char opcion;
-    
+    /*char opcion;
     do {
         menu();
         std::cin >> opcion;
@@ -46,7 +47,7 @@ int main() {
             break;
         }
     } while (opcion != '6');
-	system("cls");
+	system("cls");*/
 	
   return 0;
 }

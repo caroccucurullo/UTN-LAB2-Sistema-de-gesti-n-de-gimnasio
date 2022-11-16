@@ -1,32 +1,35 @@
 #include "Persona.h"
 
-Persona::Persona(const char* n, const char* a, Fecha nac, int e, const char* g, const char* t,const char* d, Direccion dir) {
-	strcpy(nombre, n);
-	strcpy(apellido, a);
+Persona::Persona(std::string n, std::string a, Fecha nac, int e, std::string d, Contacto contacto) {
+	strcpy(_nombre, n.c_str());
+	strcpy(_apellido, a.c_str());
 	_fnac = nac;
-	edad = e;
-	strcpy(genero, g);
-	strcpy(telefono, t);
-	strcpy(dni, d);
-	_dir = dir;
+	_edad = e;
+	strcpy(_dni, d.c_str());
+	_contacto = contacto;
+	_estado = true;
 }
 
-std::string Persona::MostrarPersona() {
-	/*std::cout << "Nombre: " << nombre << std::endl;
-	std::cout << "Apellido: " << apellido << std::endl;
+void Persona::MostrarPersona()
+{
+	std::cout << "Nombre: " << _nombre << std::endl;
+	std::cout << "Apellido: " << _apellido << std::endl;
 	std::cout << "Fecha de nacimiento: " << getFechaNac().toString() << std::endl;
-	std::cout << "Edad: " << edad << std::endl;
-	std::cout << "Genero: " << genero << std::endl;
-	std::cout << "Telefono: " << telefono << std::endl;
-	std::cout << "DNI: " << dni << std::endl;
-	std::cout << "Direccion: " << getDireccion().mostrar() << std::endl;*/
+	std::cout << "Edad: " << _edad << std::endl;
+	std::cout << "DNI: " << _dni << std::endl;
+	std::cout << "Contacto: " << std::endl;
+	getContacto().Mostrar();
+}
+
+std::string Persona::MostrarPersonaFormatoComas() {
+	
 	std::string cadena;
-	cadena = getNombre() + "," + getApellido() + "," + getFechaNac().toString() + "," + std::to_string(getEdad()) + "," + getGenero() + "," + getTelefono() + "," + getDni() + "," + getDireccion().mostrar();
+	cadena = getNombre() + "," + getApellido() + "," + getFechaNac().toString() + "," + std::to_string(getEdad()) + "," + getDni() + "," + getContacto().MostrarFormatoPorComas();
 	return cadena;
 }
 
 
-void Persona::personaCargar() {
+void Persona::CargarPersona() {
 	std::string cadena;
 	std::cout << "Nombre: ";
 	std::getline(std::cin, cadena);
@@ -37,17 +40,11 @@ void Persona::personaCargar() {
 	std::cout << "Fecha de nacimiento: "<<std::endl;
 	_fnac.Cargar();
 	std::cout << "Edad: ";
-	std::cin >> edad;
+	std::cin >> _edad;
 	std::cin.ignore();
-	std::cout << "Genero: ";
-	std::getline(std::cin, cadena);
-	setGenero(cadena);
-	std::cout << "Telefono: ";
-	std::getline(std::cin, cadena);
-	setTelefono(cadena);
 	std::cout << "DNI: ";
 	std::getline(std::cin, cadena);
 	setDni(cadena);
-	std::cout << "Direccion: "<<std::endl;
-	_dir.cargar();
+	std::cout << "Contacto: "<<std::endl;
+	_contacto.cargar();
 }

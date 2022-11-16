@@ -15,27 +15,29 @@
 class Profesor : public Persona {
 
 private:
-    int id;
-    char disciplina[20];
-    int horarioEntrada;
-    int horarioSalida;
-    char fechaIngreso[20];
-    float sueldo;
+    int _id;
+    int _idDisciplina;
+    char _turno[20];
+    Fecha _fIngreso;
+    Fecha _fEgreso;
+    float _sueldo;
 
 public:
-    Profesor(int i = 0, const char* d = "", int he = 0, int hs = 0, const char* fi = "", float s = 0);
-    int getId() { return id; }
-    const char* getDisciplina() { return disciplina; }
-    int getHorarioEntrada() { return horarioEntrada; }
-    int getHorarioSalida() { return horarioSalida; }
-    const char* getFechaIngreso() { return fechaIngreso; }
-    float getSueldo() { return sueldo; }
-    void setId(int i) { id = i; }
-    void setDisciplina(const char* d) { strcpy(disciplina, d); }
-    void setHorarioEntrada(int he) { horarioEntrada = he; }
-    void setHorarioSalida(int hs) { horarioSalida = hs; }
-    void setFechaIngreso(const char* fi) { strcpy(fechaIngreso, fi); }
-    void setSueldo(float s) { sueldo = s; }
+    Profesor(int id = 0, int idDis = 0, std::string turno = "", Fecha fIn = Fecha(), float s = 0);
+    int getId() { return _id; }
+    int getIdDisciplina() { return _idDisciplina; }
+    std::string getTurno() { std::string turno(_turno); return turno; }
+	Fecha getFechaIngreso() { return _fIngreso; }
+	Fecha getFechaEgreso() { return _fEgreso; }
+    float getSueldo() { return _sueldo; }
+	
+    void setId(int id) { _id = id; }
+    void setIdDisciplina(int id) { _idDisciplina = id; }
+	void setTurno(std::string turno) { strcpy(_turno, turno.c_str()); }
+	void setFechaIngreso(Fecha fi) { _fIngreso = fi; }
+    void setFechaEgreso(Fecha fe) { _fEgreso = fe; }
+    void setSueldo(float s) { _sueldo = s; }
+	
     void MostrarProfesor();
 	void cargarProfesor();
 };

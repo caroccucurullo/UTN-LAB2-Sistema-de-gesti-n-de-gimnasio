@@ -55,7 +55,42 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     Socio socio;
     for (int x = 0;x < cant;x++) {
         socio = leerSocio(x);
-        if (socio.getApellido() == dni) return x;
+        if (socio.getDni() == dni) return x;
     }
     return -1;
 }
+
+bool ArchivoSocios::bajaLogica(int nRegistro)
+{
+    Socio socio;
+    Fecha fecha;
+    fecha.establecerFechaHoy();
+    socio = leerSocio(nRegistro);
+    bool flag;
+    FILE* p = fopen("socios.dat", "rb+");
+    if (p == nullptr) return false;
+    fseek(p, nRegistro * sizeof(Socio), 0);
+    socio.setEstado(false);
+    socio.setFechaEgreso(fecha);
+    flag=fwrite(&socio, sizeof(Socio), 1, p);
+    fclose(p);
+    return flag;
+}
+
+bool ArchivoSocios::altaLogica(int nRegistro)
+{
+    Socio socio;
+    socio = leerSocio(nRegistro);
+    Fecha fecha;
+    fecha.establecerFechaHoy();
+    bool flag;
+    FILE* p = fopen("socios.dat", "rb+");
+    if (p == nullptr) return false;
+    fseek(p, nRegistro * sizeof(Socio), 0);
+    socio.setEstado(true);
+    socio.setFechaIngreso(fecha);
+    flag = fwrite(&socio, sizeof(Socio), 1, p);
+    fclose(p);
+    return flag;
+}
+

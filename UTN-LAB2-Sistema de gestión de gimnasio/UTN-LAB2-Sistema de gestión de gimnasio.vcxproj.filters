@@ -39,16 +39,25 @@
     <ClCompile Include="Disciplina.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Direccion.cpp">
+    <ClCompile Include="ArchivoDisciplinas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArchivoSocios.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="menu.cpp">
+    <ClCompile Include="Contacto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoMembresias.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoSalones.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,20 +83,26 @@
     <ClInclude Include="Disciplina.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Direccion.h">
+    <ClInclude Include="ArchivoDisciplinas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoSocios.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="menu.h">
+    <ClInclude Include="Contacto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fecha.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram2.cd" />
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoMembresias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoSalones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

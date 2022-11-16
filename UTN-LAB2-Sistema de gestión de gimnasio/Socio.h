@@ -13,34 +13,31 @@
 class Socio : public Persona {
 private:
     int nroSocio;
-    float peso;
-    char coberturaMedica[20];
-    char contactoEmergencia[20];
     bool aptoMed;
     int idMembresia;
+    Fecha _fIngreso;
+    Fecha _fEgreso;
     bool estado;
 public:
 
-    Socio(int ns = 0, float p = 0, const char* cm = " ", const char* ce = " ", bool am = 0, int id = 0, bool e = 0);
+    Socio(int ns = 0, bool am = false, int idMem = 0, Fecha fIngreso=Fecha(), Fecha fEgreso=Fecha(0,0,0));
     int getNroSocio() { return nroSocio; }
-    float getPeso() { return peso; }
-    std::string getCoberturaMedica() { std::string cm(coberturaMedica) ;return cm; }
-    std::string getContactoEmergencia() { std::string ce(contactoEmergencia); return ce; }
     bool getAptoMed() { return aptoMed; }
     int getIdMembresia() { return idMembresia; }
+    Fecha getFechaIngreso() { return _fIngreso; }
+	Fecha getFechaEgreso() { return _fEgreso; }
     bool getEstado() { return estado; }
 
     void setNroSocio(int ns) { nroSocio = ns; }
-    void setPeso(float p) { peso = p; }
-    void setCoberturaMedica(std::string cm) { strcpy(coberturaMedica, cm.c_str()); }
-    void setContactoEmergencia(std::string ce) { strcpy(contactoEmergencia, ce.c_str()); }
     void setAptoMed(bool am) { aptoMed = am; }
     void setIdMembresia(int id) { idMembresia = id; }
+	void setFechaIngreso(Fecha fIngreso) { _fIngreso = fIngreso; }
+	void setFechaEgreso(Fecha fEgreso) { _fEgreso = fEgreso; }
     void setEstado(bool e) { estado = e; }
 
     void MostrarSocio();
     std::string MostrarSociosDatos();
     void CargarSocio();
 
-    std::string setPrecision(float p);
+    /*std::string setPrecision(float p);*/
 };

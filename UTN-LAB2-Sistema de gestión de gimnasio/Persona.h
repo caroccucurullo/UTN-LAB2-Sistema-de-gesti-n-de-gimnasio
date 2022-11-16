@@ -14,37 +14,37 @@ Direccion
 #include <cstring>
 #include <iomanip>
 #include "Fecha.h"
-#include "Direccion.h"
+#include "Contacto.h"
 
 class Persona {
 protected:
-    char nombre[20];
-    char apellido[20];
+    char _nombre[20];
+    char _apellido[20];
     Fecha _fnac;
-    int edad;
-    char genero[20];
-    char telefono[20];
-    char dni[20];
-    Direccion _dir;
+    int _edad;
+    char _dni[20];
+    Contacto _contacto;
+    bool _estado;
 public:
 
-    Persona(const char* n = "", const char* a = "", Fecha nac = Fecha(), int e = 0, const char* g = "", const char* t = "",const char* d="", Direccion dir = Direccion());
-    std::string getNombre() { std::string n(nombre); return n; }
-    std::string getApellido() { std::string a(apellido); return a; }
+    Persona(std::string n = "", std::string a = "", Fecha nac = Fecha(), int e = 0, std::string d="", Contacto contacto=Contacto());
+    std::string getNombre() { std::string n(_nombre); return n; }
+    std::string getApellido() { std::string a(_apellido); return a; }
     Fecha getFechaNac() { return _fnac; }
-    int getEdad() { return edad; }
-    std::string getGenero() { std::string g(genero); return g; }
-    std::string getTelefono() { std::string t(telefono); return t; }
-    std::string getDni() { std::string d(dni); return d; }
-    Direccion getDireccion() { return _dir; }
-    void setNombre(std::string n) { strcpy(nombre, n.c_str()); }
-    void setApellido(std::string a) { strcpy(apellido, a.c_str()); }
+    int getEdad() { return _edad; }
+    std::string getDni() { std::string d(_dni); return d; }
+    Contacto getContacto() { return _contacto; }
+	bool getEstado() { return _estado; }
+	
+    void setNombre(std::string n) { strcpy(_nombre, n.c_str()); }
+    void setApellido(std::string a) { strcpy(_apellido, a.c_str()); }
     void setFechaNac(Fecha fnac) { _fnac = fnac; }
-    void setEdad(int e) { edad = e; }
-    void setGenero(std::string g) { strcpy(genero, g.c_str()); }
-    void setTelefono(std::string t) { strcpy(telefono, t.c_str()); }
-    void setDni(std::string d) { strcpy(dni, d.c_str()); }
-    void setDireccion(Direccion dir) { _dir=dir; }
-    std::string MostrarPersona();
-    void personaCargar();
+    void setEdad(int e) { _edad = e; }
+    void setDni(std::string d) { strcpy(_dni, d.c_str()); }
+    void setContacto(Contacto contacto) { _contacto = contacto; }
+	void setEstado(bool estado) { _estado = estado; }
+
+    void MostrarPersona();
+    std::string MostrarPersonaFormatoComas();
+    void CargarPersona();
 };
