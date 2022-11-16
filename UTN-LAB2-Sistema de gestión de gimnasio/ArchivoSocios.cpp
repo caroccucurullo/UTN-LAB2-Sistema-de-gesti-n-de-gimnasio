@@ -13,7 +13,7 @@ Socio ArchivoSocios::leerSocio(int nRegistro)
 {
     Socio socio;
     FILE* p = fopen("socios.dat", "rb");
-    if (p == nullptr) return false;
+    if (p == nullptr) return socio;
     fseek(p, nRegistro * sizeof(Socio), 0);
     bool leyo = fread(&socio, sizeof(Socio), 1, p);
     fclose(p);
@@ -49,6 +49,63 @@ int ArchivoSocios::getCantidad()
     return cant;
 }
 
+int ArchivoSocios::getCantidadEdad(int edad)
+{
+    int cant = getCantidad(), cantEdad=0;
+    Socio socio;
+    for (int x = 0;x < cant;x++) {
+        socio = leerSocio(x);
+        if (socio.getEdad()==edad) cantEdad++;
+    }
+    return cantEdad;
+}
+
+void ArchivoSocios::sociosPorEdad()
+{
+    int edad;
+    std::cout << "Ingrese edad: ";
+    std::cin >> edad;
+    if (edad > 0) {
+        int cant = getCantidadEdad(edad);
+        Socio* vSocio = new Socio[cant];
+        if (vSocio == nullptr) return;
+        copiarSocio(vSocio, edad);
+        mostrarSocio(vSocio, cant);
+        delete[] vSocio;
+    }
+    else std::cout << "Edad incorrecta." << std::endl;
+}
+
+void ArchivoSocios::copiarSocio(Socio* vSocio, int edad)
+{
+    int cant = getCantidad();
+    Socio socio;
+    for (int x = 0;x < cant;x++) {
+        socio = leerSocio(x);
+        if (socio.getEdad() == edad) vSocio[x] = socio;
+    }
+}
+
+void ArchivoSocios::mostrarSocio(Socio* vSocio, int cant)
+{
+    for (int x = 0;x < cant;x++) {
+        vSocio[x].MostrarSocio();
+        std::cout << std::endl;
+    }
+}
+
+int ArchivoSocios::getCantidadDis(std::string nombre)
+{
+    int cant = getCantidad(), cantDis=0;
+    Socio socio;
+    for (int x = 0;x < cant;x++) {
+        socio = leerSocio(x);
+        //if (socio.get == edad) cantDis++;
+    }
+    return cantDis;
+
+}
+
 int ArchivoSocios::buscarRegPorDni(std::string dni)
 {
     int cant = getCantidad();
@@ -56,6 +113,17 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     for (int x = 0;x < cant;x++) {
         socio = leerSocio(x);
         if (socio.getDni() == dni) return x;
+    }
+    return -1;
+}
+
+int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
+{
+    int cant = getCantidad();
+    Socio socio;
+    for (int x = 0;x < cant;x++) {
+        socio = leerSocio(x);
+        if (socio.getNroSocio() == numSocio) return x;
     }
     return -1;
 }

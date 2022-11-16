@@ -13,7 +13,7 @@ Profesor ArchivoProfesor::leerProfesor(int nRegistro)
 {
 	Profesor profesor;
 	FILE* p = fopen("profesores.dat", "rb");
-	if (p == nullptr) return false;
+	if (p == nullptr) return profesor;
 	fseek(p, nRegistro * sizeof(Profesor), 0);
 	bool leyo = fread(&profesor, sizeof(Profesor), 1, p);
 	fclose(p);

@@ -139,9 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArchivoClaseAsignada.cpp" />
+    <ClCompile Include="ArchivoDisciplina.cpp" />
     <ClCompile Include="ArchivoProfesor.cpp" />
     <ClCompile Include="ArchivoRol.cpp" />
     <ClCompile Include="ArchivoSocios.cpp" />
+    <ClCompile Include="ClaseAsignada.cpp" />
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="Disciplina.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -155,9 +158,12 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArchivoClaseAsignada.h" />
+    <ClInclude Include="ArchivoDisciplina.h" />
     <ClInclude Include="ArchivoProfesor.h" />
     <ClInclude Include="ArchivoRol.h" />
     <ClInclude Include="ArchivoSocios.h" />
+    <ClInclude Include="ClaseAsignada.h" />
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="Disciplina.h" />
     <ClInclude Include="Fecha.h" />
