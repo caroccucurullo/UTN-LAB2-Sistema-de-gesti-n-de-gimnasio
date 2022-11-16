@@ -162,3 +162,105 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     return flag;
 }
 
+//INFORMES
+
+void ArchivoSocios::sociosAltasMensuales(int anio, int mes)
+{
+    std::cout << "Ingrese el anio: " << std::endl;
+    std::cin >> anio;
+    std::cout << "Ingrese el mes: " << std::endl;
+    std::cin >> mes;
+
+    int cant = getCantidad();
+    Socio socio;
+    int cantAltas = 0;
+
+    for (int x = 0;x < cant;x++) {
+        socio = leerSocio(x);
+		if (socio.getFechaIngreso().getAnio() == anio && socio.getFechaIngreso().getMes() == mes 
+            && socio.getEstado() == true){
+            cantAltas++;
+        }
+    }
+	
+    std::cout << "El total de altas del mes " << mes << " del anio " << anio << "es de : " << cantAltas << std::endl;
+}
+
+void ArchivoSocios::sociosBajasMensuales(int anio, int mes)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+	std::cout << "Ingrese el mes: " << std::endl;
+	std::cin >> mes;
+
+	int cant = getCantidad();
+	Socio socio;
+	int cantBajas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		socio = leerSocio(x);
+		if (socio.getFechaEgreso().getAnio() == anio && socio.getFechaEgreso().getMes() == mes
+			&& socio.getEstado() == false) {
+			cantBajas++;
+		}
+	}
+
+	std::cout << "El total de bajas del mes " << mes << " del anio " << anio << "es de : " << cantBajas << std::endl;
+}
+
+void ArchivoSocios::sociosAltasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Socio socio;
+	int cantAltas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		socio = leerSocio(x);
+		if (socio.getFechaIngreso().getAnio() == anio && socio.getEstado() == true) {
+			cantAltas++;
+		}
+	}
+
+	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
+}
+
+void ArchivoSocios::sociosBajasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Socio socio;
+	int cantBajas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		socio = leerSocio(x);
+		if (socio.getFechaEgreso().getAnio() == anio && socio.getEstado() == false) {
+			cantBajas++;
+		}
+	}
+
+	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+}
+
+void ArchivoSocios::sociosPorMenbresiaActivos(int idM)
+{
+    std::cout << "Ingrese codigo de la membresia: " << std::endl;
+	std::cin >> idM;
+	
+	int cant = getCantidad();
+	Socio socio;
+	int cantSocios = 0;
+
+	for (int x = 0;x < cant;x++) {
+		socio = leerSocio(x);
+		if (socio.getIdMembresia() == idM && socio.getEstado() == true) {
+			cantSocios++;
+		}
+	}
+
+	std::cout << "El total de socios activos con la membresia " << idM << "es de : " << cantSocios << std::endl;
+}
