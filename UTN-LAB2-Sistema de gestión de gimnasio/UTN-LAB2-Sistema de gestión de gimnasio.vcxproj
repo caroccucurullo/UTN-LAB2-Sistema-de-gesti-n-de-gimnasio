@@ -142,6 +142,7 @@
     <ClCompile Include="ArchivoClaseAsignada.cpp" />
     <ClCompile Include="ArchivoDisciplina.cpp" />
     <ClCompile Include="ArchivoMembresia.cpp" />
+    <ClCompile Include="ArchivoPagos.cpp" />
     <ClCompile Include="ArchivoProfesor.cpp" />
     <ClCompile Include="ArchivoRol.cpp" />
     <ClCompile Include="ArchivoSalon.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="funciones.cpp" />
     <ClCompile Include="Membresia.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="Pago.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Profesor.cpp" />
     <ClCompile Include="Rol.cpp" />
@@ -164,6 +166,7 @@
     <ClInclude Include="ArchivoClaseAsignada.h" />
     <ClInclude Include="ArchivoDisciplina.h" />
     <ClInclude Include="ArchivoMembresia.h" />
+    <ClInclude Include="ArchivoPagos.h" />
     <ClInclude Include="ArchivoProfesor.h" />
     <ClInclude Include="ArchivoRol.h" />
     <ClInclude Include="ArchivoSalon.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="funciones.h" />
     <ClInclude Include="Membresia.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="Pago.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Profesor.h" />
     <ClInclude Include="Rol.h" />

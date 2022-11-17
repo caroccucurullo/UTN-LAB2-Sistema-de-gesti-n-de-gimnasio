@@ -48,3 +48,23 @@ int ArchivoClaseAsignada::getCantidad()
     fclose(p);
     return cant;
 }
+
+//INFORMES
+
+void ArchivoClaseAsignada::sociosPorDisciplinaActivos(int idD)
+{
+    std::cout << "Ingrese codigo de la disciplina: " << std::endl;
+    std::cin >> idD;
+	
+	int cant = getCantidad(), cantSocios = 0;
+	ClaseAsignada claseAsignada;
+	
+	for (int x = 0;x < cant;x++) {
+		claseAsignada = leerClaseAsignada(x);
+        if (claseAsignada.getCodDisciplina() == idD && claseAsignada.getEstado() == true) {
+            cantSocios++;
+        }
+	}
+
+	std::cout << "Cantidad de socios activos en la disciplina: " << cantSocios << std::endl;
+}

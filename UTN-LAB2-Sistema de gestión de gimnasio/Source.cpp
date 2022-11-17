@@ -17,6 +17,11 @@ using namespace std;
 
 
 int main() {
-    
+	ArchivoMembresia archivoMembresia;
+	Membresia membresia;
+
+	
+	
+ 
   return 0;
 }

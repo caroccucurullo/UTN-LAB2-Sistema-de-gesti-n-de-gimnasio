@@ -259,5 +259,4 @@ void submenuSalon()
 		}
 
 	} while (opcion != '5');
-	system("cls");
 }

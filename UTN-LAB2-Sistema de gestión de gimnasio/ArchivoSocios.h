@@ -12,6 +12,8 @@ public:
 	bool leerTodos(Socio* socio, int cantidad);
 	bool modificarSocio(Socio& socio, int nRegistro);
 	int getCantidad();
+	bool bajaLogica(int nRegistro);
+	bool altaLogica(int nRegistro);
 	
 	
 	///Consultas
@@ -30,6 +32,15 @@ public:
 	int getCantidadSocioPorMembresia(int idMem);
 	void sociosPorMembresia();
 	void copiarSocioMembresia(Socio* vSocio, int idMem);
+	
+	//INFORMES
+	void sociosAltasMensuales(int anio, int mes);
+	void sociosBajasMensuales(int anio, int mes);
+	void sociosAltasAnuales(int anio);
+	void sociosBajasAnuales(int anio);
+	void sociosPorMenbresiaActivos(int idM);
+	
+
 	
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);

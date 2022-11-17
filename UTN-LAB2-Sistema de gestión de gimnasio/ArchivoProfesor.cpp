@@ -179,6 +179,66 @@ bool ArchivoProfesor::altaLogica(int nRegistro)
 	return flag;
 }
 
+//INFORMES
+
+void ArchivoProfesor::profesorAltasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+	
+	int cant = getCantidad();
+	Profesor profesor;
+	int cantAltas = 0;
+	
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getFechaIngreso().getAnio() == anio && profesor.getEstado() == true) {
+			cantAltas++;
+		}
+	}
+	
+	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
+
+}
+
+void ArchivoProfesor::profesorBajasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Profesor profesor;
+	int cantBajas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getFechaEgreso().getAnio() == anio && profesor.getEstado() == false) {
+			cantBajas++;
+		}
+	}
+
+	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+}
+
+void ArchivoProfesor::profesorSueldoAnual(int idP)
+{
+	std::cout << "Ingrese el codigo de profesor: " << std::endl;
+	std::cin >> idP;
+	
+	int cant = getCantidad();
+	Profesor profesor;
+	int sueldoAnual = 0;
+
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getId() == idP) {
+			sueldoAnual = profesor.getSueldo() * 12;
+		}
+	}
+
+	std::cout << "El sueldo anual del profesor: "<< idP << " es de : " << sueldoAnual << std::endl;
+}
+
 void ArchivoProfesor::ordenarPorApellido(){
 
 	ArchivoProfesor archivo;
