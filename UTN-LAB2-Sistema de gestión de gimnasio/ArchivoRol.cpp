@@ -213,15 +213,3 @@ bool ArchivoRol::altaLogica(int nRegistro)
 	fclose(p);
 	return flag;
 }
-
-void ArchivoRol::altaRol()
-{
-	std::string dni;
-	std::cout << "Ingrese DNI de rol a dar de alta: ";
-	std::cin.ignore();
-	std::getline(std::cin, dni);
-	if (altaLogica(buscarRegPorDni(dni)))
-		std::cout << "Rol dado de alta correctamente" << std::endl;
-	else
-		std::cout << "Error al dar de alta el rol" << std::endl;
-}

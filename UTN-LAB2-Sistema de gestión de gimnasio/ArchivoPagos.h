@@ -16,10 +16,17 @@ public:
 	void modificarPago();//FUNCION A LLAMAR EN EL MENU
 	//OBTIENE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 	int getCantidad();
+
+	//LISTAS
+	//listasr los pagos del mes
+	
+	//CONSULTAS
+	//consultar ultimo pago del socio
 	
 	int buscarPorNroSocio(int nroSocio);
 	
 	//INFORMES
+	//consultar los pagos de un socio anual
 	void recaudacionPorMembresia(int idM, int anio, int mes);
 	void recaudacionAnual(int anio);
 	void recaudacionMensual(int anio, int mes);

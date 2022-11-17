@@ -235,8 +235,10 @@ void ArchivoProfesor::altaProfesor()
 
 //INFORMES
 
-void ArchivoProfesor::profesorAltasAnuales(int anio)
+void ArchivoProfesor::profesorAltasAnuales()
 {
+	int anio;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 	
@@ -255,8 +257,10 @@ void ArchivoProfesor::profesorAltasAnuales(int anio)
 
 }
 
-void ArchivoProfesor::profesorBajasAnuales(int anio)
+void ArchivoProfesor::profesorBajasAnuales()
 {
+	int anio;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 
@@ -274,8 +278,10 @@ void ArchivoProfesor::profesorBajasAnuales(int anio)
 	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
 }
 
-void ArchivoProfesor::profesorSueldoAnual(int idP)
+void ArchivoProfesor::profesorSueldoAnual()
 {
+	int idP;
+	
 	std::cout << "Ingrese el codigo de profesor: " << std::endl;
 	std::cin >> idP;
 	

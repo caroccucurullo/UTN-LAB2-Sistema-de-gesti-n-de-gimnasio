@@ -365,8 +365,10 @@ void ArchivoSocios::mostrarPorAptoMedico(){
 
 //INFORMES
 
-void ArchivoSocios::sociosAltasMensuales(int anio, int mes)
+void ArchivoSocios::sociosAltasMensuales()
 {
+    int anio, mes;
+	
     std::cout << "Ingrese el anio: " << std::endl;
     std::cin >> anio;
     std::cout << "Ingrese el mes: " << std::endl;
@@ -387,8 +389,10 @@ void ArchivoSocios::sociosAltasMensuales(int anio, int mes)
     std::cout << "El total de altas del mes " << mes << " del anio " << anio << "es de : " << cantAltas << std::endl;
 }
 
-void ArchivoSocios::sociosBajasMensuales(int anio, int mes)
+void ArchivoSocios::sociosBajasMensuales()
 {
+    int anio, mes;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 	std::cout << "Ingrese el mes: " << std::endl;
@@ -409,8 +413,9 @@ void ArchivoSocios::sociosBajasMensuales(int anio, int mes)
 	std::cout << "El total de bajas del mes " << mes << " del anio " << anio << "es de : " << cantBajas << std::endl;
 }
 
-void ArchivoSocios::sociosAltasAnuales(int anio)
+void ArchivoSocios::sociosAltasAnuales()
 {
+    int anio;
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 
@@ -428,8 +433,10 @@ void ArchivoSocios::sociosAltasAnuales(int anio)
 	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
 }
 
-void ArchivoSocios::sociosBajasAnuales(int anio)
+void ArchivoSocios::sociosBajasAnuales()
 {
+    int anio;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 
@@ -447,8 +454,9 @@ void ArchivoSocios::sociosBajasAnuales(int anio)
 	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
 }
 
-void ArchivoSocios::sociosPorMenbresiaActivos(int idM)
+void ArchivoSocios::sociosActivosPorMembresia()
 {
+    int idM;
     std::cout << "Ingrese codigo de la membresia: " << std::endl;
 	std::cin >> idM;
 	

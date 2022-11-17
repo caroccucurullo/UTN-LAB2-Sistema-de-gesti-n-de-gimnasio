@@ -39,15 +39,8 @@ public:
 	void altaProfesor();//FUNCION A LLAMAR EN EL MENU
 
 	//INFORMES
-	void profesorAltasAnuales(int anio);
-	void profesorBajasAnuales(int anio);
-	void profesorSueldoAnual(int idP);
-
-	//LISTADO
-	void ordenarPorApellido();
-    void ordenarPorDisciplina();
-	void ordenarPorSueldo();
-	void mostrarProfesoresPorEstado();
-	void mostrarProfesoresPorTurno(std::string turno);
+	void profesorAltasAnuales();
+	void profesorBajasAnuales();
+	void profesorSueldoAnual();
 };
 
