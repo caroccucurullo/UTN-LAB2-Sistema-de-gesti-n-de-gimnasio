@@ -1,5 +1,6 @@
 #pragma once
 #include "Pago.h"
+#include "ArchivoSocios.h"
 
 class ArchivoPagos
 {
@@ -19,14 +20,18 @@ public:
 
 	//LISTAS
 	//listasr los pagos del mes
+	void pagosDelMes();
+	int getCantidadPagoMes(Fecha fechaActual);
 	
 	//CONSULTAS
 	//consultar ultimo pago del socio
+	void consultarPago();
 	
 	int buscarPorNroSocio(int nroSocio);
 	
 	//INFORMES
 	//consultar los pagos de un socio anual
+	void pagosAnualesSocio();
 	void recaudacionPorMembresia(int idM, int anio, int mes);
 	void recaudacionAnual(int anio);
 	void recaudacionMensual(int anio, int mes);
