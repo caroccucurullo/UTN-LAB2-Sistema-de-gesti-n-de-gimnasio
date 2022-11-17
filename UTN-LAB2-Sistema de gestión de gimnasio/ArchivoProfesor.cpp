@@ -181,8 +181,7 @@ bool ArchivoProfesor::altaLogica(int nRegistro)
 
 void ArchivoProfesor::ordenarPorApellido(){
 
-	ArchivoProfesor archivo;
-	int cantidad = archivo.getCantidad();
+	int cantidad = getCantidad();
 	Profesor* profesores = new Profesor[cantidad];
 
 	completarVector(profesores, cantidad);
@@ -194,13 +193,52 @@ void ArchivoProfesor::ordenarPorApellido(){
 
 void ArchivoProfesor::ordenarPorDisciplina() {
 
-	ArchivoProfesor archivo;
-	int cantidad = archivo.getCantidad();
+	int cantidad = getCantidad();
 	Profesor* profesores = new Profesor[cantidad];
 
 	completarVector(profesores, cantidad);
 	ordenarVectorPorDisciplina(profesores, cantidad);
 	mostrarVector(profesores, cantidad);
 
+	delete[] profesores;
+}
+
+void ArchivoProfesor::ordenarPorSueldo() {
+
+	int cantidad = getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+
+	completarVector(profesores, cantidad);
+	ordenarVectorPorSueldo(profesores, cantidad);
+	mostrarVector(profesores, cantidad);
+
+	delete[] profesores;
+}
+
+void ArchivoProfesor::mostrarProfesoresPorEstado(){
+
+	int cantidad = getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+	int estado;
+	bool flag = false;
+
+	completarVector(profesores, cantidad);
+
+	std::cout << "Ingese 1 para los Profesores Activos, 0 para Inactivos : " << std::endl;
+	std::cin >> estado;
+
+	if(estado == 1) flag = true;
+
+	mostrarVectorPorEstado(profesores, cantidad, flag);
+	delete[] profesores;
+}
+
+void ArchivoProfesor::mostrarProfesoresPorTurno(std::string turno) {
+
+	int cantidad = getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+
+	completarVector(profesores, cantidad);
+	mostrarVectorPorTurno(profesores, cantidad, turno);
 	delete[] profesores;
 }

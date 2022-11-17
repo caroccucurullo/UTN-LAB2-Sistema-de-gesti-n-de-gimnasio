@@ -1,4 +1,8 @@
 #include "ArchivoClaseAsignada.h"
+#include "Socio.h"
+#include "ArchivoSocios.h"
+#include "Disciplina.h"
+#include "ArchivoDisciplina.h"
 
 bool ArchivoClaseAsignada::guardarClaseAsignada(ClaseAsignada& claseAsignada)
 {
@@ -15,7 +19,7 @@ ClaseAsignada ArchivoClaseAsignada::leerClaseAsignada(int nRegistro)
     FILE* p = fopen("claseasignada.dat", "rb");
     if (p == nullptr) return claseAsignada;
     fseek(p, nRegistro * sizeof(ClaseAsignada), 0);
-    bool leyo = fread(&claseAsignada, sizeof(ClaseAsignada), 1, p);
+    bool lejo = fread(&claseAsignada, sizeof(ClaseAsignada), 1, p);
     fclose(p);
     return claseAsignada;
 }
@@ -24,9 +28,9 @@ bool ArchivoClaseAsignada::leerTodos(ClaseAsignada* claseAsignada, int cantidad)
 {
     FILE* p = fopen("claseasignada.dat", "rb");
     if (p == nullptr) return false;
-    bool leyo = fread(claseAsignada, sizeof(ClaseAsignada), cantidad, p);
+    bool lejo = fread(claseAsignada, sizeof(ClaseAsignada), cantidad, p);
     fclose(p);
-    return leyo;
+    return lejo;
 }
 
 bool ArchivoClaseAsignada::modificarClaseAsignada(ClaseAsignada& claseAsignada, int nRegistro)
@@ -47,4 +51,31 @@ int ArchivoClaseAsignada::getCantidad()
     cant = ftell(p) / sizeof(ClaseAsignada);
     fclose(p);
     return cant;
+}
+
+void mostrarPorDisciplina(){
+    Socio socio;
+    Disciplina disciplina;
+    ClaseAsignada claseAsignada;
+    ArchivoDisciplina archivoDisciplina;
+    ArchivoClaseAsignada archivoClaseAsignada;
+    ArchivoSocios archivoSocios;
+
+    int cantClaseAsignada = archivoClaseAsignada.getCantidad();
+    int cant = archivoDisciplina.getCantidad();
+
+    for (int i = 0; i < cant; i++) {
+
+        disciplina = archivoDisciplina.leerDisciplina(i);
+
+        for (int j = 0; j < cantClaseAsignada; j++) {
+
+            if(disciplina.getCodigo() == claseAsignada.getCodDisciplina()){
+               
+                socio = archivoSocios.leerSocio(claseAsignada.getNroSocio());
+                socio.MostrarPersona();
+            }
+        }
+    }
+
 }

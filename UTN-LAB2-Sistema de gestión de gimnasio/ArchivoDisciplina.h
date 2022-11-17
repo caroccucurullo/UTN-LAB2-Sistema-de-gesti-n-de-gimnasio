@@ -27,5 +27,8 @@ public:
 
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+
+	void ordenarPorDisciplina();
+	void mostrarPorHorarioAscendiente();
 };
 

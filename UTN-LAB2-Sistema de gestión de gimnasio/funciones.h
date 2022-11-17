@@ -10,3 +10,10 @@ void completarVector(Profesor* profesor, int cantidad);
 void ordenarVectorPorApellido(Profesor* profesor, int cantidad);
 void ordenarVectorPorDisciplina(Profesor* profesor, int cantidad);
 void mostrarVector(Profesor* profesor, int cantidad);
+void ordenarVectorPorSueldo(Profesor* profesor, int cantidad);
+void mostrarVectorPorEstado(Profesor* profesor, int cantidad, bool estado);
+void mostrarVectorPorTurno(Profesor* profesor, int cantidad, std::string turno);
+void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon);
+void ordenarPorHorario(Disciplina* disciplina, int cantidad);
+void mostrarVectorDisciplina(Disciplina* disciplina, int cant);
+
