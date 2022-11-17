@@ -5,10 +5,7 @@
 #include "Persona.h"
 #include "Fecha.h"
 
-/* 	-ID
-    -cargo(rol)
-    -Sueldo
-    -Fecha de ingreso */
+
 
 class Rol : public Persona {
 private:
@@ -17,7 +14,7 @@ private:
     float _sueldo;
     char _turno[20];
 	Fecha _fechaIngreso;
-	Fecha _fechaEgreso;
+	Fecha _fechaEgreso; 
 public:
     Rol(int id = 0, std::string cargo="", float sueldo = 0, std::string turno="", Fecha fechaIngreso=Fecha());
     int getId() { return _id; }

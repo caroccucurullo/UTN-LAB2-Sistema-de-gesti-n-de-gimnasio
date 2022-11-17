@@ -38,6 +38,5 @@ public:
     void MostrarSocio();
     std::string MostrarSociosDatos();
     void CargarSocio();
-
     /*std::string setPrecision(float p);*/
 };

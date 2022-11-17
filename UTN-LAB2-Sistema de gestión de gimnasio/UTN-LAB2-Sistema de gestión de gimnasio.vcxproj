@@ -147,10 +147,12 @@
     <ClCompile Include="ArchivoRol.cpp" />
     <ClCompile Include="ArchivoSalon.cpp" />
     <ClCompile Include="ArchivoSocios.cpp" />
+    <ClCompile Include="ArchivoTurno.cpp" />
     <ClCompile Include="ClaseAsignada.cpp" />
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="Disciplina.cpp" />
     <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="funciones.cpp" />
     <ClCompile Include="Membresia.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Pago.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="Salon.cpp" />
     <ClCompile Include="Socio.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Turno.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArchivoClaseAsignada.h" />
@@ -170,10 +173,12 @@
     <ClInclude Include="ArchivoRol.h" />
     <ClInclude Include="ArchivoSalon.h" />
     <ClInclude Include="ArchivoSocios.h" />
+    <ClInclude Include="ArchivoTurno.h" />
     <ClInclude Include="ClaseAsignada.h" />
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="Disciplina.h" />
     <ClInclude Include="Fecha.h" />
+    <ClInclude Include="funciones.h" />
     <ClInclude Include="Membresia.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Pago.h" />
@@ -182,6 +187,7 @@
     <ClInclude Include="Rol.h" />
     <ClInclude Include="Salon.h" />
     <ClInclude Include="Socio.h" />
+    <ClInclude Include="turno.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

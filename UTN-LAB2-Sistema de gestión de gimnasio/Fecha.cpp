@@ -68,3 +68,9 @@ void Fecha::establecerFechaHoy()
     _mes = timeinfo.tm_mon + 1;
     _anio = timeinfo.tm_year + 1900;
 }
+
+bool Fecha::operator==(Fecha fecha)
+{
+    if (_dia == fecha.getDia() && _mes == fecha.getMes() && _anio == fecha.getAnio()) return true;
+    return false;
+}

@@ -40,10 +40,3 @@ void Socio::CargarSocio()
     setIdMembresia(ns);
     //_fIngreso.Cargar();
 }
-
-//std::string Socio::setPrecision(float p)
-//{
-//    std::string peso(std::to_string(p));
-//    peso.resize(5);
-//    return peso;
-//}

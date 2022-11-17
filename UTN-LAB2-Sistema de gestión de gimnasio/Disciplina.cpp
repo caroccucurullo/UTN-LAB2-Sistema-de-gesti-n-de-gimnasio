@@ -23,8 +23,8 @@ std::string Disciplina::MostrarDisciplinasDatos()
     std::string cadena;
     cadena = std::to_string(getCodigo()) + "," + std::to_string(getHorarioInicio()) + ","
 		+ std::to_string(getHorarioFin()) + "," + (getNombre()) + ","
-		+ std::to_string(getIdProfesor()) + "," + std::to_string(getSalon());
-    return cadena;
+		+ std::to_string(getIdProfesor()) + "," + std::to_string(getIdSalon());
+	return cadena;
 }
 
 void Disciplina::CargarDisciplina()

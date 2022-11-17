@@ -9,6 +9,16 @@ bool ArchivoRol::guardarRol(Rol& rol)
 	return ok;
 }
 
+void ArchivoRol::guardarRol()
+{
+	Rol rol;
+	rol.CargarRol();
+	if (guardarRol(rol))
+		std::cout << "Rol guardado correctamente" << std::endl;
+	else
+		std::cout << "Error al guardar el rol" << std::endl;
+}
+
 Rol ArchivoRol::leerRol(int nRegistro)
 {
 	Rol rol;
@@ -39,6 +49,21 @@ bool ArchivoRol::modificarRol(Rol& rol, int nRegistro)
 	return ok;
 }
 
+void ArchivoRol::modificarRol()
+{
+	std::string dni;
+	std::cout << "Ingrese Dni de socio a modificar: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+	Rol rol;
+	rol.CargarRol();
+	if (modificarRol(rol, buscarRegPorDni(dni)))
+		std::cout << "Rol modificado correctamente" << std::endl;
+	else
+		std::cout << "Error al modificar el rol" << std::endl;
+}
+
 int ArchivoRol::getCantidad()
 {
 	int cant = 0;
@@ -59,6 +84,89 @@ int ArchivoRol::buscarRegPorDni(std::string dni)
 	}
 	return -1;
 }
+void ArchivoRol::consultaPorDni()
+{
+	std::string cadena;
+	std::cout << "Ingrese DNI a consultar: ";
+	std::cin.ignore();
+	std::getline(std::cin, cadena);
+	Rol rol = leerRol(buscarRegPorDni(cadena));
+	rol.MostrarRol();
+}
+//CONSULTA POR CARGO
+int ArchivoRol::getCantidadPorCargo(std::string cargo)
+{
+	int cant = getCantidad(), cantCargo = 0;
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getCargo() == cargo) cantCargo++;
+	}
+	return cantCargo;
+}
+
+void ArchivoRol::rolPorCargo()
+{
+	std::string cadena;
+	std::cout << "Ingrese Cargo: ";
+	std::getline(std::cin, cadena);
+	int cantCargo = getCantidadPorCargo(cadena);
+	Rol* vRol = new Rol[cantCargo];
+	if (vRol == nullptr) return;
+	copiarRolCargo(vRol, cadena);
+	mostrarRol(vRol, cantCargo);
+}
+
+void ArchivoRol::copiarRolCargo(Rol* vRol, std::string cargo)
+{
+	int cant = getCantidad();
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getCargo() == cargo) vRol[x] = rol;
+	}
+}
+
+void ArchivoRol::mostrarRol(Rol* vRol, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		vRol[x].MostrarRol();
+		std::cout << std::endl;
+	}
+
+}
+//CONSULTA POR FECHA DE INGRESO
+int ArchivoRol::getCantidadPorFechaIngreso(Fecha fechaIngreso)
+{
+	int cant = getCantidad(), cantFechaIngreso = 0;
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getFechaIngreso() == fechaIngreso) cantFechaIngreso++;
+	}
+	return cantFechaIngreso;
+}
+
+void ArchivoRol::rolPorFechaIngreso()
+{
+	Fecha fechaIngreso;
+	fechaIngreso.Cargar();
+	int cantFechaIngreso = getCantidadPorFechaIngreso(fechaIngreso);
+	Rol* vRol = new Rol[cantFechaIngreso];
+	if (vRol == nullptr) return;
+	copiarRolFechaIngreso(vRol, fechaIngreso);
+	mostrarRol(vRol, cantFechaIngreso);
+	delete[] vRol;
+}
+
+void ArchivoRol::copiarRolFechaIngreso(Rol* vRol, Fecha fechaIngreso)
+{
+	int cant = getCantidad();
+	Rol rol;
+	for (int x = 0;x < cant;x++) {
+		if (rol.getFechaIngreso() == fechaIngreso) vRol[x] = rol;
+	}
+}
 
 bool ArchivoRol::bajaLogica(int nRegistro)
 {
@@ -77,6 +185,18 @@ bool ArchivoRol::bajaLogica(int nRegistro)
 	return flag;
 }
 
+void ArchivoRol::bajaRol()
+{
+	std::string dni;
+	std::cout << "Ingrese DNI de rol a dar de baja: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if (bajaLogica(buscarRegPorDni(dni)))
+		std::cout << "Rol dado de baja correctamente" << std::endl;
+	else
+		std::cout << "Error al dar de baja el rol" << std::endl;
+}
+
 bool ArchivoRol::altaLogica(int nRegistro)
 {
 	Rol rol;
@@ -92,70 +212,4 @@ bool ArchivoRol::altaLogica(int nRegistro)
 	flag = fwrite(&rol, sizeof(Rol), 1, p);
 	fclose(p);
 	return flag;
-}
-
-//INFORMES
-
-void ArchivoRol::rolAltasAnuales()
-{
-	int anio;
-
-	std::cout << "Ingrese el anio: " << std::endl;
-	std::cin >> anio;
-
-	int cant = getCantidad();
-	Rol rol;
-	int cantAltas = 0;
-
-	for (int x = 0;x < cant;x++) {
-		rol = leerRol(x);
-		if (rol.getFechaIngreso().getAnio() == anio && rol.getEstado() == true) {
-			cantAltas++;
-		}
-	}
-
-	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
-
-}
-
-void ArchivoRol::rolBajasAnuales()
-{
-	int anio;
-
-	std::cout << "Ingrese el anio: " << std::endl;
-	std::cin >> anio;
-
-	int cant = getCantidad();
-	Rol rol;
-	int cantBajas = 0;
-
-	for (int x = 0;x < cant;x++) {
-		rol = leerRol(x);
-		if (rol.getFechaEgreso().getAnio() == anio && rol.getEstado() == false) {
-			cantBajas++;
-		}
-	}
-
-	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
-}
-
-void ArchivoRol::rolSueldoAnual()
-{
-	int idR;
-
-	std::cout << "Ingrese el codigo de profesor: " << std::endl;
-	std::cin >> idR;
-
-	int cant = getCantidad();
-	Rol rol;
-	float sueldoAnual = 0;
-
-	for (int x = 0;x < cant;x++) {
-		rol = leerRol(x);
-		if (rol.getId() == idR) {
-			sueldoAnual = rol.getSueldo() * 12;
-		}
-	}
-
-	std::cout << "El sueldo anual del profesor: " << idR << " es de : " << sueldoAnual << std::endl;
 }
