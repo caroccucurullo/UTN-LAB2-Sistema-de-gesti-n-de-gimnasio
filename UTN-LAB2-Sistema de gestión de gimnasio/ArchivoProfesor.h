@@ -13,8 +13,8 @@ public:
 	bool altaLogica(int nRegistro);
 
 	//INFORMES
-	void profesorAltasAnuales(int anio);
-	void profesorBajasAnuales(int anio);
-	void profesorSueldoAnual(int idP);
+	void profesorAltasAnuales();
+	void profesorBajasAnuales();
+	void profesorSueldoAnual();
 };
 

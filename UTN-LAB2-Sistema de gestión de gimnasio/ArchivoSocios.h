@@ -28,11 +28,11 @@ public:
 	///Por Membresia
 	
 	//INFORMES
-	void sociosAltasMensuales(int anio, int mes);
-	void sociosBajasMensuales(int anio, int mes);
-	void sociosAltasAnuales(int anio);
-	void sociosBajasAnuales(int anio);
-	void sociosPorMenbresiaActivos(int idM);
+	void sociosAltasMensuales();
+	void sociosBajasMensuales();
+	void sociosAltasAnuales();
+	void sociosBajasAnuales();
+	void sociosActivosPorMembresia();
 	
 
 	

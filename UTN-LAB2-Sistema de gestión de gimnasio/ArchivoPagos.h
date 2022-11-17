@@ -9,8 +9,15 @@ public:
 	bool leerTodos(Pago* pago, int cantidad);
 	bool modificarPago(Pago& pago, int nRegistro);
 	int getCantidad();
+
+	//LISTAS
+	//listasr los pagos del mes
+	
+	//CONSULTAS
+	//consultar ultimo pago del socio
 	
 	//INFORMES
+	//consultar los pagos de un socio anual
 	void recaudacionPorMembresia(int idM, int anio, int mes);
 	void recaudacionAnual(int anio);
 	void recaudacionMensual(int anio, int mes);

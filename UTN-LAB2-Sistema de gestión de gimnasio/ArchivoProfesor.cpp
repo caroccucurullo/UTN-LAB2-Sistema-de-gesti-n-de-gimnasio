@@ -98,8 +98,10 @@ bool ArchivoProfesor::altaLogica(int nRegistro)
 
 //INFORMES
 
-void ArchivoProfesor::profesorAltasAnuales(int anio)
+void ArchivoProfesor::profesorAltasAnuales()
 {
+	int anio;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 	
@@ -118,8 +120,10 @@ void ArchivoProfesor::profesorAltasAnuales(int anio)
 
 }
 
-void ArchivoProfesor::profesorBajasAnuales(int anio)
+void ArchivoProfesor::profesorBajasAnuales()
 {
+	int anio;
+	
 	std::cout << "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 
@@ -137,14 +141,16 @@ void ArchivoProfesor::profesorBajasAnuales(int anio)
 	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
 }
 
-void ArchivoProfesor::profesorSueldoAnual(int idP)
+void ArchivoProfesor::profesorSueldoAnual()
 {
+	int idP;
+	
 	std::cout << "Ingrese el codigo de profesor: " << std::endl;
 	std::cin >> idP;
 	
 	int cant = getCantidad();
 	Profesor profesor;
-	int sueldoAnual = 0;
+	float sueldoAnual = 0;
 
 	for (int x = 0;x < cant;x++) {
 		profesor = leerProfesor(x);

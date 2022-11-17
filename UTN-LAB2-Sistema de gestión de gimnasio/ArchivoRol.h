@@ -11,5 +11,10 @@ public:
 	int buscarRegPorDni(std::string dni);
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+	
+	//INFORMES
+	void rolAltasAnuales();
+	void rolBajasAnuales();
+	void rolSueldoAnual();
 };
 
