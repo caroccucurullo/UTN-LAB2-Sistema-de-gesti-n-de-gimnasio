@@ -225,7 +225,7 @@ void ArchivoDisciplina::altaDisciplina()
 	if (altaLogica(buscarRegPorNombre(nombre))) std::cout << "Disciplina dada de alta" << std::endl;
 	else std::cout << "No se pudo dar de alta" << std::endl;
 }
-}
+
 
 void ArchivoDisciplina::ordenarPorDisciplina()
 {

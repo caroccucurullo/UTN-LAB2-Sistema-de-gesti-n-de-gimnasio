@@ -281,7 +281,7 @@ void ArchivoProfesor::profesorSueldoAnual(int idP)
 	
 	int cant = getCantidad();
 	Profesor profesor;
-	int sueldoAnual = 0;
+	float sueldoAnual = 0;
 
 	for (int x = 0;x < cant;x++) {
 		profesor = leerProfesor(x);
@@ -353,6 +353,6 @@ void ArchivoProfesor::mostrarProfesoresPorTurno(std::string turno) {
 	Profesor* profesores = new Profesor[cantidad];
 
 	completarVector(profesores, cantidad);
-	mostrarVectorPorTurno(profesores, cantidad, turno);
+	//mostrarVectorPorTurno(profesores, cantidad, turno);
 	delete[] profesores;
 }

@@ -174,7 +174,7 @@ void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon){
         {
             disciplina = archivo.leerDisciplina(j);
 
-            if (salon.getId() == disciplina.getSalon())
+            if (salon.getId() == disciplina.getIdSalon())
             {
                 disciplina.MostrarDisciplina();
             }
