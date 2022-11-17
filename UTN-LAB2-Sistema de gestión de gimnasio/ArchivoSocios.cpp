@@ -10,6 +10,14 @@ bool ArchivoSocios::guardarSocio(Socio& socio)
     return ok;
 }
 
+void ArchivoSocios::guardarSocio()
+{
+    Socio socio;
+    socio.CargarSocio();
+    if (guardarSocio(socio)) std::cout << "Socio " << socio.getNroSocio() << " ingresado exitosamente." << std::endl;
+    else std::cout << "Error al ingresar datos." << std::endl;
+}
+
 Socio ArchivoSocios::leerSocio(int nRegistro)
 {
     Socio socio;
@@ -40,6 +48,19 @@ bool ArchivoSocios::modificarSocio(Socio& socio, int nRegistro)
     return ok;
 }
 
+void ArchivoSocios::modificarSocio()
+{
+    std::string dni;
+    std::cout << "Ingrese Dni de socio a modificar: ";
+    std::cin.ignore();
+    std::getline(std::cin, dni);
+    std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+    Socio socio;
+    socio.CargarSocio();
+    if (modificarSocio(socio, buscarRegPorDni(dni))) std::cout << "Modificado correctamente." << std::endl;
+    else std::cout << "Error al modificar." << std::endl;
+}
+
 int ArchivoSocios::getCantidad()
 {
     int cant=0;
@@ -60,6 +81,18 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     }
     return -1;
 }
+
+void ArchivoSocios::consultaPorDni()
+{
+    std::string cadena;
+    std::cout << "Ingrese DNI a consultar: ";
+    std::cin.ignore();
+    std::getline(std::cin, cadena);
+    Socio socio=leerSocio(buscarRegPorDni(cadena));
+    socio.MostrarSocio();
+}
+
+
 ///CONSULTA POR NRO SOCIO
 int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
 {
@@ -70,6 +103,14 @@ int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
         if (socio.getNroSocio() == numSocio) return x;
     }
     return -1;
+}
+void ArchivoSocios::consultaPorNumSocio()
+{
+    int nroSocio;
+    std::cout << "Ingrese Numero de Socio: ";
+    std::cin >> nroSocio;
+    Socio socio = leerSocio(buscarRegPorNumSocio(nroSocio));
+    socio.MostrarSocio();
 }
 ///CONSULTA POR EDAD
 int ArchivoSocios::getCantidadEdad(int edad)
@@ -221,6 +262,17 @@ bool ArchivoSocios::bajaLogica(int nRegistro)
     return flag;
 }
 
+void ArchivoSocios::bajaSocio()
+{
+    std::string dni;
+    std::cout << "Ingrese dni a dar de baja: ";
+    std::cin.ignore();
+    std::getline(std::cin, dni);
+    if (bajaLogica(buscarRegPorDni(dni))) std::cout << "Baja de " << dni << " realizada exitosamente." << std::endl;
+    else std::cout << "Baja de " << dni << " erronea. Intente nuevamente." << std::endl;
+}
+
+
 bool ArchivoSocios::altaLogica(int nRegistro)
 {
     Socio socio;
@@ -236,6 +288,15 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     flag = fwrite(&socio, sizeof(Socio), 1, p);
     fclose(p);
     return flag;
+}
+void ArchivoSocios::altaSocio()
+{
+    std::string dni;
+    std::cout << "Ingrese dni a dar de alta: ";
+    std::cin.ignore();
+    std::getline(std::cin, dni);
+    if (altaLogica(buscarRegPorDni(dni))) std::cout << "Alta de " << dni << " realizada exitosamente." << std::endl;
+    else std::cout << "Alta de " << dni << " erronea. Intente nuevamente." << std::endl;
 }
 void ArchivoSocios::ordenarPorNombre()
 {

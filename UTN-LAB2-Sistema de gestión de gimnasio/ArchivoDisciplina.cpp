@@ -8,6 +8,15 @@ bool ArchivoDisciplina::guardarDisciplina(Disciplina& disciplina)
     fclose(p);
     return ok;
 }
+void ArchivoDisciplina::guardarDisciplina()
+{
+    Disciplina disciplina;
+    disciplina.CargarDisciplina();
+	if (guardarDisciplina(disciplina))
+		std::cout << "Disciplina guardada correctamente" << std::endl;
+	else
+        std::cout << "Error al guardar la disciplina" << std::endl;
+}
 Disciplina ArchivoDisciplina::leerDisciplina(int nRegistro)
 {
     Disciplina disciplina;
@@ -34,6 +43,21 @@ bool ArchivoDisciplina::modificarDisciplina(Disciplina& disciplina, int nRegistr
     bool ok = fwrite(&disciplina, sizeof(Disciplina), 1, p);
     fclose(p);
     return ok;
+}
+void ArchivoDisciplina::modificarDisciplina()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de disciplina a modificar: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+    std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+    Disciplina disciplina;
+    disciplina.CargarDisciplina();
+	if (modificarDisciplina(disciplina, buscarRegPorNombre(nombre)))
+		std::cout << "Disciplina modificada correctamente" << std::endl;
+	else
+		std::cout << "Error al modificar la disciplina" << std::endl;
+	
 }
 int ArchivoDisciplina::getCantidad()
 {
@@ -167,6 +191,15 @@ bool ArchivoDisciplina::bajaLogica(int nRegistro)
     fclose(p);
     return flag;
 }
+void ArchivoDisciplina::bajaDisciplina()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de disciplina a modificar: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+	if (bajaLogica(buscarRegPorNombre(nombre))) std::cout << "Disciplina dada de baja" << std::endl;
+	else std::cout << "No se pudo dar de baja" << std::endl;
+}
 bool ArchivoDisciplina::altaLogica(int nRegistro)
 {
     Disciplina disciplina;
@@ -179,4 +212,14 @@ bool ArchivoDisciplina::altaLogica(int nRegistro)
     flag = fwrite(&disciplina, sizeof(Disciplina), 1, p);
     fclose(p);
     return flag;
+}
+
+void ArchivoDisciplina::altaDisciplina()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de disciplina a modificar: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+	if (altaLogica(buscarRegPorNombre(nombre))) std::cout << "Disciplina dada de alta" << std::endl;
+	else std::cout << "No se pudo dar de alta" << std::endl;
 }

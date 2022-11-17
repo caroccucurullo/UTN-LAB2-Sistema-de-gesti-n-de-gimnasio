@@ -9,6 +9,14 @@ bool ArchivoMembresia::guardarMembresia(Membresia& membresia)
     return ok;
 }
 
+void ArchivoMembresia::guardarMembresia()
+{
+    Membresia membresia;
+    membresia.CargarMembresia();
+    if (guardarMembresia(membresia)) std::cout << "Guardado correctamente." << std::endl;
+    else std::cout << "Error al guardar." << std::endl;
+}
+
 Membresia ArchivoMembresia::leerMembresia(int nRegistro)
 {
     Membresia membresia;
@@ -37,6 +45,19 @@ bool ArchivoMembresia::modificarMembresia(Membresia& membresia, int nRegistro)
     bool ok = fwrite(&membresia, sizeof(Membresia), 1, p);
     fclose(p);
     return ok;
+}
+
+void ArchivoMembresia::modificarMembresia()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de membresia a modificar: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+    std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+    Membresia membresia;
+    membresia.CargarMembresia();
+    if (modificarMembresia(membresia, buscarRegPorNombre(nombre))) std::cout << "Modificado correctamente." << std::endl;
+    else std::cout << "Error al modificar." << std::endl;
 }
 
 int ArchivoMembresia::getCantidad()
@@ -74,6 +95,16 @@ bool ArchivoMembresia::bajaLogica(int nRegistro)
     return flag;
 }
 
+void ArchivoMembresia::bajaMembresia()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de membresia a dar de baja: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+	if(bajaLogica(buscarRegPorNombre(nombre))) std::cout<<"Membresia dada de baja."<<std::endl;
+    else std::cout << "Error al dar de baja." << std::endl;
+}
+
 bool ArchivoMembresia::altaLogica(int nRegistro)
 {
     Membresia membresia;
@@ -86,4 +117,14 @@ bool ArchivoMembresia::altaLogica(int nRegistro)
     flag = fwrite(&membresia, sizeof(Membresia), 1, p);
     fclose(p);
     return flag;
+}
+
+void ArchivoMembresia::altaMembresia()
+{
+    std::string nombre;
+    std::cout << "Ingrese nombre de membresia a dar de alta: ";
+    std::cin.ignore();
+    std::getline(std::cin, nombre);
+    if (altaLogica(buscarRegPorNombre(nombre))) std::cout << "Membresia dada de alta." << std::endl;
+    else std::cout << "Error al dar de alta." << std::endl;
 }
