@@ -76,8 +76,6 @@ int ArchivoDisciplina::buscarRegPorSalonyHorario(int idSalon, int horario)
     return -1;
 }
 
-
-
 //CONSULTA POR SALONES
 int ArchivoDisciplina::getCantidadSalon(std::string nombreSalon)
 {

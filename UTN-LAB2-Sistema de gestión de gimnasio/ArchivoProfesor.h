@@ -1,6 +1,7 @@
 #pragma once
 #include "Profesor.h"
 #include "ArchivoDisciplina.h"
+#include "funciones.h"
 class ArchivoProfesor
 {
 public:

@@ -1,5 +1,4 @@
 #include "ArchivoSocios.h"
-#include "funciones.h"
 
 //METODOS
 bool ArchivoSocios::guardarSocio(Socio& socio)

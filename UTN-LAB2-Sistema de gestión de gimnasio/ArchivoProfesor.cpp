@@ -1,5 +1,4 @@
 #include "ArchivoProfesor.h"
-#include "funciones.h"
 
 bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 {

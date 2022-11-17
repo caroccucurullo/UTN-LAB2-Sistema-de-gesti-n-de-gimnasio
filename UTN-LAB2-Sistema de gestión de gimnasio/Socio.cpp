@@ -1,6 +1,4 @@
 #include "Socio.h"
-#include "ArchivoSocios.h"
-#include "funciones.h"
 
 Socio::Socio(int ns, bool am, int idMem, Fecha fIngreso, Fecha fEgreso) {
     nroSocio = ns;

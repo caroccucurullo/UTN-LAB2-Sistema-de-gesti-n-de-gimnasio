@@ -38,10 +38,5 @@ public:
     void MostrarSocio();
     std::string MostrarSociosDatos();
     void CargarSocio();
-
-    void ordenarPorNombre();
-    void ordenarPorEdad();
-    void mostrarPorEstado();
-    void mostrarPorAptoMedico();
     /*std::string setPrecision(float p);*/
 };

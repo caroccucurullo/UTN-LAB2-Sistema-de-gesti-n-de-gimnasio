@@ -3,6 +3,7 @@
 #include "ArchivoClaseAsignada.h"
 #include "ArchivoDisciplina.h"
 #include "ArchivoMembresia.h"
+#include "funciones.h"
 class ArchivoSocios
 {
 public:
