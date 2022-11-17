@@ -188,30 +188,38 @@ void submenuAdministracion()
 		{
 		case '1':
 			std::cout << "\n\nINGRESAR NUEVO EMPLEADO" << std::endl;
-			break;
+		break;
 
 		case '2':
 			std::cout << "\n\nDAR DE BAJA EMPLEADO" << std::endl;
-			break;
+		break;
 
 		case '3':
 			std::cout << "\n\nMODIFICAR DATOS DE EMPLEADO" << std::endl;
-			break;
+		break;
 
 		case '4':
 			std::cout << "\n\nMOSTRAR EMPLEADOS POR FILTRO" << std::endl;
-			break;
+		break;
 
 		case '5':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
+			
+		case '6':
+			std::cout << "\n\nMOSTRAR EMPLEADOS INFORMES" << std::endl;
+		break;
+		
+		case '7':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
-	} while (opcion != '5');
+	} while (opcion != '7');
 	system("cls");
 }
 
@@ -239,22 +247,26 @@ void submenuDisciplinas()
 		switch (opcion)
 		{
 		case '1':
-			std::cout << "\n\nINGRESAR NUEVA DISCIPLINA" << std::endl;
+			
 			break;
 
 		case '2':
-			std::cout << "\n\nDAR DE BAJA UNA DISCIPLINA" << std::endl;
+			
 			break;
 
 		case '3':
-			std::cout << "\n\nMODIFICAR DATOS DE UNA DISCIPLINA" << std::endl;
+			
 			break;
 
 		case '4':
-			std::cout << "\n\nMOSTRAR DISCIPLINAS POR FILTRO" << std::endl;
+			
 			break;
 
 		case '5':
+			
+			break;
+	
+		case '6':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -263,7 +275,7 @@ void submenuDisciplinas()
 			break;
 		}
 
-	} while (opcion != '5');
+	} while (opcion != '6');
 	system("cls");
 }
 
@@ -398,16 +410,16 @@ void submenuMostrarSociosLista()
 		switch (opcion)
 		{
 		case '1':
-			std::cout << "\n\nMOSTRAR TODOS LOS SOCIOS" << std::endl;
-			break;
+			
+		break;
 
 		case '2':
-			std::cout << "\n\nMOSTRAR SOCIOS POR FILTRO" << std::endl;
-			break;
+		
+		break;
 
 		case '3':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
@@ -544,6 +556,42 @@ void submenuMostrarSociosInforme()
 
 void submenuMostrarProfesoresLista()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR PROFESORES LISTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- " << std::endl;
+		std::cout << "2 .-" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
 	
 }
 
@@ -651,10 +699,84 @@ void submenuMostrarProfesoresInforme()
 
 void submenuMostrarAdministracionLista()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR ADMINISTRACION LISTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- " << std::endl;
+		std::cout << "2 .-" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
+
 	
 }
 void submenuMostrarAdministracionConsulta()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR ADMINISTRACION CONSULTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- CONSULTA POR DNI" << std::endl;
+		std::cout << "2 .- CONSULTA POR HORARIO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
+
 	
 }
 void submenuMostrarAdministracionInforme()
@@ -713,17 +835,161 @@ void submenuMostrarAdministracionInforme()
 }
 void submenuMostrarDisciplinasLista()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR DISCIPLINAS LISTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- " << std::endl;
+		std::cout << "2 .-" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
 
 }
 void submenuMostrarDisciplinasConsulta()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR DISCIPLINAS CONSULTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- CONSULTA POR " << std::endl;
+		std::cout << "2 .- CONSULTA POR " << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
 
 }
 void submenuMostrarSalonLista()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR SALON LISTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- " << std::endl;
+		std::cout << "2 .-" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
 
 }
 void submenuMostrarSalonConsulta()
 {
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR SALON CONSULTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- CONSULTA POR " << std::endl;
+		std::cout << "2 .- CONSULTA POR " << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+
+			break;
+
+		case '2':
+
+			break;
+
+		case '3':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+			break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			break;
+		}
+
+	} while (opcion != '3');
 
 }

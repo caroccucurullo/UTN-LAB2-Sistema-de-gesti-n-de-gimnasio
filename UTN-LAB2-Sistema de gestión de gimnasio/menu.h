@@ -28,5 +28,4 @@ void submenuMostrarDisciplinasLista();
 void submenuMostrarDisciplinasConsulta();
 void submenuMostrarSalonLista();
 void submenuMostrarSalonConsulta();
-void submenuMostrarSalonInforme();
 
