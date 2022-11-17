@@ -7,6 +7,8 @@
 #include "ArchivoProfesor.h"
 #include "ArchivoRol.h"
 #include "ArchivoDisciplina.h"
+#include "ArchivoPagos.h"
+#include "ArchivoSalon.h" 
 
 void menu();
 void submenuSocio();
@@ -21,11 +23,10 @@ void submenuMostrarSociosInforme();
 void submenuMostrarProfesoresLista();
 void submenuMostrarProfesoresConsulta();
 void submenuMostrarProfesoresInforme();
-void submenuMostrarAdministracionLista();
 void submenuMostrarAdministracionConsulta();
 void submenuMostrarAdministracionInforme();
 void submenuMostrarDisciplinasLista();
 void submenuMostrarDisciplinasConsulta();
-void submenuMostrarSalonLista();
 void submenuMostrarSalonConsulta();
+void submenuInformesRecaudacion();
 

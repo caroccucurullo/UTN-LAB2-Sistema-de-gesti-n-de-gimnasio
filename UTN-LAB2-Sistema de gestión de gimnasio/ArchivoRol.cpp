@@ -213,3 +213,79 @@ bool ArchivoRol::altaLogica(int nRegistro)
 	fclose(p);
 	return flag;
 }
+
+void ArchivoRol::altaRol()
+{
+	std::string dni;
+	std::cout << "Ingrese DNI de rol a dar de alta: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if (altaLogica(buscarRegPorDni(dni)))
+		std::cout << "Rol dado de alta correctamente" << std::endl;
+	else
+		std::cout << "Error al dar de alta el rol" << std::endl;
+}
+
+void ArchivoRol::rolAltasAnuales()
+{
+	int anio;
+
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Rol rol;
+	int cantAltas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getFechaIngreso().getAnio() == anio && rol.getEstado() == true) {
+			cantAltas++;
+		}
+	}
+
+	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
+
+}
+
+void ArchivoRol::rolBajasAnuales()
+{
+	int anio;
+
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Rol rol;
+	int cantBajas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getFechaEgreso().getAnio() == anio && rol.getEstado() == false) {
+			cantBajas++;
+		}
+	}
+
+	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+}
+
+void ArchivoRol::rolSueldoAnual()
+{
+	int idR;
+
+	std::cout << "Ingrese el codigo de profesor: " << std::endl;
+	std::cin >> idR;
+
+	int cant = getCantidad();
+	Rol rol;
+	float sueldoAnual = 0;
+
+	for (int x = 0;x < cant;x++) {
+		rol = leerRol(x);
+		if (rol.getId() == idR) {
+			sueldoAnual = rol.getSueldo() * 12;
+		}
+	}
+
+	std::cout << "El sueldo anual del profesor: " << idR << " es de : " << sueldoAnual << std::endl;
+}

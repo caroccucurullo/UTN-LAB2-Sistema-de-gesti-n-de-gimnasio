@@ -37,11 +37,12 @@ public:
 	void bajaRol();
 	//ALTA DE REGISTRO POR DNI
 	bool altaLogica(int nRegistro);
+	void altaRol();
 	
 	//INFORMES
 	void rolAltasAnuales();
 	void rolBajasAnuales();
 	void rolSueldoAnual();
-	void altaRol();
+
 };
 

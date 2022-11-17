@@ -38,7 +38,7 @@ public:
 	bool altaLogica(int nRegistro);
 	void altaDisciplina();//FUNCION A LLAMAR EN EL MENU
 
+	//LISTAS
 	void ordenarPorDisciplina();
-	void mostrarPorHorarioAscendiente();
+	void mostrarPorHorarioAscendente();
 };
-

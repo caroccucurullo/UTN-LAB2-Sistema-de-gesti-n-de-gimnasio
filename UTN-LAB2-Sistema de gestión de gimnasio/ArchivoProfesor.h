@@ -42,5 +42,12 @@ public:
 	void profesorAltasAnuales();
 	void profesorBajasAnuales();
 	void profesorSueldoAnual();
+
+	//LISTADO
+	void ordenarPorApellido();
+    void ordenarPorDisciplina();
+	void ordenarPorSueldo();
+	void mostrarProfesoresPorEstado();
+	void mostrarProfesoresPorTurno();
 };
 

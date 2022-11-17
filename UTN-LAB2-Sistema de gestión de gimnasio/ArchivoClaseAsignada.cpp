@@ -28,7 +28,7 @@ ClaseAsignada ArchivoClaseAsignada::leerClaseAsignada(int nRegistro)
     FILE* p = fopen("claseasignada.dat", "rb");
     if (p == nullptr) return claseAsignada;
     fseek(p, nRegistro * sizeof(ClaseAsignada), 0);
-    bool lejo = fread(&claseAsignada, sizeof(ClaseAsignada), 1, p);
+    fread(&claseAsignada, sizeof(ClaseAsignada), 1, p);
     fclose(p);
     return claseAsignada;
 }

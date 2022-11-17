@@ -43,60 +43,46 @@ void submenuSocio()
 
 		switch (opcion)
 		{
-		case '1': {
-					Socio socio;
-					ArchivoSocios archivosSocio;
-					socio.CargarSocio();
-					archivosSocio.guardarSocio(socio);
+		case '1': 
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.guardarSocio();
 		}
-			break;
+		break;
 
-		case '2': {
-			std::string dni;
-			std::cout << "Ingrese el DNI del socio a dar de baja: ";
-			std::cin.ignore();
-			std::getline(std::cin, dni);
-			
-			ArchivoSocios archivosSocio;
-			archivosSocio.bajaLogica(archivosSocio.buscarRegPorDni(dni));
-			if (archivosSocio.bajaLogica(archivosSocio.buscarRegPorDni(dni))) {
-				std::cout << "Se relizo la baja del socio correctamente" << std::endl;
-				
-			}
-			else {
-				std::cout << "No se pudo realizar la baja del socio" << std::endl;
-			}
-			
-
+		case '2': 
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.bajaSocio();
 		}
-			
-			break;
+		break;
 
-		case '3': {
-	
+		case '3': 
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.modificarSocio();
 		}
-			
-			break;
+		break;
 
 		case '4':
-			std::cout << "\n\nMOSTRAR ALUMNOS LISTA" << std::endl;
+			submenuPagoMembresia();
 			break;
 
 		case '5':
-			std::cout << "\n\nMOSTRAR ALUMNOS CONSULTA" << std::endl;
-			break;
+			submenuMostrarSociosLista();
+		break;
 			
 		case '6':
-			
-			break;
+			submenuMostrarSociosConsulta();
+		break;
 			
 		case '7':
 			submenuMostrarSociosInforme();
-			break;
+		break;
 
 		case '8':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
@@ -132,22 +118,39 @@ void submenuProfesor()
 		switch (opcion)
 		{
 		case '1':
-			std::cout << "\n\nINGRESAR NUEVO PROFESOR" << std::endl;
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.guardarProfesor();
+		}
+		break;
 
 		case '2':
-			std::cout << "\n\nDAR DE BAJA PROFESOR" << std::endl;
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.bajaProfesor();
+		}	
+		break;
 
 		case '3':
-			std::cout << "\n\nMODIFICAR DATOS DE PROFESOR" << std::endl;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.modificarProfesor();
+		}
 			break;
 
 		case '4':
-			std::cout << "\n\nMOSTRAR PROFESORES POR FILTRO" << std::endl;
-			break;
-
+			submenuMostrarProfesoresLista();
+		break;
+			
 		case '5':
+			submenuMostrarProfesoresConsulta();
+		break;
+		
+		case '6':
+			submenuMostrarProfesoresInforme();
+		break;
+
+		case '7':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -156,7 +159,7 @@ void submenuProfesor()
 			break;
 		}
 
-	} while (opcion != '5');
+	} while (opcion != '7');
 	system("cls");
 
 
@@ -173,11 +176,10 @@ void submenuAdministracion()
 		std::cout << "1 .- INGRESAR NUEVO EMPLEADO" << std::endl;
 		std::cout << "2 .- DAR DE BAJA EMPLEADO" << std::endl;
 		std::cout << "3 .- MODIFICAR DATOS DE EMPLEADO" << std::endl;
-		std::cout << "4 .- MOSTRAR EMPLEADOS LISTA" << std::endl;
-		std::cout << "5 .- MOSTRAR EMPLEADOS CONSULTA" << std::endl;
-		std::cout << "6 .- MOSTRAR EMPLEADOS INFORMES" << std::endl;
+		std::cout << "4 .- MOSTRAR EMPLEADOS CONSULTA" << std::endl;
+		std::cout << "5 .- MOSTRAR EMPLEADOS INFORMES" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "7 .- Volver al menu principal" << std::endl;
+		std::cout << "6 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -187,30 +189,35 @@ void submenuAdministracion()
 		switch (opcion)
 		{
 		case '1':
-			std::cout << "\n\nINGRESAR NUEVO EMPLEADO" << std::endl;
+		{
+			ArchivoRol archivoRol;
+			archivoRol.guardarRol();
+		}
 		break;
 
 		case '2':
-			std::cout << "\n\nDAR DE BAJA EMPLEADO" << std::endl;
+		{
+			ArchivoRol archivoRol;
+			archivoRol.bajaRol();
+		}
 		break;
 
 		case '3':
-			std::cout << "\n\nMODIFICAR DATOS DE EMPLEADO" << std::endl;
+		{
+			ArchivoRol archivoRol;
+			archivoRol.modificarRol();
+		}
 		break;
 
 		case '4':
-			std::cout << "\n\nMOSTRAR EMPLEADOS POR FILTRO" << std::endl;
-		break;
-
-		case '5':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			submenuMostrarAdministracionConsulta();
 		break;
 			
-		case '6':
-			std::cout << "\n\nMOSTRAR EMPLEADOS INFORMES" << std::endl;
+		case '5':
+			submenuMostrarAdministracionInforme();
 		break;
 		
-		case '7':
+		case '6':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -219,7 +226,7 @@ void submenuAdministracion()
 		break;
 		}
 
-	} while (opcion != '7');
+	} while (opcion != '6');
 	system("cls");
 }
 
@@ -247,32 +254,41 @@ void submenuDisciplinas()
 		switch (opcion)
 		{
 		case '1':
-			
-			break;
+		{
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.guardarDisciplina();
+		}
+		break;
 
 		case '2':
-			
-			break;
+		{	
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.bajaDisciplina();
+		}	
+		break;
 
 		case '3':
-			
-			break;
+		{
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.modificarDisciplina();
+		}
+		break;
 
 		case '4':
-			
-			break;
+			submenuMostrarDisciplinasLista();
+		break;
 
 		case '5':
-			
-			break;
+			submenuMostrarDisciplinasConsulta();
+		break;
 	
 		case '6':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '6');
@@ -290,10 +306,9 @@ void submenuSalon()
 		std::cout << "1 .- INGRESAR NUEVO SALON" << std::endl;
 		std::cout << "2 .- DAR DE BAJA SALON" << std::endl;
 		std::cout << "3 .- MODIFICAR DATOS DE SALON" << std::endl;
-		std::cout << "4 .- MOSTRAR SALONES LISTA" << std::endl;
-		std::cout << "5 .- MOSTRAR SALONES CONSULTA" << std::endl;
+		std::cout << "4 .- MOSTRAR SALONES CONSULTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "5 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -303,28 +318,37 @@ void submenuSalon()
 		switch (opcion)
 		{
 		case '1':
-			std::cout << "\n\nINGRESAR NUEVO SALON" << std::endl;
-			break;
+		{
+			ArchivoSalon archivoSalon;
+			archivoSalon.guardarSalon();
+		}
+		break;
 
 		case '2':
-			std::cout << "\n\nDAR DE BAJA SALON" << std::endl;
-			break;
+		{
+			ArchivoSalon archivoSalon;
+			archivoSalon.bajaSalon();
+		}
+		break;
 
 		case '3':
-			std::cout << "\n\nMODIFICAR DATOS DE SALON" << std::endl;
-			break;
+		{
+			ArchivoSalon archivoSalon;
+			archivoSalon.modificarSalon();
+		}
+		break;
 
 		case '4':
-			std::cout << "\n\nMOSTRAR SALONES POR FILTRO" << std::endl;
-			break;
+			submenuMostrarSalonConsulta();
+		break;
 
 		case '5':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
-
+		break;
+		
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '5');
@@ -341,9 +365,9 @@ void submenuPagoMembresia()
 		std::cout << "1 .- CARGAR PAGO" << std::endl;
 		std::cout << "2 .- CONSULTAR PAGO" << std::endl;
 		std::cout << "3 .- MODIFICAR DATOS DE PAGO" << std::endl;
-		std::cout << "4 .- MOSTRAR PAGO DE MEMBRESIA LISTA" << std::endl;
-		std::cout << "5 .- MOSTRAR PAGO DE MEMBRESIA CONSULTA" << std::endl;
-		std::cout << "6 .- MOSTRAR PAGO DE MEMBRESIA INFORMES" << std::endl;
+		std::cout << "4 .- MOSTRAR PAGOS DEL CORRIENTE MES" << std::endl;
+		std::cout << "5 .- MOSTRAR ULTIMO PAGO DE SOCIO" << std::endl;
+		std::cout << "6 .- MOSTRAR INFORMES DE RECAUDACION" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "7 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
@@ -355,35 +379,51 @@ void submenuPagoMembresia()
 		switch (opcion)
 		{
 		case '1':
-			
-			break;
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.guardarPago();
+		}
+		break;
 
 		case '2':
-			
-			break;
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.consultarPago();
+		}
+		break;
 
 		case '3':
-			
-			break;
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.modificarPago();
+		}
+		break;
 
 		case '4':
-			
-			break;
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.pagosDelMes();
+		}
+		break;
+		
 		case '5':
-
-			break;
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.consultarPago();
+		}
+		break;
 
 		case '6':
-
-			break;
+			submenuInformesRecaudacion();
+		break;
 			
 		case '7':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '7');
@@ -397,10 +437,12 @@ void submenuMostrarSociosLista()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR SOCIOS LISTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- " << std::endl;
-		std::cout << "2 .-" << std::endl;
+		std::cout << "1 ORDENADOS POR NOMBRE.- " << std::endl;
+		std::cout << "2 ORDENADOS POR EDAD.-" << std::endl;
+		std::cout << "3 ORDENADOS POR ESTADO.-" << std::endl;
+		std::cout << "4 ORDENADOS POR APTO MEDICO.-" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "5 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -410,14 +452,34 @@ void submenuMostrarSociosLista()
 		switch (opcion)
 		{
 		case '1':
-			
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.ordenarPorNombre();
+		}
 		break;
-
-		case '2':
 		
+		case '2':
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.ordenarPorEdad();
+		}
+		break;
+		
+		case '3':
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorEstado();
+		}
+		break;
+	
+		case '4':
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorAptoMedico();
+		}
 		break;
 
-		case '3':
+		case '5':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -426,7 +488,7 @@ void submenuMostrarSociosLista()
 			break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '5');
 	
 }
 
@@ -454,29 +516,47 @@ void submenuMostrarSociosConsulta()
 		switch (opcion)
 		{
 		case '1':
-			
-			break;
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.consultaPorDni();
+		}
+		break;
 
 		case '2':
-			
-			break;
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.consultaPorNumSocio();
+		}
+		break;
 
 		case '3':
-			break;
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorEdad();
+		}
+		break;
 
 		case '4':
-			break;
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorDis();
+		}
+		break;
 		
 		case '5':
-			break;
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorMembresia();
+		}
+		break;
 
 		case '6':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '6');
@@ -562,10 +642,13 @@ void submenuMostrarProfesoresLista()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR PROFESORES LISTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- " << std::endl;
-		std::cout << "2 .-" << std::endl;
+		std::cout << "1 .- POR APELLIDO" << std::endl;
+		std::cout << "2 .- POR DISCIPLINA" << std::endl;
+		std::cout << "3 .- POR SUELDO" << std::endl;
+		std::cout << "4 .- POR ESTADO" << std::endl;
+		std::cout << "5 .- POR TURNO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "6 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -575,23 +658,50 @@ void submenuMostrarProfesoresLista()
 		switch (opcion)
 		{
 		case '1':
-
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.ordenarPorApellido();
+		}
+		break;
 
 		case '2':
-
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.ordenarPorDisciplina();
+		}
+		break;
 
 		case '3':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.ordenarPorSueldo();
+		}
+		break;
 
+		case '4':
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.mostrarProfesoresPorEstado();
+		}
+		break;
+		
+		case '5':
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.mostrarProfesoresPorTurno();
+		}
+		break;
+		
+		case '6':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+		break;
+			
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
 			break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '6');
 	
 }
 
@@ -617,15 +727,25 @@ void submenuMostrarProfesoresConsulta()
 		switch (opcion)
 		{
 		case '1':
-
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.consultaPorDni();
+		}
+		break;
 
 		case '2':
-
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.ProfePorDis();
+		}
+		break;
 
 		case '3':
-			break;
+		{
+			ArchivoProfesor archivoProfesor;
+			archivoProfesor.ProfePorTurno();
+		}
+		break;
 
 		case '4':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
@@ -637,9 +757,6 @@ void submenuMostrarProfesoresConsulta()
 		}
 
 	} while (opcion != '4');
-	
-	
-
 }
 
 void submenuMostrarProfesoresInforme()
@@ -668,21 +785,76 @@ void submenuMostrarProfesoresInforme()
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorAltasAnuales();
 		}
-			break;
+		break;
 
 		case '2':
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorBajasAnuales();
 		}
-			break;
+		break;
 			
 		case '3':
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorSueldoAnual();
 		}	
-			break;
+		break;
+
+		case '4':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+		break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+		break;
+		}
+
+	} while (opcion != '4');
+	
+}
+
+void submenuMostrarAdministracionConsulta()
+{
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "MOSTRAR ADMINISTRACION CONSULTA" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- CONSULTA POR DNI" << std::endl;
+		std::cout << "2 .- CONSULTA POR CARGO" << std::endl;
+		std::cout << "2 .- CONSULTA POR FECHA DE INGRESO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+		{
+			ArchivoRol archivoRol;
+			archivoRol.consultaPorDni();
+		}
+		break;
+
+		case '2':
+		{
+			ArchivoRol archivoRol;
+			archivoRol.rolPorCargo();
+		}
+		break;
+
+		case '3':
+		{
+			ArchivoRol archivoRol;
+			archivoRol.rolPorFechaIngreso();
+		}
+		break;
 
 		case '4':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
@@ -694,91 +866,10 @@ void submenuMostrarProfesoresInforme()
 		}
 
 	} while (opcion != '4');
-	
-}
-
-void submenuMostrarAdministracionLista()
-{
-	char opcion;
-
-	do {
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "MOSTRAR ADMINISTRACION LISTA" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- " << std::endl;
-		std::cout << "2 .-" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "Ingrese una opcion: ";
-
-		std::cin >> opcion;
-		system("cls");
-
-		switch (opcion)
-		{
-		case '1':
-
-			break;
-
-		case '2':
-
-			break;
-
-		case '3':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
-
-		default:
-			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
-		}
-
-	} while (opcion != '3');
 
 	
 }
-void submenuMostrarAdministracionConsulta()
-{
-	char opcion;
 
-	do {
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "MOSTRAR ADMINISTRACION CONSULTA" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- CONSULTA POR DNI" << std::endl;
-		std::cout << "2 .- CONSULTA POR HORARIO" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "Ingrese una opcion: ";
-
-		std::cin >> opcion;
-		system("cls");
-
-		switch (opcion)
-		{
-		case '1':
-
-			break;
-
-		case '2':
-
-			break;
-
-		case '3':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
-
-		default:
-			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
-		}
-
-	} while (opcion != '3');
-
-	
-}
 void submenuMostrarAdministracionInforme()
 {
 	char opcion;
@@ -833,6 +924,7 @@ void submenuMostrarAdministracionInforme()
 	} while (opcion != '4');
 
 }
+
 void submenuMostrarDisciplinasLista()
 {
 	char opcion;
@@ -841,8 +933,8 @@ void submenuMostrarDisciplinasLista()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR DISCIPLINAS LISTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- " << std::endl;
-		std::cout << "2 .-" << std::endl;
+		std::cout << "1 .- ORDENAR POR DICIPLINAS" << std::endl;
+		std::cout << "2 .- MOSTRAR HORARIOS" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "3 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
@@ -854,25 +946,32 @@ void submenuMostrarDisciplinasLista()
 		switch (opcion)
 		{
 		case '1':
-
-			break;
+		{
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.ordenarPorDisciplina();
+		}
+		break;
 
 		case '2':
-
-			break;
+		{
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.mostrarPorHorarioAscendente();
+		}
+		break;
 
 		case '3':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '3');
 
 }
+
 void submenuMostrarDisciplinasConsulta()
 {
 	char opcion;
@@ -881,8 +980,8 @@ void submenuMostrarDisciplinasConsulta()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR DISCIPLINAS CONSULTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- CONSULTA POR " << std::endl;
-		std::cout << "2 .- CONSULTA POR " << std::endl;
+		std::cout << "1 .- CONSULTA POR SALONES" << std::endl;
+		std::cout << "2 .- CONSULTA POR HORARIOS" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "3 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
@@ -894,65 +993,32 @@ void submenuMostrarDisciplinasConsulta()
 		switch (opcion)
 		{
 		case '1':
-
-			break;
-
-		case '2':
-
-			break;
-
-		case '3':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
-
-		default:
-			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
-		}
-
-	} while (opcion != '3');
-
-}
-void submenuMostrarSalonLista()
-{
-	char opcion;
-
-	do {
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "MOSTRAR SALON LISTA" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- " << std::endl;
-		std::cout << "2 .-" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
-		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "Ingrese una opcion: ";
-
-		std::cin >> opcion;
-		system("cls");
-
-		switch (opcion)
 		{
-		case '1':
-
-			break;
-
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorSalon();
+		}
+		break;
+		{
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorHorario();
+		}
 		case '2':
 
-			break;
+		break;
 
 		case '3':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
 	} while (opcion != '3');
 
 }
+
 void submenuMostrarSalonConsulta()
 {
 	char opcion;
@@ -961,10 +1027,9 @@ void submenuMostrarSalonConsulta()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR SALON CONSULTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- CONSULTA POR " << std::endl;
-		std::cout << "2 .- CONSULTA POR " << std::endl;
+		std::cout << "1 .- CONSULTA POR CUPO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "2 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -974,14 +1039,13 @@ void submenuMostrarSalonConsulta()
 		switch (opcion)
 		{
 		case '1':
-
-			break;
+		{
+			ArchivoSalon archivoSalon;
+			archivoSalon.SalonPorCupoHorario();
+		}
+		break;
 
 		case '2':
-
-			break;
-
-		case '3':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -992,4 +1056,97 @@ void submenuMostrarSalonConsulta()
 
 	} while (opcion != '3');
 
+}
+
+void submenuInformesRecaudacion()
+{
+	char opcion;
+
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "INFORMES RECAUDACION" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- PAGOS ANUALES DE UN SOCIO" << std::endl;
+		std::cout << "2 .- RECAUDACION POR MEMBRESIA" << std::endl;
+		std::cout << "3 .- RECAUDACION ANUAL" << std::endl;
+		std::cout << "4 .- RECAUDACION MENSUAL" << std::endl;
+		std::cout << "5 .- MEMBRESIA MAS VENDIDA ANUAL" << std::endl;
+		std::cout << "6 .- MEMBRESIA MAS VENDIDA MENSUAL" << std::endl;
+		std::cout << "7 .- MEMBRESIA MENOS VENDIDA ANUAL" << std::endl;
+		std::cout << "8 .- MEMBRESIA MENOS VENDIDA MENSUAL" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "9 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+
+		std::cin >> opcion;
+		system("cls");
+
+		switch (opcion)
+		{
+		case '1':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.pagosAnualesSocio();
+		}
+		break;
+		case '2':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.recaudacionPorMembresia();
+		}
+		break;
+		
+		case '3':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.recaudacionAnual();
+		}
+		break;
+		
+		case '4':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.recaudacionMensual();
+		}
+		break;
+		
+		case '5':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.membresiaMasVendidaAnual();
+		}
+		break;
+		
+		case '6':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.membresiaMasVendidaMensual();
+		}
+		break;
+		
+		case '7':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.membresiaMenosVendidaAnual();
+		}
+		break;
+		
+		case '8':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.membresiaMenosVendidaMensual();
+		}
+		break;
+
+		case '9':
+			std::cout << "\n\nVolver al menu principal" << std::endl;
+		break;
+
+		default:
+			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+		break;
+		}
+
+	} while (opcion != '3');
 }
