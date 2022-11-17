@@ -11,5 +11,8 @@ public:
 	int buscarRegPorDni(std::string dni);
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+
+	void ordenarPorApellido();
+    void ordenarPorDisciplina();
 };
 

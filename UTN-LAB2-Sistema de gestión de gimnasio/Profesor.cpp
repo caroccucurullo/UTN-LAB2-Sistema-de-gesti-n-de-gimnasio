@@ -36,87 +36,8 @@ void Profesor::cargarProfesor() {
 	std::cin >> _sueldo;
 }
 
-void Profesor::ordenarPorApellido(){
 
-	ArchivoProfesor archivo;
-	int cantidad = archivo.getCantidad();
-	Profesor* profesores = new Profesor[cantidad];
-
-	completarVector(profesores, cantidad);
-	ordenarVectorPorApellido(profesores, cantidad);
-	mostrarVector(profesores, cantidad);
-
-	delete[] profesores;
-}
-
-void Profesor::ordenarPorDisciplina() {
-
-	ArchivoProfesor archivo;
-	int cantidad = archivo.getCantidad();
-	Profesor* profesores = new Profesor[cantidad];
-
-	completarVector(profesores, cantidad);
-	ordenarVectorPorDisciplina(profesores, cantidad);
-	mostrarVector(profesores, cantidad);
-
-	delete[] profesores;
-}
 
 
 //Funciones auxiliares de la clase
 
-void completarVector(Profesor* profesor, int cantidad)
-{
-    ArchivoProfesor archivo;
-
-    for (int i = 0; i < cantidad; i++)
-    {
-        profesor[i] = archivo.leerProfesor(i);
-    }
-}
-
-void ordenarVectorPorApellido(Profesor* profesor, int cantidad)
-{
-	Profesor aux;
-	for (int i = 0; i < cantidad - 1; i++)
-	{
-		for (int j = i + 1; j < cantidad; j++)
-		{
-			if (strcmp(profesor[i].getApellido().c_str(), profesor[j].getApellido().c_str()) > 0)
-			{
-				aux = profesor[i];
-				profesor[i] = profesor[j];
-				profesor[j] = aux;
-			}
-		}
-	}
-}
-
-void ordenarVectorPorDisciplina(Profesor* profesor, int cantidad)
-{
-	ArchivoDisciplina archivo;
-	Disciplina disciplina;
-
-	int cantidadDisciplina = archivo.getCantidad();
-
-	for(int i = 0; i < cantidadDisciplina; i++)
-	{
-		disciplina = archivo.leerDisciplina(i);
-
-		for (int j = 0; j < cantidad; j++)
-		{
-			if (profesor[j].getIdDisciplina() == disciplina.getCodigo())
-			{
-				profesor[j].MostrarProfesor();
-			}
-		}
-	}
-}
-
-void mostrarVector(Profesor* profesor, int cantidad)
-{
-	for (int i = 0; i < cantidad; i++)
-	{
-		profesor[i].MostrarProfesor();
-	}
-}

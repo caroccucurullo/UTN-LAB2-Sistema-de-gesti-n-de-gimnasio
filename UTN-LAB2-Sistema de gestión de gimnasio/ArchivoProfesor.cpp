@@ -1,4 +1,5 @@
 #include "ArchivoProfesor.h"
+#include "funciones.h"
 
 bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 {
@@ -94,4 +95,30 @@ bool ArchivoProfesor::altaLogica(int nRegistro)
 	flag = fwrite(&profesor, sizeof(Profesor), 1, p);
 	fclose(p);
 	return flag;
+}
+
+void ArchivoProfesor::ordenarPorApellido(){
+
+	ArchivoProfesor archivo;
+	int cantidad = archivo.getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+
+	completarVector(profesores, cantidad);
+	ordenarVectorPorApellido(profesores, cantidad);
+	mostrarVector(profesores, cantidad);
+
+	delete[] profesores;
+}
+
+void ArchivoProfesor::ordenarPorDisciplina() {
+
+	ArchivoProfesor archivo;
+	int cantidad = archivo.getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+
+	completarVector(profesores, cantidad);
+	ordenarVectorPorDisciplina(profesores, cantidad);
+	mostrarVector(profesores, cantidad);
+
+	delete[] profesores;
 }
