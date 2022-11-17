@@ -9,6 +9,16 @@ bool ArchivoRol::guardarRol(Rol& rol)
 	return ok;
 }
 
+void ArchivoRol::guardarRol()
+{
+	Rol rol;
+	rol.CargarRol();
+	if (guardarRol(rol))
+		std::cout << "Rol guardado correctamente" << std::endl;
+	else
+		std::cout << "Error al guardar el rol" << std::endl;
+}
+
 Rol ArchivoRol::leerRol(int nRegistro)
 {
 	Rol rol;
@@ -39,6 +49,21 @@ bool ArchivoRol::modificarRol(Rol& rol, int nRegistro)
 	return ok;
 }
 
+void ArchivoRol::modificarRol()
+{
+	std::string dni;
+	std::cout << "Ingrese Dni de socio a modificar: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+	Rol rol;
+	rol.CargarRol();
+	if (modificarRol(rol, buscarRegPorDni(dni)))
+		std::cout << "Rol modificado correctamente" << std::endl;
+	else
+		std::cout << "Error al modificar el rol" << std::endl;
+}
+
 int ArchivoRol::getCantidad()
 {
 	int cant = 0;
@@ -58,6 +83,15 @@ int ArchivoRol::buscarRegPorDni(std::string dni)
 		if (rol.getDni() == dni) return x;
 	}
 	return -1;
+}
+void ArchivoRol::consultaPorDni()
+{
+	std::string cadena;
+	std::cout << "Ingrese DNI a consultar: ";
+	std::cin.ignore();
+	std::getline(std::cin, cadena);
+	Rol rol = leerRol(buscarRegPorDni(cadena));
+	rol.MostrarRol();
 }
 //CONSULTA POR CARGO
 int ArchivoRol::getCantidadPorCargo(std::string cargo)
@@ -151,6 +185,18 @@ bool ArchivoRol::bajaLogica(int nRegistro)
 	return flag;
 }
 
+void ArchivoRol::bajaRol()
+{
+	std::string dni;
+	std::cout << "Ingrese DNI de rol a dar de baja: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if (bajaLogica(buscarRegPorDni(dni)))
+		std::cout << "Rol dado de baja correctamente" << std::endl;
+	else
+		std::cout << "Error al dar de baja el rol" << std::endl;
+}
+
 bool ArchivoRol::altaLogica(int nRegistro)
 {
 	Rol rol;
@@ -166,4 +212,16 @@ bool ArchivoRol::altaLogica(int nRegistro)
 	flag = fwrite(&rol, sizeof(Rol), 1, p);
 	fclose(p);
 	return flag;
+}
+
+void ArchivoRol::altaRol()
+{
+	std::string dni;
+	std::cout << "Ingrese DNI de rol a dar de alta: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if (altaLogica(buscarRegPorDni(dni)))
+		std::cout << "Rol dado de alta correctamente" << std::endl;
+	else
+		std::cout << "Error al dar de alta el rol" << std::endl;
 }

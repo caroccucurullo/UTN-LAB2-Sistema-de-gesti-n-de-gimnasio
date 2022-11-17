@@ -1,4 +1,5 @@
 #include "Membresia.h"
+#include "fecha.h"
 
 Membresia::Membresia(std::string  n, int cc, float v, int i) {
     strcpy(nombre, n.c_str());

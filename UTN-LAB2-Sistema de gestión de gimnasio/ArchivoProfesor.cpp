@@ -9,6 +9,16 @@ bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 	return ok;
 }
 
+void ArchivoProfesor::guardarProfesor()
+{
+	Profesor profesor;
+	profesor.cargarProfesor();
+	if (guardarProfesor(profesor))
+		std::cout << "Profesor guardado correctamente" << std::endl;
+	else
+		std::cout << "Error al guardar el profesor" << std::endl;
+}
+
 Profesor ArchivoProfesor::leerProfesor(int nRegistro)
 {
 	Profesor profesor;
@@ -39,6 +49,21 @@ bool ArchivoProfesor::modificarProfesor(Profesor& profesor, int nRegistro)
 	return ok;
 }
 
+void ArchivoProfesor::modificarProfesor()
+{
+	std::string dni;
+	std::cout << "Ingrese Dni de profesor a modificar: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+	Profesor profesor;
+	profesor.cargarProfesor();
+	if (modificarProfesor(profesor, buscarRegPorDni(dni)))
+		std::cout << "Profesor modificado correctamente" << std::endl;
+	else
+		std::cout << "Error al modificar el profesor" << std::endl;
+}
+
 int ArchivoProfesor::getCantidad()
 {
 	int cant = 0;
@@ -58,6 +83,15 @@ int ArchivoProfesor::buscarRegPorDni(std::string dni)
 		if (profesor.getDni() == dni) return x;
 	}
 	return -1;
+}
+void ArchivoProfesor::consultaPorDni()
+{
+	std::string dni;
+	std::cout << "Ingrese Dni: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	Profesor profesor = buscarRegPorDni(dni);
+	profesor.MostrarProfesor();
 }
 //CONSULTA POR DISCIPLINA
 int ArchivoProfesor::getCantidadProfePorDis(std::string nombre)
@@ -162,6 +196,16 @@ bool ArchivoProfesor::bajaLogica(int nRegistro)
 	return flag;
 }
 
+void ArchivoProfesor::bajaProfesor()
+{
+	std::string dni;
+	std::cout << "Ingrese dni a dar de baja: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if(bajaLogica(buscarRegPorDni(dni))) std::cout<< "Baja de " << dni << " realizada exitosamente." << std::endl;
+	else std::cout << "Baja de " << dni << " erronea. Intente nuevamente." << std::endl;
+}
+
 bool ArchivoProfesor::altaLogica(int nRegistro)
 {
 	Profesor profesor;
@@ -177,6 +221,76 @@ bool ArchivoProfesor::altaLogica(int nRegistro)
 	flag = fwrite(&profesor, sizeof(Profesor), 1, p);
 	fclose(p);
 	return flag;
+}
+
+void ArchivoProfesor::altaProfesor()
+{
+	std::string dni;
+	std::cout << "Ingrese dni a dar de alta: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	if (altaLogica(buscarRegPorDni(dni))) std::cout << "Alta de " << dni << " realizada exitosamente." << std::endl;
+	else std::cout << "Alta de " << dni << " erronea. Intente nuevamente." << std::endl;
+}
+
+//INFORMES
+
+void ArchivoProfesor::profesorAltasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+	
+	int cant = getCantidad();
+	Profesor profesor;
+	int cantAltas = 0;
+	
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getFechaIngreso().getAnio() == anio && profesor.getEstado() == true) {
+			cantAltas++;
+		}
+	}
+	
+	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
+
+}
+
+void ArchivoProfesor::profesorBajasAnuales(int anio)
+{
+	std::cout << "Ingrese el anio: " << std::endl;
+	std::cin >> anio;
+
+	int cant = getCantidad();
+	Profesor profesor;
+	int cantBajas = 0;
+
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getFechaEgreso().getAnio() == anio && profesor.getEstado() == false) {
+			cantBajas++;
+		}
+	}
+
+	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+}
+
+void ArchivoProfesor::profesorSueldoAnual(int idP)
+{
+	std::cout << "Ingrese el codigo de profesor: " << std::endl;
+	std::cin >> idP;
+	
+	int cant = getCantidad();
+	Profesor profesor;
+	int sueldoAnual = 0;
+
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getId() == idP) {
+			sueldoAnual = profesor.getSueldo() * 12;
+		}
+	}
+
+	std::cout << "El sueldo anual del profesor: "<< idP << " es de : " << sueldoAnual << std::endl;
 }
 
 void ArchivoProfesor::ordenarPorApellido(){

@@ -18,11 +18,10 @@ void Disciplina::MostrarDisciplina() {
     std::cout << "Id profesor: " << _idProfesor << std::endl;
     std::cout << "Salon: " << _idSalon << std::endl;
 }
-
 std::string Disciplina::MostrarDisciplinasDatos()
 {
-	std::string cadena;
-	cadena = std::to_string(getCodigo()) + "," + std::to_string(getHorarioInicio()) + ","
+    std::string cadena;
+    cadena = std::to_string(getCodigo()) + "," + std::to_string(getHorarioInicio()) + ","
 		+ std::to_string(getHorarioFin()) + "," + (getNombre()) + ","
 		+ std::to_string(getIdProfesor()) + "," + std::to_string(getIdSalon());
 	return cadena;
