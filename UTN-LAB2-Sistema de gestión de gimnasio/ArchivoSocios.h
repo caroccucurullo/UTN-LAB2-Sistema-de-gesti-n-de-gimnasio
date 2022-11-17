@@ -32,5 +32,10 @@ public:
 	
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+
+	void ordenarPorNombre();
+	void ordenarPorEdad();
+	void mostrarPorEstado();
+	void mostrarPorAptoMedico();
 };
 

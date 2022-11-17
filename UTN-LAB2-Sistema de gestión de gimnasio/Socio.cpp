@@ -1,4 +1,6 @@
 #include "Socio.h"
+#include "ArchivoSocios.h"
+#include "funciones.h"
 
 Socio::Socio(int ns, bool am, int idMem, Fecha fIngreso, Fecha fEgreso) {
     nroSocio = ns;
@@ -40,10 +42,3 @@ void Socio::CargarSocio()
     setIdMembresia(ns);
     //_fIngreso.Cargar();
 }
-
-//std::string Socio::setPrecision(float p)
-//{
-//    std::string peso(std::to_string(p));
-//    peso.resize(5);
-//    return peso;
-//}

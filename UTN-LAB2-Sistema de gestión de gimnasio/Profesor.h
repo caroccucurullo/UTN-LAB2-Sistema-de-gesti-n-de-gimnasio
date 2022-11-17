@@ -40,4 +40,6 @@ public:
 	
     void MostrarProfesor();
 	void cargarProfesor();
+
+
 };

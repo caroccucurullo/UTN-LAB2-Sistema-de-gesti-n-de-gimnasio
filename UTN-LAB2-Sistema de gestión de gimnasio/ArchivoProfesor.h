@@ -23,5 +23,8 @@ public:
 
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+
+	void ordenarPorApellido();
+    void ordenarPorDisciplina();
 };
 

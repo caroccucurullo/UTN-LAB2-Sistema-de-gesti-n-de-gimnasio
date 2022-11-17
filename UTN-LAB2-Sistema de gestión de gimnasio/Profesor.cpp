@@ -1,4 +1,6 @@
 #include "Profesor.h"
+#include "ArchivoProfesor.h"
+#include "ArchivoDisciplina.h"
 
 Profesor::Profesor(int id, int idDis, std::string turno, Fecha fIn, float s) {
 	_id = id;
@@ -33,3 +35,9 @@ void Profesor::cargarProfesor() {
 	std::cout << "Ingrese el sueldo: ";
 	std::cin >> _sueldo;
 }
+
+
+
+
+//Funciones auxiliares de la clase
+

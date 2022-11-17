@@ -1,4 +1,6 @@
 #include "ArchivoSocios.h"
+#include "funciones.h"
+
 //METODOS
 bool ArchivoSocios::guardarSocio(Socio& socio)
 {
@@ -236,4 +238,68 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     fclose(p);
     return flag;
 }
+void ArchivoSocios::ordenarPorNombre()
+{
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
 
+    completarVectorSocios(socios, cantidad);
+
+    ordenarPorNombreDescendiente(socios, cantidad);
+
+    mostrarVectorSocios(socios, cantidad);
+
+    delete[] socios;
+}
+
+void ArchivoSocios::ordenarPorEdad()
+{
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
+
+    completarVectorSocios(socios, cantidad);
+
+    ordenarPorEdadDescendiente(socios, cantidad);
+
+    mostrarVectorSocios(socios, cantidad);
+
+    delete[] socios;
+}
+
+void ArchivoSocios::mostrarPorEstado(){
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
+
+    completarVectorSocios(socios, cantidad);
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (socios[i].getEstado() == true)
+        {
+            socios[i].MostrarSocio();
+        }
+    }
+
+    delete[] socios;
+}
+
+void ArchivoSocios::mostrarPorAptoMedico(){
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
+
+    completarVectorSocios(socios, cantidad);
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (socios[i].getAptoMed() == true)
+        {
+            socios[i].MostrarSocio();
+        }
+    }
+
+    delete[] socios;
+}
