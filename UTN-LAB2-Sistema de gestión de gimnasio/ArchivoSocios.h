@@ -40,11 +40,7 @@ public:
 	void sociosBajasAnuales(int anio);
 	void sociosPorMenbresiaActivos(int idM);
 	
-
-	
-	bool bajaLogica(int nRegistro);
-	bool altaLogica(int nRegistro);
-
+	//Listado
 	void ordenarPorNombre();
 	void ordenarPorEdad();
 	void mostrarPorEstado();

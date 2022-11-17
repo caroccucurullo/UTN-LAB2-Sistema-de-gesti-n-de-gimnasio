@@ -299,6 +299,8 @@ void ArchivoSocios::mostrarPorAptoMedico(){
             socios[i].MostrarSocio();
         }
     }
+    delete[] socios;
+}
 
 //INFORMES
 
@@ -402,5 +404,4 @@ void ArchivoSocios::sociosPorMenbresiaActivos(int idM)
 
 	std::cout << "El total de socios activos con la membresia " << idM << "es de : " << cantSocios << std::endl;
 }
-    delete[] socios;
-}
+  
