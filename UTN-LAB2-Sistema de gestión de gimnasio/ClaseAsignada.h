@@ -22,5 +22,6 @@ public:
 	bool getEstado() { return _estado; }
 
 	void mostrar();
+	void cargar();
 };
 

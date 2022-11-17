@@ -20,3 +20,13 @@ void ClaseAsignada::mostrar()
 	std::cout << "Fecha de Asignacion: ";
 	_fechaAsignada.Cargar();
 }
+
+void ClaseAsignada::cargar()
+{
+	std::cout << "Codigo Disciplina: ";
+	std::cin >> _codDisciplina;
+	std::cout << "Nro Socio: ";
+	std::cin >> _nroSocio;
+	std::cout << "ID Salon: ";
+	std::cin >> _idSalon;
+}

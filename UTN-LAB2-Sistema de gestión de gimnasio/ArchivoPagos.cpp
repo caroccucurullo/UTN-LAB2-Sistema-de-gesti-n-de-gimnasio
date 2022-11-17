@@ -10,6 +10,14 @@ bool ArchivoPagos::guardarPago(Pago& pago)
     return ok;
 }
 
+void ArchivoPagos::guardarPago()
+{
+	Pago pago;
+	pago.CargarPago();
+	if (guardarPago(pago)) std::cout << "Guardado correctamente." << std::endl;
+	else std::cout << "Error al guardar." << std::endl;
+}
+
 Pago ArchivoPagos::leerPago(int nRegistro)
 {
 	Pago pago;
@@ -40,6 +48,18 @@ bool ArchivoPagos::modificarPago(Pago& pago, int nRegistro)
 	return ok;
 }
 
+void ArchivoPagos::modificarPago()
+{
+	int nroSocio;
+	std::cout << "Ingrese el nro de socio de pago a modificar: ";
+	std::cin >> nroSocio;
+	std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+	Pago pago;
+	pago.CargarPago();
+	if (modificarPago(pago, buscarPorNroSocio(nroSocio))) std::cout << "Modificado correctamente." << std::endl;
+	else std::cout << "Error al modificar." << std::endl;
+}
+
 int ArchivoPagos::getCantidad()
 {
 	int cant = 0;
@@ -48,6 +68,17 @@ int ArchivoPagos::getCantidad()
 	cant = ftell(p) / sizeof(Pago);
 	fclose(p);
 	return cant;
+}
+
+int ArchivoPagos::buscarPorNroSocio(int nroSocio)
+{
+	int cant = getCantidad();
+	Pago pago;
+	for (int x = 0;x < cant;x++) {
+		pago = leerPago(x);
+		if (pago.getNroSocio() == nroSocio) return x;
+	}
+	return -1;
 }
 
 //INFORMES
