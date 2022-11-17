@@ -1,5 +1,6 @@
 #include "ArchivoProfesor.h"
 #include "funciones.h"
+#include "Turno.h"
 
 bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 {
@@ -121,4 +122,40 @@ void ArchivoProfesor::ordenarPorDisciplina() {
 	mostrarVector(profesores, cantidad);
 
 	delete[] profesores;
+}
+
+void ArchivoProfesor::ordenarPorSueldo() {
+
+	ArchivoProfesor archivo;
+	int cantidad = archivo.getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+
+	completarVector(profesores, cantidad);
+	ordenarVectorPorSueldo(profesores, cantidad);
+	mostrarVector(profesores, cantidad);
+
+	delete[] profesores;
+}
+
+void mostrarProfesoresPorEstado(){
+	ArchivoProfesor archivo;
+	int cantidad = archivo.getCantidad();
+	Profesor* profesores = new Profesor[cantidad];
+	int estado;
+	bool flag = false;
+
+	completarVector(profesores, cantidad);
+
+	std::cout << "Ingese 1 para los Profesores Activos, 0 para Inactivos : " << std::endl;
+	std::cin >> estado;
+
+	if(estado == 1) flag = true;
+
+	mostrarVectorPorEstado(profesores, cantidad, flag);
+	delete[] profesores;
+}
+
+void ArchivoProfesor::mostrarProfesoresPorTurno() {
+	ArchivoProfesor archivo;
+	Turno turno;
 }

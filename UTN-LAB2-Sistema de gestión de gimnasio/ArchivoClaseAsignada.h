@@ -8,5 +8,7 @@ public:
 	bool leerTodos(ClaseAsignada* claseAsignada, int cantidad);
 	bool modificarClaseAsignada(ClaseAsignada& claseAsignada, int nRegistro);
 	int getCantidad();
+
+	void mostrarPorDisciplina();
 };
 

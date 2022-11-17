@@ -14,5 +14,8 @@ public:
 
 	void ordenarPorApellido();
     void ordenarPorDisciplina();
+	void ordenarPorSueldo();
+	void mostrarProfesoresPorEstado();
+	void mostrarProfesoresPorTurno();
 };
 

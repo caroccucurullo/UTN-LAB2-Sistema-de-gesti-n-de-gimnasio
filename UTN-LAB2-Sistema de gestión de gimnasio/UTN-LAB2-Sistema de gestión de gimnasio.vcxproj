@@ -150,6 +150,7 @@
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="Disciplina.cpp" />
     <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="funciones.cpp" />
     <ClCompile Include="Membresia.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Persona.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="Disciplina.h" />
     <ClInclude Include="Fecha.h" />
+    <ClInclude Include="funciones.h" />
     <ClInclude Include="Membresia.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Persona.h" />

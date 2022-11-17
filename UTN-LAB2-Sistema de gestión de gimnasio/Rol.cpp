@@ -1,11 +1,11 @@
 #include "Rol.h"
 
 
-Rol::Rol(int id, std::string cargo, float sueldo, std::string turno, Fecha fechaIngreso) {
+Rol::Rol(int id, std::string cargo, float sueldo, int turnoId, Fecha fechaIngreso) {
 	_id = id;
+	_turnoId = turnoId;
 	setCargo(cargo);
 	_sueldo = sueldo;
-	setTurno(turno);
 	_fechaIngreso = fechaIngreso;
 }
 
@@ -14,7 +14,7 @@ void Rol::MostrarRol() {
     std::cout << "Cargo: " << _cargo << std::endl;
 	Persona::MostrarPersona();
     std::cout << "Sueldo: " << _sueldo << std::endl;
-	std::cout << "Turno: " << _turno << std::endl;
+	std::cout << "Turno: " << _turnoId << std::endl;
     std::cout << "Fecha de ingreso: " << getFechaIngreso().toString() << std::endl;
 	if (!_estado) std::cout << "Fecha de Egreso: " << getFechaEgreso().toString() << std::endl;
 }
@@ -32,8 +32,7 @@ void Rol::CargarRol()
 	std::cout << "Sueldo: ";
 	std::cin >> _sueldo;
 	std::cin.ignore();
-	std::cout << "Turno: ";
-	std::getline(std::cin, cadena);
-	setTurno(cadena);
+	std::cout << "ID del Turno: ";
+	std::cin >> _turnoId;
 }
 

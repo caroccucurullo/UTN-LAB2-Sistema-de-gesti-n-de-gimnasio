@@ -4,7 +4,8 @@
 class ClaseAsignada
 {
 private:
-	int _codDisciplina, _nroSocio;
+	int _codDisciplina;
+	int _nroSocio;
 	Fecha _fechaAsignada;
 	bool _estado;
 public:

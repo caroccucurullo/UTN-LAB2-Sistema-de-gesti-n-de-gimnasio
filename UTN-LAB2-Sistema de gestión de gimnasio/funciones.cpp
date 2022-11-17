@@ -120,3 +120,30 @@ void mostrarVector(Profesor* profesor, int cantidad)
 		profesor[i].MostrarProfesor();
 	}
 }
+
+void ordenarVectorPorSueldo(Profesor* profesor, int cantidad){
+    Profesor aux;
+    for (int i = 0; i < cantidad - 1; i++)
+    {
+        for (int j = i + 1; j < cantidad; j++)
+        {
+            if (profesor[i].getSueldo() < profesor[j].getSueldo())
+            {
+                aux = profesor[i];
+                profesor[i] = profesor[j];
+                profesor[j] = aux;
+            }
+        }
+    }
+}
+
+void mostrarVectorPorEstado(Profesor* profesor, int cantidad, bool estado)
+{
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (profesor[i].getEstado() == estado)
+        {
+            profesor[i].MostrarProfesor();
+        }
+    }
+}
