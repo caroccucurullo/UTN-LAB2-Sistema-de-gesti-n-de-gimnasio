@@ -1,4 +1,6 @@
 #include "ArchivoDisciplina.h"
+#include "ArchivoSalon.h"
+#include "funciones.h"
 
 bool ArchivoDisciplina::guardarDisciplina(Disciplina& disciplina)
 {
@@ -89,4 +91,28 @@ bool ArchivoDisciplina::altaLogica(int nRegistro)
     flag = fwrite(&disciplina, sizeof(Disciplina), 1, p);
     fclose(p);
     return flag;
+}
+
+void ArchivoDisciplina::ordenarPorDisciplina()
+{
+    ArchivoSalon archivoSalon;
+    int cantDisciplina = getCantidad();
+    int cantSalon = archivoSalon.getCantidad();
+
+    mostrarDisciplinaPorSalon(cantDisciplina, cantSalon);
+}
+
+void mostrarPorHorarioAscendiente()
+{
+    ArchivoDisciplina archivoDisciplina;
+    Disciplina* disciplina;
+
+    int cant = archivoDisciplina.getCantidad();
+    disciplina = new Disciplina[cant];
+
+    ordenarPorHorario(disciplina, cant);
+
+    mostrarVectorDisciplina(disciplina, cant);
+
+    delete[] disciplina;
 }

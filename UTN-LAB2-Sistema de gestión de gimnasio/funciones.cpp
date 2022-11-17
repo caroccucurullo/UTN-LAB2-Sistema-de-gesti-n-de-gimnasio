@@ -4,6 +4,7 @@
 #include "ArchivoSocios.h"
 #include "ArchivoProfesor.h"
 #include "ArchivoDisciplina.h"
+#include "ArchivoSalon.h"
 
 void completarVectorSocios(Socio* socios, int cantidad)
 {
@@ -158,3 +159,49 @@ void mostrarProfesorPorTurno(Profesor* profesor, int cantidad, std::string turno
         }
     }
 }
+
+void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon){
+    ArchivoDisciplina archivo;
+    ArchivoSalon archivoSalon;
+    Disciplina disciplina;
+    Salon salon;
+
+    for (int i = 0; i < cantSalon; i++)
+    {
+        salon = archivoSalon.leerSalon(i);
+
+        for (int j = 0; j < cantDisciplina; j++)
+        {
+            disciplina = archivo.leerDisciplina(j);
+
+            if (salon.getId() == disciplina.getSalon())
+            {
+                disciplina.MostrarDisciplina();
+            }
+        }
+    }
+}
+
+void ordenarPorHorario(Disciplina* disciplina, int cantidad){
+    Disciplina aux;
+    for (int i = 0; i < cantidad - 1; i++)
+    {
+        for (int j = i + 1; j < cantidad; j++)
+        {
+            if (disciplina[i].getHorarioInicio() > disciplina[j].getHorarioInicio())
+            {
+                aux = disciplina[i];
+                disciplina[i] = disciplina[j];
+                disciplina[j] = aux;
+            }
+        }
+    }
+}
+
+void mostrarVectorDisciplina(Disciplina* disciplina, int cant){
+    for (int i = 0; i < cant; i++)
+    {
+        disciplina[i].MostrarDisciplina();
+    }
+}
+

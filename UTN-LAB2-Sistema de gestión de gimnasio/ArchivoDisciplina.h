@@ -12,5 +12,8 @@ public:
 	int buscarRegPorNombre(std::string nombre);
 	bool bajaLogica(int nRegistro);
 	bool altaLogica(int nRegistro);
+
+	void ordenarPorDisciplina();
+	void mostrarPorHorarioAscendiente();
 };
 

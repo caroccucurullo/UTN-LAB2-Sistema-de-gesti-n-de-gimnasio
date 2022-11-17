@@ -17,6 +17,5 @@ public:
 	void ordenarPorSueldo();
 	void mostrarProfesoresPorEstado();
 	void mostrarProfesoresPorTurno(std::string turno);
-
 };
 

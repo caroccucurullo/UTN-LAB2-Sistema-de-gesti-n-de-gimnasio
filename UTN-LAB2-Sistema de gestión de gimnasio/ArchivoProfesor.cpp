@@ -1,6 +1,5 @@
 #include "ArchivoProfesor.h"
 #include "funciones.h"
-#include "Turno.h"
 
 bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 {
