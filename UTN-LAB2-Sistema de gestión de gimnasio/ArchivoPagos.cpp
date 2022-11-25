@@ -103,6 +103,8 @@ int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
 	return contPagoMes;
 }
 
+//CONSULTAS
+
 void ArchivoPagos::consultarPago()
 {
 	std::string dni;
@@ -129,59 +131,6 @@ int ArchivoPagos::buscarPorNroSocio(int nroSocio)
 		if (pago.getNroSocio() == nroSocio) return x;
 	}
 	return -1;
-}
-
-void ArchivoPagos::pagosAnualesSocio()
-{
-	int anio;
-	std::cout << "Ingrese anio a evaluar: ";
-	std::cin >> anio;
-	std::string dni;
-	std::cout << "Ingrese DNI de socio a evaluar: ";
-	std::cin.ignore();
-	std::getline(std::cin, dni);
-	ArchivoSocios arSocio;
-	Socio socio = arSocio.leerSocio(arSocio.buscarRegPorDni(dni));
-	Pago pago;
-	int cant = getCantidad();
-	float pagoAnual = 0;
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getNroSocio() == socio.getNroSocio() && pago.getFechaDePago().getAnio() == anio) pagoAnual += pago.getValor();
-	}
-	std::cout << "El pago Anual("<<anio<<") de " << socio.getDni() << " es de " << pagoAnual << "$." << std::endl;
-}
-
-void ArchivoPagos::pagosDelMes()
-{
-	Fecha fechaActual;
-	int cantPagoMes = getCantidadPagoMes(fechaActual);
-	Pago* vPago = new Pago[cantPagoMes];
-	if (vPago == nullptr) return;
-	Pago pago;
-	int cant = getCantidad();
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getFechaDePago().getMes() == fechaActual.getMes()) {
-			vPago[x] = pago;
-		}
-	}
-	for (int x = 0;x < cant;x++) {
-		vPago[x].MostrarPago();
-		std::cout << std::endl;
-	}
-	delete[] vPago;
-}
-int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
-{
-	int cant = getCantidad();
-	Pago pago;
-	int contPagoMes = 0;
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getFechaDePago().getMes() == fechaActual.getMes()) contPagoMes++;
-	}
-	return contPagoMes;
 }
 
 //INFORMES
@@ -477,23 +426,4 @@ void ArchivoPagos::membresiaMenosVendidaMensual()
 	else {
 		std::cout << "No hay membresia menos vendida" << std::endl;
 	}
-}
-
-//CONSULTAS
-
-void ArchivoPagos::consultarPago()
-{
-	std::string dni;
-	std::cout << "Ingrese DNI a consultar: ";
-	std::cin.ignore();
-	std::getline(std::cin, dni);
-	ArchivoSocios arSocio;
-	Socio socio = arSocio.leerSocio(arSocio.buscarRegPorDni(dni));
-	int cant = getCantidad();
-	Pago pago, ultimoPago;
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getNroSocio() == socio.getNroSocio()) ultimoPago = pago;
-	}
-	std::cout << "El ultimo pago realizado fue el " << ultimoPago.getFechaDePago().toString() << std::endl;
 }
