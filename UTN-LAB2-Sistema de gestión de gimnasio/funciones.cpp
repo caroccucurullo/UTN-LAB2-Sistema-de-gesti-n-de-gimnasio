@@ -193,21 +193,21 @@ void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon){
     }
 }
 
-void ordenarPorHorario(Disciplina* disciplina, int cantidad){
-    Disciplina aux;
-    for (int i = 0; i < cantidad - 1; i++)
-    {
-        for (int j = i + 1; j < cantidad; j++)
-        {
-            if (disciplina[i].getHorarioInicio() > disciplina[j].getHorarioInicio())
-            {
-                aux = disciplina[i];
-                disciplina[i] = disciplina[j];
-                disciplina[j] = aux;
-            }
-        }
-    }
-}
+//void ordenarPorHorario(Disciplina* disciplina, int cantidad){
+//    Disciplina aux;
+//    for (int i = 0; i < cantidad - 1; i++)
+//    {
+//        for (int j = i + 1; j < cantidad; j++)
+//        {
+//            if (disciplina[i].getHorarioInicio() > disciplina[j].getHorarioInicio())
+//            {
+//                aux = disciplina[i];
+//                disciplina[i] = disciplina[j];
+//                disciplina[j] = aux;
+//            }
+//        }
+//    }
+//}
 
 void mostrarVectorDisciplina(Disciplina* disciplina, int cant){
     for (int i = 0; i < cant; i++)
