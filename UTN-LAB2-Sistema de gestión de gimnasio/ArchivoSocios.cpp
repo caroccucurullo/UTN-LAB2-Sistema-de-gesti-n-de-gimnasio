@@ -14,6 +14,7 @@ void ArchivoSocios::guardarSocio()
 {
     Socio socio;
     socio.CargarSocio();
+    socio.setNroSocio(ultimoSocio()+1);
     if (guardarSocio(socio)) std::cout << "Socio " << socio.getNroSocio() << " ingresado exitosamente." << std::endl;
     else std::cout << "Error al ingresar datos." << std::endl;
 }
@@ -363,11 +364,6 @@ void ArchivoSocios::mostrarPorAptoMedico(){
     delete[] socios;
 }
 
-int ArchivoSocios::ultimoSocio()
-{
-    return 0;
-}
-
 //INFORMES
 
 void ArchivoSocios::sociosAltasMensuales()
@@ -478,4 +474,10 @@ void ArchivoSocios::sociosActivosPorMembresia()
 
 	std::cout << "El total de socios activos con la membresia " << idM << "es de : " << cantSocios << std::endl;
 }
-  
+
+//Otras Funciones
+int ArchivoSocios::ultimoSocio()
+{
+    int cantidad = getCantidad();
+    return cantidad;
+}

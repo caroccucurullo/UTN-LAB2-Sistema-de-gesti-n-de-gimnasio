@@ -42,6 +42,7 @@ std::string Persona::MostrarPersonaFormatoComas() {
 
 
 void Persona::CargarPersona() {
+	std::cin.ignore();
 	std::string cadena;
 	std::cout << "Nombre: ";
 	std::getline(std::cin, cadena);
