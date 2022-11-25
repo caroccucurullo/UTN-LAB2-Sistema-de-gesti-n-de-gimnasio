@@ -20,7 +20,7 @@ using namespace std;
 
 int main() {
     //MENU
-    char opcion;
+    /*char opcion;
 
     do {
         menu();
@@ -58,8 +58,17 @@ int main() {
             break;
         }
 
-    } while (opcion != '6');
+    } while (opcion != '6');*/
 
+    ArchivoClaseAsignada arCla;
+    //arCla.guardarClaseAsignada();
+    int cantidad = arCla.getCantidad();
+    ClaseAsignada* v = new ClaseAsignada[cantidad];
+    arCla.leerTodos(v, cantidad);
+    for (int x = 0;x < cantidad;x++) {
+        v[x].mostrar();
+        cout << endl;
+    }
 
   return 0;
 }

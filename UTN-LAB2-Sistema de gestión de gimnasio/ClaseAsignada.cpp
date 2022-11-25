@@ -13,16 +13,11 @@ ClaseAsignada::ClaseAsignada(int codDisciplina, int nroSocio, int idProf, int hI
 
 void ClaseAsignada::mostrar()
 {
-	std::cout << "Codigo Disciplina: ";
-	std::cin >> _codDisciplina;
-	std::cout << "Nro Socio: ";
-	std::cin >> _nroSocio;
-	std::cout << "ID Profesor: ";
-	std::cin >> _idProfesor;
-	std::cout << "Horario de Inicio: ";
-	std::cin >> _horarioInicio;
-	std::cout << "Horario de Fin: ";
-	std::cin >> _horarioFin;
+	std::cout << "Codigo Disciplina: "<<_codDisciplina<<std::endl;
+	std::cout << "Nro Socio: "<< _nroSocio << std::endl;
+	std::cout << "ID Profesor: "<< _idProfesor << std::endl;
+	std::cout << "Horario de Inicio: "<< _horarioInicio << std::endl;
+	std::cout << "Horario de Fin: "<< _horarioFin << std::endl;
 	std::cout << "Fecha de Asignacion: " << _fechaAsignada.toString() << std::endl;
 }
 
