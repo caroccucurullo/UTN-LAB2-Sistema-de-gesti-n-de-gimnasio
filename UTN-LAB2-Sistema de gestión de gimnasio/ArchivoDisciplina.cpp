@@ -4,10 +4,10 @@
 
 bool ArchivoDisciplina::guardarDisciplina(Disciplina& disciplina)
 {
-    FILE* p = fopen("disciplinas.dat", "ab");
-    if (p == nullptr) return false;
-    bool ok = fwrite(&disciplina, sizeof(Disciplina), 1, p);
-    fclose(p);
+    FILE* pDis = fopen("disciplinas.dat", "ab");
+    if (pDis == nullptr) return false;
+    bool ok = fwrite(&disciplina, sizeof(Disciplina), 1, pDis);
+    fclose(pDis);
     return ok;
 }
 void ArchivoDisciplina::guardarDisciplina()
@@ -22,19 +22,19 @@ void ArchivoDisciplina::guardarDisciplina()
 Disciplina ArchivoDisciplina::leerDisciplina(int nRegistro)
 {
     Disciplina disciplina;
-    FILE* p = fopen("disciplinas.dat", "rb");
-    if (p == nullptr) return disciplina;
-    fseek(p, nRegistro * sizeof(Disciplina), 0);
-    fread(&disciplina, sizeof(Disciplina), 1, p);
-    fclose(p);
+    FILE* pDis = fopen("disciplinas.dat", "rb");
+    if (pDis == nullptr) return disciplina;
+    fseek(pDis, nRegistro * sizeof(Disciplina), 0);
+    fread(&disciplina, sizeof(Disciplina), 1, pDis);
+    fclose(pDis);
     return disciplina;
 }
 bool ArchivoDisciplina::leerTodas(Disciplina* disciplina, int cantidad)
 {
-    FILE* p = fopen("disciplinas.dat", "rb");
-    if (p == nullptr) return false;
-    bool leyo = fread(disciplina, sizeof(Disciplina), cantidad, p);
-    fclose(p);
+    FILE* pDis = fopen("disciplinas.dat", "rb");
+    if (pDis == nullptr) return false;
+    bool leyo = fread(disciplina, sizeof(Disciplina), cantidad, pDis);
+    fclose(pDis);
     return leyo;
 }
 bool ArchivoDisciplina::modificarDisciplina(Disciplina& disciplina, int nRegistro)

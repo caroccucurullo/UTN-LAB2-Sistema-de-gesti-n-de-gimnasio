@@ -7,10 +7,10 @@
 class ArchivoSocios
 {
 public:
-	//GUARDAR PROFESOR
+	//GUARDAR SOCIO
 	bool guardarSocio(Socio &socio);
 	void guardarSocio();//FUNCION A LLAMAR EN EL MENU
-	//LEE PROFESOR, 1 SOLO REGISTRO
+	//LEE SOCIO, 1 SOLO REGISTRO
 	Socio leerSocio(int nRegistro);
 	//COPIA TODOS LOS REGISTROS EN UN VECTOR
 	bool leerTodos(Socio* socio, int cantidad);
@@ -35,18 +35,14 @@ public:
 	int buscarRegPorNumSocio(int numSocio);
 	void consultaPorNumSocio();//FUNCION A LLAMAR EN EL MENU
 	///Por Edad
-	int getCantidadEdad(int edad);
 	void sociosPorEdad();//FUNCION A LLAMAR EN EL MENU
-	void copiarSocio(Socio* vSocio, int edad);
-	void mostrarSocio(Socio* vSocio, int cant);
 	///Por Disciplina
 	int getCantidadSocioPorDis(std::string nombre);
 	void sociosPorDis();//FUNCION A LLAMAR EN EL MENU
 	void copiarSocioDis(Socio* vSocio, std::string nombre);
+	void mostrarSocio(Socio* vSocio, int cantidad);
 	///Por Membresia
-	int getCantidadSocioPorMembresia(int idMem);
 	void sociosPorMembresia();//FUNCION A LLAMAR EN EL MENU
-	void copiarSocioMembresia(Socio* vSocio, int idMem);
 	
 	//INFORMES
 	void sociosAltasMensuales();

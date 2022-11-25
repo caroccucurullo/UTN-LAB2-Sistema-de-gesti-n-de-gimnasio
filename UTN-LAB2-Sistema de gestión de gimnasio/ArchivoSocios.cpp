@@ -3,10 +3,10 @@
 //METODOS
 bool ArchivoSocios::guardarSocio(Socio& socio)
 {
-    FILE* p = fopen("socios.dat", "ab");
-    if (p == nullptr) return false;
-    bool ok = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "ab");
+    if (pSocio == nullptr) return false;
+    bool ok = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return ok;
 }
 
@@ -21,30 +21,30 @@ void ArchivoSocios::guardarSocio()
 Socio ArchivoSocios::leerSocio(int nRegistro)
 {
     Socio socio;
-    FILE* p = fopen("socios.dat", "rb");
-    if (p == nullptr) return socio;
-    fseek(p, nRegistro * sizeof(Socio), 0);
-    fread(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    if (pSocio == nullptr) return socio;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
+    fread(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return socio;
 }
 
 bool ArchivoSocios::leerTodos(Socio* socio, int cantidad)
 {
-    FILE* p = fopen("socios.dat", "rb");
-    if (p == nullptr) return false;
-    bool leyo=fread(socio, sizeof(Socio), cantidad, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    if (pSocio == nullptr) return false;
+    bool leyo=fread(socio, sizeof(Socio), cantidad, pSocio);
+    fclose(pSocio);
     return leyo;
 }
 
 bool ArchivoSocios::modificarSocio(Socio& socio, int nRegistro)
 {
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), SEEK_SET);
-    bool ok = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), SEEK_SET);
+    bool ok = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return ok;
 }
 
@@ -64,10 +64,10 @@ void ArchivoSocios::modificarSocio()
 int ArchivoSocios::getCantidad()
 {
     int cant=0;
-    FILE* p = fopen("socios.dat", "rb");
-    fseek(p, 0, 2);
-    cant = ftell(p) / sizeof(Socio);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    fseek(pSocio, 0, 2);
+    cant = ftell(pSocio) / sizeof(Socio);
+    fclose(pSocio);
     return cant;
 }
 ///CONSULTA POR DNI
@@ -113,50 +113,35 @@ void ArchivoSocios::consultaPorNumSocio()
     socio.MostrarSocio();
 }
 ///CONSULTA POR EDAD
-int ArchivoSocios::getCantidadEdad(int edad)
-{
-    int cant = getCantidad(), cantEdad=0;
-    Socio socio;
-    for (int x = 0;x < cant;x++) {
-        socio = leerSocio(x);
-        if (socio.getEdad()==edad) cantEdad++;
-    }
-    return cantEdad;
-}
-
 void ArchivoSocios::sociosPorEdad()
 {
     int edad;
     std::cout << "Ingrese edad: ";
     std::cin >> edad;
-    if (edad > 0 && edad <100) {
-        int cantEdad = getCantidadEdad(edad);
-        Socio* vSocio = new Socio[cantEdad];
-        if (vSocio == nullptr) return;
-        copiarSocio(vSocio, edad);
-        mostrarSocio(vSocio, cantEdad);
-        delete[] vSocio;
+    if (edad > 14 && edad <90) {
+        int cant = getCantidad();
+        if (cant > 0) {
+            Socio* listaCompleta = new Socio[cant];
+            if (listaCompleta == nullptr) {
+                std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+                return;
+            }
+            leerTodos(listaCompleta, cant);
+            for (int x = 0;x < cant;x++) {
+                if (listaCompleta[x].getEdad() == edad) {
+                    std::cout << listaCompleta[x].MostrarPersonaFormatoComas() << std::endl;
+                }
+            }
+            delete[] listaCompleta;
+        }
+        else
+        {
+			std::cout << "No hay socios de esa edad." << std::endl;
+        } 
     }
     else std::cout << "Edad incorrecta." << std::endl;
 }
 
-void ArchivoSocios::copiarSocio(Socio* vSocio, int edad)
-{
-    int cant = getCantidad();
-    Socio socio;
-    for (int x = 0;x < cant;x++) {
-        socio = leerSocio(x);
-        if (socio.getEdad() == edad) vSocio[x] = socio;
-    }
-}
-
-void ArchivoSocios::mostrarSocio(Socio* vSocio, int cantEdad)
-{
-    for (int x = 0;x < cantEdad;x++) {
-        vSocio[x].MostrarSocio();
-        std::cout << std::endl;
-    }
-}
 ///CONSULTA POR DISCIPLINA
 int ArchivoSocios::getCantidadSocioPorDis(std::string nombre)
 {
@@ -179,10 +164,15 @@ int ArchivoSocios::getCantidadSocioPorDis(std::string nombre)
 
 void ArchivoSocios::sociosPorDis()
 {
+    std::cin.ignore();
     std::string cadena;
     std::cout << "Ingrese Disciplina: ";
     std::getline(std::cin, cadena);
     int cantSocioporDis = getCantidadSocioPorDis(cadena);
+
+
+
+
     Socio* vSocio = new Socio[cantSocioporDis];
     if (vSocio == nullptr) return;
     copiarSocioDis(vSocio, cadena);
@@ -207,42 +197,39 @@ void ArchivoSocios::copiarSocioDis(Socio* vSocio, std::string nombre)
         }
     }
 }
-///CONSULTA POR MEMBRESIA
-int ArchivoSocios::getCantidadSocioPorMembresia(int idMem)
+void ArchivoSocios::mostrarSocio(Socio* vSocio, int cantidad)
 {
-    Socio socio;
-    int cantSocio = getCantidad(), cantMem=0;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        if (socio.getIdMembresia() == idMem) cantMem++;
+    for (int x = 0;x < cantidad;x++) {
+        std::cout<<vSocio[x].MostrarSociosDatos()<<std::endl;
     }
-    return cantMem;
 }
-
+///CONSULTA POR MEMBRESIA
 void ArchivoSocios::sociosPorMembresia()
 {
     int idMem;
     std::cout << "Id Membresia: ";
     std::cin >> idMem;
     if (idMem > 0 && idMem < 4) {
-        int cantSocioPorMem = getCantidadSocioPorMembresia(idMem);
-        Socio* vSocio = new Socio[cantSocioPorMem];
-        if (vSocio == nullptr) return;
-        copiarSocio(vSocio, idMem);
-        mostrarSocio(vSocio, cantSocioPorMem);
-        delete[] vSocio;
+        int cantidadRegistros = getCantidad();
+        if (cantidadRegistros > 0) {
+            Socio* vSocio = new Socio[cantidadRegistros];
+            if (vSocio == nullptr) {
+                std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+                return;
+            }
+            leerTodos(vSocio, cantidadRegistros);
+            for (int x = 0;x < cantidadRegistros;x++) {
+                if (vSocio[x].getIdMembresia() == idMem) {
+                    std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
+                }
+            }
+            delete[] vSocio;
+        }
+        else {
+            std::cout << "No hay registros en el Archivo." << std::endl;
+        }
     }
     else std::cout << "Error en ID membresia." << std::endl;
-}
-
-void ArchivoSocios::copiarSocioMembresia(Socio* vSocio, int idMem)
-{
-    int cantSocio = getCantidad();
-    Socio socio;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        if (socio.getIdMembresia() == idMem) vSocio[x] = socio;
-    }
 }
 
 bool ArchivoSocios::bajaLogica(int nRegistro)
@@ -252,13 +239,13 @@ bool ArchivoSocios::bajaLogica(int nRegistro)
     fecha.establecerFechaHoy();
     socio = leerSocio(nRegistro);
     bool flag;
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), 0);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
     socio.setEstado(false);
     socio.setFechaEgreso(fecha);
-    flag=fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    flag=fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return flag;
 }
 
@@ -280,13 +267,13 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     Fecha fecha;
     fecha.establecerFechaHoy();
     bool flag;
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), 0);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
     socio.setEstado(true);
     socio.setFechaIngreso(fecha);
-    flag = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    flag = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return flag;
 }
 void ArchivoSocios::altaSocio()

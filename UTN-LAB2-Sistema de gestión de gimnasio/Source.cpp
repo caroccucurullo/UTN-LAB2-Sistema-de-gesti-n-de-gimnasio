@@ -20,7 +20,7 @@ using namespace std;
 
 int main() {
     //MENU
-    /*char opcion;
+    char opcion;
 
     do {
         menu();
@@ -58,8 +58,7 @@ int main() {
             break;
         }
 
-    } while (opcion != '6');*/
-
+    } while (opcion != '6');
 
   return 0;
 }

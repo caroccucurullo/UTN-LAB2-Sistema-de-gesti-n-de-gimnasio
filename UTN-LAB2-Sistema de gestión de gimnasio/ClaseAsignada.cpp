@@ -17,8 +17,7 @@ void ClaseAsignada::mostrar()
 	std::cin >> _nroSocio;
 	std::cout << "Id Salon: ";
 	std::cin >> _idSalon;
-	std::cout << "Fecha de Asignacion: ";
-	_fechaAsignada.Cargar();
+	std::cout << "Fecha de Asignacion: " << _fechaAsignada.toString() << std::endl;
 }
 
 void ClaseAsignada::cargar()
