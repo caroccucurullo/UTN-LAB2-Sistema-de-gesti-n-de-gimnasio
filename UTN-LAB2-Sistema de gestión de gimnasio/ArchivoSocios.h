@@ -56,5 +56,9 @@ public:
 	void ordenarPorEdad();
 	void mostrarPorEstado();
 	void mostrarPorAptoMedico();
+
+	//Otras Funciones
+	int ultimoSocio();
+	
 };
 

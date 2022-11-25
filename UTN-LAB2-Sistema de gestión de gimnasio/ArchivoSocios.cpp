@@ -82,16 +82,23 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     return -1;
 }
 
+
 void ArchivoSocios::consultaPorDni()
 {
     std::string cadena;
     std::cout << "Ingrese DNI a consultar: ";
     std::cin.ignore();
     std::getline(std::cin, cadena);
-    Socio socio=leerSocio(buscarRegPorDni(cadena));
-    socio.MostrarSocio();
+    int nRegistro = buscarRegPorDni(cadena);
+    if (nRegistro != -1) {
+        Socio socio = leerSocio(nRegistro);
+        socio.MostrarSocio();
+    }
+    else
+    {
+        std::cout << "No se encontro el DNI ingresado." << std::endl;
+    }
 }
-
 
 ///CONSULTA POR NRO SOCIO
 int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
@@ -109,8 +116,15 @@ void ArchivoSocios::consultaPorNumSocio()
     int nroSocio;
     std::cout << "Ingrese Numero de Socio: ";
     std::cin >> nroSocio;
-    Socio socio = leerSocio(buscarRegPorNumSocio(nroSocio));
-    socio.MostrarSocio();
+    int nRegistro = buscarRegPorNumSocio(nroSocio);
+    if (nRegistro != -1) {
+        Socio socio = leerSocio(nRegistro);
+        socio.MostrarSocio();
+    }
+    else
+    {
+        std::cout << "No se encontro el Numero de Socio ingresado." << std::endl;
+    }
 }
 ///CONSULTA POR EDAD
 void ArchivoSocios::sociosPorEdad()
@@ -121,6 +135,7 @@ void ArchivoSocios::sociosPorEdad()
     if (edad > 14 && edad <90) {
         int cant = getCantidad();
         if (cant > 0) {
+            bool hay = false;
             Socio* listaCompleta = new Socio[cant];
             if (listaCompleta == nullptr) {
                 std::cout << "No se pudo abrir el archivo de registros." << std::endl;
@@ -129,15 +144,13 @@ void ArchivoSocios::sociosPorEdad()
             leerTodos(listaCompleta, cant);
             for (int x = 0;x < cant;x++) {
                 if (listaCompleta[x].getEdad() == edad) {
+                    hay = true;
                     std::cout << listaCompleta[x].MostrarPersonaFormatoComas() << std::endl;
                 }
             }
+			if(!hay) std::cout << "No hay socios de esa edad." << std::endl;
             delete[] listaCompleta;
         }
-        else
-        {
-			std::cout << "No hay socios de esa edad." << std::endl;
-        } 
     }
     else std::cout << "Edad incorrecta." << std::endl;
 }
@@ -212,6 +225,7 @@ void ArchivoSocios::sociosPorMembresia()
     if (idMem > 0 && idMem < 4) {
         int cantidadRegistros = getCantidad();
         if (cantidadRegistros > 0) {
+            bool hay = false;
             Socio* vSocio = new Socio[cantidadRegistros];
             if (vSocio == nullptr) {
                 std::cout << "No se pudo abrir el archivo de registros." << std::endl;
@@ -220,13 +234,12 @@ void ArchivoSocios::sociosPorMembresia()
             leerTodos(vSocio, cantidadRegistros);
             for (int x = 0;x < cantidadRegistros;x++) {
                 if (vSocio[x].getIdMembresia() == idMem) {
+                    hay = true;
                     std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
                 }
             }
+			if(!hay) std::cout << "No hay registros en el Archivo." << std::endl;
             delete[] vSocio;
-        }
-        else {
-            std::cout << "No hay registros en el Archivo." << std::endl;
         }
     }
     else std::cout << "Error en ID membresia." << std::endl;
@@ -348,6 +361,11 @@ void ArchivoSocios::mostrarPorAptoMedico(){
         }
     }
     delete[] socios;
+}
+
+int ArchivoSocios::ultimoSocio()
+{
+    return 0;
 }
 
 //INFORMES
