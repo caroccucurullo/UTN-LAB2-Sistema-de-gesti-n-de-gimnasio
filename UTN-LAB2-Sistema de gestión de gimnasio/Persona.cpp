@@ -1,13 +1,25 @@
 #include "Persona.h"
 
-Persona::Persona(std::string n, std::string a, Fecha nac, int e, std::string d, Contacto contacto) {
+Persona::Persona(std::string n, std::string a, Fecha nac, std::string d, Contacto contacto) {
 	strcpy(_nombre, n.c_str());
 	strcpy(_apellido, a.c_str());
 	_fnac = nac;
-	_edad = e;
+	_edad = calcularEdad();
 	strcpy(_dni, d.c_str());
 	_contacto = contacto;
 	_estado = true;
+}
+
+int Persona::calcularEdad()
+{
+	Fecha hoy;
+	hoy.establecerFechaHoy();
+	_edad = hoy.getAnio() - _fnac.getAnio();
+	if (hoy.getMes() < _fnac.getMes())
+		_edad--;
+	else if (hoy.getMes() == _fnac.getMes() && hoy.getDia() < _fnac.getDia())
+		_edad--;
+	return _edad;
 }
 
 void Persona::MostrarPersona()
@@ -39,8 +51,9 @@ void Persona::CargarPersona() {
 	setApellido(cadena);
 	std::cout << "Fecha de nacimiento: "<<std::endl;
 	_fnac.Cargar();
-	std::cout << "Edad: ";
-	std::cin >> _edad;
+	/*std::cout << "Edad: ";
+	std::cin >> _edad;*/
+	_edad = calcularEdad();
 	std::cin.ignore();
 	std::cout << "DNI: ";
 	std::getline(std::cin, cadena);
