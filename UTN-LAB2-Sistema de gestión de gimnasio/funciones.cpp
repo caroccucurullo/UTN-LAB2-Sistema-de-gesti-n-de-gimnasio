@@ -149,6 +149,17 @@ void mostrarVectorPorEstado(Profesor* profesor, int cantidad, bool estado)
     }
 }
 
+void mostrarVectorPorTurno(Profesor* profesor, int cantidad, std::string turno)
+{
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (profesor[i].getTurno() == turno)
+        {
+            profesor[i].MostrarProfesor();
+        }
+    }
+}
+
 void mostrarProfesorPorTurno(Profesor* profesor, int cantidad, std::string turno)
 {
     for (int i = 0; i < cantidad; i++)

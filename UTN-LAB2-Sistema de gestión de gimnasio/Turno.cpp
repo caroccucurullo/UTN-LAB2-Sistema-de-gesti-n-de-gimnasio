@@ -11,6 +11,12 @@ void Turno::CargarTurno()
     std::cin >> _idTurno;
 }
 
+Turno::Turno(int idTurno, std::string nombre)
+{
+    _idTurno = idTurno;
+    strcpy(_nombre, nombre.c_str());
+}
+
 void Turno::MostrarTurno()
 {
     std::cout << "ID: " << _idTurno << std::endl;

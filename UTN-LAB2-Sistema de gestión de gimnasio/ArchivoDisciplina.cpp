@@ -25,7 +25,7 @@ Disciplina ArchivoDisciplina::leerDisciplina(int nRegistro)
     FILE* p = fopen("disciplinas.dat", "rb");
     if (p == nullptr) return disciplina;
     fseek(p, nRegistro * sizeof(Disciplina), 0);
-    bool leyo = fread(&disciplina, sizeof(Disciplina), 1, p);
+    fread(&disciplina, sizeof(Disciplina), 1, p);
     fclose(p);
     return disciplina;
 }
@@ -226,7 +226,6 @@ void ArchivoDisciplina::altaDisciplina()
 	else std::cout << "No se pudo dar de alta" << std::endl;
 }
 
-
 void ArchivoDisciplina::ordenarPorDisciplina()
 {
     ArchivoSalon archivoSalon;
@@ -236,7 +235,7 @@ void ArchivoDisciplina::ordenarPorDisciplina()
     mostrarDisciplinaPorSalon(cantDisciplina, cantSalon);
 }
 
-void mostrarPorHorarioAscendiente()
+void ArchivoDisciplina::mostrarPorHorarioAscendente()
 {
     ArchivoDisciplina archivoDisciplina;
     Disciplina* disciplina;

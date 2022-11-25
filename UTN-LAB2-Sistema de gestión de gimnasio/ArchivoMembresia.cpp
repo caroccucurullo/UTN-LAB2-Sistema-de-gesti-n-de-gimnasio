@@ -23,7 +23,7 @@ Membresia ArchivoMembresia::leerMembresia(int nRegistro)
     FILE* p = fopen("membresias.dat", "rb");
     if (p == nullptr) return membresia;
     fseek(p, nRegistro * sizeof(Membresia), 0);
-    bool leyo = fread(&membresia, sizeof(Membresia), 1, p);
+    fread(&membresia, sizeof(Membresia), 1, p);
     fclose(p);
     return membresia;
 }

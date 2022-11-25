@@ -14,7 +14,7 @@ Turno ArchivoTurno::leerTurno(int nRegistro) {
     FILE* p = fopen("turnos.dat", "rb");
     if (p == nullptr) return turno;
     fseek(p, nRegistro * sizeof(Turno), 0);
-    bool leyo = fread(&turno, sizeof(Turno), 1, p);
+    fread(&turno, sizeof(Turno), 1, p);
     fclose(p);
     return turno;
 }

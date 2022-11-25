@@ -15,6 +15,7 @@ class Fecha{
         std::string toString();
         void Cargar();
         void establecerFechaHoy();
+        bool esBisiesto(int a);
         bool operator==(Fecha fecha);
     private:
         int _dia, _mes, _anio;

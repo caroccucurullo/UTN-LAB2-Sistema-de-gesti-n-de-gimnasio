@@ -2,6 +2,7 @@
 #include "Pago.h"
 #include "ArchivoSocios.h"
 
+
 class ArchivoPagos
 {
 public:
@@ -19,24 +20,20 @@ public:
 	int getCantidad();
 
 	//LISTAS
-	//listasr los pagos del mes
 	void pagosDelMes();
 	int getCantidadPagoMes(Fecha fechaActual);
 	
 	//CONSULTAS
-	//consultar ultimo pago del socio
 	void consultarPago();
-	
 	int buscarPorNroSocio(int nroSocio);
 	
 	//INFORMES
-	//consultar los pagos de un socio anual
 	void pagosAnualesSocio();
-	void recaudacionPorMembresia(int idM, int anio, int mes);
-	void recaudacionAnual(int anio);
-	void recaudacionMensual(int anio, int mes);
-	void membresiaMasVendidaAnual(int anio);
-	void membresiaMasVendidaMensual(int anio, int mes);
-	void membresiaMenosVendidaAnual(int anio);
-	void membresiaMenosVendidaMensual(int anio, int mes);
+	void recaudacionPorMembresia();
+	void recaudacionAnual();
+	void recaudacionMensual();
+	void membresiaMasVendidaAnual();
+	void membresiaMasVendidaMensual();
+	void membresiaMenosVendidaAnual();
+	void membresiaMenosVendidaMensual();
 };

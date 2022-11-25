@@ -24,7 +24,7 @@ Socio ArchivoSocios::leerSocio(int nRegistro)
     FILE* p = fopen("socios.dat", "rb");
     if (p == nullptr) return socio;
     fseek(p, nRegistro * sizeof(Socio), 0);
-    bool leyo = fread(&socio, sizeof(Socio), 1, p);
+    fread(&socio, sizeof(Socio), 1, p);
     fclose(p);
     return socio;
 }

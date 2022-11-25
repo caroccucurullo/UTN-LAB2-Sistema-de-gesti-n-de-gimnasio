@@ -25,7 +25,7 @@ Profesor ArchivoProfesor::leerProfesor(int nRegistro)
 	FILE* p = fopen("profesores.dat", "rb");
 	if (p == nullptr) return profesor;
 	fseek(p, nRegistro * sizeof(Profesor), 0);
-	bool leyo = fread(&profesor, sizeof(Profesor), 1, p);
+	fread(&profesor, sizeof(Profesor), 1, p);
 	fclose(p);
 	return profesor;
 }
@@ -353,8 +353,11 @@ void ArchivoProfesor::mostrarProfesoresPorEstado(){
 	delete[] profesores;
 }
 
-void ArchivoProfesor::mostrarProfesoresPorTurno(std::string turno) {
+void ArchivoProfesor::mostrarProfesoresPorTurno() {
 
+	std::string turno;
+	std::cout << "Ingrese Turno: ";
+	std::getline(std::cin, turno);
 	int cantidad = getCantidad();
 	Profesor* profesores = new Profesor[cantidad];
 

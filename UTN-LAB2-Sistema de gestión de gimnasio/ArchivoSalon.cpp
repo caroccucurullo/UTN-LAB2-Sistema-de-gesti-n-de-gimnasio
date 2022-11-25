@@ -25,7 +25,7 @@ Salon ArchivoSalon::leerSalon(int nRegistro)
     FILE* p = fopen("salones.dat", "rb");
     if (p == nullptr) return salon;
     fseek(p, nRegistro * sizeof(Salon), 0);
-    bool leyo = fread(&salon, sizeof(Salon), 1, p);
+    fread(&salon, sizeof(Salon), 1, p);
     fclose(p);
     return salon;
 }
