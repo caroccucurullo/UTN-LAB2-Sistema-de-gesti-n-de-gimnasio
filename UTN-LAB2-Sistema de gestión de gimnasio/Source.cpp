@@ -59,6 +59,5 @@ int main() {
         }
 
     } while (opcion != '6');*/
-
   return 0;
 }

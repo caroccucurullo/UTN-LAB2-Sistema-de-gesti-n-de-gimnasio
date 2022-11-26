@@ -57,9 +57,230 @@ void ArchivoSocios::modificarSocio()
     std::getline(std::cin, dni);
     std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
     Socio socio;
-    socio.CargarSocio();
+    socio.CargarSocioRegCompleto();
     if (modificarSocio(socio, buscarRegPorDni(dni))) std::cout << "Modificado correctamente." << std::endl;
     else std::cout << "Error al modificar." << std::endl;
+}
+
+void ArchivoSocios::modificarSocioConOpciones()
+{
+    int opcion, nroSocio, nRegistro=-1;
+    std::string dni;
+    std::string cadena;
+    Fecha fecha;
+    Socio socio;
+    do {
+        std::cout << "Modificar Socio con Opciones" << std::endl;
+        std::cout << "1) Ingresar modificaciones" << std::endl;
+        std::cout << "2) Aplicar modificaciones" << std::endl;
+        std::cout << "0) Salir." << std::endl;
+        std::cin >> opcion;
+        switch (opcion)
+        {
+        case 1:
+        {
+            std::cout << "1) Ingresar DNI: " << std::endl;
+            std::cout << "2) Ingresar Numero de Socio: " << std::endl;
+            std::cout << "0) Volver." << std::endl;
+            std::cin >> opcion;
+            switch (opcion)
+            {
+            case 1:
+            {
+                std::cout << "Dni: ";
+                std::cin.ignore();
+                std::getline(std::cin, dni);
+                nRegistro = buscarRegPorDni(dni);
+            }
+            break;
+            case 2:
+            {
+                std::cout << "Numero de Socio: ";
+                std::cin >> nroSocio;
+                nRegistro = buscarRegPorNumSocio(nroSocio);
+            }
+            break;
+            }
+            if (nRegistro != -1) {
+                socio = leerSocio(nRegistro);
+                int subopcion1;
+                do {
+                    std::cout << "Que desea cambiar?" << std::endl;
+                    std::cout << "1) Datos Personales" << std::endl;
+                    std::cout << "2) Datos de Socio" << std::endl;
+                    std::cout << "0) Volver." << std::endl;
+                    std::cin >> subopcion1;
+                    switch (subopcion1)
+                    {
+                    case 1:
+                    {
+                        std::cout << "1) Nombre" << std::endl;
+                        std::cout << "2) Apellido" << std::endl;
+                        std::cout << "3) Fecha de Nacimiento" << std::endl;
+                        std::cout << "4) Contacto" << std::endl;
+                        std::cout << "5) DNI" << std::endl;
+                        std::cin >> subopcion1;
+                        switch (subopcion1)
+                        {
+                        case 1:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese Nombre: ";
+                            std::getline(std::cin, cadena);
+                            socio.setNombre(cadena);
+                        }
+                        break;
+                        case 2:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese Apellido: ";
+                            std::getline(std::cin, cadena);
+                            socio.setApellido(cadena);
+                        }
+                        break;
+                        case 3:
+                        {
+
+                            fecha.Cargar();
+                            socio.setFechaNac(fecha);
+                        }
+                        break;
+                        case 4:
+                        {
+                            Contacto contacto;
+                            std::cout << "Contacto" << std::endl;
+                            std::cout << "1) Calle" << std::endl;
+                            std::cout << "2) Numero" << std::endl;
+                            std::cout << "3) Localidad" << std::endl;
+                            std::cout << "4) Telefono" << std::endl;
+                            std::cout << "5) Email" << std::endl;
+                            std::cin >> opcion;
+                            switch (opcion)
+                            {
+                            case 1:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Calle: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setCalle(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 2:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Numero: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setNum(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 3:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Localidad: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setLocalidad(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 4:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Telefono: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setTel(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 5:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Email: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setEmail(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            default:
+                                break;
+                            }
+                        }
+                        break;
+                        case 5:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese DNI: ";
+                            std::getline(std::cin, cadena);
+                            socio.setDni(cadena);
+                        }
+                        break;
+                        }
+                    }
+                    break;
+                    case 2:
+                    {
+                        std::cout << "1) Apto Medico" << std::endl;
+                        std::cout << "2) Membresia" << std::endl;
+                        std::cout << "3) Fecha Ingreso" << std::endl;
+                        std::cout << "4) Fecha Egreso" << std::endl;
+                        std::cin >> subopcion1;
+                        switch (subopcion1)
+                        {
+                        case 1:
+                        {
+                            char letra;
+                            std::cout << "Apto Medico (y/n): ";
+                            std::cin >> letra;
+                            if (letra == 'y') socio.setAptoMed(true);
+                            else socio.setAptoMed(false);
+                        }
+                        break;
+                        case 2:
+                        {
+                            int mem;
+                            std::cout << "Ingrese membresia: ";
+                            std::cin >> mem;
+                            socio.setIdMembresia(mem);
+                        }
+                        break;
+                        case 3:
+                            std::cout << "Ingrese Fecha de Ingreso: ";
+                            fecha.Cargar();
+                            socio.setFechaIngreso(fecha);
+                            break;
+                        case 4:
+                            std::cout << "Ingrese Fecha de Egreso: ";
+                            fecha.Cargar();
+                            socio.setFechaIngreso(fecha);
+                            break;
+                        }
+                    }
+                    break;
+                    }
+                } while (subopcion1 != 0);
+            }
+            else
+            {
+                std::cout << "No existe el registro." << std::endl;
+            }
+        }
+            break;
+        case 2:
+        {
+            if (nRegistro != -1) {
+                if (modificarSocio(socio, nRegistro)) std::cout << "Socio " << socio.getNroSocio() << " modificado correctamente." << std::endl;
+                else std::cout << "No se pudo modificar socio " << socio.getNroSocio() << "." << std::endl;
+            }
+        }
+            break;
+        }
+    } while (opcion != 0);
 }
 
 int ArchivoSocios::getCantidad()

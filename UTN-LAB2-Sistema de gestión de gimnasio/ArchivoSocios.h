@@ -17,6 +17,7 @@ public:
 	//MODIFICAR SOCIO, TODO EL REGISTRO.
 	bool modificarSocio(Socio& socio, int nRegistro);
 	void modificarSocio();//FUNCION A LLAMAR EN EL MENU
+	void modificarSocioConOpciones();
 	//OBTIENE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 	int getCantidad();
 	//BAJA LOGICA POR DNI
@@ -56,6 +57,5 @@ public:
 
 	//Otras Funciones
 	int ultimoSocio();
-	
 };
 
