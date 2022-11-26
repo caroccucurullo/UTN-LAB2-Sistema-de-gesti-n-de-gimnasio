@@ -31,7 +31,6 @@ void Socio::CargarSocioRegCompleto()
     std::cout << "Numero Socio: ";
     std::cin >> ns;
     setNroSocio(ns);
-    std::cin.ignore();
     Persona::CargarPersona();
     std::cout << "Apto Medico (y/n): ";
     std::cin >> letra;

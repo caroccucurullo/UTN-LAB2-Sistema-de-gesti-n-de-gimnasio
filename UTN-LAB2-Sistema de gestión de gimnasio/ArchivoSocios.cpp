@@ -156,67 +156,44 @@ void ArchivoSocios::sociosPorEdad()
     else std::cout << "Edad incorrecta." << std::endl;
 }
 
+
 ///CONSULTA POR DISCIPLINA
-int ArchivoSocios::getCantidadSocioPorDis(std::string nombre)
+void ArchivoSocios::sociosPorDisciplina()
 {
-    ArchivoDisciplina arDis;
-    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-    ArchivoClaseAsignada arClA;
-    ClaseAsignada clA;
-    int cantClA = arClA.getCantidad();
-    Socio socio;
-    int cantSocio = getCantidad(), cantDis=0;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        for (int y = 0;y < cantClA;y++) {
-            clA = arClA.leerClaseAsignada(y);
-            if (socio.getNroSocio() == clA.getNroSocio() && disciplina.getCodigo()==clA.getCodDisciplina()) cantDis++;
-        }
-    }
-    return cantDis;
-}
-
-void ArchivoSocios::sociosPorDis()
-{
-    std::cin.ignore();
+    //std::cin.ignore();
     std::string cadena;
-    std::cout << "Ingrese Disciplina: ";
+    std::cout << "Ingrese nombre de disciplina a evaluar: ";
     std::getline(std::cin, cadena);
-    int cantSocioporDis = getCantidadSocioPorDis(cadena);
-
-
-
-
-    Socio* vSocio = new Socio[cantSocioporDis];
-    if (vSocio == nullptr) return;
-    copiarSocioDis(vSocio, cadena);
-    mostrarSocio(vSocio, cantSocioporDis);
-    delete[] vSocio;
-}
-
-void ArchivoSocios::copiarSocioDis(Socio* vSocio, std::string nombre)
-{
     ArchivoDisciplina arDis;
-    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-    ArchivoClaseAsignada arClA;
-    ClaseAsignada clA;
-    int cantClA = arClA.getCantidad();
-    Socio socio;
-    int cantSocio = getCantidad();
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        for (int y = 0;y < cantClA;y++) {
-            clA = arClA.leerClaseAsignada(y);
-            if (socio.getNroSocio() == clA.getNroSocio() && disciplina.getCodigo() == clA.getCodDisciplina()) vSocio[x] = socio;
+    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
+    ArchivoClaseAsignada arCla;
+    int CantRegistrosClaseAsignada = arCla.getCantidad();
+    if (CantRegistrosClaseAsignada > 0) {
+        ClaseAsignada* vClaseAsignada = new ClaseAsignada[CantRegistrosClaseAsignada];
+        if (vClaseAsignada == nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
         }
+        arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
+        Socio socio;
+        bool hay = false;
+        for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
+            if (vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
+                hay = true;
+                socio = leerSocio(buscarRegPorNumSocio(vClaseAsignada[x].getNroSocio()));
+                socio.MostrarSocio();
+                std::cout << std::endl;
+            }
+        }
+        if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
+    }
+    else
+    {
+        std::cout << "No hay registros en el Archivo o algo malio sal." << std::endl;
     }
 }
-void ArchivoSocios::mostrarSocio(Socio* vSocio, int cantidad)
-{
-    for (int x = 0;x < cantidad;x++) {
-        std::cout<<vSocio[x].MostrarSociosDatos()<<std::endl;
-    }
-}
+
+
 ///CONSULTA POR MEMBRESIA
 void ArchivoSocios::sociosPorMembresia()
 {

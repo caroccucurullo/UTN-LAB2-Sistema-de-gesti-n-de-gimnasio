@@ -538,8 +538,8 @@ void submenuMostrarSociosConsulta()
 
 		case '4':
 		{
-			ArchivoSocios archivoSocios;
-			archivoSocios.sociosPorDis();
+			/*ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorDis();*/
 		}
 		break;
 		

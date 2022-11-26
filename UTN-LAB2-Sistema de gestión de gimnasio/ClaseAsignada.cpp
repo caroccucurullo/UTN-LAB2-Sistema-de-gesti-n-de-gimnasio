@@ -23,13 +23,14 @@ void ClaseAsignada::mostrar()
 
 void ClaseAsignada::cargar()
 {
+	int n;
 	std::cout << "Codigo Disciplina: ";
-	std::cin >> _codDisciplina;
+	std::cin >> n;
 	std::cout << "Nro Socio: ";
-	std::cin >> _nroSocio;
+	std::cin >> n;
 	std::cout << "ID Profesor: ";
-	std::cin >> _idProfesor;
+	std::cin >> n;
 	std::cout << "Horario de Inicio: ";
-	std::cin >> _horarioInicio;
-	_horarioFin = _horarioInicio + 1;
+	std::cin >> n;
+	_horarioFin = getHorarioInicio() + 1;
 }

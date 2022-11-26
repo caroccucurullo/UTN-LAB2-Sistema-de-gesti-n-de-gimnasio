@@ -1,8 +1,13 @@
 #include "ArchivoClaseAsignada.h"
-#include "Socio.h"
-#include "ArchivoSocios.h"
-#include "Disciplina.h"
-#include "ArchivoDisciplina.h"
+
+bool ArchivoClaseAsignada::cargarClaseAsignada()
+{
+	
+
+
+	
+    return false;
+}
 
 bool ArchivoClaseAsignada::guardarClaseAsignada(ClaseAsignada& claseAsignada)
 {

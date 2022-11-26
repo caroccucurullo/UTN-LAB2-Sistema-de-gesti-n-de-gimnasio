@@ -37,10 +37,7 @@ public:
 	///Por Edad
 	void sociosPorEdad();//FUNCION A LLAMAR EN EL MENU
 	///Por Disciplina
-	int getCantidadSocioPorDis(std::string nombre);
-	void sociosPorDis();//FUNCION A LLAMAR EN EL MENU
-	void copiarSocioDis(Socio* vSocio, std::string nombre);
-	void mostrarSocio(Socio* vSocio, int cantidad);
+	void sociosPorDisciplina();//FUNCION A LLAMAR EN EL MENU
 	///Por Membresia
 	void sociosPorMembresia();//FUNCION A LLAMAR EN EL MENU
 	
