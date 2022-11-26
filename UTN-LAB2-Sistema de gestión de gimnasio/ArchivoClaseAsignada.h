@@ -2,9 +2,13 @@
 #include "ClaseAsignada.h"
 #include "ArchivoDisciplina.h"
 #include "ArchivoSocios.h"
+#include "ArchivoProfesor.h"
+
 class ArchivoClaseAsignada
 {
 public:
+	bool cargarClaseAsignada();
+
 	bool guardarClaseAsignada(ClaseAsignada& claseAsignada);
 	void guardarClaseAsignada();
 	ClaseAsignada leerClaseAsignada(int nRegistro);

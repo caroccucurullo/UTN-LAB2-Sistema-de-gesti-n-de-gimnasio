@@ -538,8 +538,8 @@ void submenuMostrarSociosConsulta()
 
 		case '4':
 		{
-			ArchivoSocios archivoSocios;
-			archivoSocios.sociosPorDis();
+			/*ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorDis();*/
 		}
 		break;
 		
@@ -947,15 +947,15 @@ void submenuMostrarDisciplinasLista()
 		{
 		case '1':
 		{
-			ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.ordenarPorDisciplina();
+			/*ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.ordenarPorDisciplina();*/
 		}
 		break;
 
 		case '2':
 		{
-			ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.mostrarPorHorarioAscendente();
+			/*ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.mostrarPorHorarioAscendente();*/
 		}
 		break;
 
@@ -994,15 +994,15 @@ void submenuMostrarDisciplinasConsulta()
 		{
 		case '1':
 		{
-			ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.disciplinasPorSalon();
+			/*ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorSalon();*/
 		}
 		break;
 		
 		case '2':
 		{
-			ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.disciplinasPorHorario();
+			/*ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorHorario();*/
 		}
 		break;
 
@@ -1040,8 +1040,8 @@ void submenuMostrarSalonConsulta()
 		{
 		case '1':
 		{
-			ArchivoSalon archivoSalon;
-			archivoSalon.SalonPorCupoHorario();
+			/*ArchivoSalon archivoSalon;
+			archivoSalon.SalonPorCupoHorario();*/
 		}
 		break;
 

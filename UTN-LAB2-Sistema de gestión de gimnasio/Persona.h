@@ -27,7 +27,7 @@ protected:
     bool _estado;
 public:
 
-    Persona(std::string n = "", std::string a = "", Fecha nac = Fecha(), int e = 0, std::string d="", Contacto contacto=Contacto());
+    Persona(std::string n = "", std::string a = "", Fecha nac = Fecha(), std::string d="", Contacto contacto=Contacto());
     std::string getNombre() { std::string n(_nombre); return n; }
     std::string getApellido() { std::string a(_apellido); return a; }
     Fecha getFechaNac() { return _fnac; }
@@ -43,6 +43,8 @@ public:
     void setDni(std::string d) { strcpy(_dni, d.c_str()); }
     void setContacto(Contacto contacto) { _contacto = contacto; }
 	void setEstado(bool estado) { _estado = estado; }
+
+    int calcularEdad();
 
     void MostrarPersona();
     std::string MostrarPersonaFormatoComas();

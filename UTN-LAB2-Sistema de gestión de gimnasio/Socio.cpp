@@ -24,19 +24,33 @@ std::string Socio::MostrarSociosDatos()
     return cadena;
 }
 
-void Socio::CargarSocio()
+void Socio::CargarSocioRegCompleto()
 {
     int ns;
+    char letra;
     std::cout << "Numero Socio: ";
     std::cin >> ns;
     setNroSocio(ns);
-    std::cin.ignore();
     Persona::CargarPersona();
-    std::cout << "Apto Medico (1=Si/0=No): ";
-    std::cin >> ns;
-    setAptoMed(ns);
+    std::cout << "Apto Medico (y/n): ";
+    std::cin >> letra;
+	if (letra == 'y') setAptoMed(true);
+	else setAptoMed(false);
     std::cout << "ID Membresia: ";
     std::cin >> ns;
     setIdMembresia(ns);
-    //_fIngreso.Cargar();
+}
+
+void Socio::CargarSocio()
+{
+    int ns;
+    char letra;
+    Persona::CargarPersona();
+    std::cout << "Apto Medico (y/n): ";
+    std::cin >> letra;
+    if (letra == 'y') setAptoMed(true);
+    else setAptoMed(false);
+    std::cout << "ID Membresia: ";
+    std::cin >> ns;
+    setIdMembresia(ns);
 }

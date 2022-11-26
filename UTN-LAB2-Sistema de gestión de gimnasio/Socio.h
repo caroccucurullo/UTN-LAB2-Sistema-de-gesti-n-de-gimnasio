@@ -1,15 +1,6 @@
 #pragma once
 #include "Persona.h"
 
-/* Socio : Persona:
-  -Nro. socio
-  -Peso
-  -Cobertura Medica
--Contacto de emergencia
--Apto med
--ID-Membresia
--Estado */
-
 class Socio : public Persona {
 private:
     int nroSocio;
@@ -37,6 +28,8 @@ public:
 
     void MostrarSocio();
     std::string MostrarSociosDatos();
-    void CargarSocio();
-    /*std::string setPrecision(float p);*/
+	//Carga Socio por registro completo
+    void CargarSocioRegCompleto();
+	//Carga Socio con nro de socio automatico.
+	void CargarSocio();
 };

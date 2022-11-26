@@ -19,18 +19,18 @@ public:
 	
 	int buscarRegPorCod(int cod);
 	int buscarRegPorNombre(std::string nombre);
-	int buscarRegPorSalonyHorario(int idSalon, int horario);
+	//int buscarRegPorSalonyHorario(int idSalon, int horario);
 
 	//CONSULTA POR SALONES
-	int getCantidadSalon(std::string nombreSalon);
-	void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
-	void copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon);
+	//int getCantidadSalon(std::string nombreSalon);
+	//void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
+	//void copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon);
 
 	//CONSULTA POR HORARIO
-	int getCantidadPorHorario(int horarioInicio);
-	void disciplinasPorHorario();//FUNCION A LLAMAR EN EL MENU
-	void copiarDisciplinaHorario(Disciplina* vDisciplina, int horarioInicio);
-	void mostrarDisciplina(Disciplina* vDisciplina, int cant);
+	//int getCantidadPorHorario(int horarioInicio);
+	//void disciplinasPorHorario();//FUNCION A LLAMAR EN EL MENU
+	//void copiarDisciplinaHorario(Disciplina* vDisciplina, int horarioInicio);
+	//void mostrarDisciplina(Disciplina* vDisciplina, int cant);
 
 
 	bool bajaLogica(int nRegistro);
@@ -39,6 +39,6 @@ public:
 	void altaDisciplina();//FUNCION A LLAMAR EN EL MENU
 
 	//LISTAS
-	void ordenarPorDisciplina();
-	void mostrarPorHorarioAscendente();
+	//void ordenarPorDisciplina();
+	//void mostrarPorHorarioAscendente();
 };

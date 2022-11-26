@@ -70,17 +70,6 @@ int ArchivoPagos::getCantidad()
 	return cant;
 }
 
-int ArchivoPagos::buscarPorNroSocio(int nroSocio)
-{
-	int cant = getCantidad();
-	Pago pago;
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getNroSocio() == nroSocio) return x;
-	}
-	return -1;
-}
-
 void ArchivoPagos::pagosDelMes()
 {
 	Fecha fechaActual;
@@ -101,6 +90,7 @@ void ArchivoPagos::pagosDelMes()
 	}
 	delete[] vPago;
 }
+
 int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
 {
 	int cant = getCantidad();
@@ -111,6 +101,36 @@ int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
 		if (pago.getFechaDePago().getMes() == fechaActual.getMes()) contPagoMes++;
 	}
 	return contPagoMes;
+}
+
+//CONSULTAS
+
+void ArchivoPagos::consultarPago()
+{
+	std::string dni;
+	std::cout << "Ingrese DNI a consultar: ";
+	std::cin.ignore();
+	std::getline(std::cin, dni);
+	ArchivoSocios arSocio;
+	Socio socio = arSocio.leerSocio(arSocio.buscarRegPorDni(dni));
+	int cant = getCantidad();
+	Pago pago, ultimoPago;
+	for (int x = 0;x < cant;x++) {
+		pago = leerPago(x);
+		if (pago.getNroSocio() == socio.getNroSocio()) ultimoPago = pago;
+	}
+	std::cout << "El ultimo pago realizado fue el " << ultimoPago.getFechaDePago().toString() << std::endl;
+}
+
+int ArchivoPagos::buscarPorNroSocio(int nroSocio)
+{
+	int cant = getCantidad();
+	Pago pago;
+	for (int x = 0;x < cant;x++) {
+		pago = leerPago(x);
+		if (pago.getNroSocio() == nroSocio) return x;
+	}
+	return -1;
 }
 
 //INFORMES
@@ -406,23 +426,4 @@ void ArchivoPagos::membresiaMenosVendidaMensual()
 	else {
 		std::cout << "No hay membresia menos vendida" << std::endl;
 	}
-}
-
-//CONSULTAS
-
-void ArchivoPagos::consultarPago()
-{
-	std::string dni;
-	std::cout << "Ingrese DNI a consultar: ";
-	std::cin.ignore();
-	std::getline(std::cin, dni);
-	ArchivoSocios arSocio;
-	Socio socio = arSocio.leerSocio(arSocio.buscarRegPorDni(dni));
-	int cant = getCantidad();
-	Pago pago, ultimoPago;
-	for (int x = 0;x < cant;x++) {
-		pago = leerPago(x);
-		if (pago.getNroSocio() == socio.getNroSocio()) ultimoPago = pago;
-	}
-	std::cout << "El ultimo pago realizado fue el " << ultimoPago.getFechaDePago().toString() << std::endl;
 }

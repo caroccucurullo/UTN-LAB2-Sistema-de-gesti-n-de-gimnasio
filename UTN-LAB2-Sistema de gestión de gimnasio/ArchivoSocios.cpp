@@ -3,10 +3,10 @@
 //METODOS
 bool ArchivoSocios::guardarSocio(Socio& socio)
 {
-    FILE* p = fopen("socios.dat", "ab");
-    if (p == nullptr) return false;
-    bool ok = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "ab");
+    if (pSocio == nullptr) return false;
+    bool ok = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return ok;
 }
 
@@ -14,6 +14,7 @@ void ArchivoSocios::guardarSocio()
 {
     Socio socio;
     socio.CargarSocio();
+    socio.setNroSocio(ultimoSocio()+1);
     if (guardarSocio(socio)) std::cout << "Socio " << socio.getNroSocio() << " ingresado exitosamente." << std::endl;
     else std::cout << "Error al ingresar datos." << std::endl;
 }
@@ -21,30 +22,30 @@ void ArchivoSocios::guardarSocio()
 Socio ArchivoSocios::leerSocio(int nRegistro)
 {
     Socio socio;
-    FILE* p = fopen("socios.dat", "rb");
-    if (p == nullptr) return socio;
-    fseek(p, nRegistro * sizeof(Socio), 0);
-    fread(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    if (pSocio == nullptr) return socio;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
+    fread(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return socio;
 }
 
 bool ArchivoSocios::leerTodos(Socio* socio, int cantidad)
 {
-    FILE* p = fopen("socios.dat", "rb");
-    if (p == nullptr) return false;
-    bool leyo=fread(socio, sizeof(Socio), cantidad, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    if (pSocio == nullptr) return false;
+    bool leyo=fread(socio, sizeof(Socio), cantidad, pSocio);
+    fclose(pSocio);
     return leyo;
 }
 
 bool ArchivoSocios::modificarSocio(Socio& socio, int nRegistro)
 {
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), SEEK_SET);
-    bool ok = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), SEEK_SET);
+    bool ok = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return ok;
 }
 
@@ -56,18 +57,239 @@ void ArchivoSocios::modificarSocio()
     std::getline(std::cin, dni);
     std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
     Socio socio;
-    socio.CargarSocio();
+    socio.CargarSocioRegCompleto();
     if (modificarSocio(socio, buscarRegPorDni(dni))) std::cout << "Modificado correctamente." << std::endl;
     else std::cout << "Error al modificar." << std::endl;
+}
+
+void ArchivoSocios::modificarSocioConOpciones()
+{
+    int opcion, nroSocio, nRegistro=-1;
+    std::string dni;
+    std::string cadena;
+    Fecha fecha;
+    Socio socio;
+    do {
+        std::cout << "Modificar Socio con Opciones" << std::endl;
+        std::cout << "1) Ingresar modificaciones" << std::endl;
+        std::cout << "2) Aplicar modificaciones" << std::endl;
+        std::cout << "0) Salir." << std::endl;
+        std::cin >> opcion;
+        switch (opcion)
+        {
+        case 1:
+        {
+            std::cout << "1) Ingresar DNI: " << std::endl;
+            std::cout << "2) Ingresar Numero de Socio: " << std::endl;
+            std::cout << "0) Volver." << std::endl;
+            std::cin >> opcion;
+            switch (opcion)
+            {
+            case 1:
+            {
+                std::cout << "Dni: ";
+                std::cin.ignore();
+                std::getline(std::cin, dni);
+                nRegistro = buscarRegPorDni(dni);
+            }
+            break;
+            case 2:
+            {
+                std::cout << "Numero de Socio: ";
+                std::cin >> nroSocio;
+                nRegistro = buscarRegPorNumSocio(nroSocio);
+            }
+            break;
+            }
+            if (nRegistro != -1) {
+                socio = leerSocio(nRegistro);
+                int subopcion1;
+                do {
+                    std::cout << "Que desea cambiar?" << std::endl;
+                    std::cout << "1) Datos Personales" << std::endl;
+                    std::cout << "2) Datos de Socio" << std::endl;
+                    std::cout << "0) Volver." << std::endl;
+                    std::cin >> subopcion1;
+                    switch (subopcion1)
+                    {
+                    case 1:
+                    {
+                        std::cout << "1) Nombre" << std::endl;
+                        std::cout << "2) Apellido" << std::endl;
+                        std::cout << "3) Fecha de Nacimiento" << std::endl;
+                        std::cout << "4) Contacto" << std::endl;
+                        std::cout << "5) DNI" << std::endl;
+                        std::cin >> subopcion1;
+                        switch (subopcion1)
+                        {
+                        case 1:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese Nombre: ";
+                            std::getline(std::cin, cadena);
+                            socio.setNombre(cadena);
+                        }
+                        break;
+                        case 2:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese Apellido: ";
+                            std::getline(std::cin, cadena);
+                            socio.setApellido(cadena);
+                        }
+                        break;
+                        case 3:
+                        {
+
+                            fecha.Cargar();
+                            socio.setFechaNac(fecha);
+                        }
+                        break;
+                        case 4:
+                        {
+                            Contacto contacto;
+                            std::cout << "Contacto" << std::endl;
+                            std::cout << "1) Calle" << std::endl;
+                            std::cout << "2) Numero" << std::endl;
+                            std::cout << "3) Localidad" << std::endl;
+                            std::cout << "4) Telefono" << std::endl;
+                            std::cout << "5) Email" << std::endl;
+                            std::cin >> opcion;
+                            switch (opcion)
+                            {
+                            case 1:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Calle: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setCalle(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 2:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Numero: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setNum(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 3:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Localidad: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setLocalidad(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 4:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Telefono: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setTel(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            case 5:
+                            {
+                                std::cin.ignore();
+                                std::cout << "Ingrese Email: ";
+                                std::getline(std::cin, cadena);
+                                contacto = socio.getContacto();
+                                contacto.setEmail(cadena);
+                                socio.setContacto(contacto);
+                            }
+                            break;
+                            default:
+                                break;
+                            }
+                        }
+                        break;
+                        case 5:
+                        {
+                            std::cin.ignore();
+                            std::cout << "Ingrese DNI: ";
+                            std::getline(std::cin, cadena);
+                            socio.setDni(cadena);
+                        }
+                        break;
+                        }
+                    }
+                    break;
+                    case 2:
+                    {
+                        std::cout << "1) Apto Medico" << std::endl;
+                        std::cout << "2) Membresia" << std::endl;
+                        std::cout << "3) Fecha Ingreso" << std::endl;
+                        std::cout << "4) Fecha Egreso" << std::endl;
+                        std::cin >> subopcion1;
+                        switch (subopcion1)
+                        {
+                        case 1:
+                        {
+                            char letra;
+                            std::cout << "Apto Medico (y/n): ";
+                            std::cin >> letra;
+                            if (letra == 'y') socio.setAptoMed(true);
+                            else socio.setAptoMed(false);
+                        }
+                        break;
+                        case 2:
+                        {
+                            int mem;
+                            std::cout << "Ingrese membresia: ";
+                            std::cin >> mem;
+                            socio.setIdMembresia(mem);
+                        }
+                        break;
+                        case 3:
+                            std::cout << "Ingrese Fecha de Ingreso: ";
+                            fecha.Cargar();
+                            socio.setFechaIngreso(fecha);
+                            break;
+                        case 4:
+                            std::cout << "Ingrese Fecha de Egreso: ";
+                            fecha.Cargar();
+                            socio.setFechaIngreso(fecha);
+                            break;
+                        }
+                    }
+                    break;
+                    }
+                } while (subopcion1 != 0);
+            }
+            else
+            {
+                std::cout << "No existe el registro." << std::endl;
+            }
+        }
+            break;
+        case 2:
+        {
+            if (nRegistro != -1) {
+                if (modificarSocio(socio, nRegistro)) std::cout << "Socio " << socio.getNroSocio() << " modificado correctamente." << std::endl;
+                else std::cout << "No se pudo modificar socio " << socio.getNroSocio() << "." << std::endl;
+            }
+        }
+            break;
+        }
+    } while (opcion != 0);
 }
 
 int ArchivoSocios::getCantidad()
 {
     int cant=0;
-    FILE* p = fopen("socios.dat", "rb");
-    fseek(p, 0, 2);
-    cant = ftell(p) / sizeof(Socio);
-    fclose(p);
+    FILE* pSocio = fopen("socios.dat", "rb");
+    fseek(pSocio, 0, 2);
+    cant = ftell(pSocio) / sizeof(Socio);
+    fclose(pSocio);
     return cant;
 }
 ///CONSULTA POR DNI
@@ -82,16 +304,23 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     return -1;
 }
 
+
 void ArchivoSocios::consultaPorDni()
 {
     std::string cadena;
     std::cout << "Ingrese DNI a consultar: ";
     std::cin.ignore();
     std::getline(std::cin, cadena);
-    Socio socio=leerSocio(buscarRegPorDni(cadena));
-    socio.MostrarSocio();
+    int nRegistro = buscarRegPorDni(cadena);
+    if (nRegistro != -1) {
+        Socio socio = leerSocio(nRegistro);
+        socio.MostrarSocio();
+    }
+    else
+    {
+        std::cout << "No se encontro el DNI ingresado." << std::endl;
+    }
 }
-
 
 ///CONSULTA POR NRO SOCIO
 int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
@@ -109,140 +338,110 @@ void ArchivoSocios::consultaPorNumSocio()
     int nroSocio;
     std::cout << "Ingrese Numero de Socio: ";
     std::cin >> nroSocio;
-    Socio socio = leerSocio(buscarRegPorNumSocio(nroSocio));
-    socio.MostrarSocio();
+    int nRegistro = buscarRegPorNumSocio(nroSocio);
+    if (nRegistro != -1) {
+        Socio socio = leerSocio(nRegistro);
+        socio.MostrarSocio();
+    }
+    else
+    {
+        std::cout << "No se encontro el Numero de Socio ingresado." << std::endl;
+    }
 }
 ///CONSULTA POR EDAD
-int ArchivoSocios::getCantidadEdad(int edad)
-{
-    int cant = getCantidad(), cantEdad=0;
-    Socio socio;
-    for (int x = 0;x < cant;x++) {
-        socio = leerSocio(x);
-        if (socio.getEdad()==edad) cantEdad++;
-    }
-    return cantEdad;
-}
-
 void ArchivoSocios::sociosPorEdad()
 {
     int edad;
     std::cout << "Ingrese edad: ";
     std::cin >> edad;
-    if (edad > 0 && edad <100) {
-        int cantEdad = getCantidadEdad(edad);
-        Socio* vSocio = new Socio[cantEdad];
-        if (vSocio == nullptr) return;
-        copiarSocio(vSocio, edad);
-        mostrarSocio(vSocio, cantEdad);
-        delete[] vSocio;
+    if (edad > 14 && edad <90) {
+        int cant = getCantidad();
+        if (cant > 0) {
+            bool hay = false;
+            Socio* listaCompleta = new Socio[cant];
+            if (listaCompleta == nullptr) {
+                std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+                return;
+            }
+            leerTodos(listaCompleta, cant);
+            for (int x = 0;x < cant;x++) {
+                if (listaCompleta[x].getEdad() == edad) {
+                    hay = true;
+                    std::cout << listaCompleta[x].MostrarPersonaFormatoComas() << std::endl;
+                }
+            }
+			if(!hay) std::cout << "No hay socios de esa edad." << std::endl;
+            delete[] listaCompleta;
+        }
     }
     else std::cout << "Edad incorrecta." << std::endl;
 }
 
-void ArchivoSocios::copiarSocio(Socio* vSocio, int edad)
-{
-    int cant = getCantidad();
-    Socio socio;
-    for (int x = 0;x < cant;x++) {
-        socio = leerSocio(x);
-        if (socio.getEdad() == edad) vSocio[x] = socio;
-    }
-}
 
-void ArchivoSocios::mostrarSocio(Socio* vSocio, int cantEdad)
-{
-    for (int x = 0;x < cantEdad;x++) {
-        vSocio[x].MostrarSocio();
-        std::cout << std::endl;
-    }
-}
 ///CONSULTA POR DISCIPLINA
-int ArchivoSocios::getCantidadSocioPorDis(std::string nombre)
+void ArchivoSocios::sociosPorDisciplina()
 {
-    ArchivoDisciplina arDis;
-    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-    ArchivoClaseAsignada arClA;
-    ClaseAsignada clA;
-    int cantClA = arClA.getCantidad();
-    Socio socio;
-    int cantSocio = getCantidad(), cantDis=0;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        for (int y = 0;y < cantClA;y++) {
-            clA = arClA.leerClaseAsignada(y);
-            if (socio.getNroSocio() == clA.getNroSocio() && disciplina.getCodigo()==clA.getCodDisciplina()) cantDis++;
-        }
-    }
-    return cantDis;
-}
-
-void ArchivoSocios::sociosPorDis()
-{
+    //std::cin.ignore();
     std::string cadena;
-    std::cout << "Ingrese Disciplina: ";
+    std::cout << "Ingrese nombre de disciplina a evaluar: ";
     std::getline(std::cin, cadena);
-    int cantSocioporDis = getCantidadSocioPorDis(cadena);
-    Socio* vSocio = new Socio[cantSocioporDis];
-    if (vSocio == nullptr) return;
-    copiarSocioDis(vSocio, cadena);
-    mostrarSocio(vSocio, cantSocioporDis);
-    delete[] vSocio;
-}
-
-void ArchivoSocios::copiarSocioDis(Socio* vSocio, std::string nombre)
-{
     ArchivoDisciplina arDis;
-    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-    ArchivoClaseAsignada arClA;
-    ClaseAsignada clA;
-    int cantClA = arClA.getCantidad();
-    Socio socio;
-    int cantSocio = getCantidad();
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        for (int y = 0;y < cantClA;y++) {
-            clA = arClA.leerClaseAsignada(y);
-            if (socio.getNroSocio() == clA.getNroSocio() && disciplina.getCodigo() == clA.getCodDisciplina()) vSocio[x] = socio;
+    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
+    ArchivoClaseAsignada arCla;
+    int CantRegistrosClaseAsignada = arCla.getCantidad();
+    if (CantRegistrosClaseAsignada > 0) {
+        ClaseAsignada* vClaseAsignada = new ClaseAsignada[CantRegistrosClaseAsignada];
+        if (vClaseAsignada == nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
         }
+        arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
+        Socio socio;
+        bool hay = false;
+        for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
+            if (vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
+                hay = true;
+                socio = leerSocio(buscarRegPorNumSocio(vClaseAsignada[x].getNroSocio()));
+                socio.MostrarSocio();
+                std::cout << std::endl;
+            }
+        }
+        if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
     }
-}
-///CONSULTA POR MEMBRESIA
-int ArchivoSocios::getCantidadSocioPorMembresia(int idMem)
-{
-    Socio socio;
-    int cantSocio = getCantidad(), cantMem=0;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        if (socio.getIdMembresia() == idMem) cantMem++;
+    else
+    {
+        std::cout << "No hay registros en el Archivo o algo malio sal." << std::endl;
     }
-    return cantMem;
 }
 
+
+///CONSULTA POR MEMBRESIA
 void ArchivoSocios::sociosPorMembresia()
 {
     int idMem;
     std::cout << "Id Membresia: ";
     std::cin >> idMem;
     if (idMem > 0 && idMem < 4) {
-        int cantSocioPorMem = getCantidadSocioPorMembresia(idMem);
-        Socio* vSocio = new Socio[cantSocioPorMem];
-        if (vSocio == nullptr) return;
-        copiarSocio(vSocio, idMem);
-        mostrarSocio(vSocio, cantSocioPorMem);
-        delete[] vSocio;
+        int cantidadRegistros = getCantidad();
+        if (cantidadRegistros > 0) {
+            bool hay = false;
+            Socio* vSocio = new Socio[cantidadRegistros];
+            if (vSocio == nullptr) {
+                std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+                return;
+            }
+            leerTodos(vSocio, cantidadRegistros);
+            for (int x = 0;x < cantidadRegistros;x++) {
+                if (vSocio[x].getIdMembresia() == idMem) {
+                    hay = true;
+                    std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
+                }
+            }
+			if(!hay) std::cout << "No hay registros en el Archivo." << std::endl;
+            delete[] vSocio;
+        }
     }
     else std::cout << "Error en ID membresia." << std::endl;
-}
-
-void ArchivoSocios::copiarSocioMembresia(Socio* vSocio, int idMem)
-{
-    int cantSocio = getCantidad();
-    Socio socio;
-    for (int x = 0;x < cantSocio;x++) {
-        socio = leerSocio(x);
-        if (socio.getIdMembresia() == idMem) vSocio[x] = socio;
-    }
 }
 
 bool ArchivoSocios::bajaLogica(int nRegistro)
@@ -252,13 +451,13 @@ bool ArchivoSocios::bajaLogica(int nRegistro)
     fecha.establecerFechaHoy();
     socio = leerSocio(nRegistro);
     bool flag;
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), 0);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
     socio.setEstado(false);
     socio.setFechaEgreso(fecha);
-    flag=fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    flag=fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return flag;
 }
 
@@ -280,13 +479,13 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     Fecha fecha;
     fecha.establecerFechaHoy();
     bool flag;
-    FILE* p = fopen("socios.dat", "rb+");
-    if (p == nullptr) return false;
-    fseek(p, nRegistro * sizeof(Socio), 0);
+    FILE* pSocio = fopen("socios.dat", "rb+");
+    if (pSocio == nullptr) return false;
+    fseek(pSocio, nRegistro * sizeof(Socio), 0);
     socio.setEstado(true);
     socio.setFechaIngreso(fecha);
-    flag = fwrite(&socio, sizeof(Socio), 1, p);
-    fclose(p);
+    flag = fwrite(&socio, sizeof(Socio), 1, pSocio);
+    fclose(pSocio);
     return flag;
 }
 void ArchivoSocios::altaSocio()
@@ -473,4 +672,10 @@ void ArchivoSocios::sociosActivosPorMembresia()
 
 	std::cout << "El total de socios activos con la membresia " << idM << "es de : " << cantSocios << std::endl;
 }
-  
+
+//Otras Funciones
+int ArchivoSocios::ultimoSocio()
+{
+    int cantidad = getCantidad();
+    return cantidad;
+}

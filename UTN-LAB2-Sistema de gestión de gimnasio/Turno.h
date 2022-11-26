@@ -12,7 +12,7 @@ class Turno {
         void setIdTurno(int idTurno) { _idTurno = idTurno; }
         void setNombre(std::string nombre) { strcpy(_nombre, nombre.c_str()); }
         int getIdTurno() { return _idTurno; }
-        std::string getNombre() { return _nombre; }
+		std::string getNombre() { std::string nombre(_nombre); return nombre; }
         
         void MostrarTurno();
         void CargarTurno();

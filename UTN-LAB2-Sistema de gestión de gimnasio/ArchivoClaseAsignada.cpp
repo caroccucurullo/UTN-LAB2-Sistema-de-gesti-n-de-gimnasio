@@ -1,8 +1,13 @@
 #include "ArchivoClaseAsignada.h"
-#include "Socio.h"
-#include "ArchivoSocios.h"
-#include "Disciplina.h"
-#include "ArchivoDisciplina.h"
+
+bool ArchivoClaseAsignada::cargarClaseAsignada()
+{
+	
+
+
+	
+    return false;
+}
 
 bool ArchivoClaseAsignada::guardarClaseAsignada(ClaseAsignada& claseAsignada)
 {
@@ -109,7 +114,7 @@ void ArchivoClaseAsignada::sociosPorDisciplinaActivos(int idD)
 	std::cout << "Cantidad de socios activos en la disciplina: " << cantSocios << std::endl;
 }
 
-void mostrarPorDisciplina(){
+void ArchivoClaseAsignada::mostrarPorDisciplina(){
     Socio socio;
     Disciplina disciplina;
     ClaseAsignada claseAsignada;

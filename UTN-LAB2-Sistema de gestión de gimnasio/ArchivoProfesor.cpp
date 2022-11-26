@@ -364,6 +364,6 @@ void ArchivoProfesor::mostrarProfesoresPorTurno() {
 	Profesor* profesores = new Profesor[cantidad];
 
 	completarVector(profesores, cantidad);
-	mostrarVectorPorTurno(profesores, cantidad, turno);
+	//mostrarVectorPorTurno(profesores, cantidad, turno);
 	delete[] profesores;
 }
