@@ -49,7 +49,7 @@ int main() {
             submenuSalon();
             break;
 
-        case '6':
+        case '0':
             std::cout << "\n\nSALIR" << std::endl;
             break;
 
@@ -58,7 +58,7 @@ int main() {
             break;
         }
 
-    } while (opcion != '6');
+    } while (opcion != '0');
 	
 	
   return 0;

@@ -55,6 +55,7 @@ void mostrarVectorSocios(Socio* socios, int cantidad)
     for (int i = 0; i < cantidad; i++)
     {
         socios[i].MostrarSocio();
+		std::cout << std::endl;
     }
 }
 
@@ -119,6 +120,7 @@ void mostrarVector(Profesor* profesor, int cantidad)
 	for (int i = 0; i < cantidad; i++)
 	{
 		profesor[i].MostrarProfesor();
+        std::cout << std::endl;
 	}
 }
 

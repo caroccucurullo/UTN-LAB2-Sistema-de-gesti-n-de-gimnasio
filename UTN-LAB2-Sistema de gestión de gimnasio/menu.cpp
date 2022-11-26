@@ -11,7 +11,7 @@ void menu()
 	std::cout << "4 .- DISCIPLINAS" << std::endl;
 	std::cout << "5 .- SALON" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
-	std::cout << "6 .- SALIR" << std::endl;
+	std::cout << "0 .- SALIR" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
 	std::cout << "Ingrese una opcion: ";
 
@@ -33,7 +33,7 @@ void submenuSocio()
 		std::cout << "6 .- MOSTRAR SOCIO CONSULTA" << std::endl;
 		std::cout << "7 .- MOSTRAR SOCIO INFORMES" << std::endl;
 		std::cout << "---------------------------------" << std::endl;
-		std::cout << "8 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "---------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -80,7 +80,7 @@ void submenuSocio()
 			submenuMostrarSociosInforme();
 		break;
 
-		case '8':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -89,7 +89,7 @@ void submenuSocio()
 			break;
 		}
 
-	} while (opcion != '8');
+	} while (opcion != '0');
 	system("cls");
 }
 
@@ -108,7 +108,7 @@ void submenuProfesor()
 		std::cout << "5 .- MOSTRAR PROFESORES CONSULTA" << std::endl;
 		std::cout << "6 .- MOSTRAR PROFESORES INFORMES" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "7 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -150,7 +150,7 @@ void submenuProfesor()
 			submenuMostrarProfesoresInforme();
 		break;
 
-		case '7':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -159,7 +159,7 @@ void submenuProfesor()
 			break;
 		}
 
-	} while (opcion != '7');
+	} while (opcion != '0');
 	system("cls");
 
 
@@ -179,7 +179,7 @@ void submenuAdministracion()
 		std::cout << "4 .- MOSTRAR EMPLEADOS CONSULTA" << std::endl;
 		std::cout << "5 .- MOSTRAR EMPLEADOS INFORMES" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -217,7 +217,7 @@ void submenuAdministracion()
 			submenuMostrarAdministracionInforme();
 		break;
 		
-		case '6':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -226,7 +226,7 @@ void submenuAdministracion()
 		break;
 		}
 
-	} while (opcion != '6');
+	} while (opcion != '0');
 	system("cls");
 }
 
@@ -244,7 +244,7 @@ void submenuDisciplinas()
 		std::cout << "4 .- MOSTRAR DISCIPLINAS LISTA" << std::endl;
 		std::cout << "5 .- MOSTRAR DISCIPLINAS CONSULTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -282,7 +282,7 @@ void submenuDisciplinas()
 			submenuMostrarDisciplinasConsulta();
 		break;
 	
-		case '6':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -291,7 +291,7 @@ void submenuDisciplinas()
 		break;
 		}
 
-	} while (opcion != '6');
+	} while (opcion != '0');
 	system("cls");
 }
 
@@ -308,7 +308,7 @@ void submenuSalon()
 		std::cout << "3 .- MODIFICAR DATOS DE SALON" << std::endl;
 		std::cout << "4 .- MOSTRAR SALONES CONSULTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "5 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -342,7 +342,7 @@ void submenuSalon()
 			submenuMostrarSalonConsulta();
 		break;
 
-		case '5':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 		
@@ -351,7 +351,7 @@ void submenuSalon()
 		break;
 		}
 
-	} while (opcion != '5');
+	} while (opcion != '0');
 }
 
 void submenuPagoMembresia()
@@ -369,7 +369,7 @@ void submenuPagoMembresia()
 		std::cout << "5 .- MOSTRAR ULTIMO PAGO DE SOCIO" << std::endl;
 		std::cout << "6 .- MOSTRAR INFORMES DE RECAUDACION" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "7 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -417,7 +417,7 @@ void submenuPagoMembresia()
 			submenuInformesRecaudacion();
 		break;
 			
-		case '7':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -426,7 +426,7 @@ void submenuPagoMembresia()
 		break;
 		}
 
-	} while (opcion != '7');
+	} while (opcion != '0');
 }
 
 void submenuMostrarSociosLista()
@@ -437,12 +437,12 @@ void submenuMostrarSociosLista()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR SOCIOS LISTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 ORDENADOS POR NOMBRE.- " << std::endl;
-		std::cout << "2 ORDENADOS POR EDAD.-" << std::endl;
-		std::cout << "3 ORDENADOS POR ESTADO.-" << std::endl;
-		std::cout << "4 ORDENADOS POR APTO MEDICO.-" << std::endl;
+		std::cout << "1 .- ORDENADOS POR NOMBRE" << std::endl;
+		std::cout << "2 .- ORDENADOS POR EDAD" << std::endl;
+		std::cout << "3 .- ORDENADOS POR ESTADO" << std::endl;
+		std::cout << "4 .- ORDENADOS POR APTO MEDICO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "5 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -479,7 +479,7 @@ void submenuMostrarSociosLista()
 		}
 		break;
 
-		case '5':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -488,7 +488,7 @@ void submenuMostrarSociosLista()
 			break;
 		}
 
-	} while (opcion != '5');
+	} while (opcion != '0');
 	
 }
 
@@ -506,7 +506,7 @@ void submenuMostrarSociosConsulta()
 		std::cout << "4 .- CONSULTA POR DISCIPLINA" << std::endl;
 		std::cout << "5 .- CONSULTA POR MEMBRESIA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 		
@@ -550,7 +550,7 @@ void submenuMostrarSociosConsulta()
 		}
 		break;
 
-		case '6':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -559,7 +559,7 @@ void submenuMostrarSociosConsulta()
 		break;
 		}
 
-	} while (opcion != '6');
+	} while (opcion != '0');
 }
 
 void submenuMostrarSociosInforme()
@@ -576,7 +576,7 @@ void submenuMostrarSociosInforme()
 		std::cout << "4 .- BAJAS ANUALES" << std::endl;
 		std::cout << "5 .- ACTIVOS POR MEMBRESIA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -620,7 +620,7 @@ void submenuMostrarSociosInforme()
 		}
 		break;
 
-		case '6':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -629,7 +629,7 @@ void submenuMostrarSociosInforme()
 		break;
 		}
 
-	} while (opcion != '6');
+	} while (opcion != '0');
 	
 	
 }
@@ -648,7 +648,7 @@ void submenuMostrarProfesoresLista()
 		std::cout << "4 .- POR ESTADO" << std::endl;
 		std::cout << "5 .- POR TURNO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "6 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -692,7 +692,7 @@ void submenuMostrarProfesoresLista()
 		}
 		break;
 		
-		case '6':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 			
@@ -701,7 +701,7 @@ void submenuMostrarProfesoresLista()
 			break;
 		}
 
-	} while (opcion != '6');
+	} while (opcion != '0');
 	
 }
 
@@ -717,7 +717,7 @@ void submenuMostrarProfesoresConsulta()
 		std::cout << "2 .- CONSULTA POR DISCIPLINA" << std::endl;
 		std::cout << "3 .- CONSULTA POR HORARIO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "4 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -747,7 +747,7 @@ void submenuMostrarProfesoresConsulta()
 		}
 		break;
 
-		case '4':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -756,7 +756,7 @@ void submenuMostrarProfesoresConsulta()
 			break;
 		}
 
-	} while (opcion != '4');
+	} while (opcion != '0');
 }
 
 void submenuMostrarProfesoresInforme()
@@ -771,7 +771,7 @@ void submenuMostrarProfesoresInforme()
 		std::cout << "2 .- BAJAS ANUALES" << std::endl;
 		std::cout << "3 .- SUELDO ANUAL" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "4 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -801,7 +801,7 @@ void submenuMostrarProfesoresInforme()
 		}	
 		break;
 
-		case '4':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -810,7 +810,7 @@ void submenuMostrarProfesoresInforme()
 		break;
 		}
 
-	} while (opcion != '4');
+	} while (opcion != '0');
 	
 }
 
@@ -824,9 +824,9 @@ void submenuMostrarAdministracionConsulta()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "1 .- CONSULTA POR DNI" << std::endl;
 		std::cout << "2 .- CONSULTA POR CARGO" << std::endl;
-		std::cout << "2 .- CONSULTA POR FECHA DE INGRESO" << std::endl;
+		std::cout << "3 .- CONSULTA POR FECHA DE INGRESO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -856,7 +856,7 @@ void submenuMostrarAdministracionConsulta()
 		}
 		break;
 
-		case '4':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -865,7 +865,7 @@ void submenuMostrarAdministracionConsulta()
 			break;
 		}
 
-	} while (opcion != '4');
+	} while (opcion != '0');
 
 	
 }
@@ -882,7 +882,7 @@ void submenuMostrarAdministracionInforme()
 		std::cout << "2 .- BAJAS ANUALES" << std::endl;
 		std::cout << "3 .- SUELDO ANUAL" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "4 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -912,7 +912,7 @@ void submenuMostrarAdministracionInforme()
 		}
 		break;
 
-		case '4':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
@@ -921,7 +921,7 @@ void submenuMostrarAdministracionInforme()
 			break;
 		}
 
-	} while (opcion != '4');
+	} while (opcion != '0');
 
 }
 
@@ -936,7 +936,7 @@ void submenuMostrarDisciplinasLista()
 		std::cout << "1 .- ORDENAR POR DICIPLINAS" << std::endl;
 		std::cout << "2 .- MOSTRAR HORARIOS" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -959,7 +959,7 @@ void submenuMostrarDisciplinasLista()
 		}
 		break;
 
-		case '3':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -968,7 +968,7 @@ void submenuMostrarDisciplinasLista()
 		break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '0');
 
 }
 
@@ -983,7 +983,7 @@ void submenuMostrarDisciplinasConsulta()
 		std::cout << "1 .- CONSULTA POR SALONES" << std::endl;
 		std::cout << "2 .- CONSULTA POR HORARIOS" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "3 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -998,15 +998,15 @@ void submenuMostrarDisciplinasConsulta()
 			archivoDisciplina.disciplinasPorSalon();
 		}
 		break;
+		
+		case '2':
 		{
 			ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.disciplinasPorHorario();
 		}
-		case '2':
-
 		break;
 
-		case '3':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -1015,7 +1015,7 @@ void submenuMostrarDisciplinasConsulta()
 		break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '0');
 
 }
 
@@ -1029,7 +1029,7 @@ void submenuMostrarSalonConsulta()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "1 .- CONSULTA POR CUPO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "2 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -1045,16 +1045,16 @@ void submenuMostrarSalonConsulta()
 		}
 		break;
 
-		case '2':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
-			break;
+		break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '0');
 
 }
 
@@ -1075,7 +1075,7 @@ void submenuInformesRecaudacion()
 		std::cout << "7 .- MEMBRESIA MENOS VENDIDA ANUAL" << std::endl;
 		std::cout << "8 .- MEMBRESIA MENOS VENDIDA MENSUAL" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "9 .- Volver al menu principal" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Ingrese una opcion: ";
 
@@ -1090,6 +1090,7 @@ void submenuInformesRecaudacion()
 			archivoPagos.pagosAnualesSocio();
 		}
 		break;
+		
 		case '2':
 		{
 			ArchivoPagos archivoPagos;
@@ -1139,7 +1140,7 @@ void submenuInformesRecaudacion()
 		}
 		break;
 
-		case '9':
+		case '0':
 			std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
@@ -1148,5 +1149,5 @@ void submenuInformesRecaudacion()
 		break;
 		}
 
-	} while (opcion != '3');
+	} while (opcion != '0');
 }

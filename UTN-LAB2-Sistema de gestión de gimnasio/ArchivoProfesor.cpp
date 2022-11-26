@@ -357,7 +357,9 @@ void ArchivoProfesor::mostrarProfesoresPorTurno() {
 
 	std::string turno;
 	std::cout << "Ingrese Turno: ";
+	std::cin.ignore();
 	std::getline(std::cin, turno);
+
 	int cantidad = getCantidad();
 	Profesor* profesores = new Profesor[cantidad];
 
