@@ -4,6 +4,7 @@
 #include "ArchivoDisciplina.h"
 #include "ArchivoMembresia.h"
 #include "funciones.h"
+#include "Cargar.h"
 class ArchivoSocios
 {
 public:

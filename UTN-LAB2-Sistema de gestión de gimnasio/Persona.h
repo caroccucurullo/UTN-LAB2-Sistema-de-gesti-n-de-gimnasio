@@ -16,6 +16,7 @@ Direccion
 #include "Fecha.h"
 #include "Contacto.h"
 
+
 class Persona {
 protected:
     char _nombre[20];

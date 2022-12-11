@@ -13,7 +13,8 @@ bool ArchivoSocios::guardarSocio(Socio& socio)
 void ArchivoSocios::guardarSocio()
 {
     Socio socio;
-    socio.CargarSocio();
+    Cargar cargarSocio;
+    cargarSocio.CargarSocio(socio);
     socio.setNroSocio(ultimoSocio()+1);
     if (guardarSocio(socio)) std::cout << "Socio " << socio.getNroSocio() << " ingresado exitosamente." << std::endl;
     else std::cout << "Error al ingresar datos." << std::endl;

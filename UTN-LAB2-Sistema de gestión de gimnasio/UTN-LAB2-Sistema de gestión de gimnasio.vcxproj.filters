@@ -81,6 +81,15 @@
     <ClCompile Include="ArchivoTurno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArchivoPagos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pago.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cargar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Socio.h">
@@ -144,6 +153,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoTurno.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoPagos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cargar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

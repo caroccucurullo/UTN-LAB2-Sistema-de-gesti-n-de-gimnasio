@@ -148,6 +148,7 @@
     <ClCompile Include="ArchivoSalon.cpp" />
     <ClCompile Include="ArchivoSocios.cpp" />
     <ClCompile Include="ArchivoTurno.cpp" />
+    <ClCompile Include="Cargar.cpp" />
     <ClCompile Include="ClaseAsignada.cpp" />
     <ClCompile Include="Contacto.cpp" />
     <ClCompile Include="Disciplina.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="ArchivoSalon.h" />
     <ClInclude Include="ArchivoSocios.h" />
     <ClInclude Include="ArchivoTurno.h" />
+    <ClInclude Include="Cargar.h" />
     <ClInclude Include="ClaseAsignada.h" />
     <ClInclude Include="Contacto.h" />
     <ClInclude Include="Disciplina.h" />
