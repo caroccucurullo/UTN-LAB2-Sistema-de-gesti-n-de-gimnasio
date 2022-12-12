@@ -14,10 +14,37 @@ void ArchivoSocios::guardarSocio()
 {
     Socio socio;
     Cargar cargarSocio;
-    cargarSocio.CargarSocio(socio);
+    
+    do{
+        cargarSocio.CargarSocio(socio);
+    } while (!validarDatosSocio(socio));
+    
     socio.setNroSocio(ultimoSocio()+1);
     if (guardarSocio(socio)) std::cout << "Socio " << socio.getNroSocio() << " ingresado exitosamente." << std::endl;
     else std::cout << "Error al ingresar datos." << std::endl;
+}
+
+bool ArchivoSocios::validarDatosSocio(Socio& socio)
+{
+    Cargar cargarSocio;
+    char letra;
+    system("cls");
+    socio.MostrarSocio();
+    std::cout << std::endl << "Datos ingresados correctamente?(y/n): ";
+    std::cin >> letra;
+    while (letra != 'y' && letra != 'n' && letra != 'Y' && letra != 'N')
+    {
+        std::cout << "Letra incorrecta. Escriba 'y' o 'n': ";
+        std::cin >> letra;
+    }
+    if (letra == 'n' || letra == 'N') {
+        system("cls");
+        return false;
+    }
+    else if (letra == 'y' || letra == 'Y') {
+        system("cls");
+        return true;
+    }
 }
 
 Socio ArchivoSocios::leerSocio(int nRegistro)
@@ -540,6 +567,7 @@ void ArchivoSocios::mostrarPorEstado(){
         if (socios[i].getEstado() == true)
         {
             socios[i].MostrarSocio();
+            std::cout << std::endl;
         }
     }
 
@@ -558,6 +586,7 @@ void ArchivoSocios::mostrarPorAptoMedico(){
         if (socios[i].getAptoMed() == true)
         {
             socios[i].MostrarSocio();
+            std::cout << std::endl;
         }
     }
     delete[] socios;

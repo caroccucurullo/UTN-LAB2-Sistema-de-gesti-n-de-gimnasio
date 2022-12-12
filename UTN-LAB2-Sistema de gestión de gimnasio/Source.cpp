@@ -50,7 +50,7 @@ int main() {
             break;
 
         case '0':
-            std::cout << "\n\nSALIR" << std::endl;
+            //std::cout << "\n\nSALIR" << std::endl;
             break;
 
         default:

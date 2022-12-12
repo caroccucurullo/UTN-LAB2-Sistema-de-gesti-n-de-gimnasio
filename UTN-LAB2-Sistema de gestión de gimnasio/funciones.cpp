@@ -22,7 +22,7 @@ void ordenarPorNombreDescendiente(Socio* socios, int cantidad){
     {
         for (int j = 0; j < cantidad - 1; j++)
         {
-            if (strcmp(socios[j].getNombre().c_str(), socios[j + 1].getNombre().c_str()) < 0)
+            if (strcmp(socios[j].getNombre().c_str(), socios[j + 1].getNombre().c_str()) > 0)
             {
                 aux = socios[j];
                 socios[j] = socios[j + 1];
@@ -40,7 +40,7 @@ void ordenarPorEdadDescendiente(Socio* socios, int cantidad)
     {
         for (int j = 0; j < cantidad - 1; j++)
         {
-            if (socios[j].getEdad() < socios[j + 1].getEdad())
+            if (socios[j].getEdad() > socios[j + 1].getEdad())
             {
                 aux = socios[j];
                 socios[j] = socios[j + 1];

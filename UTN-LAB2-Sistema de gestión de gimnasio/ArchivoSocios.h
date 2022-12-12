@@ -11,6 +11,8 @@ public:
 	//GUARDAR SOCIO
 	bool guardarSocio(Socio &socio);
 	void guardarSocio();//FUNCION A LLAMAR EN EL MENU
+	//VALIDAR DATOS
+	bool validarDatosSocio(Socio& socio);
 	//LEE SOCIO, 1 SOLO REGISTRO
 	Socio leerSocio(int nRegistro);
 	//COPIA TODOS LOS REGISTROS EN UN VECTOR

@@ -1,14 +1,13 @@
 #include "Cargar.h"
 
-void Cargar::CargarPersona()
+void Cargar::CargarPersona(Socio& socio)
 {
 	//std::cout << "CARGAR.CARGARPERSONA" << std::endl;
 	ArchivoSocios arSocio;
-	Socio socio;
 	Fecha fnac;
 	Contacto contacto;
-	std::cin.ignore();
 	std::string cadena;
+	std::cin.ignore();
 	std::cout << "Nombre: ";
 	std::getline(std::cin, cadena);
 	socio.setNombre(cadena);
@@ -23,11 +22,11 @@ void Cargar::CargarPersona()
 	std::cout << "DNI: ";
 	std::getline(std::cin, cadena);
 	while (arSocio.buscarRegPorDni(cadena) != -1) {
-		std::cout << arSocio.buscarRegPorDni(cadena) << std::endl;
+		//std::cout << arSocio.buscarRegPorDni(cadena) << std::endl;
 		std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
 	}
-	std::cout << arSocio.buscarRegPorDni(cadena) << std::endl;
+	//std::cout << arSocio.buscarRegPorDni(cadena) << std::endl;
 	socio.setDni(cadena);
 	std::cout << "Contacto: " << std::endl;
 	contacto.cargar();
@@ -41,21 +40,28 @@ void Cargar::CargarSocio(Socio& socio)
 	ArchivoMembresia arMem;
 	char letra;
 	std::string cadena;
-	CargarPersona();
+	CargarPersona(socio);
 	std::cout << "Apto Medico (y/n): ";
 	std::cin >> letra;
-	if (letra == 'y') socio.setAptoMed(true);
-	else socio.setAptoMed(false);
+	while (letra != 'y' && letra != 'n' && letra != 'Y' && letra != 'N')
+	{
+		std::cout << "Letra incorrecta. Escriba 'y' o 'n': ";
+		std::cin >> letra;
+
+	}
+	if (letra == 'y'|| letra != 'Y') socio.setAptoMed(true);
+	else if (letra == 'n' || letra != 'N') socio.setAptoMed(false);
 	std::cout << "Nombre Membresia: ";
 	std::cin.ignore();
 	std::getline(std::cin, cadena);
-	while (arMem.buscarRegPorNombre(cadena) != -1) {
+	
+	while (arMem.buscarRegPorNombre(cadena) == -1) {
 		std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
 	}
-	socio.setIdMembresia(arMem.buscarRegPorNombre(cadena));
+	socio.setIdMembresia(arMem.buscarRegPorNombre(cadena)+1);
 
-	system("cls");
+	/*system("cls");
 	socio.MostrarSocio();
 	std::cout << std::endl;
 	std::cout << "Datos ingresados correctamente?(y/n): ";
@@ -72,5 +78,5 @@ void Cargar::CargarSocio(Socio& socio)
 	}
 	else {
 		return;
-	}
+	}*/
 }

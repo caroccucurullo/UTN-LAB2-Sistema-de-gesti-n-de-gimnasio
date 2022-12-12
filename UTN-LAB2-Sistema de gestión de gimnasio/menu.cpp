@@ -14,7 +14,6 @@ void menu()
 	std::cout << "0 .- SALIR" << std::endl;
 	std::cout << "---------------------------------" << std::endl;
 	std::cout << "Ingrese una opcion: ";
-
 }
 
 void submenuSocio()
@@ -47,6 +46,7 @@ void submenuSocio()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.guardarSocio();
+			system("pause>nul");
 		}
 		break;
 
@@ -54,6 +54,7 @@ void submenuSocio()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.bajaSocio();
+			system("pause>nul");
 		}
 		break;
 
@@ -61,6 +62,7 @@ void submenuSocio()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.modificarSocio();
+			system("pause>nul");
 		}
 		break;
 
@@ -81,16 +83,17 @@ void submenuSocio()
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		//system("pause>nul");
+		system("cls");
 	} while (opcion != '0');
-	system("cls");
 }
 
 void submenuProfesor()
@@ -121,6 +124,7 @@ void submenuProfesor()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.guardarProfesor();
+			system("pause>nul");
 		}
 		break;
 
@@ -128,6 +132,7 @@ void submenuProfesor()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.bajaProfesor();
+			system("pause>nul");
 		}	
 		break;
 
@@ -135,6 +140,7 @@ void submenuProfesor()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.modificarProfesor();
+			system("pause>nul");
 		}
 			break;
 
@@ -151,18 +157,16 @@ void submenuProfesor()
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-	system("cls");
-
-
 }
 
 void submenuAdministracion()
@@ -192,6 +196,7 @@ void submenuAdministracion()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.guardarRol();
+			system("pause>nul");
 		}
 		break;
 
@@ -199,6 +204,7 @@ void submenuAdministracion()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.bajaRol();
+			system("pause>nul");
 		}
 		break;
 
@@ -206,6 +212,7 @@ void submenuAdministracion()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.modificarRol();
+			system("pause>nul");
 		}
 		break;
 
@@ -218,16 +225,16 @@ void submenuAdministracion()
 		break;
 		
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-	system("cls");
 }
 
 void submenuDisciplinas()
@@ -257,6 +264,7 @@ void submenuDisciplinas()
 		{
 			ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.guardarDisciplina();
+			system("pause>nul");
 		}
 		break;
 
@@ -264,6 +272,7 @@ void submenuDisciplinas()
 		{	
 			ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.bajaDisciplina();
+			system("pause>nul");
 		}	
 		break;
 
@@ -271,6 +280,7 @@ void submenuDisciplinas()
 		{
 			ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.modificarDisciplina();
+			system("pause>nul");
 		}
 		break;
 
@@ -283,16 +293,16 @@ void submenuDisciplinas()
 		break;
 	
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-	system("cls");
 }
 
 void submenuSalon()
@@ -321,6 +331,7 @@ void submenuSalon()
 		{
 			ArchivoSalon archivoSalon;
 			archivoSalon.guardarSalon();
+			system("pause>nul");
 		}
 		break;
 
@@ -328,6 +339,7 @@ void submenuSalon()
 		{
 			ArchivoSalon archivoSalon;
 			archivoSalon.bajaSalon();
+			system("pause>nul");
 		}
 		break;
 
@@ -335,6 +347,7 @@ void submenuSalon()
 		{
 			ArchivoSalon archivoSalon;
 			archivoSalon.modificarSalon();
+			system("pause>nul");
 		}
 		break;
 
@@ -343,14 +356,15 @@ void submenuSalon()
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 		
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 }
 
@@ -382,6 +396,7 @@ void submenuPagoMembresia()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.guardarPago();
+			system("pause>nul");
 		}
 		break;
 
@@ -389,6 +404,7 @@ void submenuPagoMembresia()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.consultarPago();
+			system("pause>nul");
 		}
 		break;
 
@@ -396,6 +412,7 @@ void submenuPagoMembresia()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.modificarPago();
+			system("pause>nul");
 		}
 		break;
 
@@ -403,6 +420,7 @@ void submenuPagoMembresia()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.pagosDelMes();
+			system("pause>nul");
 		}
 		break;
 		
@@ -410,6 +428,7 @@ void submenuPagoMembresia()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.consultarPago();
+			system("pause>nul");
 		}
 		break;
 
@@ -418,14 +437,15 @@ void submenuPagoMembresia()
 		break;
 			
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 }
 
@@ -455,6 +475,7 @@ void submenuMostrarSociosLista()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.ordenarPorNombre();
+			system("pause>nul");
 		}
 		break;
 		
@@ -462,6 +483,7 @@ void submenuMostrarSociosLista()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.ordenarPorEdad();
+			system("pause>nul");
 		}
 		break;
 		
@@ -469,6 +491,7 @@ void submenuMostrarSociosLista()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.mostrarPorEstado();
+			system("pause>nul");
 		}
 		break;
 	
@@ -476,18 +499,21 @@ void submenuMostrarSociosLista()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.mostrarPorAptoMedico();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		//system("pause>nul");
+		system("cls");
 	} while (opcion != '0');
 	
 }
@@ -519,6 +545,7 @@ void submenuMostrarSociosConsulta()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.consultaPorDni();
+			system("pause>nul");
 		}
 		break;
 
@@ -526,6 +553,7 @@ void submenuMostrarSociosConsulta()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.consultaPorNumSocio();
+			system("pause>nul");
 		}
 		break;
 
@@ -533,6 +561,7 @@ void submenuMostrarSociosConsulta()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosPorEdad();
+			system("pause>nul");
 		}
 		break;
 
@@ -540,6 +569,7 @@ void submenuMostrarSociosConsulta()
 		{
 			/*ArchivoSocios archivoSocios;
 			archivoSocios.sociosPorDis();*/
+			system("pause>nul");
 		}
 		break;
 		
@@ -547,18 +577,21 @@ void submenuMostrarSociosConsulta()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosPorMembresia();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
+			//system("cls");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 }
 
@@ -589,6 +622,7 @@ void submenuMostrarSociosInforme()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosAltasMensuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -596,6 +630,7 @@ void submenuMostrarSociosInforme()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosBajasMensuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -603,6 +638,7 @@ void submenuMostrarSociosInforme()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosAltasAnuales();
+			system("pause>nul");
 		}
 		break;
 			
@@ -610,6 +646,7 @@ void submenuMostrarSociosInforme()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosBajasAnuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -617,18 +654,20 @@ void submenuMostrarSociosInforme()
 		{
 			ArchivoSocios archivoSocios;
 			archivoSocios.sociosActivosPorMembresia();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 	
 	
@@ -661,6 +700,7 @@ void submenuMostrarProfesoresLista()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.ordenarPorApellido();
+			system("pause>nul");
 		}
 		break;
 
@@ -668,6 +708,7 @@ void submenuMostrarProfesoresLista()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.ordenarPorDisciplina();
+			system("pause>nul");
 		}
 		break;
 
@@ -675,6 +716,7 @@ void submenuMostrarProfesoresLista()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.ordenarPorSueldo();
+			system("pause>nul");
 		}
 		break;
 
@@ -682,6 +724,7 @@ void submenuMostrarProfesoresLista()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.mostrarProfesoresPorEstado();
+			system("pause>nul");
 		}
 		break;
 		
@@ -689,18 +732,20 @@ void submenuMostrarProfesoresLista()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.mostrarProfesoresPorTurno();
+			system("pause>nul");
 		}
 		break;
 		
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 			
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 	
 }
@@ -730,6 +775,7 @@ void submenuMostrarProfesoresConsulta()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.consultaPorDni();
+			system("pause>nul");
 		}
 		break;
 
@@ -737,6 +783,7 @@ void submenuMostrarProfesoresConsulta()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.ProfePorDis();
+			system("pause>nul");
 		}
 		break;
 
@@ -744,18 +791,20 @@ void submenuMostrarProfesoresConsulta()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.ProfePorTurno();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 }
 
@@ -784,6 +833,7 @@ void submenuMostrarProfesoresInforme()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorAltasAnuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -791,6 +841,7 @@ void submenuMostrarProfesoresInforme()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorBajasAnuales();
+			system("pause>nul");
 		}
 		break;
 			
@@ -798,18 +849,20 @@ void submenuMostrarProfesoresInforme()
 		{
 			ArchivoProfesor archivoProfesor;
 			archivoProfesor.profesorSueldoAnual();
+			system("pause>nul");
 		}	
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 	
 }
@@ -839,6 +892,7 @@ void submenuMostrarAdministracionConsulta()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.consultaPorDni();
+			system("pause>nul");
 		}
 		break;
 
@@ -846,6 +900,7 @@ void submenuMostrarAdministracionConsulta()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.rolPorCargo();
+			system("pause>nul");
 		}
 		break;
 
@@ -853,21 +908,21 @@ void submenuMostrarAdministracionConsulta()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.rolPorFechaIngreso();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-
-	
 }
 
 void submenuMostrarAdministracionInforme()
@@ -895,6 +950,7 @@ void submenuMostrarAdministracionInforme()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.rolAltasAnuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -902,6 +958,7 @@ void submenuMostrarAdministracionInforme()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.rolBajasAnuales();
+			system("pause>nul");
 		}
 		break;
 
@@ -909,20 +966,21 @@ void submenuMostrarAdministracionInforme()
 		{
 			ArchivoRol archivoRol;
 			archivoRol.rolSueldoAnual();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 			break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 			break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-
 }
 
 void submenuMostrarDisciplinasLista()
@@ -949,6 +1007,7 @@ void submenuMostrarDisciplinasLista()
 		{
 			/*ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.ordenarPorDisciplina();*/
+			system("pause>nul");
 		}
 		break;
 
@@ -956,20 +1015,21 @@ void submenuMostrarDisciplinasLista()
 		{
 			/*ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.mostrarPorHorarioAscendente();*/
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-
 }
 
 void submenuMostrarDisciplinasConsulta()
@@ -996,6 +1056,7 @@ void submenuMostrarDisciplinasConsulta()
 		{
 			/*ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.disciplinasPorSalon();*/
+			system("pause>nul");
 		}
 		break;
 		
@@ -1003,20 +1064,21 @@ void submenuMostrarDisciplinasConsulta()
 		{
 			/*ArchivoDisciplina archivoDisciplina;
 			archivoDisciplina.disciplinasPorHorario();*/
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-
 }
 
 void submenuMostrarSalonConsulta()
@@ -1042,20 +1104,21 @@ void submenuMostrarSalonConsulta()
 		{
 			/*ArchivoSalon archivoSalon;
 			archivoSalon.SalonPorCupoHorario();*/
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
-
 }
 
 void submenuInformesRecaudacion()
@@ -1088,6 +1151,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.pagosAnualesSocio();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1095,6 +1159,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.recaudacionPorMembresia();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1102,6 +1167,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.recaudacionAnual();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1109,6 +1175,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.recaudacionMensual();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1116,6 +1183,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.membresiaMasVendidaAnual();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1123,6 +1191,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.membresiaMasVendidaMensual();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1130,6 +1199,7 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.membresiaMenosVendidaAnual();
+			system("pause>nul");
 		}
 		break;
 		
@@ -1137,17 +1207,19 @@ void submenuInformesRecaudacion()
 		{
 			ArchivoPagos archivoPagos;
 			archivoPagos.membresiaMenosVendidaMensual();
+			system("pause>nul");
 		}
 		break;
 
 		case '0':
-			std::cout << "\n\nVolver al menu principal" << std::endl;
+			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
+			system("pause>nul");
 		break;
 		}
-
+		system("cls");
 	} while (opcion != '0');
 }
