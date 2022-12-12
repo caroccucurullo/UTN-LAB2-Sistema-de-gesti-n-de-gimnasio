@@ -12,11 +12,37 @@ bool ArchivoProfesor::guardarProfesor(Profesor& profesor)
 void ArchivoProfesor::guardarProfesor()
 {
 	Profesor profesor;
-	profesor.cargarProfesor();
+	Cargar cargarProfesor;
+
+	do {
+		cargarProfesor.cargarProfesor(profesor);
+	} while (!validarDatosProfesor(profesor));
+	
+	profesor.setId(ultimoProfesor() + 1);
+	
 	if (guardarProfesor(profesor))
 		std::cout << "Profesor guardado correctamente" << std::endl;
 	else
 		std::cout << "Error al guardar el profesor" << std::endl;
+}
+
+bool ArchivoProfesor::validarDatosProfesor(Profesor& profesor)
+{
+	char letra;
+	system("cls");
+	profesor.MostrarProfesor();
+	std::cout << std::endl << "Datos ingresados correctamente?(y/n): ";
+	std::cin >> letra;
+	while (letra != 'y' && letra != 'n' && letra != 'Y' && letra != 'N')
+	{
+		std::cout << "Letra incorrecta. Escriba 'y' o 'n': ";
+		std::cin >> letra;
+	}
+	if (letra == 'n' || letra == 'N') {
+		system("cls");
+		return false;
+	}
+	return true;
 }
 
 Profesor ArchivoProfesor::leerProfesor(int nRegistro)
@@ -62,6 +88,10 @@ void ArchivoProfesor::modificarProfesor()
 		std::cout << "Profesor modificado correctamente" << std::endl;
 	else
 		std::cout << "Error al modificar el profesor" << std::endl;
+}
+
+void ArchivoProfesor::modificarProfesorConOpciones()
+{
 }
 
 int ArchivoProfesor::getCantidad()
@@ -366,4 +396,10 @@ void ArchivoProfesor::mostrarProfesoresPorTurno() {
 	completarVector(profesores, cantidad);
 	//mostrarVectorPorTurno(profesores, cantidad, turno);
 	delete[] profesores;
+}
+
+int ArchivoProfesor::ultimoProfesor()
+{
+	int cantidad = getCantidad();
+	return cantidad;
 }

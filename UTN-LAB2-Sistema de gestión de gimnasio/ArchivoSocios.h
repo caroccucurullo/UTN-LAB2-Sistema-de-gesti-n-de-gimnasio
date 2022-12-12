@@ -19,8 +19,8 @@ public:
 	bool leerTodos(Socio* socio, int cantidad);
 	//MODIFICAR SOCIO, TODO EL REGISTRO.
 	bool modificarSocio(Socio& socio, int nRegistro);
-	void modificarSocio();//FUNCION A LLAMAR EN EL MENU
-	void modificarSocioConOpciones();
+	void modificarSocio();
+	void modificarSocioConOpciones();//FUNCION A LLAMAR EN EL MENU
 	//OBTIENE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 	int getCantidad();
 	//BAJA LOGICA POR DNI
@@ -62,6 +62,6 @@ public:
 
 	//Otras Funciones
 	int ultimoSocio();
-	bool validarDigitosDni(std::string cadena);
+	
 };
 

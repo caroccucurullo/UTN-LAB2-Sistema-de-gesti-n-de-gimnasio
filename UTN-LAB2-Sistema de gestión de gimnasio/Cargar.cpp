@@ -20,7 +20,7 @@ void Cargar::CargarPersona(Socio& socio)
 	std::cin.ignore();
 	std::cout << "DNI (8 digitos): ";
 	std::getline(std::cin, cadena);
-	while (!arSocio.validarDigitosDni(cadena)) {
+	while (!validarDigitosDni(cadena)) {
 		std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
 	}
@@ -28,7 +28,7 @@ void Cargar::CargarPersona(Socio& socio)
 		
 		std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
-		while (!arSocio.validarDigitosDni(cadena)) {
+		while (!validarDigitosDni(cadena)) {
 			std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
 			std::getline(std::cin, cadena);
 		}
@@ -37,6 +37,45 @@ void Cargar::CargarPersona(Socio& socio)
 	std::cout << "Contacto: " << std::endl;
 	contacto.cargar();
 	socio.setContacto(contacto);
+}
+
+void Cargar::CargarPersona(Profesor& profesor)
+{
+	ArchivoProfesor arProf;
+	Fecha fnac;
+	Contacto contacto;
+	std::string cadena;
+	std::cin.ignore();
+	std::cout << "Nombre: ";
+	std::getline(std::cin, cadena);
+	profesor.setNombre(cadena);
+	std::cout << "Apellido: ";
+	std::getline(std::cin, cadena);
+	profesor.setApellido(cadena);
+	std::cout << "Fecha de nacimiento: " << std::endl;
+	fnac.Cargar();
+	profesor.setFechaNac(fnac);
+	profesor.setEdad(profesor.calcularEdad());
+	std::cin.ignore();
+	std::cout << "DNI (8 digitos): ";
+	std::getline(std::cin, cadena);
+	while (!validarDigitosDni(cadena)) {
+		std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+		std::getline(std::cin, cadena);
+	}
+	while (arProf.buscarRegPorDni(cadena) != -1) {
+
+		std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
+		std::getline(std::cin, cadena);
+		while (!validarDigitosDni(cadena)) {
+			std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+			std::getline(std::cin, cadena);
+		}
+	}
+	profesor.setDni(cadena);
+	std::cout << "Contacto: " << std::endl;
+	contacto.cargar();
+	profesor.setContacto(contacto);
 }
 
 void Cargar::CargarSocio(Socio& socio)
@@ -65,4 +104,32 @@ void Cargar::CargarSocio(Socio& socio)
 		std::getline(std::cin, cadena);
 	}
 	socio.setIdMembresia(arMem.buscarRegPorNombre(cadena)+1);
+}
+
+void Cargar::cargarProfesor(Profesor& profesor)
+{
+	std::string cadena;
+	float sueldo;
+	ArchivoDisciplina arDis;
+	
+	CargarPersona(profesor);
+	std::cout << "Nombre de Disciplina: ";
+	std::getline(std::cin, cadena);
+	while (arDis.buscarRegPorNombre(cadena) == -1) {
+		std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+		std::getline(std::cin, cadena);
+	}
+	profesor.setIdDisciplina(arDis.buscarRegPorNombre(cadena)+1);
+	std::cout << "Turno: ";
+	std::getline(std::cin, cadena);
+	profesor.setTurno(cadena);
+	std::cout << "Sueldo: ";
+	std::cin >> sueldo;
+	profesor.setSueldo(sueldo);
+}
+
+bool Cargar::validarDigitosDni(std::string cadena)
+{
+	if (cadena.length() == 8) return true;
+	else return false;
 }

@@ -538,19 +538,20 @@ bool ArchivoSocios::bajaLogica(int nRegistro)
 void ArchivoSocios::bajaSocio()
 {
     std::string dni;
+    Cargar cargar;
     std::cin.ignore();
 
     std::cout << "Ingrese dni a dar de baja (8 digitos): ";
     std::getline(std::cin, dni);
 
-    while (!validarDigitosDni(dni)) {
+    while (!cargar.validarDigitosDni(dni)) {
         std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
         std::getline(std::cin, dni);
     }
     while (buscarRegPorDni(dni) == -1) {
         std::cout << "No existe socio con DNI " << dni << " ingrese nuevamente: ";
         std::getline(std::cin, dni);
-        while (!validarDigitosDni(dni)) {
+        while (!cargar.validarDigitosDni(dni)) {
             std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
             std::getline(std::cin, dni);
         }
@@ -817,10 +818,4 @@ int ArchivoSocios::ultimoSocio()
 {
     int cantidad = getCantidad();
     return cantidad;
-}
-
-bool ArchivoSocios::validarDigitosDni(std::string cadena)
-{
-    if (cadena.length() == 8) return true;
-    else return false;
 }

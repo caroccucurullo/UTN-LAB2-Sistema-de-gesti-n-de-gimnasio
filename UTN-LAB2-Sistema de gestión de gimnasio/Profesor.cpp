@@ -9,7 +9,7 @@ Profesor::Profesor(int id, int idDis, std::string turno, Fecha fIn, float s) {
 }
 
 void Profesor::MostrarProfesor() {
-	std::cout << "ID: " << _id << std::endl;
+	if(_id!=0) std::cout << "ID: " << _id << std::endl;
 	Persona::MostrarPersona();
 	std::cout << "ID Disciplina: " << _idDisciplina << std::endl;
 	std::cout << "Turno: " << _turno << std::endl;
@@ -20,8 +20,8 @@ void Profesor::MostrarProfesor() {
 
 void Profesor::cargarProfesor() {
 	std::string cadena;
-	std::cout << "ID: ";
-	std::cin >> _id;
+	/*std::cout << "ID: ";
+	std::cin >> _id;*/
 	std::cin.ignore();
 	Persona::CargarPersona();
 	std::cout << "Id Disciplina: ";
