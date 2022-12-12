@@ -10,7 +10,7 @@ Socio::Socio(int ns, bool am, int idMem, Fecha fIngreso, Fecha fEgreso) {
 }
 
 void Socio::MostrarSocio() {
-    std::cout << "Nro. Socio: " << nroSocio << std::endl;
+    if(nroSocio!=0) std::cout << "Nro. Socio: " << nroSocio << std::endl;
     Persona::MostrarPersona();
     std::cout << "Apto Medico: " << aptoMed << std::endl;
     std::cout << "ID Membresia: " << idMembresia << std::endl;
