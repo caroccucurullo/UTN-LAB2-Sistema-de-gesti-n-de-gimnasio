@@ -480,30 +480,37 @@ void ArchivoSocios::sociosPorDisciplina()
 ///CONSULTA POR MEMBRESIA
 void ArchivoSocios::sociosPorMembresia()
 {
-    int idMem;
-    std::cout << "Id Membresia: ";
-    std::cin >> idMem;
-    if (idMem > 0 && idMem < 4) {
-        int cantidadRegistros = getCantidad();
-        if (cantidadRegistros > 0) {
-            bool hay = false;
-            Socio* vSocio = new Socio[cantidadRegistros];
-            if (vSocio == nullptr) {
-                std::cout << "No se pudo abrir el archivo de registros." << std::endl;
-                return;
-            }
-            leerTodos(vSocio, cantidadRegistros);
-            for (int x = 0;x < cantidadRegistros;x++) {
-                if (vSocio[x].getIdMembresia() == idMem) {
-                    hay = true;
-                    std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
-                }
-            }
-			if(!hay) std::cout << "No hay registros en el Archivo." << std::endl;
-            delete[] vSocio;
-        }
+    ArchivoMembresia arMem;
+    Membresia mem;
+    std::string cadena;
+    std::cin.ignore();
+    std::cout << "Nombre de Membresia: ";
+    std::getline(std::cin, cadena);
+    while (arMem.buscarRegPorNombre(cadena) == -1) {
+        std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+        std::getline(std::cin, cadena);
     }
-    else std::cout << "Error en ID membresia." << std::endl;
+    system("cls");
+    mem = arMem.leerMembresia(arMem.buscarRegPorNombre(cadena));
+    int cantidadRegistros = getCantidad();
+    if (cantidadRegistros > 0) {
+        bool hay = false;
+        Socio* vSocio = new Socio[cantidadRegistros];
+        if (vSocio == nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
+        }
+        leerTodos(vSocio, cantidadRegistros);
+        std::cout << "Miembros " << mem.getNombre() << std::endl;
+        for (int x = 0;x < cantidadRegistros;x++) {
+            if (vSocio[x].getIdMembresia() == mem.getId()) {
+                hay = true;
+                std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
+            }
+        }
+        if (!hay) std::cout << "No hay registros en el Archivo." << std::endl;
+        delete[] vSocio;
+    }
 }
 
 bool ArchivoSocios::bajaLogica(int nRegistro)

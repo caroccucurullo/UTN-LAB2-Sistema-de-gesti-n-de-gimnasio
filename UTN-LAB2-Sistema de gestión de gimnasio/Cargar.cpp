@@ -55,6 +55,7 @@ void Cargar::CargarSocio(Socio& socio)
 	}
 	if (letra == 'y'|| letra != 'Y') socio.setAptoMed(true);
 	else if (letra == 'n' || letra != 'N') socio.setAptoMed(false);
+	
 	std::cout << "Nombre Membresia: ";
 	std::cin.ignore();
 	std::getline(std::cin, cadena);
