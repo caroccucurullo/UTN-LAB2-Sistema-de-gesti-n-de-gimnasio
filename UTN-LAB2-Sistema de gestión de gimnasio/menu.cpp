@@ -61,7 +61,7 @@ void submenuSocio()
 		case '3': 
 		{
 			ArchivoSocios archivoSocios;
-			archivoSocios.modificarSocio();
+			archivoSocios.modificarSocioConOpciones();
 			system("pause>nul");
 		}
 		break;

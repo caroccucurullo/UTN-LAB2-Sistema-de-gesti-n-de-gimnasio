@@ -92,7 +92,7 @@ void ArchivoSocios::modificarSocio()
 
 void ArchivoSocios::modificarSocioConOpciones()
 {
-    int opcion, nroSocio, nRegistro=-1;
+    int opcion1, subopcion1, nroSocio, nRegistro=-1;
     std::string dni;
     std::string cadena;
     Fecha fecha;
@@ -102,19 +102,21 @@ void ArchivoSocios::modificarSocioConOpciones()
         std::cout << "1) Ingresar modificaciones" << std::endl;
         std::cout << "2) Aplicar modificaciones" << std::endl;
         std::cout << "0) Salir." << std::endl;
-        std::cin >> opcion;
-        switch (opcion)
+        std::cin >> opcion1;
+        system("cls");
+        switch (opcion1)
         {
         case 1:
         {
             std::cout << "1) Ingresar DNI: " << std::endl;
             std::cout << "2) Ingresar Numero de Socio: " << std::endl;
             std::cout << "0) Volver." << std::endl;
-            std::cin >> opcion;
-            switch (opcion)
+            std::cin >> subopcion1;
+            system("cls");
+            switch (subopcion1)
             {
             case 1:
-            {
+            {  
                 std::cout << "Dni: ";
                 std::cin.ignore();
                 std::getline(std::cin, dni);
@@ -131,14 +133,17 @@ void ArchivoSocios::modificarSocioConOpciones()
             }
             if (nRegistro != -1) {
                 socio = leerSocio(nRegistro);
-                int subopcion1;
+                int subopcion2, subopcion3;
+                system("cls");
                 do {
+                    system("cls");
                     std::cout << "Que desea cambiar?" << std::endl;
                     std::cout << "1) Datos Personales" << std::endl;
                     std::cout << "2) Datos de Socio" << std::endl;
                     std::cout << "0) Volver." << std::endl;
-                    std::cin >> subopcion1;
-                    switch (subopcion1)
+                    std::cin >> subopcion2;
+                    system("cls");
+                    switch (subopcion2)
                     {
                     case 1:
                     {
@@ -147,8 +152,10 @@ void ArchivoSocios::modificarSocioConOpciones()
                         std::cout << "3) Fecha de Nacimiento" << std::endl;
                         std::cout << "4) Contacto" << std::endl;
                         std::cout << "5) DNI" << std::endl;
-                        std::cin >> subopcion1;
-                        switch (subopcion1)
+                        std::cout << "0) Volver" << std::endl;
+                        std::cin >> subopcion3;
+                        system("cls");
+                        switch (subopcion3)
                         {
                         case 1:
                         {
@@ -168,13 +175,13 @@ void ArchivoSocios::modificarSocioConOpciones()
                         break;
                         case 3:
                         {
-
                             fecha.Cargar();
                             socio.setFechaNac(fecha);
                         }
                         break;
                         case 4:
                         {
+                            int subopcion4;
                             Contacto contacto;
                             std::cout << "Contacto" << std::endl;
                             std::cout << "1) Calle" << std::endl;
@@ -182,8 +189,10 @@ void ArchivoSocios::modificarSocioConOpciones()
                             std::cout << "3) Localidad" << std::endl;
                             std::cout << "4) Telefono" << std::endl;
                             std::cout << "5) Email" << std::endl;
-                            std::cin >> opcion;
-                            switch (opcion)
+                            std::cout << "0) Volver" << std::endl;
+                            std::cin >> subopcion4;
+                            system("cls");
+                            switch (subopcion4)
                             {
                             case 1:
                             {
@@ -257,24 +266,46 @@ void ArchivoSocios::modificarSocioConOpciones()
                         std::cout << "2) Membresia" << std::endl;
                         std::cout << "3) Fecha Ingreso" << std::endl;
                         std::cout << "4) Fecha Egreso" << std::endl;
-                        std::cin >> subopcion1;
-                        switch (subopcion1)
+                        std::cout << "0) Volver" << std::endl;
+                        std::cin >> subopcion3;
+                        system("cls");
+                        switch (subopcion3)
                         {
                         case 1:
                         {
                             char letra;
                             std::cout << "Apto Medico (y/n): ";
                             std::cin >> letra;
+                            while (letra != 'y' && letra != 'n' && letra != 'Y' && letra != 'N')
+                            {
+                                std::cout << "Letra incorrecta. Escriba 'y' o 'n': ";
+                                std::cin >> letra;
+
+                            }
+                            if (letra == 'y' || letra != 'Y') socio.setAptoMed(true);
+                            else if (letra == 'n' || letra != 'N') socio.setAptoMed(false);
+                            /*std::cout << "Apto Medico (y/n): ";
+                            std::cin >> letra;
                             if (letra == 'y') socio.setAptoMed(true);
-                            else socio.setAptoMed(false);
+                            else socio.setAptoMed(false);*/
                         }
                         break;
                         case 2:
                         {
-                            int mem;
+                            ArchivoMembresia arMem;
+                            std::cout << "Nombre Membresia: ";
+                            std::cin.ignore();
+                            std::getline(std::cin, cadena);
+
+                            while (arMem.buscarRegPorNombre(cadena) == -1) {
+                                std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+                                std::getline(std::cin, cadena);
+                            }
+                            socio.setIdMembresia(arMem.buscarRegPorNombre(cadena) + 1);
+                            /*int mem;
                             std::cout << "Ingrese membresia: ";
                             std::cin >> mem;
-                            socio.setIdMembresia(mem);
+                            socio.setIdMembresia(mem);*/
                         }
                         break;
                         case 3:
@@ -291,11 +322,12 @@ void ArchivoSocios::modificarSocioConOpciones()
                     }
                     break;
                     }
-                } while (subopcion1 != 0);
+                } while (subopcion2 != 0);
             }
             else
             {
                 std::cout << "No existe el registro." << std::endl;
+                system("pause>nul");
             }
         }
             break;
@@ -304,11 +336,13 @@ void ArchivoSocios::modificarSocioConOpciones()
             if (nRegistro != -1) {
                 if (modificarSocio(socio, nRegistro)) std::cout << "Socio " << socio.getNroSocio() << " modificado correctamente." << std::endl;
                 else std::cout << "No se pudo modificar socio " << socio.getNroSocio() << "." << std::endl;
+                system("pause>nul");
             }
         }
             break;
         }
-    } while (opcion != 0);
+        system("cls");
+    } while (opcion1 != 0);
 }
 
 int ArchivoSocios::getCantidad()
