@@ -645,8 +645,8 @@ void submenuMostrarSociosConsulta()
 
 		case '4':
 		{
-			/*ArchivoSocios archivoSocios;
-			archivoSocios.sociosPorDis();*/
+			ArchivoSocios archivoSocios;
+			archivoSocios.sociosPorDisciplina();
 			system("pause>nul");
 		}
 		break;

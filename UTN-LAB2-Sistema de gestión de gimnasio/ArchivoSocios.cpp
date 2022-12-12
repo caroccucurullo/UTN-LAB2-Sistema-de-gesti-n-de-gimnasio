@@ -443,11 +443,16 @@ void ArchivoSocios::sociosPorEdad()
 ///CONSULTA POR DISCIPLINA
 void ArchivoSocios::sociosPorDisciplina()
 {
-    //std::cin.ignore();
     std::string cadena;
+    ArchivoDisciplina arDis;
+    std::cin.ignore();
     std::cout << "Ingrese nombre de disciplina a evaluar: ";
     std::getline(std::cin, cadena);
-    ArchivoDisciplina arDis;
+    while (arDis.buscarRegPorNombre(cadena) == -1) {
+        std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+        std::getline(std::cin, cadena);
+    }
+    system("cls");
     Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
     ArchivoClaseAsignada arCla;
     int CantRegistrosClaseAsignada = arCla.getCantidad();
@@ -460,12 +465,12 @@ void ArchivoSocios::sociosPorDisciplina()
         arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
         Socio socio;
         bool hay = false;
+        std::cout<<"Miembros de "<<disciplina.getNombre() << std::endl;
         for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
             if (vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
                 hay = true;
                 socio = leerSocio(buscarRegPorNumSocio(vClaseAsignada[x].getNroSocio()));
-                socio.MostrarSocio();
-                std::cout << std::endl;
+                std::cout << socio.MostrarPersonaFormatoComas() <<std::endl;
             }
         }
         if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
