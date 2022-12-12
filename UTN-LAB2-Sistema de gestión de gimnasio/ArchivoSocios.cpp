@@ -26,7 +26,6 @@ void ArchivoSocios::guardarSocio()
 
 bool ArchivoSocios::validarDatosSocio(Socio& socio)
 {
-    Cargar cargarSocio;
     char letra;
     system("cls");
     socio.MostrarSocio();
@@ -41,10 +40,11 @@ bool ArchivoSocios::validarDatosSocio(Socio& socio)
         system("cls");
         return false;
     }
-    else if (letra == 'y' || letra == 'Y') {
+    /*else if (letra == 'y' || letra == 'Y') {
         system("cls");
         return true;
-    }
+    }*/
+    return true;
 }
 
 Socio ArchivoSocios::leerSocio(int nRegistro)
