@@ -724,7 +724,7 @@ void ArchivoSocios::sociosAltasMensuales()
         }
     }
 	
-    std::cout << "El total de altas del mes " << mes << " del anio " << anio << "es de : " << cantAltas << std::endl;
+    std::cout << "El total de altas del mes " << mes << " del anio " << anio << " es de : " << cantAltas << std::endl;
 }
 
 void ArchivoSocios::sociosBajasMensuales()
@@ -748,7 +748,7 @@ void ArchivoSocios::sociosBajasMensuales()
 		}
 	}
 
-	std::cout << "El total de bajas del mes " << mes << " del anio " << anio << "es de : " << cantBajas << std::endl;
+	std::cout << "El total de bajas del mes " << mes << " del anio " << anio << " es de : " << cantBajas << std::endl;
 }
 
 void ArchivoSocios::sociosAltasAnuales()
@@ -768,7 +768,7 @@ void ArchivoSocios::sociosAltasAnuales()
 		}
 	}
 
-	std::cout << "El total de altas del anio " << anio << "es de : " << cantAltas << std::endl;
+	std::cout << "El total de altas del anio " << anio << " es de : " << cantAltas << std::endl;
 }
 
 void ArchivoSocios::sociosBajasAnuales()
@@ -789,7 +789,7 @@ void ArchivoSocios::sociosBajasAnuales()
 		}
 	}
 
-	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+	std::cout << "El total de bajas del anio " << anio << " es de : " << cantBajas << std::endl;
 }
 
 void ArchivoSocios::sociosActivosPorMembresia()
@@ -809,7 +809,7 @@ void ArchivoSocios::sociosActivosPorMembresia()
 		}
 	}
 
-	std::cout << "El total de socios activos con la membresia " << idM << "es de : " << cantSocios << std::endl;
+	std::cout << "El total de socios activos con la membresia " << idM << " es de : " << cantSocios << std::endl;
 }
 
 //Otras Funciones
