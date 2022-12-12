@@ -18,6 +18,8 @@ void submenuDisciplinas();
 void submenuSalon();
 void submenuPagoMembresia();
 void submenuMostrarSociosLista();
+void subSubMenuOrdenarPorEstado();
+void subSubMenuOrdenarPorAptoMedico();
 void submenuMostrarSociosConsulta();
 void submenuMostrarSociosInforme();
 void submenuMostrarProfesoresLista();

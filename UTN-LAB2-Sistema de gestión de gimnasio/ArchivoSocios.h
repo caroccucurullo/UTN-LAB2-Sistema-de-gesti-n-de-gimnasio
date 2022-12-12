@@ -55,10 +55,13 @@ public:
 	//Listado
 	void ordenarPorNombre();
 	void ordenarPorEdad();
-	void mostrarPorEstado();
+	void mostrarPorEstadoActivo();
+	void mostrarPorEstadoInactivo();
 	void mostrarPorAptoMedico();
+	void mostrarPorAptoMedicoNo();
 
 	//Otras Funciones
 	int ultimoSocio();
+	bool validarDigitosDni(std::string cadena);
 };
 

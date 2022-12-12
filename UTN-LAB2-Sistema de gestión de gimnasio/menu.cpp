@@ -489,17 +489,19 @@ void submenuMostrarSociosLista()
 		
 		case '3':
 		{
-			ArchivoSocios archivoSocios;
+			/*ArchivoSocios archivoSocios;
 			archivoSocios.mostrarPorEstado();
-			system("pause>nul");
+			system("pause>nul");*/
+			subSubMenuOrdenarPorEstado();
 		}
 		break;
 	
 		case '4':
 		{
-			ArchivoSocios archivoSocios;
+			/*ArchivoSocios archivoSocios;
 			archivoSocios.mostrarPorAptoMedico();
-			system("pause>nul");
+			system("pause>nul");*/
+			subSubMenuOrdenarPorAptoMedico();
 		}
 		break;
 
@@ -516,6 +518,82 @@ void submenuMostrarSociosLista()
 		system("cls");
 	} while (opcion != '0');
 	
+}
+
+void subSubMenuOrdenarPorEstado()
+{
+	int opcion;
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "ORDENADOS POR ESTADO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- ACTIVO" << std::endl;
+		std::cout << "2 .- INACTIVO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+		std::cin >> opcion;
+		system("cls");
+		switch (opcion)
+		{
+		case 1:
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorEstadoActivo();
+			system("pause>nul");
+		}
+			break;
+		case 2:
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorEstadoInactivo();
+			system("pause>nul");
+		}
+			break;
+		default:
+			break;
+		}
+		system("cls");
+	} while (opcion != 0);
+}
+
+void subSubMenuOrdenarPorAptoMedico()
+{
+	int opcion;
+	do {
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "ORDENADOS POR APTO MEDICO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "1 .- ACTIVO" << std::endl;
+		std::cout << "2 .- INACTIVO" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "0 .- Volver al menu principal" << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
+		std::cout << "Ingrese una opcion: ";
+		std::cin >> opcion;
+		system("cls");
+		switch (opcion)
+		{
+		case 1:
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorAptoMedico();
+			system("pause>nul");
+		}
+		break;
+		case 2:
+		{
+			ArchivoSocios archivoSocios;
+			archivoSocios.mostrarPorAptoMedicoNo();
+			system("pause>nul");
+		}
+		break;
+		default:
+			break;
+		}
+		system("cls");
+	} while (opcion != 0);
 }
 
 void submenuMostrarSociosConsulta()

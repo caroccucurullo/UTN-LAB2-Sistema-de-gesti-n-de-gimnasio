@@ -526,10 +526,24 @@ bool ArchivoSocios::bajaLogica(int nRegistro)
 void ArchivoSocios::bajaSocio()
 {
     std::string dni;
-    std::cout << "Ingrese dni a dar de baja: ";
     std::cin.ignore();
+
+    std::cout << "Ingrese dni a dar de baja (8 digitos): ";
     std::getline(std::cin, dni);
-    if (bajaLogica(buscarRegPorDni(dni))) std::cout << "Baja de " << dni << " realizada exitosamente." << std::endl;
+
+    while (!validarDigitosDni(dni)) {
+        std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+        std::getline(std::cin, dni);
+    }
+    while (buscarRegPorDni(dni) == -1) {
+        std::cout << "No existe socio con DNI " << dni << " ingrese nuevamente: ";
+        std::getline(std::cin, dni);
+        while (!validarDigitosDni(dni)) {
+            std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+            std::getline(std::cin, dni);
+        }
+    }
+	if (bajaLogica(buscarRegPorDni(dni))) std::cout << "Baja de " << dni << " realizada exitosamente." << std::endl;
     else std::cout << "Baja de " << dni << " erronea. Intente nuevamente." << std::endl;
 }
 
@@ -589,10 +603,11 @@ void ArchivoSocios::ordenarPorEdad()
     delete[] socios;
 }
 
-void ArchivoSocios::mostrarPorEstado(){
+void ArchivoSocios::mostrarPorEstadoActivo(){
     ArchivoSocios archivoSocios;
     int cantidad = archivoSocios.getCantidad();
     Socio* socios = new Socio[cantidad];
+    bool hay = false;
 
     completarVectorSocios(socios, cantidad);
 
@@ -600,10 +615,35 @@ void ArchivoSocios::mostrarPorEstado(){
     {
         if (socios[i].getEstado() == true)
         {
+            hay = true;
             socios[i].MostrarSocio();
             std::cout << std::endl;
         }
     }
+	if (!hay) std::cout << "No hay socios activos." << std::endl;
+
+    delete[] socios;
+}
+
+void ArchivoSocios::mostrarPorEstadoInactivo()
+{
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
+    bool hay = false;
+    
+    completarVectorSocios(socios, cantidad);
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (socios[i].getEstado() == false)
+        {
+            hay = true;
+            socios[i].MostrarSocio();
+            std::cout << std::endl;
+        }
+    }
+	if (!hay) std::cout << "No hay socios inactivos." << std::endl;
 
     delete[] socios;
 }
@@ -612,17 +652,40 @@ void ArchivoSocios::mostrarPorAptoMedico(){
     ArchivoSocios archivoSocios;
     int cantidad = archivoSocios.getCantidad();
     Socio* socios = new Socio[cantidad];
-
+    bool hay = false;
     completarVectorSocios(socios, cantidad);
 
     for (int i = 0; i < cantidad; i++)
     {
         if (socios[i].getAptoMed() == true)
         {
+            hay = true;
             socios[i].MostrarSocio();
             std::cout << std::endl;
         }
     }
+    if (!hay) std::cout << "No hay socios con apto medico." << std::endl;
+    delete[] socios;
+}
+
+void ArchivoSocios::mostrarPorAptoMedicoNo()
+{
+    ArchivoSocios archivoSocios;
+    int cantidad = archivoSocios.getCantidad();
+    Socio* socios = new Socio[cantidad];
+    bool hay = false;
+    completarVectorSocios(socios, cantidad);
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (socios[i].getAptoMed() == false)
+        {
+            hay = true;
+            socios[i].MostrarSocio();
+            std::cout << std::endl;
+        }
+    }
+    if (!hay) std::cout << "No hay socios sin apto medico." << std::endl;
     delete[] socios;
 }
 
@@ -742,4 +805,10 @@ int ArchivoSocios::ultimoSocio()
 {
     int cantidad = getCantidad();
     return cantidad;
+}
+
+bool ArchivoSocios::validarDigitosDni(std::string cadena)
+{
+    if (cadena.length() == 8) return true;
+    else return false;
 }
