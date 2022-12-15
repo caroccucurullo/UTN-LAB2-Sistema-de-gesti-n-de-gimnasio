@@ -590,7 +590,7 @@ void ArchivoProfesor::profesorBajasAnuales()
 		}
 	}
 
-	std::cout << "El total de bajas del anio " << anio << "es de : " << cantBajas << std::endl;
+	std::cout << "El total de bajas del anio " << anio << " es de : " << cantBajas << std::endl;
 }
 
 void ArchivoProfesor::profesorSueldoAnual()
