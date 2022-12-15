@@ -448,18 +448,6 @@ void ArchivoProfesor::mostrarProfe(Profesor* vProfe, int cant)
 }
 
 //CONSULTA POR Turno
-int ArchivoProfesor::getCantidadProfePorTurno(std::string turno)
-{
-	int cantProfe = getCantidad(), cantHorario = 0;
-	Profesor profesor;
-	for (int x = 0;x < cantProfe;x++) {
-		profesor = leerProfesor(x);
-		if (profesor.getTurno() == turno) cantHorario++;
-	}
-	return cantHorario;
-
-}
-
 void ArchivoProfesor::profePorTurno()
 {
 	std::string cadena;
@@ -488,18 +476,6 @@ void ArchivoProfesor::profePorTurno()
 	}
 	else {
 		std::cout << "No hay registros en el archivo de profores."<<std::endl;
-	}
-}
-
-void ArchivoProfesor::copiarProfeTurno(Profesor* vProfe, std::string turno)
-{
-	Profesor profesor;
-	int cantProfe = getCantidad();
-	for (int x = 0;x < cantProfe;x++) {
-		profesor = leerProfesor(x);
-		if (profesor.getTurno() == turno) {
-			vProfe[x] = profesor;
-		}
 	}
 }
 
