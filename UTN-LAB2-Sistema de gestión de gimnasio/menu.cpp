@@ -1069,7 +1069,7 @@ void submenuMostrarDisciplinasLista()
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "MOSTRAR DISCIPLINAS LISTA" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
-		std::cout << "1 .- ORDENAR POR DICIPLINAS" << std::endl;
+		std::cout << "1 .- ORDENAR POR SALONES" << std::endl;
 		std::cout << "2 .- MOSTRAR HORARIOS" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "0 .- Volver al menu principal" << std::endl;
