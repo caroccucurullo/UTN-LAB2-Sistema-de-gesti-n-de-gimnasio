@@ -304,7 +304,7 @@ void ArchivoPagos::recaudacionPorMembresia()
 		}
 	}
 
-	std::cout << "Recaudacion de la membresia "<<mem.getNombre()<< " del mes " << mes << " del anio " << anio << "es de : " << total << std::endl;
+	std::cout << "Recaudacion de la membresia "<<mem.getNombre()<< " del mes " << mes << " del anio " << anio << " es de : " << total << std::endl;
 }
 
 void ArchivoPagos::recaudacionAnual()
@@ -325,7 +325,7 @@ void ArchivoPagos::recaudacionAnual()
 		}
 	}
 
-	std::cout << "Recaudacion del anio " << anio << "es de: " << total << std::endl;
+	std::cout << "Recaudacion del anio " << anio << " es de: " << total << std::endl;
 }
 
 void ArchivoPagos::recaudacionMensual()
@@ -348,7 +348,7 @@ void ArchivoPagos::recaudacionMensual()
 		}
 	}
 
-	std::cout << "Recaudacion del mes " << mes << " del anio " << anio << "es de: " << total << std::endl;
+	std::cout << "Recaudacion del mes " << mes << " del anio " << anio << " es de: " << total << std::endl;
 }
 
 void ArchivoPagos::membresiaMasVendidaAnual()
@@ -540,13 +540,13 @@ void ArchivoPagos::membresiaMenosVendidaMensual()
 	}
 
 	if (cantM < cantM2 && cantM < cantM3) {
-		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia " << idM << std::endl;
+		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia ORO" << std::endl;
 	}
 	else if (cantM2 < cantM && cantM2 < cantM3) {
-		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia " << idM2 << std::endl;
+		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia PLATA" << std::endl;
 	}
 	else if (cantM3 < cantM && cantM3 < cantM2) {
-		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia " << idM3 << std::endl;
+		std::cout << "La membresia menos vendida del mes " << mes << " del anio " << anio << " es la membresia BRONCE" << std::endl;
 	}
 	else {
 		std::cout << "No hay membresia menos vendida" << std::endl;
