@@ -65,6 +65,7 @@ int ArchivoDisciplina::getCantidad()
 {
     int cant = 0;
     FILE* p = fopen("disciplinas.dat", "rb");
+    if (p == nullptr) return cant;
     fseek(p, 0, 2);
     cant = ftell(p) / sizeof(Disciplina);
     fclose(p);
@@ -116,18 +117,40 @@ int ArchivoDisciplina::buscarRegPorNombre(std::string nombre)
 //	}
 //	return cantSalon;
 //}
-//void ArchivoDisciplina::disciplinasPorSalon()
-//{
-//    std::string cadena;
-//    std::cout << "Ingrese nombre del Salon: ";
-//	std::cin >> cadena;
-//	int cant = getCantidadSalon(cadena);
-//	Disciplina* vDisciplina = new Disciplina[cant];
-//	if (vDisciplina == nullptr) return;
-//	copiarDisciplinaPorSalon(vDisciplina, cadena);
-//	mostrarDisciplina(vDisciplina, cant);
-//	delete[] vDisciplina;
-//}
+void ArchivoDisciplina::disciplinasPorSalon()
+{
+    ArchivoSalon arSalon;
+    std::string cadena;
+    int cantDisciplina = getCantidad();
+    int cantSalon = arSalon.getCantidad();
+    if (cantDisciplina > 0 && cantSalon > 0) {
+        Disciplina* vDisciplina = new Disciplina[cantDisciplina];
+        if(vDisciplina==nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
+        }
+        leerTodas(vDisciplina, cantDisciplina);
+        std::cout << "Ingrese nombre del Salon: ";
+	    std::cin.ignore();
+	    std::getline(std::cin, cadena);
+        while (arSalon.buscarRegPorNombre(cadena) == -1) {
+            std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+            std::getline(std::cin, cadena);
+        }
+        system("cls");
+        Salon salon = arSalon.leerSalon(arSalon.buscarRegPorNombre(cadena));
+        std::cout << "Disciplinas del Salon " << salon.getNombre() << std::endl;
+        for (int x = 0;x < cantDisciplina;x++) {
+            if (vDisciplina[x].getIdSalon() == salon.getId()) {
+				std::cout << vDisciplina[x].getNombre() << std::endl;
+            }
+        }
+        delete[] vDisciplina;
+    }
+    else {
+        std::cout << "No hay registros en el archivo." << std::endl;
+    }
+}
 //void ArchivoDisciplina::copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon)
 //{
 //    ArchivoSalon arSalon;

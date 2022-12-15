@@ -450,18 +450,20 @@ void ArchivoSocios::sociosPorDisciplina()
 {
     std::string cadena;
     ArchivoDisciplina arDis;
-    std::cin.ignore();
-    std::cout << "Ingrese nombre de disciplina a evaluar: ";
-    std::getline(std::cin, cadena);
-    while (arDis.buscarRegPorNombre(cadena) == -1) {
-        std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
-        std::getline(std::cin, cadena);
-    }
-    system("cls");
-    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
     ArchivoClaseAsignada arCla;
     int CantRegistrosClaseAsignada = arCla.getCantidad();
-    if (CantRegistrosClaseAsignada > 0) {
+    int cantDisciplina = arDis.getCantidad();
+    int cantSocios = getCantidad();
+    if (cantDisciplina > 0 && CantRegistrosClaseAsignada > 0 && cantSocios > 0) {
+        std::cout << "Ingrese nombre de disciplina a evaluar: ";
+        std::cin.ignore();
+        std::getline(std::cin, cadena);
+        while (arDis.buscarRegPorNombre(cadena) == -1) {
+            std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+            std::getline(std::cin, cadena);
+        }
+        system("cls");
+        Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
         ClaseAsignada* vClaseAsignada = new ClaseAsignada[CantRegistrosClaseAsignada];
         if (vClaseAsignada == nullptr) {
             std::cout << "No se pudo abrir el archivo de registros." << std::endl;
@@ -470,19 +472,18 @@ void ArchivoSocios::sociosPorDisciplina()
         arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
         Socio socio;
         bool hay = false;
-        std::cout<<"Miembros de "<<disciplina.getNombre() << std::endl;
+        std::cout << "Miembros de " << disciplina.getNombre() << std::endl;
         for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
             if (vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
                 hay = true;
                 socio = leerSocio(buscarRegPorNumSocio(vClaseAsignada[x].getNroSocio()));
-                std::cout << socio.MostrarPersonaFormatoComas() <<std::endl;
+                std::cout << socio.MostrarPersonaFormatoComas() << std::endl;
             }
         }
         if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
         delete[] vClaseAsignada;
-    }
-    else
-    {
+	}
+    else{
         std::cout << "No hay registros en el Archivo o algo malio sal." << std::endl;
     }
 }
@@ -492,18 +493,19 @@ void ArchivoSocios::sociosPorMembresia()
 {
     ArchivoMembresia arMem;
     Membresia mem;
-    std::string cadena;
-    std::cin.ignore();
-    std::cout << "Nombre de Membresia: ";
-    std::getline(std::cin, cadena);
-    while (arMem.buscarRegPorNombre(cadena) == -1) {
-        std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
-        std::getline(std::cin, cadena);
-    }
-    system("cls");
-    mem = arMem.leerMembresia(arMem.buscarRegPorNombre(cadena));
+    int cantMem = arMem.getCantidad();
     int cantidadRegistros = getCantidad();
-    if (cantidadRegistros > 0) {
+    if (cantidadRegistros > 0 && cantMem > 0) {
+        std::string cadena;
+        std::cin.ignore();
+        std::cout << "Nombre de Membresia: ";
+        std::getline(std::cin, cadena);
+        while (arMem.buscarRegPorNombre(cadena) == -1) {
+            std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+            std::getline(std::cin, cadena);
+        }
+        system("cls");
+        mem = arMem.leerMembresia(arMem.buscarRegPorNombre(cadena));
         bool hay = false;
         Socio* vSocio = new Socio[cantidadRegistros];
         if (vSocio == nullptr) {
@@ -518,8 +520,11 @@ void ArchivoSocios::sociosPorMembresia()
                 std::cout << vSocio[x].MostrarPersonaFormatoComas() << std::endl;
             }
         }
-        if (!hay) std::cout << "No hay registros en el Archivo." << std::endl;
+        if (!hay) std::cout << "No hay socios con membresia "<< mem.getNombre() << std::endl;
         delete[] vSocio;
+    }
+    else {
+        std::cout << "No hay registros en el archivo." << std::endl;
     }
 }
 

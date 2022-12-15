@@ -118,12 +118,12 @@ int ArchivoRol::buscarRegPorID(int id)
 
 void ArchivoRol::rolPorCargo()
 {
-	std::string cadena;
-	std::cout << "Ingrese Cargo: ";
-	std::cin.ignore();
-	std::getline(std::cin, cadena);
 	int cantCargo = getCantidad();
 	if (cantCargo > 0) {
+		std::string cadena;
+		std::cout << "Ingrese Cargo: ";
+		std::cin.ignore();
+		std::getline(std::cin, cadena);
 		bool hay = false;
 		Rol* vRol = new Rol[cantCargo];
 		if (vRol == nullptr) {
@@ -150,10 +150,10 @@ void ArchivoRol::rolPorCargo()
 
 void ArchivoRol::rolPorFechaIngreso()
 {
-	Fecha fechaIngreso;
-	fechaIngreso.Cargar();
 	int cantCargo = getCantidad();
 	if (cantCargo > 0) {
+		Fecha fechaIngreso;
+		fechaIngreso.Cargar();
 		bool hay = false;
 		Rol* vRol = new Rol[cantCargo];
 		if (vRol == nullptr) {

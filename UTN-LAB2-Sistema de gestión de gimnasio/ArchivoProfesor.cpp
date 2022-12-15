@@ -395,21 +395,22 @@ int ArchivoProfesor::buscarRegPorID(int id)
 //CONSULTA POR DISCIPLINA
 void ArchivoProfesor::profePorDisciplina()
 {
-	std::string cadena;
 	ArchivoDisciplina arDis;
-	std::cin.ignore();
-	std::cout << "Ingrese nombre de disciplina a evaluar: ";
-	std::getline(std::cin, cadena);
-	while (arDis.buscarRegPorNombre(cadena) == -1) {
-		std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
-		std::getline(std::cin, cadena);
-	}
-	system("cls");
-	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
 	ArchivoClaseAsignada arCla;
+	int cantDisciplina = arDis.getCantidad();
 	int cantRegistrosClaseAsignada = arCla.getCantidad();
 	int cantRegProfesores = getCantidad();
-	if (cantRegistrosClaseAsignada > 0 && cantRegProfesores > 0) {
+	if (cantRegistrosClaseAsignada > 0 && cantRegProfesores > 0 && cantDisciplina > 0) {
+		std::string cadena;
+		std::cin.ignore();
+		std::cout << "Ingrese nombre de disciplina a evaluar: ";
+		std::getline(std::cin, cadena);
+		while (arDis.buscarRegPorNombre(cadena) == -1) {
+			std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+			std::getline(std::cin, cadena);
+		}
+		system("cls");
+		Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
 		ClaseAsignada* vClaseAsignada = new ClaseAsignada[cantRegistrosClaseAsignada];
 		if (vClaseAsignada == nullptr) {
 			std::cout << "No se pudo abrir el archivo de registros." << std::endl;
@@ -450,13 +451,13 @@ void ArchivoProfesor::mostrarProfe(Profesor* vProfe, int cant)
 //CONSULTA POR Turno
 void ArchivoProfesor::profePorTurno()
 {
-	std::string cadena;
-	std::cout << "Ingrese Turno: ";
-	std::cin.ignore();
-	std::getline(std::cin, cadena);
-	system("cls");
 	int cantRegProfes = getCantidad();
 	if (cantRegProfes > 0) {
+		std::string cadena;
+		std::cout << "Ingrese Turno: ";
+		std::cin.ignore();
+		std::getline(std::cin, cadena);
+		system("cls");
 		Profesor* vProfes = new Profesor[cantRegProfes];
 		bool hay=false;
 		if (vProfes == nullptr) {

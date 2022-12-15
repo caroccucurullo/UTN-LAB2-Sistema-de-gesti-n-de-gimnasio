@@ -1132,8 +1132,8 @@ void submenuMostrarDisciplinasConsulta()
 		{
 		case '1':
 		{
-			/*ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.disciplinasPorSalon();*/
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorSalon();
 			system("pause>nul");
 		}
 		break;

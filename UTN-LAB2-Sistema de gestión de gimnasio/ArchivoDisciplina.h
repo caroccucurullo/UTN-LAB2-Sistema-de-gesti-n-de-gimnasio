@@ -17,13 +17,14 @@ public:
 	//OBTIENE CANTIDAD DE REGISTROS DEL ARCHIVO
 	int getCantidad();
 	
+	//BUSCAR REGISTRO
 	int buscarRegPorCod(int cod);
 	int buscarRegPorNombre(std::string nombre);
 	//int buscarRegPorSalonyHorario(int idSalon, int horario);
 
 	//CONSULTA POR SALONES
 	//int getCantidadSalon(std::string nombreSalon);
-	//void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
+	void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
 	//void copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon);
 
 	//CONSULTA POR HORARIO
