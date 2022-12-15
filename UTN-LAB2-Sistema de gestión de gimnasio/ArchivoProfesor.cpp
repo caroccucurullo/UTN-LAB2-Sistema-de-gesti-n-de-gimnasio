@@ -596,22 +596,19 @@ void ArchivoProfesor::profesorBajasAnuales()
 void ArchivoProfesor::profesorSueldoAnual()
 {
 	int idP;
+	float sueldoAnual = 0;
 	
 	std::cout << "Ingrese el codigo de profesor: " << std::endl;
 	std::cin >> idP;
-	
-	int cant = getCantidad();
-	Profesor profesor;
-	float sueldoAnual = 0;
-
-	for (int x = 0;x < cant;x++) {
-		profesor = leerProfesor(x);
-		if (profesor.getId() == idP) {
-			sueldoAnual = profesor.getSueldo() * 12;
-		}
+	int nRegistro = buscarRegPorID(idP);
+	if (nRegistro != -1) {
+		Profesor profesor = leerProfesor(nRegistro);
+		sueldoAnual = profesor.getSueldo() * 12;
+		std::cout << "El sueldo anual de profesor/a " << profesor.getNombre() << "(ID " << profesor.getId() << ")" << " es de : " << setPrecision(sueldoAnual,10) << std::endl;
 	}
-
-	std::cout << "El sueldo anual del profesor: "<< idP << " es de : " << sueldoAnual << std::endl;
+	else {
+		std::cout << "No existe profesor con ese ID" << std::endl;
+	}
 }
 
 //LISTADO
@@ -634,7 +631,7 @@ void ArchivoProfesor::ordenarPorDisciplina() {
 
 	completarVector(profesores, cantidad);
 	ordenarVectorPorDisciplina(profesores, cantidad);
-	mostrarVector(profesores, cantidad);
+	//mostrarVector(profesores, cantidad);
 
 	delete[] profesores;
 }
@@ -660,7 +657,7 @@ void ArchivoProfesor::mostrarProfesoresPorEstado(){
 
 	completarVector(profesores, cantidad);
 
-	std::cout << "Ingese 1 para los Profesores Activos, 0 para Inactivos : " << std::endl;
+	std::cout << "Ingrese 1 para los Profesores Activos, 0 para Inactivos : " << std::endl;
 	std::cin >> estado;
 
 	if(estado == 1) flag = true;
@@ -680,7 +677,7 @@ void ArchivoProfesor::mostrarProfesoresPorTurno() {
 	Profesor* profesores = new Profesor[cantidad];
 
 	completarVector(profesores, cantidad);
-	//mostrarVectorPorTurno(profesores, cantidad, turno);
+	mostrarProfesorPorTurno(profesores, cantidad, turno);
 	delete[] profesores;
 }
 

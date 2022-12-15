@@ -59,14 +59,6 @@ void mostrarVectorSocios(Socio* socios, int cantidad)
     }
 }
 
-
-//std::string Socio::setPrecision(float p)
-//{
-//    std::string peso(std::to_string(p));
-//    peso.resize(5);
-//    return peso;
-//}
-
 void completarVector(Profesor* profesor, int cantidad)
 {
     ArchivoProfesor archivo;
@@ -98,20 +90,26 @@ void ordenarVectorPorDisciplina(Profesor* profesor, int cantidad)
 {
 	ArchivoDisciplina archivo;
 	Disciplina disciplina;
-
+    
 	int cantidadDisciplina = archivo.getCantidad();
 
 	for(int i = 0; i < cantidadDisciplina; i++)
 	{
+        bool hay = false;
 		disciplina = archivo.leerDisciplina(i);
-
+        
+        std::cout << "Disciplina " << disciplina.getNombre()<<":" << std::endl;
 		for (int j = 0; j < cantidad; j++)
 		{
 			if (profesor[j].getIdDisciplina() == disciplina.getCodigo())
 			{
+                hay = true;
+                std::cout << std::endl;
 				profesor[j].MostrarProfesor();
+                std::cout << std::endl;
 			}
 		}
+        if (!hay) std::cout<< "No hay profesores" << std::endl << std::endl;
 	}
 }
 
@@ -142,24 +140,17 @@ void ordenarVectorPorSueldo(Profesor* profesor, int cantidad){
 
 void mostrarVectorPorEstado(Profesor* profesor, int cantidad, bool estado)
 {
+    bool hay = false;
     for (int i = 0; i < cantidad; i++)
     {
         if (profesor[i].getEstado() == estado)
         {
+            hay = true;
             profesor[i].MostrarProfesor();
+            std::cout << std::endl;
         }
     }
-}
-
-void mostrarVectorPorTurno(Profesor* profesor, int cantidad, std::string turno)
-{
-    for (int i = 0; i < cantidad; i++)
-    {
-        if (profesor[i].getTurno() == turno)
-        {
-            profesor[i].MostrarProfesor();
-        }
-    }
+    if (!hay) std::cout << "No hay registros." << std::endl;
 }
 
 void mostrarProfesorPorTurno(Profesor* profesor, int cantidad, std::string turno)
@@ -169,6 +160,7 @@ void mostrarProfesorPorTurno(Profesor* profesor, int cantidad, std::string turno
         if (profesor[i].getTurno() == turno)
         {
             profesor[i].MostrarProfesor();
+            std::cout << std::endl;
         }
     }
 }
@@ -218,3 +210,10 @@ void mostrarVectorDisciplina(Disciplina* disciplina, int cant){
     }
 }
 
+///OTRAS FUNCIONES
+std::string setPrecision(float p, int precision)
+{
+    std::string peso(std::to_string(p));
+    peso.resize(precision);
+    return peso;
+}
