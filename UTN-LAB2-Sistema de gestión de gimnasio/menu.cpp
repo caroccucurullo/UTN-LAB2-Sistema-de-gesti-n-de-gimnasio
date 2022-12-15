@@ -868,7 +868,7 @@ void submenuMostrarProfesoresConsulta()
 		case '3':
 		{
 			ArchivoProfesor archivoProfesor;
-			archivoProfesor.ProfePorTurno();
+			archivoProfesor.profePorTurno();
 			system("pause>nul");
 		}
 		break;

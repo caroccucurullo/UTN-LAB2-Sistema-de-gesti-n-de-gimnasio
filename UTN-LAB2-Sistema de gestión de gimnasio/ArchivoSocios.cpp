@@ -438,6 +438,9 @@ void ArchivoSocios::sociosPorEdad()
 			if(!hay) std::cout << "No hay socios de esa edad." << std::endl;
             delete[] listaCompleta;
         }
+        else {
+            std::cout << "No hay registros en el archivo de Socios." << std::endl;
+        }
     }
     else std::cout << "Edad incorrecta." << std::endl;
 }

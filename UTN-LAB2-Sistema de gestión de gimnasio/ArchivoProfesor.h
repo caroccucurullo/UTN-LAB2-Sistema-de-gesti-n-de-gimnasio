@@ -34,7 +34,7 @@ public:
 	void mostrarProfe(Profesor* vProfe, int cant);
 	//CONSULTA POR TURNO
 	int getCantidadProfePorTurno(std::string turno);
-	void ProfePorTurno();//FUNCION A LLAMAR EN EL MENU
+	void profePorTurno();//FUNCION A LLAMAR EN EL MENU
 	void copiarProfeTurno(Profesor* vProfe, std::string turno);
 
 	//BAJA POR DNI

@@ -407,20 +407,21 @@ void ArchivoProfesor::profePorDisciplina()
 	system("cls");
 	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
 	ArchivoClaseAsignada arCla;
-	int CantRegistrosClaseAsignada = arCla.getCantidad();
-	if (CantRegistrosClaseAsignada > 0) {
-		ClaseAsignada* vClaseAsignada = new ClaseAsignada[CantRegistrosClaseAsignada];
+	int cantRegistrosClaseAsignada = arCla.getCantidad();
+	int cantRegProfesores = getCantidad();
+	if (cantRegistrosClaseAsignada > 0 && cantRegProfesores > 0) {
+		ClaseAsignada* vClaseAsignada = new ClaseAsignada[cantRegistrosClaseAsignada];
 		if (vClaseAsignada == nullptr) {
 			std::cout << "No se pudo abrir el archivo de registros." << std::endl;
 			return;
 		}
-		bool* vIdDisciplina = new bool[CantRegistrosClaseAsignada]{};
+		bool* vIdDisciplina = new bool[cantRegProfesores] {};
 		if (vIdDisciplina == nullptr) return;
-		arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
+		arCla.leerTodos(vClaseAsignada, cantRegistrosClaseAsignada);
 		Profesor profesor;
 		bool hay = false;
 		std::cout << "Profesores de " << disciplina.getNombre() << std::endl;
-		for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
+		for (int x = 0;x < cantRegistrosClaseAsignada;x++) {
 			if (!vIdDisciplina[vClaseAsignada[x].getIdProfesor()-1] && vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
 				hay = true;
 				vIdDisciplina[vClaseAsignada[x].getIdProfesor() - 1] = true;
@@ -445,6 +446,7 @@ void ArchivoProfesor::mostrarProfe(Profesor* vProfe, int cant)
 		std::cout << std::endl;
 	}
 }
+
 //CONSULTA POR Turno
 int ArchivoProfesor::getCantidadProfePorTurno(std::string turno)
 {
@@ -458,17 +460,35 @@ int ArchivoProfesor::getCantidadProfePorTurno(std::string turno)
 
 }
 
-void ArchivoProfesor::ProfePorTurno()
+void ArchivoProfesor::profePorTurno()
 {
 	std::string cadena;
 	std::cout << "Ingrese Turno: ";
+	std::cin.ignore();
 	std::getline(std::cin, cadena);
-	int cantProfePorTurno = getCantidadProfePorTurno(cadena);
-	Profesor* vProfe = new Profesor[cantProfePorTurno];
-	if (vProfe == nullptr) return;
-	copiarProfeTurno(vProfe, cadena);
-	mostrarProfe(vProfe, cantProfePorTurno);
-	delete[] vProfe;
+	system("cls");
+	int cantRegProfes = getCantidad();
+	if (cantRegProfes > 0) {
+		Profesor* vProfes = new Profesor[cantRegProfes];
+		bool hay=false;
+		if (vProfes == nullptr) {
+			std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+			return;
+		}
+		leerTodos(vProfes, cantRegProfes);
+		std::cout << "Profesores de turno " << cadena <<":"<< std::endl;
+		for (int x = 0;x < cantRegProfes;x++) {
+			if (vProfes[x].getTurno() == cadena) {
+				hay = true;
+				std::cout << vProfes[x].MostrarPersonaFormatoComas() << std::endl;
+			}
+		}
+		if (!hay) std::cout << "No hay profesores de turno " << cadena << std::endl;
+		delete[] vProfes;
+	}
+	else {
+		std::cout << "No hay registros en el archivo de profores."<<std::endl;
+	}
 }
 
 void ArchivoProfesor::copiarProfeTurno(Profesor* vProfe, std::string turno)
