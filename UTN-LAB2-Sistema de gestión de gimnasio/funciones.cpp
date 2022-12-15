@@ -1,10 +1,4 @@
-#include "Socio.h"
-#include "Profesor.h"
-#include "Disciplina.h"
-#include "ArchivoSocios.h"
-#include "ArchivoProfesor.h"
-#include "ArchivoDisciplina.h"
-#include "ArchivoSalon.h"
+#include "funciones.h"
 
 void completarVectorSocios(Socio* socios, int cantidad)
 {

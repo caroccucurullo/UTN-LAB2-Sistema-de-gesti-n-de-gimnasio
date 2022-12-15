@@ -1,5 +1,7 @@
-# include "Socio.h"
-# include "profesor.h"
+#include "ArchivoSocios.h"
+#include "ArchivoProfesor.h"
+#include "ArchivoDisciplina.h"
+#include "ArchivoSalon.h"
 
 void completarVectorSocios(Socio* socios, int cantidad);
 void ordenarPorNombreDescendiente(Socio* socios, int cantidad);
@@ -17,5 +19,5 @@ void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon);
 //void ordenarPorHorario(Disciplina* disciplina, int cantidad);
 void mostrarVectorDisciplina(Disciplina* disciplina, int cant);
 
+///OTRAS FUNCIONES
 std::string setPrecision(float p, int precision);
-

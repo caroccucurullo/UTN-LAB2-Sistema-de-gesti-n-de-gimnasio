@@ -1,5 +1,6 @@
 #pragma once
 #include "Rol.h"
+#include "funciones.h"
 class ArchivoRol
 {
 public:
@@ -21,16 +22,14 @@ public:
 	int buscarRegPorDni(std::string dni);
 	void consultaPorDni();//FUNCION A LLAMAR EN EL MENU
 
+	///BUSCAR REGISTRO POR ID
+	int buscarRegPorID(int id);
+	
 	//CONSULTA POR CARGO
-	int getCantidadPorCargo(std::string cargo);
 	void rolPorCargo();//FUNCION A LLAMAR EN EL MENU
-	void copiarRolCargo(Rol* vRol, std::string cargo);
-	void mostrarRol(Rol* vRol, int cant);
 	
 	//CONSULTA POR FECHA DE INGRESO
-	int getCantidadPorFechaIngreso(Fecha fechaIngreso);
 	void rolPorFechaIngreso();//FUNCION A LLAMAR EN EL MENU
-	void copiarRolFechaIngreso(Rol* vRol, Fecha fechaIngreso);
 	
 	//BAJA DE REGISTRO POR DNI
 	bool bajaLogica(int nRegistro);
