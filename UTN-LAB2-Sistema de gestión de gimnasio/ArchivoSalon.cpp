@@ -68,6 +68,7 @@ int ArchivoSalon::getCantidad()
 {
     int cant = 0;
     FILE* p = fopen("salones.dat", "rb");
+    if (p == nullptr) return cant;
     fseek(p, 0, 2);
     cant = ftell(p) / sizeof(Salon);
     fclose(p);
@@ -85,38 +86,53 @@ int ArchivoSalon::buscarRegPorNombre(std::string nombre)
     return -1;
 }
 
-//CONSULTA POR CUPO
-//int ArchivoSalon::calcularCupoPorIDyHorario(int idSalon, int horario)
-//{
-//    Salon salon = leerSalon(idSalon);
-//    int cupo = salon.getCupo();
-//
-//    ArchivoDisciplina arDis;
-//    Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorSalonyHorario(idSalon, horario));
-//
-//    ArchivoClaseAsignada arClA;
-//    ClaseAsignada clA;
-//    int cantClA = arClA.getCantidad();
-//    for (int x = 0;x < cantClA;x++) {
-//        clA = arClA.leerClaseAsignada(x);
-//        if (clA.getIdSalon() == salon.getId() && clA.getCodDisciplina() == disciplina.getIdSalon()) cupo--;
-//    }
-//    return cupo;
-//}
-//
-//void ArchivoSalon::SalonPorCupoHorario()
-//{
-//    std::string cadena;
-//    std::cout << "Ingrese nombre Salon: ";
-//    std::getline(std::cin, cadena);
-//    int horario;
-//    std::cout << "Ingrese horario: ";
-//    std::cin >> horario;
-//    ArchivoSalon arSalon;
-//    Salon salon = arSalon.leerSalon(arSalon.buscarRegPorNombre(cadena));
-//    int idSalon = salon.getId();
-//    std::cout << "El cupo del salon " << salon.getNombre() << " en el horario de " << horario << "hs es " << calcularCupoPorIDyHorario(idSalon, horario) << "." << std::endl;
-//}
+void ArchivoSalon::SalonPorCupoHorario()
+{
+    ArchivoDisciplina arDis;
+    int cantDisciplina = arDis.getCantidad();
+    int cantSalon = getCantidad();
+    if (cantSalon > 0 && cantDisciplina > 0) {
+        Disciplina* vDis = new Disciplina[cantDisciplina];
+        if (vDis == nullptr) return;
+        arDis.leerTodas(vDis, cantDisciplina);
+        std::string cadena;
+        Fecha fecha;
+        int horario;
+        std::cout << "Ingrese nombre del Salon: ";
+        std::cin.ignore();
+        std::getline(std::cin, cadena);
+        std::cout << "Ingrese fecha: "<<std::endl;
+        fecha.Cargar();
+        std::cout << "Ingrese horario: ";
+        std::cin >> horario;
+        Salon salon = leerSalon(buscarRegPorNombre(cadena));
+        int resultado = calcularCupoPorHorario(salon, horario, fecha, vDis);
+		system("cls");
+        std::cout << "Fecha " << fecha.toString() << std::endl;
+		std::cout << "El cupo del salon " << salon.getNombre() << " en el horario " << horario << "hs es de " << resultado<<" lugares." << std::endl;
+    }
+    else {
+        std::cout << "No hay registros en el archivo." << std::endl;
+    }
+}
+
+int ArchivoSalon::calcularCupoPorHorario(Salon& salon, int horario, Fecha& fecha, Disciplina* vDis)
+{
+    int cupo = salon.getCupo();
+    ArchivoClaseAsignada arCla;
+    int cantCla = arCla.getCantidad();
+	ClaseAsignada* vCla = new ClaseAsignada[cantCla];
+    if (vCla == nullptr) return -1;
+    arCla.leerTodos(vCla, cantCla);
+    for (int x = 0;x < cantCla;x++) {
+        if (vCla[x].getFechaAsignada() == fecha && vCla[x].getHorarioInicio() == horario) {
+            if (vDis[vCla[x].getCodDisciplina() - 1].getIdSalon() == salon.getId()) {
+                cupo--;   
+            }
+        }
+    }
+	return cupo;
+}
 
 bool ArchivoSalon::bajaLogica(int nRegistro)
 {

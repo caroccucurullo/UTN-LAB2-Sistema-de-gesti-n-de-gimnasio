@@ -1180,8 +1180,8 @@ void submenuMostrarSalonConsulta()
 		{
 		case '1':
 		{
-			/*ArchivoSalon archivoSalon;
-			archivoSalon.SalonPorCupoHorario();*/
+			ArchivoSalon archivoSalon;
+			archivoSalon.SalonPorCupoHorario();
 			system("pause>nul");
 		}
 		break;

@@ -77,6 +77,7 @@ int ArchivoClaseAsignada::getCantidad()
 {
     int cant = 0;
     FILE* p = fopen("claseasignada.dat", "rb");
+    if (p == nullptr) return cant;
     fseek(p, 0, 2);
     cant = ftell(p) / sizeof(ClaseAsignada);
     fclose(p);

@@ -22,8 +22,8 @@ public:
 	int buscarRegPorNombre(std::string nombre);
 
 	//CONSULTA POR CUPO
-	//int calcularCupoPorIDyHorario(int idSalon, int horario);
-	//void SalonPorCupoHorario();//FUNCION A LLAMAR EN EL MENU
+	void SalonPorCupoHorario();//FUNCION A LLAMAR EN EL MENU
+	int calcularCupoPorHorario(Salon& salon, int horario, Fecha& fecha, Disciplina* vDis);
 	
 	
 	//BAJA LOGICA POR NOMBRE
