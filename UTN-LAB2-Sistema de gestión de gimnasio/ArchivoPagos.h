@@ -1,6 +1,7 @@
 #pragma once
 #include "Pago.h"
 #include "ArchivoSocios.h"
+#include "ArchivoMembresia.h"
 
 
 class ArchivoPagos
@@ -19,9 +20,13 @@ public:
 	//OBTIENE LA CANTIDAD DE REGISTROS DEL ARCHIVO
 	int getCantidad();
 
+	//BUSCAR REGISTRO POR NROSOCIO Y FECHA
+	int buscarRegPorNroSocioyFecha(int nSocio, Fecha& fecha);
+
 	//LISTAS
 	void pagosDelMes();
 	int getCantidadPagoMes(Fecha fechaActual);
+	void todosLosPagos();
 	
 	//CONSULTAS
 	void consultarPago();
@@ -36,4 +41,5 @@ public:
 	void membresiaMasVendidaMensual();
 	void membresiaMenosVendidaAnual();
 	void membresiaMenosVendidaMensual();
+
 };

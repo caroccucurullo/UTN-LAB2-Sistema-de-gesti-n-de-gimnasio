@@ -382,6 +382,7 @@ void submenuPagoMembresia()
 		std::cout << "4 .- MOSTRAR PAGOS DEL CORRIENTE MES" << std::endl;
 		std::cout << "5 .- MOSTRAR ULTIMO PAGO DE SOCIO" << std::endl;
 		std::cout << "6 .- MOSTRAR INFORMES DE RECAUDACION" << std::endl;
+		std::cout << "7 .- MOSTRAR ARCHIVO" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "0 .- Volver al menu principal" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
@@ -435,6 +436,14 @@ void submenuPagoMembresia()
 		case '6':
 			submenuInformesRecaudacion();
 		break;
+		
+		
+		case '7':
+		{
+			ArchivoPagos archivoPagos;
+			archivoPagos.todosLosPagos();
+			system("pause>nul");
+		}
 			
 		case '0':
 			//std::cout << "\n\nVolver al menu principal" << std::endl;
@@ -1208,9 +1217,9 @@ void submenuInformesRecaudacion()
 		std::cout << "INFORMES RECAUDACION" << std::endl;
 		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "1 .- PAGOS ANUALES DE UN SOCIO" << std::endl;
-		std::cout << "2 .- RECAUDACION POR MEMBRESIA" << std::endl;
-		std::cout << "3 .- RECAUDACION ANUAL" << std::endl;
-		std::cout << "4 .- RECAUDACION MENSUAL" << std::endl;
+		std::cout << "2 .- RECAUDACION MENSUAL POR MEMBRESIA" << std::endl;
+		std::cout << "3 .- RECAUDACION ANUAL TOTAL" << std::endl;
+		std::cout << "4 .- RECAUDACION MENSUAL TOTAL" << std::endl;
 		std::cout << "5 .- MEMBRESIA MAS VENDIDA ANUAL" << std::endl;
 		std::cout << "6 .- MEMBRESIA MAS VENDIDA MENSUAL" << std::endl;
 		std::cout << "7 .- MEMBRESIA MENOS VENDIDA ANUAL" << std::endl;

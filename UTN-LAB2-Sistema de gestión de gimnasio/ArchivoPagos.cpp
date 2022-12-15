@@ -14,6 +14,8 @@ void ArchivoPagos::guardarPago()
 {
 	Pago pago;
 	pago.CargarPago();
+	int ultimoRegistro = getCantidad();
+	pago.setId(ultimoRegistro+1);
 	if (guardarPago(pago)) std::cout << "Guardado correctamente." << std::endl;
 	else std::cout << "Error al guardar." << std::endl;
 }
@@ -50,24 +52,134 @@ bool ArchivoPagos::modificarPago(Pago& pago, int nRegistro)
 
 void ArchivoPagos::modificarPago()
 {
-	int nroSocio;
-	std::cout << "Ingrese el nro de socio de pago a modificar: ";
-	std::cin >> nroSocio;
-	std::cout << "Ingrese modificaciones a continuacion..." << std::endl;
+	int opcion1, subopcion1, nroSocio, nRegistro = -1;
+	Fecha fecha;
 	Pago pago;
-	pago.CargarPago();
-	if (modificarPago(pago, buscarPorNroSocio(nroSocio))) std::cout << "Modificado correctamente." << std::endl;
-	else std::cout << "Error al modificar." << std::endl;
+	do {
+		std::cout << "Modificar Pago con Opciones" << std::endl;
+		std::cout << "1) Ingresar modificaciones" << std::endl;
+		std::cout << "2) Aplicar modificaciones" << std::endl;
+		std::cout << "0) Salir." << std::endl;
+		std::cin >> opcion1;
+		system("cls");
+		switch (opcion1)
+		{
+			case 1:
+			{
+				std::cout << "1) Buscar por Nro Socio y Fecha: " << std::endl;
+				std::cout << "0) Volver." << std::endl;
+				std::cin >> subopcion1;
+				system("cls");
+				switch(subopcion1){
+					case 1:
+					{
+						std::cout << "Ingresar numero de Socio: ";
+						std::cin>>nroSocio;
+						std::cout<<"Ingresar fecha de pago: ";
+						fecha.Cargar();
+						nRegistro = buscarRegPorNroSocioyFecha(nroSocio, fecha);
+					}
+					break;
+				}
+				if(nRegistro!=-1){
+					pago = leerPago(nRegistro);
+					int subopcion2;
+					system("cls");
+					do {
+						system("cls");
+						std::cout << "Que desea cambiar?" << std::endl;
+						std::cout << "1) Membresia" << std::endl;
+						std::cout << "2) Valor" << std::endl;
+						std::cout << "3) Fecha" << std::endl;
+						std::cout << "0) Volver." << std::endl;
+						std::cin >> subopcion2;
+						system("cls");
+						switch(subopcion2){
+							case 1:
+							{
+								std::string cadena;
+								ArchivoMembresia arMem;
+								std::cout << "Nombre Membresia: ";
+								std::cin.ignore();
+								std::getline(std::cin, cadena);
+
+								while (arMem.buscarRegPorNombre(cadena) == -1) {
+									std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+									std::getline(std::cin, cadena);
+								}
+								pago.setIdMembresia(arMem.buscarRegPorNombre(cadena) + 1);
+							}
+							break;
+							case 2:
+							{
+								float valor;
+								std::cout<<"Ingresar Valor nuevo: ";
+								std::cin>>valor;
+								pago.setValor(valor);
+							}
+							break;
+							case 3:
+							{
+								std::cout << "Ingrese la nueva fecha: "<<std::endl;
+								fecha.Cargar();
+								pago.setFechaAsignada(fecha);
+							}
+							break;
+						}
+					} while (subopcion2 != 0);
+				}
+				else{
+					std::cout << "No existe el registro." << std::endl;
+					system("pause>nul");
+				}
+			}
+			break;
+			case 2:
+			{
+				if (nRegistro != -1) {
+					if (modificarPago(pago, nRegistro)) std::cout << "Pago " << pago.getId() << " modificado correctamente." << std::endl;
+					else std::cout << "No se pudo modificar pago " << pago.getId() << "." << std::endl;
+					system("pause>nul");
+				}
+			}
+			break;
+		}
+		system("cls");
+	} while (opcion1 != 0);
 }
 
 int ArchivoPagos::getCantidad()
 {
 	int cant = 0;
 	FILE* p = fopen("pagos.dat", "rb");
+	if (p == nullptr) return cant;
 	fseek(p, 0, 2);
 	cant = ftell(p) / sizeof(Pago);
 	fclose(p);
 	return cant;
+}
+//BUSCAR REGISTRO POR NROSOCIO Y FECHA
+int ArchivoPagos::buscarRegPorNroSocioyFecha(int nSocio, Fecha& fecha){
+	int cantidad = getCantidad();
+	Pago pago;
+	for(int x=0;x<cantidad;x++){
+		pago = leerPago(x);
+		if (pago.getFechaDePago().getAnio() == fecha.getAnio() && pago.getFechaDePago().getMes() == fecha.getMes() && pago.getNroSocio() == nSocio) return x;
+	}
+	return -1;
+}
+
+int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
+{
+	int cant = getCantidad();
+	Pago pago;
+	int contPagoMes = 0;
+	for (int x = 0;x < cant;x++) {
+		pago = leerPago(x);
+		if (pago.getFechaDePago().getMes() == fechaActual.getMes()
+			&& pago.getFechaDePago().getAnio() == fechaActual.getAnio()) contPagoMes++;
+	}
+	return contPagoMes;
 }
 
 void ArchivoPagos::pagosDelMes()
@@ -78,30 +190,33 @@ void ArchivoPagos::pagosDelMes()
 	if (vPago == nullptr) return;
 	Pago pago;
 	int cant = getCantidad();
+	int contPagoMes = 0;
 	for (int x = 0;x < cant;x++) {
 		pago = leerPago(x);
-		if (pago.getFechaDePago().getMes() == fechaActual.getMes()) {
-			vPago[x] = pago;
+		if (pago.getNroSocio() > 0 && pago.getFechaDePago().getMes() == fechaActual.getMes()
+			&& pago.getFechaDePago().getAnio() == fechaActual.getAnio()) {
+			vPago[contPagoMes] = pago;
+			contPagoMes++;
 		}
 	}
-	for (int x = 0;x < cant;x++) {
+	for (int x = 0;x < cantPagoMes;x++) {
 		vPago[x].MostrarPago();
 		std::cout << std::endl;
 	}
 	delete[] vPago;
 }
 
-int ArchivoPagos::getCantidadPagoMes(Fecha fechaActual)
+void ArchivoPagos::todosLosPagos()
 {
 	int cant = getCantidad();
 	Pago pago;
-	int contPagoMes = 0;
 	for (int x = 0;x < cant;x++) {
 		pago = leerPago(x);
-		if (pago.getFechaDePago().getMes() == fechaActual.getMes()) contPagoMes++;
+		pago.MostrarPago();
+		std::cout << std::endl;
 	}
-	return contPagoMes;
 }
+
 
 //CONSULTAS
 
@@ -160,8 +275,18 @@ void ArchivoPagos::recaudacionPorMembresia()
 {
 	int idM, anio, mes;
 	
-	std::cout << "Ingrese el id de la membresia: " <<std::endl;
-	std::cin >> idM;
+	std::string cadena;
+	ArchivoMembresia arMem;
+	std::cout << "Nombre Membresia: ";
+	std::cin.ignore();
+	std::getline(std::cin, cadena);
+
+	while (arMem.buscarRegPorNombre(cadena) == -1) {
+		std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+		std::getline(std::cin, cadena);
+	}
+	Membresia mem = arMem.leerMembresia(arMem.buscarRegPorNombre(cadena));
+
 	std::cout <<  "Ingrese el anio: " << std::endl;
 	std::cin >> anio;
 	std::cout <<  "Ingrese el mes: " << std::endl;
@@ -173,13 +298,13 @@ void ArchivoPagos::recaudacionPorMembresia()
 	
 	for (int x = 0;x < cant;x++) {
 		pago = leerPago(x);
-		if (pago.getIdMembresia() == idM && pago.getFechaDePago().getAnio() == anio
+		if (pago.getIdMembresia() == mem.getId() && pago.getFechaDePago().getAnio() == anio
 			&& pago.getFechaDePago().getMes() == mes) {
 			total += pago.getValor();
 		}
 	}
 
-	std::cout << "Recaudacion de la membresia "<</*membresia*/ " del mes " << mes << " del anio " << anio << "es de : " << total << std::endl;
+	std::cout << "Recaudacion de la membresia "<<mem.getNombre()<< " del mes " << mes << " del anio " << anio << "es de : " << total << std::endl;
 }
 
 void ArchivoPagos::recaudacionAnual()
@@ -427,3 +552,4 @@ void ArchivoPagos::membresiaMenosVendidaMensual()
 		std::cout << "No hay membresia menos vendida" << std::endl;
 	}
 }
+
