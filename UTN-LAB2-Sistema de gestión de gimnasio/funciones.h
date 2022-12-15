@@ -16,8 +16,9 @@ void ordenarVectorPorSueldo(Profesor* profesor, int cantidad);
 void mostrarVectorPorEstado(Profesor* profesor, int cantidad, bool estado);
 void mostrarProfesorPorTurno(Profesor* profesor, int cantidad, std::string turno);
 void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon);
-//void ordenarPorHorario(Disciplina* disciplina, int cantidad);
-void mostrarVectorDisciplina(Disciplina* disciplina, int cant);
+void mostrarVectorDisciplina(Disciplina* disciplina,int cantDisciplina, ClaseAsignada* clase, int cantidadClase);
+int cantidadClaseAsignadaPorFecha(ClaseAsignada* clase, int cantidadClase, Fecha& fecha);
+void copiarClaseAsignadaPorFecha(ClaseAsignada* clase, ClaseAsignada* vClase,  int cantidadClase, Fecha& fecha);
 
 ///OTRAS FUNCIONES
 std::string setPrecision(float p, int precision);

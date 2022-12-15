@@ -1083,16 +1083,16 @@ void submenuMostrarDisciplinasLista()
 		{
 		case '1':
 		{
-			/*ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.ordenarPorDisciplina();*/
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.ordenarPorDisciplina();
 			system("pause>nul");
 		}
 		break;
 
 		case '2':
 		{
-			/*ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.mostrarPorHorarioAscendente();*/
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.mostrarPorHorarioAscendente();
 			system("pause>nul");
 		}
 		break;

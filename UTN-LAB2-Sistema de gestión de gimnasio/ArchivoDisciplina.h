@@ -26,10 +26,7 @@ public:
 	void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
 
 	//CONSULTA POR HORARIO
-	//int getCantidadPorHorario(int horarioInicio);
 	void disciplinasPorHorario();//FUNCION A LLAMAR EN EL MENU
-	//void copiarDisciplinaHorario(Disciplina* vDisciplina, int horarioInicio);
-	//void mostrarDisciplina(Disciplina* vDisciplina, int cant);
 
 
 	bool bajaLogica(int nRegistro);
@@ -38,6 +35,6 @@ public:
 	void altaDisciplina();//FUNCION A LLAMAR EN EL MENU
 
 	//LISTAS
-	//void ordenarPorDisciplina();
-	//void mostrarPorHorarioAscendente();
+	void ordenarPorDisciplina();
+	void mostrarPorHorarioAscendente();
 };

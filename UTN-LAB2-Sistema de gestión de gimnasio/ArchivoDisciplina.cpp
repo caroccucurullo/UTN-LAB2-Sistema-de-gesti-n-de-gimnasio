@@ -236,26 +236,45 @@ void ArchivoDisciplina::altaDisciplina()
 	else std::cout << "No se pudo dar de alta" << std::endl;
 }
 
-//void ArchivoDisciplina::ordenarPorDisciplina()
-//{
-//    ArchivoSalon archivoSalon;
-//    int cantDisciplina = getCantidad();
-//    int cantSalon = archivoSalon.getCantidad();
-//
-//    mostrarDisciplinaPorSalon(cantDisciplina, cantSalon);
-//}
-//
-//void ArchivoDisciplina::mostrarPorHorarioAscendente()
-//{
-//    ArchivoDisciplina archivoDisciplina;
-//    Disciplina* disciplina;
-//
-//    int cant = archivoDisciplina.getCantidad();
-//    disciplina = new Disciplina[cant];
-//
-//    ordenarPorHorario(disciplina, cant);
-//
-//    mostrarVectorDisciplina(disciplina, cant);
-//
-//    delete[] disciplina;
-//}
+void ArchivoDisciplina::ordenarPorDisciplina()
+{
+    ArchivoSalon archivoSalon;
+    int cantDisciplina = getCantidad();
+    int cantSalon = archivoSalon.getCantidad();
+
+    mostrarDisciplinaPorSalon(cantDisciplina, cantSalon);
+}
+
+void ArchivoDisciplina::mostrarPorHorarioAscendente()
+{
+    ArchivoDisciplina archivoDisciplina;
+	ArchivoClaseAsignada archivoClaseAsignada;
+    int cantDisciplina = archivoDisciplina.getCantidad();
+	int cantCla = archivoClaseAsignada.getCantidad();
+    if (cantDisciplina > 0 && cantCla > 0) {
+        Disciplina* disciplina= new Disciplina[cantDisciplina];
+        if (disciplina == nullptr) return;
+	    ClaseAsignada* claseAsignada= new ClaseAsignada[cantCla];
+        if (claseAsignada == nullptr) return;
+        archivoDisciplina.leerTodas(disciplina, cantDisciplina);
+		archivoClaseAsignada.leerTodos(claseAsignada, cantCla);
+        Fecha fecha;
+        std::cout << "Ingrese fecha de la clase: " << std::endl;
+        fecha.Cargar();
+        int cantClaseAsignadaPorFecha = cantidadClaseAsignadaPorFecha(claseAsignada, cantCla, fecha);
+        ClaseAsignada* vCla = new ClaseAsignada[cantClaseAsignadaPorFecha];
+        if (vCla == nullptr) return;
+        copiarClaseAsignadaPorFecha(claseAsignada, vCla, cantCla, fecha);
+
+        system("cls");
+        std::cout << "Fecha " << fecha.toString() << std::endl << std::endl;;
+        mostrarVectorDisciplina(disciplina, cantDisciplina,vCla, cantClaseAsignadaPorFecha);
+
+        delete[] disciplina;
+        delete[] claseAsignada;
+        delete[] vCla;
+    }
+    else {
+        std::cout << "No hay registros en los archivos." << std::endl;
+    }
+}

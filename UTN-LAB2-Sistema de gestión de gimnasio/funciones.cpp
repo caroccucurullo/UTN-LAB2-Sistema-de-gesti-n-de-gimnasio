@@ -176,32 +176,51 @@ void mostrarDisciplinaPorSalon(int cantDisciplina, int cantSalon){
             if (salon.getId() == disciplina.getIdSalon())
             {
                 disciplina.MostrarDisciplina();
+                std::cout << std::endl;
             }
         }
     }
 }
 
-//void ordenarPorHorario(Disciplina* disciplina, int cantidad){
-//    Disciplina aux;
-//    for (int i = 0; i < cantidad - 1; i++)
-//    {
-//        for (int j = i + 1; j < cantidad; j++)
-//        {
-//            if (disciplina[i].getHorarioInicio() > disciplina[j].getHorarioInicio())
-//            {
-//                aux = disciplina[i];
-//                disciplina[i] = disciplina[j];
-//                disciplina[j] = aux;
-//            }
-//        }
-//    }
-//}
-
-void mostrarVectorDisciplina(Disciplina* disciplina, int cant){
-    for (int i = 0; i < cant; i++)
-    {
-        disciplina[i].MostrarDisciplina();
+void mostrarVectorDisciplina(Disciplina* disciplina, int cantDisciplina, ClaseAsignada* clase, int cantidadClase){
+    bool* vIdDisciplina = new bool[cantDisciplina] {};
+    if (vIdDisciplina == nullptr) return;
+    for (int x = 8;x < 24;x++) {
+        bool hay = false;
+        std::cout << "Clases de las " << x << " hs:"<<std::endl;
+        for (int y = 0;y < cantidadClase;y++) {
+            if (!vIdDisciplina[clase[y].getCodDisciplina() - 1] && clase[y].getHorarioInicio() == x) {
+                hay = true;
+                std::cout<<disciplina[clase[y].getCodDisciplina() - 1].getNombre() << std::endl;
+                vIdDisciplina[clase[y].getCodDisciplina() - 1] = true;
+            }
+        }
+        if (!hay) std::cout << "No hay clases." << std::endl;
+        std::cout << std::endl;
     }
+    delete[] vIdDisciplina;
+}
+
+int cantidadClaseAsignadaPorFecha(ClaseAsignada* clase, int cantidadClase, Fecha& fecha)
+{
+	int cantidad = 0;
+    for (int x = 0;x < cantidadClase;x++) {
+        if (clase[x].getFechaAsignada() == fecha) cantidad++;
+    }
+    return cantidad;
+}
+
+void copiarClaseAsignadaPorFecha(ClaseAsignada* clase, ClaseAsignada* vClase, int cantidadClase, Fecha& fecha)
+{
+	int j = 0;
+	for (int i = 0; i < cantidadClase; i++)
+	{
+		if (clase[i].getFechaAsignada() == fecha)
+		{
+			vClase[j] = clase[i];
+			j++;
+		}
+	}
 }
 
 ///OTRAS FUNCIONES
