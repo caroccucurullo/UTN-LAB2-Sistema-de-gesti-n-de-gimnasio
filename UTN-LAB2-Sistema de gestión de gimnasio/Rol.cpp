@@ -10,6 +10,7 @@ Rol::Rol(int id, std::string cargo, float sueldo, std::string turno, Fecha fecha
 }
 
 void Rol::MostrarRol() {
+	std::cout << "--------------------------------------" << std::endl;
     std::cout << "ID: " << _id << std::endl;
     std::cout << "Cargo: " << _cargo << std::endl;
 	Persona::MostrarPersona();
@@ -17,6 +18,7 @@ void Rol::MostrarRol() {
 	std::cout << "Turno: " << _turno << std::endl;
     std::cout << "Fecha de ingreso: " << getFechaIngreso().toString() << std::endl;
 	if (!_estado) std::cout << "Fecha de Egreso: " << getFechaEgreso().toString() << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
 }
 
 void Rol::CargarRol()

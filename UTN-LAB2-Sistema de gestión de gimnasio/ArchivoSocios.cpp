@@ -477,7 +477,7 @@ void ArchivoSocios::sociosPorDisciplina()
             if (vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
                 hay = true;
                 socio = leerSocio(buscarRegPorNumSocio(vClaseAsignada[x].getNroSocio()));
-                std::cout << socio.MostrarPersonaFormatoComas() << std::endl;
+                socio.MostrarSocio();
             }
         }
         if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
@@ -733,13 +733,17 @@ void ArchivoSocios::sociosAltasMensuales()
 
     for (int x = 0;x < cant;x++) {
         socio = leerSocio(x);
-		if (socio.getFechaIngreso().getAnio() == anio && socio.getFechaIngreso().getMes() == mes 
-            && socio.getEstado() == true){
+        if (socio.getFechaIngreso().getAnio() == anio && socio.getFechaIngreso().getMes() == mes
+            && socio.getEstado() == true) {
             cantAltas++;
         }
     }
-	
-    std::cout << "El total de altas del mes " << mes << " del anio " << anio << " es de : " << cantAltas << std::endl;
+    if (cantAltas == 0 ) {
+        std::cout << "En el mes ingresado no hubo altas" << std::endl;
+    }
+    else {
+        std::cout << "El total de altas del mes " << mes << " del anio " << anio << " es de : " << cantAltas << std::endl;
+    }    
 }
 
 void ArchivoSocios::sociosBajasMensuales()
@@ -762,8 +766,12 @@ void ArchivoSocios::sociosBajasMensuales()
 			cantBajas++;
 		}
 	}
-
-	std::cout << "El total de bajas del mes " << mes << " del anio " << anio << " es de : " << cantBajas << std::endl;
+    if (cantBajas == 0) {
+        std::cout << "En el mes ingresado no hubo bajas" << std::endl;
+    }
+    else {
+	    std::cout << "El total de bajas del mes " << mes << " del anio " << anio << " es de : " << cantBajas << std::endl;
+    }
 }
 
 void ArchivoSocios::sociosAltasAnuales()
@@ -782,8 +790,12 @@ void ArchivoSocios::sociosAltasAnuales()
 			cantAltas++;
 		}
 	}
-
-	std::cout << "El total de altas del anio " << anio << " es de : " << cantAltas << std::endl;
+    if (cantAltas == 0) {
+        std::cout << "En el anio ingresado no hubo altas" << std::endl;
+    }
+    else {
+	    std::cout << "El total de altas del anio " << anio << " es de : " << cantAltas << std::endl;
+    }
 }
 
 void ArchivoSocios::sociosBajasAnuales()
@@ -803,8 +815,12 @@ void ArchivoSocios::sociosBajasAnuales()
 			cantBajas++;
 		}
 	}
-
-	std::cout << "El total de bajas del anio " << anio << " es de : " << cantBajas << std::endl;
+    if (cantBajas == 0) {
+        std::cout << "En el anio ingresado no hubo bajas" << std::endl;
+    }
+    else {
+	    std::cout << "El total de bajas del anio " << anio << " es de : " << cantBajas << std::endl; 
+    }
 }
 
 void ArchivoSocios::sociosActivosPorMembresia()

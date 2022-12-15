@@ -24,6 +24,7 @@ int Persona::calcularEdad()
 
 void Persona::MostrarPersona()
 {
+	std::cout << "--------------------------------------" << std::endl;
 	std::cout << "Nombre: " << _nombre << std::endl;
 	std::cout << "Apellido: " << _apellido << std::endl;
 	std::cout << "Fecha de nacimiento: " << getFechaNac().toString() << std::endl;
@@ -31,6 +32,7 @@ void Persona::MostrarPersona()
 	std::cout << "DNI: " << _dni << std::endl;
 	std::cout << "Contacto: " << std::endl;
 	getContacto().Mostrar();
+	
 }
 
 std::string Persona::MostrarPersonaFormatoComas() {

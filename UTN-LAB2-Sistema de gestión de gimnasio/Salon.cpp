@@ -8,9 +8,11 @@ Salon::Salon(int i, int c, std::string n) {
 }
 
 void Salon::MostrarSalon() {
+    std::cout << "--------------------------------------" << std::endl;
     std::cout << "ID: " << id << std::endl;
     std::cout << "Cupo: " << cupo << std::endl;
     std::cout << "Nombre: " << nombre << std::endl;
+    std::cout << "--------------------------------------" << std::endl;
 }
 
 std::string Salon::MostrarSalonesDatos() {

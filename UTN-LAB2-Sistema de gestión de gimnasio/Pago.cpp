@@ -9,12 +9,13 @@ Pago::Pago(int ns, int idMem, float v, Fecha fPago, int i) {
 }
 
 void Pago::MostrarPago() {
+	std::cout << "--------------------------------------" << std::endl;
 	if (id > 0) std::cout << "ID: " << id << std::endl;
     std::cout << "Nro. Socio: " << nroSocio << std::endl;
     std::cout << "ID Membresia: " << idMembresia << std::endl;
 	std::cout << "Valor: " << valor << std::endl;
 	std::cout << "Fecha de pago: " << fechaDePago.getDia() << "/" << fechaDePago.getMes() << "/" << fechaDePago.getAnio() << std::endl;
-	
+	std::cout << "--------------------------------------" << std::endl;
 }
 
 std::string Pago::MostrarPagosDatos()
@@ -28,6 +29,7 @@ std::string Pago::MostrarPagosDatos()
 void Pago::CargarPago()
 {
 	int ns;
+	std::cout << "--------------------------------------" << std::endl;
 	std::cout << "Numero Socio: ";
 	std::cin >> ns;
 	setNroSocio(ns);

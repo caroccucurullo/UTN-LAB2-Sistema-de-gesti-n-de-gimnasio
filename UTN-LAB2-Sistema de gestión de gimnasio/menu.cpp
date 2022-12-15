@@ -83,7 +83,6 @@ void submenuSocio()
 		break;
 
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
@@ -91,7 +90,6 @@ void submenuSocio()
 			system("pause>nul");
 			break;
 		}
-		//system("pause>nul");
 		system("cls");
 	} while (opcion != '0');
 }
@@ -157,13 +155,13 @@ void submenuProfesor()
 		break;
 
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
-			break;
+
+		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
 			system("pause>nul");
-			break;
+		break;
 		}
 		system("cls");
 	} while (opcion != '0');
@@ -225,7 +223,7 @@ void submenuAdministracion()
 		break;
 		
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
+			
 		break;
 
 		default:
@@ -293,7 +291,6 @@ void submenuDisciplinas()
 		break;
 	
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
@@ -356,7 +353,6 @@ void submenuSalon()
 		break;
 
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 		
 		default:
@@ -446,7 +442,6 @@ void submenuPagoMembresia()
 		}
 			
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
@@ -498,32 +493,24 @@ void submenuMostrarSociosLista()
 		
 		case '3':
 		{
-			/*ArchivoSocios archivoSocios;
-			archivoSocios.mostrarPorEstado();
-			system("pause>nul");*/
 			subSubMenuOrdenarPorEstado();
 		}
 		break;
 	
 		case '4':
 		{
-			/*ArchivoSocios archivoSocios;
-			archivoSocios.mostrarPorAptoMedico();
-			system("pause>nul");*/
 			subSubMenuOrdenarPorAptoMedico();
 		}
 		break;
 
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
 			system("pause>nul");
-			break;
+		break;
 		}
-		//system("pause>nul");
 		system("cls");
 	} while (opcion != '0');
 	
@@ -559,9 +546,9 @@ void subSubMenuOrdenarPorEstado()
 			archivoSocios.mostrarPorEstadoInactivo();
 			system("pause>nul");
 		}
-			break;
+		break;
 		default:
-			break;
+		break;
 		}
 		system("cls");
 	} while (opcion != 0);
@@ -599,7 +586,7 @@ void subSubMenuOrdenarPorAptoMedico()
 		}
 		break;
 		default:
-			break;
+		break;
 		}
 		system("cls");
 	} while (opcion != 0);
@@ -669,13 +656,11 @@ void submenuMostrarSociosConsulta()
 		break;
 
 		case '0':
-			//std::cout << "\n\nVolver al menu principal" << std::endl;
 		break;
 
 		default:
 			std::cout << "\n\nNO ES UNA OPCION VALIDA" << std::endl;
 			system("pause>nul");
-			//system("cls");
 		break;
 		}
 		system("cls");

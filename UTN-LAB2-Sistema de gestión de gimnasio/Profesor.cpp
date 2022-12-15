@@ -9,6 +9,7 @@ Profesor::Profesor(int id, int idDis, std::string turno, Fecha fIn, float s) {
 }
 
 void Profesor::MostrarProfesor() {
+	std::cout << "--------------------------------------" << std::endl;
 	if(_id!=0) std::cout << "ID: " << _id << std::endl;
 	Persona::MostrarPersona();
 	std::cout << "ID Disciplina: " << _idDisciplina << std::endl;
@@ -16,6 +17,7 @@ void Profesor::MostrarProfesor() {
 	std::cout << "Fecha de ingreso: " << getFechaIngreso().toString() << std::endl;
 	if (!_estado) std::cout << "Fecha de Egreso: " << getFechaEgreso().toString() << std::endl;
 	std::cout << "Sueldo: " << _sueldo << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
 }
 
 void Profesor::cargarProfesor() {

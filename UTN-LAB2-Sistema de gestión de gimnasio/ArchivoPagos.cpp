@@ -56,26 +56,32 @@ void ArchivoPagos::modificarPago()
 	Fecha fecha;
 	Pago pago;
 	do {
+		std::cout << "--------------------------------------" << std::endl;
 		std::cout << "Modificar Pago con Opciones" << std::endl;
 		std::cout << "1) Ingresar modificaciones" << std::endl;
 		std::cout << "2) Aplicar modificaciones" << std::endl;
 		std::cout << "0) Salir." << std::endl;
+		std::cout << "--------------------------------------" << std::endl;
 		std::cin >> opcion1;
 		system("cls");
 		switch (opcion1)
 		{
 			case 1:
 			{
+				std::cout << "--------------------------------------" << std::endl;
 				std::cout << "1) Buscar por Nro Socio y Fecha: " << std::endl;
 				std::cout << "0) Volver." << std::endl;
+				std::cout << "--------------------------------------" << std::endl;
 				std::cin >> subopcion1;
 				system("cls");
 				switch(subopcion1){
 					case 1:
 					{
+						std::cout << "--------------------------------------" << std::endl;
 						std::cout << "Ingresar numero de Socio: ";
 						std::cin>>nroSocio;
 						std::cout<<"Ingresar fecha de pago: ";
+						std::cout << "--------------------------------------" << std::endl;
 						fecha.Cargar();
 						nRegistro = buscarRegPorNroSocioyFecha(nroSocio, fecha);
 					}
@@ -87,11 +93,13 @@ void ArchivoPagos::modificarPago()
 					system("cls");
 					do {
 						system("cls");
+						std::cout << "--------------------------------------" << std::endl;
 						std::cout << "Que desea cambiar?" << std::endl;
 						std::cout << "1) Membresia" << std::endl;
 						std::cout << "2) Valor" << std::endl;
 						std::cout << "3) Fecha" << std::endl;
 						std::cout << "0) Volver." << std::endl;
+						std::cout << "--------------------------------------" << std::endl;
 						std::cin >> subopcion2;
 						system("cls");
 						switch(subopcion2){
@@ -201,7 +209,6 @@ void ArchivoPagos::pagosDelMes()
 	}
 	for (int x = 0;x < cantPagoMes;x++) {
 		vPago[x].MostrarPago();
-		std::cout << std::endl;
 	}
 	delete[] vPago;
 }
@@ -213,7 +220,6 @@ void ArchivoPagos::todosLosPagos()
 	for (int x = 0;x < cant;x++) {
 		pago = leerPago(x);
 		pago.MostrarPago();
-		std::cout << std::endl;
 	}
 }
 
