@@ -24,6 +24,9 @@ public:
 	//Consulta Por DNI
 	int buscarRegPorDni(std::string dni);
 	void consultaPorDni();//FUNCION A LLAMAR EN EL MENU
+
+	//BUSCAR PROFE POR ID
+	int buscarRegPorID(int id);
 	
 	//CONSULTA POR DISCIPLINA
 	int getCantidadProfePorDis(std::string nombre);

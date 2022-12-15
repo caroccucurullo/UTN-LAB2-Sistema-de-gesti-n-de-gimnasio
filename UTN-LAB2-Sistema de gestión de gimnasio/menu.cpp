@@ -139,7 +139,7 @@ void submenuProfesor()
 		case '3':
 		{
 			ArchivoProfesor archivoProfesor;
-			archivoProfesor.modificarProfesor();
+			archivoProfesor.modificarProfesorConOpciones();
 			system("pause>nul");
 		}
 			break;

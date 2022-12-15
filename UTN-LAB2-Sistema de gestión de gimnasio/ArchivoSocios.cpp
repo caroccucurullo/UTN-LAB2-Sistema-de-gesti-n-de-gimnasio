@@ -354,6 +354,7 @@ int ArchivoSocios::getCantidad()
     fclose(pSocio);
     return cant;
 }
+
 ///CONSULTA POR DNI
 int ArchivoSocios::buscarRegPorDni(std::string dni)
 {
@@ -365,7 +366,6 @@ int ArchivoSocios::buscarRegPorDni(std::string dni)
     }
     return -1;
 }
-
 
 void ArchivoSocios::consultaPorDni()
 {
@@ -395,6 +395,7 @@ int ArchivoSocios::buscarRegPorNumSocio(int numSocio)
     }
     return -1;
 }
+
 void ArchivoSocios::consultaPorNumSocio()
 {
     int nroSocio;
@@ -410,6 +411,7 @@ void ArchivoSocios::consultaPorNumSocio()
         std::cout << "No se encontro el Numero de Socio ingresado." << std::endl;
     }
 }
+
 ///CONSULTA POR EDAD
 void ArchivoSocios::sociosPorEdad()
 {
@@ -438,7 +440,6 @@ void ArchivoSocios::sociosPorEdad()
     }
     else std::cout << "Edad incorrecta." << std::endl;
 }
-
 
 ///CONSULTA POR DISCIPLINA
 void ArchivoSocios::sociosPorDisciplina()
@@ -481,7 +482,6 @@ void ArchivoSocios::sociosPorDisciplina()
     }
 }
 
-
 ///CONSULTA POR MEMBRESIA
 void ArchivoSocios::sociosPorMembresia()
 {
@@ -518,6 +518,7 @@ void ArchivoSocios::sociosPorMembresia()
     }
 }
 
+///BAJA LOGICA
 bool ArchivoSocios::bajaLogica(int nRegistro)
 {
     Socio socio;
@@ -560,7 +561,7 @@ void ArchivoSocios::bajaSocio()
     else std::cout << "Baja de " << dni << " erronea. Intente nuevamente." << std::endl;
 }
 
-
+///ALTA LOGICA
 bool ArchivoSocios::altaLogica(int nRegistro)
 {
     Socio socio;
@@ -577,6 +578,7 @@ bool ArchivoSocios::altaLogica(int nRegistro)
     fclose(pSocio);
     return flag;
 }
+
 void ArchivoSocios::altaSocio()
 {
     std::string dni;
@@ -586,6 +588,8 @@ void ArchivoSocios::altaSocio()
     if (altaLogica(buscarRegPorDni(dni))) std::cout << "Alta de " << dni << " realizada exitosamente." << std::endl;
     else std::cout << "Alta de " << dni << " erronea. Intente nuevamente." << std::endl;
 }
+
+//Listado
 void ArchivoSocios::ordenarPorNombre()
 {
     ArchivoSocios archivoSocios;

@@ -92,6 +92,254 @@ void ArchivoProfesor::modificarProfesor()
 
 void ArchivoProfesor::modificarProfesorConOpciones()
 {
+	int opcion1, subopcion1, idProfesor, nRegistro = -1;
+	std::string dni;
+	std::string cadena;
+	Fecha fecha;
+	Profesor profesor;
+	do {
+		std::cout << "Modificar Profesor con Opciones" << std::endl;
+		std::cout << "1) Ingresar modificaciones" << std::endl;
+		std::cout << "2) Aplicar modificaciones" << std::endl;
+		std::cout << "0) Salir." << std::endl;
+		std::cin >> opcion1;
+		system("cls");
+		switch (opcion1)
+		{
+			case 1:
+			{
+				std::cout << "1) Ingresar DNI: " << std::endl;
+				std::cout << "2) Ingresar ID profesor: " << std::endl;
+				std::cout << "0) Volver." << std::endl;
+				std::cin >> subopcion1;
+				system("cls");
+				switch (subopcion1)
+				{
+				case 1:
+				{
+					std::cout << "Dni: ";
+					std::cin.ignore();
+					std::getline(std::cin, dni);
+					nRegistro = buscarRegPorDni(dni);
+				}
+				break;
+				case 2:
+				{
+					std::cout << "ID profesor: ";
+					std::cin >> idProfesor;
+					nRegistro = buscarRegPorID(idProfesor);
+				}
+				break;
+				}
+				if (nRegistro != -1) {
+					profesor = leerProfesor(nRegistro);
+					int subopcion2, subopcion3;
+					system("cls");
+					do {
+						system("cls");
+						std::cout << "Que desea cambiar?" << std::endl;
+						std::cout << "1) Datos Personales" << std::endl;
+						std::cout << "2) Datos de Profesor" << std::endl;
+						std::cout << "0) Volver." << std::endl;
+						std::cin >> subopcion2;
+						system("cls");
+						switch (subopcion2)
+						{
+							case 1:
+							{
+								std::cout << "1) Nombre" << std::endl;
+								std::cout << "2) Apellido" << std::endl;
+								std::cout << "3) Fecha de Nacimiento" << std::endl;
+								std::cout << "4) Contacto" << std::endl;
+								std::cout << "5) DNI" << std::endl;
+								std::cout << "0) Volver" << std::endl;
+								std::cin >> subopcion3;
+								system("cls");
+								switch (subopcion3)
+								{
+									case 1:
+									{
+										std::cin.ignore();
+										std::cout << "Ingrese Nombre: ";
+										std::getline(std::cin, cadena);
+										profesor.setNombre(cadena);
+									}
+									break;
+									case 2:
+									{
+										std::cin.ignore();
+										std::cout << "Ingrese Apellido: ";
+										std::getline(std::cin, cadena);
+										profesor.setApellido(cadena);
+									}
+									break;
+									case 3:
+									{
+										fecha.Cargar();
+										profesor.setFechaNac(fecha);
+									}
+									break;
+									case 4:
+									{
+										int subopcion4;
+										Contacto contacto;
+										std::cout << "Contacto" << std::endl;
+										std::cout << "1) Calle" << std::endl;
+										std::cout << "2) Numero" << std::endl;
+										std::cout << "3) Localidad" << std::endl;
+										std::cout << "4) Telefono" << std::endl;
+										std::cout << "5) Email" << std::endl;
+										std::cout << "0) Volver" << std::endl;
+										std::cin >> subopcion4;
+										system("cls");
+										switch (subopcion4)
+										{
+										case 1:
+										{
+											std::cin.ignore();
+											std::cout << "Ingrese Calle: ";
+											std::getline(std::cin, cadena);
+											contacto = profesor.getContacto();
+											contacto.setCalle(cadena);
+											profesor.setContacto(contacto);
+										}
+										break;
+										case 2:
+										{
+											std::cin.ignore();
+											std::cout << "Ingrese Numero: ";
+											std::getline(std::cin, cadena);
+											contacto = profesor.getContacto();
+											contacto.setNum(cadena);
+											profesor.setContacto(contacto);
+										}
+										break;
+										case 3:
+										{
+											std::cin.ignore();
+											std::cout << "Ingrese Localidad: ";
+											std::getline(std::cin, cadena);
+											contacto = profesor.getContacto();
+											contacto.setLocalidad(cadena);
+											profesor.setContacto(contacto);
+										}
+										break;
+										case 4:
+										{
+											std::cin.ignore();
+											std::cout << "Ingrese Telefono: ";
+											std::getline(std::cin, cadena);
+											contacto = profesor.getContacto();
+											contacto.setTel(cadena);
+											profesor.setContacto(contacto);
+										}
+										break;
+										case 5:
+										{
+											std::cin.ignore();
+											std::cout << "Ingrese Email: ";
+											std::getline(std::cin, cadena);
+											contacto = profesor.getContacto();
+											contacto.setEmail(cadena);
+											profesor.setContacto(contacto);
+										}
+										break;
+										default:
+											break;
+										}
+									}
+									break;
+									case 5:
+									{
+										std::cin.ignore();
+										std::cout << "Ingrese DNI: ";
+										std::getline(std::cin, cadena);
+										profesor.setDni(cadena);
+									}
+									break;
+								}
+							}
+							break;
+							case 2:
+							{
+								std::cout << "1) Disciplina" << std::endl;
+								std::cout << "2) Turno" << std::endl;
+								std::cout << "3) Sueldo" << std::endl;
+								std::cout << "4) Fecha Ingreso" << std::endl;
+								std::cout << "5) Fecha Egreso" << std::endl;
+								std::cout << "0) Volver" << std::endl;
+								std::cin >> subopcion3;
+								system("cls");
+								switch (subopcion3)
+								{
+									case 1:
+									{
+										ArchivoDisciplina arDis;
+										std::cout << "Nombre de Disciplina: ";
+										std::cin.ignore();
+										std::getline(std::cin, cadena);
+										while (arDis.buscarRegPorNombre(cadena) == -1) {
+											std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+											std::getline(std::cin, cadena);
+										}
+										profesor.setIdDisciplina(arDis.buscarRegPorNombre(cadena) + 1);
+									}
+									break;
+									case 2:
+									{
+										std::cout << "Turno: ";
+										std::cin.ignore();
+										std::getline(std::cin, cadena);
+										profesor.setTurno(cadena);
+									}
+									break;
+									case 3:
+									{
+										float sueldo;
+										std::cout << "Sueldo: ";
+										std::cin >> sueldo;
+										profesor.setSueldo(sueldo);
+									}
+									break;
+									case 4:
+									{
+										std::cout << "Ingrese Fecha de Ingreso: ";
+										fecha.Cargar();
+										profesor.setFechaIngreso(fecha);
+									}
+									break;
+									case 5:
+									{
+										std::cout << "Ingrese Fecha de Egreso: ";
+										fecha.Cargar();
+										profesor.setFechaIngreso(fecha);
+									}
+									break;
+								}
+							}
+							break;
+						}
+					} while (subopcion2 != 0);
+				}
+				else
+				{
+					std::cout << "No existe el registro." << std::endl;
+					system("pause>nul");
+				}
+			}
+			break;
+			case 2:
+			{
+				if (nRegistro != -1) {
+					if (modificarProfesor(profesor, nRegistro)) std::cout << "Socio " << profesor.getId() << " modificado correctamente." << std::endl;
+					else std::cout << "No se pudo modificar socio " << profesor.getId() << "." << std::endl;
+					system("pause>nul");
+				}
+			}
+			break;
+		}
+		system("cls");
+	} while (opcion1 != 0);
 }
 
 int ArchivoProfesor::getCantidad()
@@ -122,6 +370,18 @@ void ArchivoProfesor::consultaPorDni()
 	std::getline(std::cin, dni);
 	Profesor profesor = buscarRegPorDni(dni);
 	profesor.MostrarProfesor();
+}
+
+//CONSULTA POR ID
+int ArchivoProfesor::buscarRegPorID(int id)
+{
+	int cant = getCantidad();
+	Profesor profesor;
+	for (int x = 0;x < cant;x++) {
+		profesor = leerProfesor(x);
+		if (profesor.getId()==id) return x;
+	}
+	return -1;
 }
 //CONSULTA POR DISCIPLINA
 int ArchivoProfesor::getCantidadProfePorDis(std::string nombre)
@@ -229,10 +489,25 @@ bool ArchivoProfesor::bajaLogica(int nRegistro)
 void ArchivoProfesor::bajaProfesor()
 {
 	std::string dni;
-	std::cout << "Ingrese dni a dar de baja: ";
+	Cargar cargar;
 	std::cin.ignore();
+
+	std::cout << "Ingrese dni a dar de baja (8 digitos): ";
 	std::getline(std::cin, dni);
-	if(bajaLogica(buscarRegPorDni(dni))) std::cout<< "Baja de " << dni << " realizada exitosamente." << std::endl;
+
+	while (!cargar.validarDigitosDni(dni)) {
+		std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+		std::getline(std::cin, dni);
+	}
+	while (buscarRegPorDni(dni) == -1) {
+		std::cout << "No existe socio con DNI " << dni << " ingrese nuevamente: ";
+		std::getline(std::cin, dni);
+		while (!cargar.validarDigitosDni(dni)) {
+			std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+			std::getline(std::cin, dni);
+		}
+	}
+	if (bajaLogica(buscarRegPorDni(dni))) std::cout << "Baja de " << dni << " realizada exitosamente." << std::endl;
 	else std::cout << "Baja de " << dni << " erronea. Intente nuevamente." << std::endl;
 }
 
@@ -329,6 +604,7 @@ void ArchivoProfesor::profesorSueldoAnual()
 	std::cout << "El sueldo anual del profesor: "<< idP << " es de : " << sueldoAnual << std::endl;
 }
 
+//LISTADO
 void ArchivoProfesor::ordenarPorApellido(){
 
 	int cantidad = getCantidad();
@@ -398,6 +674,7 @@ void ArchivoProfesor::mostrarProfesoresPorTurno() {
 	delete[] profesores;
 }
 
+//Otras funciones
 int ArchivoProfesor::ultimoProfesor()
 {
 	int cantidad = getCantidad();
