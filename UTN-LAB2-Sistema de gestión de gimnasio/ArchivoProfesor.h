@@ -29,9 +29,8 @@ public:
 	int buscarRegPorID(int id);
 	
 	//CONSULTA POR DISCIPLINA
-	int getCantidadProfePorDis(std::string nombre);
-	void ProfePorDis();//FUNCION A LLAMAR EN EL MENU
-	void copiarProfeDis(Profesor* vProfe, std::string nombre);
+	void profePorDisciplina();//FUNCION A LLAMAR EN EL MENU
+	
 	void mostrarProfe(Profesor* vProfe, int cant);
 	//CONSULTA POR TURNO
 	int getCantidadProfePorTurno(std::string turno);

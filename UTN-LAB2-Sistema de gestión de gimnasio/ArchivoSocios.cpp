@@ -349,6 +349,7 @@ int ArchivoSocios::getCantidad()
 {
     int cant=0;
     FILE* pSocio = fopen("socios.dat", "rb");
+    if (pSocio == nullptr) return cant;
     fseek(pSocio, 0, 2);
     cant = ftell(pSocio) / sizeof(Socio);
     fclose(pSocio);
@@ -475,6 +476,7 @@ void ArchivoSocios::sociosPorDisciplina()
             }
         }
         if (!hay) std::cout << "No hay socios registrados en esa disciplina." << std::endl;
+        delete[] vClaseAsignada;
     }
     else
     {

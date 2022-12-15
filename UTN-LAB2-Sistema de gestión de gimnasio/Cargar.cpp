@@ -24,13 +24,14 @@ void Cargar::CargarPersona(Socio& socio)
 		std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
 	}
-	while (arSocio.buscarRegPorDni(cadena) != -1) {
-		
-		std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
-		std::getline(std::cin, cadena);
-		while (!validarDigitosDni(cadena)) {
-			std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+	if (arSocio.getCantidad() > 0) {
+		while (arSocio.buscarRegPorDni(cadena) != -1) {
+			std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
 			std::getline(std::cin, cadena);
+			while (!validarDigitosDni(cadena)) {
+				std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+				std::getline(std::cin, cadena);
+			}
 		}
 	}
 	socio.setDni(cadena);
@@ -63,13 +64,14 @@ void Cargar::CargarPersona(Profesor& profesor)
 		std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
 		std::getline(std::cin, cadena);
 	}
-	while (arProf.buscarRegPorDni(cadena) != -1) {
-
-		std::cout << "Ya existe socio con DNI " << cadena << " ingrese nuevamente: ";
-		std::getline(std::cin, cadena);
-		while (!validarDigitosDni(cadena)) {
-			std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+	if (arProf.getCantidad() > 0) {
+		while (arProf.buscarRegPorDni(cadena) != -1) {
+			std::cout << "Ya existe profesor con DNI " << cadena << " ingrese nuevamente: ";
 			std::getline(std::cin, cadena);
+			while (!validarDigitosDni(cadena)) {
+				std::cout << "Numero de digitos incorrectos. Ingrese nuevamente: ";
+				std::getline(std::cin, cadena);
+			}
 		}
 	}
 	profesor.setDni(cadena);

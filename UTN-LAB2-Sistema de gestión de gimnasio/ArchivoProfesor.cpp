@@ -346,6 +346,7 @@ int ArchivoProfesor::getCantidad()
 {
 	int cant = 0;
 	FILE* p = fopen("profesores.dat", "rb");
+	if (p == nullptr) return cant;
 	fseek(p, 0, 2);
 	cant = ftell(p) / sizeof(Profesor);
 	fclose(p);
@@ -368,8 +369,15 @@ void ArchivoProfesor::consultaPorDni()
 	std::cout << "Ingrese Dni: ";
 	std::cin.ignore();
 	std::getline(std::cin, dni);
-	Profesor profesor = buscarRegPorDni(dni);
-	profesor.MostrarProfesor();
+	int nRegistro = buscarRegPorDni(dni);
+	if (nRegistro != -1) {
+		Profesor profesor = leerProfesor(nRegistro);
+		profesor.MostrarProfesor();
+	}
+	else {
+		std::cout << "No se encontro el DNI ingresado." << std::endl;
+	}
+	
 }
 
 //CONSULTA POR ID
@@ -383,44 +391,50 @@ int ArchivoProfesor::buscarRegPorID(int id)
 	}
 	return -1;
 }
-//CONSULTA POR DISCIPLINA
-int ArchivoProfesor::getCantidadProfePorDis(std::string nombre)
-{
-	ArchivoDisciplina arDis;
-	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-	int cantProfe = getCantidad(), cantDis=0;
-	Profesor profesor;
-	for (int x = 0;x < cantProfe;x++) {
-		profesor = leerProfesor(x);
-		if (profesor.getIdDisciplina() == disciplina.getCodigo()) cantDis++;
-	}
-	return cantDis;
-}
 
-void ArchivoProfesor::ProfePorDis()
+//CONSULTA POR DISCIPLINA
+void ArchivoProfesor::profePorDisciplina()
 {
 	std::string cadena;
-	std::cout << "Ingrese Disciplina: ";
-	std::getline(std::cin, cadena);
-	int cantProfePorDis = getCantidadProfePorDis(cadena);
-	Profesor* vProfe = new Profesor[cantProfePorDis];
-	if (vProfe == nullptr) return;
-	copiarProfeDis(vProfe, cadena);
-	mostrarProfe(vProfe, cantProfePorDis);
-	delete[] vProfe;
-}
-
-void ArchivoProfesor::copiarProfeDis(Profesor* vProfe, std::string nombre)
-{
 	ArchivoDisciplina arDis;
-	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(nombre));
-	Profesor profesor;
-	int cantProfe = getCantidad();
-	for (int x = 0;x < cantProfe;x++) {
-		profesor = leerProfesor(x);
-		if (profesor.getIdDisciplina() == disciplina.getCodigo()) {
-			vProfe[x] = profesor;
+	std::cin.ignore();
+	std::cout << "Ingrese nombre de disciplina a evaluar: ";
+	std::getline(std::cin, cadena);
+	while (arDis.buscarRegPorNombre(cadena) == -1) {
+		std::cout << "Nombre incorrecto. Ingrese nuevamente: ";
+		std::getline(std::cin, cadena);
+	}
+	system("cls");
+	Disciplina disciplina = arDis.leerDisciplina(arDis.buscarRegPorNombre(cadena));
+	ArchivoClaseAsignada arCla;
+	int CantRegistrosClaseAsignada = arCla.getCantidad();
+	if (CantRegistrosClaseAsignada > 0) {
+		ClaseAsignada* vClaseAsignada = new ClaseAsignada[CantRegistrosClaseAsignada];
+		if (vClaseAsignada == nullptr) {
+			std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+			return;
 		}
+		bool* vIdDisciplina = new bool[CantRegistrosClaseAsignada]{};
+		if (vIdDisciplina == nullptr) return;
+		arCla.leerTodos(vClaseAsignada, CantRegistrosClaseAsignada);
+		Profesor profesor;
+		bool hay = false;
+		std::cout << "Profesores de " << disciplina.getNombre() << std::endl;
+		for (int x = 0;x < CantRegistrosClaseAsignada;x++) {
+			if (!vIdDisciplina[vClaseAsignada[x].getIdProfesor()-1] && vClaseAsignada[x].getCodDisciplina() == disciplina.getCodigo()) {
+				hay = true;
+				vIdDisciplina[vClaseAsignada[x].getIdProfesor() - 1] = true;
+				profesor = leerProfesor(buscarRegPorID(vClaseAsignada[x].getIdProfesor()));
+				std::cout << profesor.MostrarPersonaFormatoComas() << std::endl;
+			}
+		}
+		if (!hay) std::cout << "No hay profesores registrados en esa disciplina." << std::endl;
+		delete[] vClaseAsignada;
+		delete[] vIdDisciplina;
+	}
+	else
+	{
+		std::cout << "No hay registros en el Archivo o algo malio sal." << std::endl;
 	}
 }
 
