@@ -1140,8 +1140,8 @@ void submenuMostrarDisciplinasConsulta()
 		
 		case '2':
 		{
-			/*ArchivoDisciplina archivoDisciplina;
-			archivoDisciplina.disciplinasPorHorario();*/
+			ArchivoDisciplina archivoDisciplina;
+			archivoDisciplina.disciplinasPorHorario();
 			system("pause>nul");
 		}
 		break;

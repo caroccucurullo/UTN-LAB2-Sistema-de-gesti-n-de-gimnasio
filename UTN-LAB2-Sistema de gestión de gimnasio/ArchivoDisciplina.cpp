@@ -104,19 +104,6 @@ int ArchivoDisciplina::buscarRegPorNombre(std::string nombre)
 //}
 
 //CONSULTA POR SALONES
-//int ArchivoDisciplina::getCantidadSalon(std::string nombreSalon)
-//{
-//    ArchivoSalon arSalon;
-//	Salon salon = arSalon.leerSalon(arSalon.buscarRegPorNombre(nombreSalon));
-//	int cant = getCantidad();
-//	Disciplina disciplina;
-//	int cantSalon = 0;
-//	for (int x = 0;x < cant;x++) {
-//		disciplina = leerDisciplina(x);
-//		if (disciplina.getIdSalon() == salon.getId()) cantSalon++;
-//	}
-//	return cantSalon;
-//}
 void ArchivoDisciplina::disciplinasPorSalon()
 {
     ArchivoSalon arSalon;
@@ -151,57 +138,57 @@ void ArchivoDisciplina::disciplinasPorSalon()
         std::cout << "No hay registros en el archivo." << std::endl;
     }
 }
-//void ArchivoDisciplina::copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon)
-//{
-//    ArchivoSalon arSalon;
-//    Salon salon = arSalon.leerSalon(arSalon.buscarRegPorNombre(nombreSalon));
-//    int cant = getCantidad();
-//    Disciplina disciplina;
-//    for (int x = 0;x < cant;x++) {
-//        disciplina = leerDisciplina(x);
-//		if (disciplina.getIdSalon() == salon.getId()) vDisciplina[x] = disciplina;
-//    }
-//}
 
 //CONSULTA POR HORARIO
-//int ArchivoDisciplina::getCantidadPorHorario(int horarioInicio)
-//{
-//	int cant = getCantidad(), cantPorHorario = 0;
-//	Disciplina disciplina;
-//	for (int x = 0;x < cant;x++) {
-//		disciplina = leerDisciplina(x);
-//		if (disciplina.getHorarioInicio() == horarioInicio) cantPorHorario++;
-//	}
-//	return cantPorHorario;
-//}
-//void ArchivoDisciplina::disciplinasPorHorario()
-//{
-//    int horarioInicio;
-//    std::cout << "Ingrese horario: ";
-//    std::cin >> horarioInicio;
-//	int cantHorario = getCantidadPorHorario(horarioInicio);
-//	Disciplina* vDisciplina = new Disciplina[cantHorario];
-//	if (vDisciplina == nullptr) return;
-//	copiarDisciplinaHorario(vDisciplina, horarioInicio);
-//	mostrarDisciplina(vDisciplina, cantHorario);
-//	delete[] vDisciplina;
-//}
-//void ArchivoDisciplina::copiarDisciplinaHorario(Disciplina* vDisciplina, int horarioInicio)
-//{
-//    int cant = getCantidad();
-//    Disciplina disciplina;
-//    for (int x = 0;x < cant;x++) {
-//        disciplina = leerDisciplina(x);
-//        if (disciplina.getHorarioInicio() == horarioInicio) vDisciplina[x] = disciplina;
-//    }
-//}
-//void ArchivoDisciplina::mostrarDisciplina(Disciplina* vDisciplina, int cant)
-//{
-//    for (int x = 0;x < cant;x++) {
-//        vDisciplina[x].MostrarDisciplina();
-//        std::cout << std::endl;
-//    }
-//}
+void ArchivoDisciplina::disciplinasPorHorario()
+{
+    ArchivoClaseAsignada arCla;
+	int cantCla = arCla.getCantidad();
+	int cantDisciplina = getCantidad();
+    if (cantDisciplina > 0 && cantCla > 0) {
+		ClaseAsignada* vCla = new ClaseAsignada[cantCla];
+        if(vCla==nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
+        }
+		Disciplina* vDisciplina = new Disciplina[cantDisciplina];
+        if (vDisciplina == nullptr) {
+            std::cout << "No se pudo abrir el archivo de registros." << std::endl;
+            return;
+        }
+        bool* vIdDisciplina = new bool[cantDisciplina] {};
+        if (vIdDisciplina == nullptr) return;
+        bool hay = false;
+        Fecha fecha;
+        int horarioInicio;
+		std::cout << "Ingrese fecha de la clase: " << std::endl;
+        fecha.Cargar();
+		std::cout << "Ingrese horario de inicio de la clase: ";
+		std::cin >> horarioInicio;
+        arCla.leerTodos(vCla, cantCla);
+        leerTodas(vDisciplina, cantDisciplina);
+		system("cls");
+		std::cout << "Clases del " << fecha.toString() << " a las " << horarioInicio << std::endl;
+        for (int x = 0;x < cantCla;x++) {
+			if (vCla[x].getFechaAsignada() == fecha && vCla[x].getHorarioInicio() == horarioInicio) {
+				for (int y = 0;y < cantDisciplina;y++) {
+					if (!vIdDisciplina[vCla[x].getCodDisciplina()-1] && vCla[x].getCodDisciplina() == vDisciplina[y].getCodigo()) {
+                        hay = true;
+                        vIdDisciplina[vCla[x].getCodDisciplina() - 1] = true;
+						std::cout << vDisciplina[y].getNombre() << std::endl;
+					}
+				}
+			}
+        }
+		if (!hay) std::cout << "No hay clases asignadas en ese horario." << std::endl;
+		delete[] vCla;
+		delete[] vDisciplina;
+        delete[] vIdDisciplina;
+	}
+    else {
+		std::cout << "No hay registros en el archivo . " << std::endl;
+    }
+}
 
 bool ArchivoDisciplina::bajaLogica(int nRegistro)
 {

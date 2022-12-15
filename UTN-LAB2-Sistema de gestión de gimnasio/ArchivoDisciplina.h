@@ -23,13 +23,11 @@ public:
 	//int buscarRegPorSalonyHorario(int idSalon, int horario);
 
 	//CONSULTA POR SALONES
-	//int getCantidadSalon(std::string nombreSalon);
 	void disciplinasPorSalon();//FUNCION A LLAMAR EN EL MENU
-	//void copiarDisciplinaPorSalon(Disciplina* vDisciplina, std::string nombreSalon);
 
 	//CONSULTA POR HORARIO
 	//int getCantidadPorHorario(int horarioInicio);
-	//void disciplinasPorHorario();//FUNCION A LLAMAR EN EL MENU
+	void disciplinasPorHorario();//FUNCION A LLAMAR EN EL MENU
 	//void copiarDisciplinaHorario(Disciplina* vDisciplina, int horarioInicio);
 	//void mostrarDisciplina(Disciplina* vDisciplina, int cant);
 
